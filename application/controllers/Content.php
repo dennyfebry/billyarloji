@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Content extends CI_Controller {
+class Content extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +21,6 @@ class Content extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('admin');
+		$this->load->view('content/admin');
 	}
 }
