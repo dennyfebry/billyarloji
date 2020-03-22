@@ -47,7 +47,8 @@ class C_login extends CI_Controller
 				$this->m_login->last_login("tb_admin", $where, $data);
 
 				$data_session = array(
-					'nama' => $array[0]->name,
+					'id' => $array[0]->id,
+					'name' => $array[0]->name,
 					'role' => $array[0]->role,
 					'status' => "login"
 				);
