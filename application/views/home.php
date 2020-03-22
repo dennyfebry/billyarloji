@@ -79,7 +79,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div id="container">
 		<h1>Welcome to Billy Arloji!</h1>
 		<div id="body">
-			<code><a href="<?php echo site_url('Content/index') ?>">Ke Halaman Admin</a></code>
+			<code><a href="<?php echo site_url('content/c_login') ?>">Ke Halaman Admin</a></code>
 		</div>
 
 	</div>
