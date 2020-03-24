@@ -14,6 +14,8 @@ class C_testimoni extends CI_Controller
 
     public function index()
     {
-        $this->load->view('content/testimoni');
+        $data['title'] = "Testimoni";
+        $data['page'] = "testimoni";
+        $this->load->view('content/template', $data);
     }
 }
