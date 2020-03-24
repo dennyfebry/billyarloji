@@ -14,28 +14,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 		body {
 			font-family: Arial, Helvetica, sans-serif;
+			margin: 104px 0px;
+			background-color: #f1f1f1;
 		}
 
-		/* Style the header */
 		header {
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			width: 100%;
 			background-color: #666;
 			padding: 10px;
 			text-align: center;
-			font-size: 30px;
+			font-size: 20px;
 			color: white;
 		}
 
-		/* Create two columns/boxes that floats next to each other */
 		nav {
 			float: left;
 			width: 15%;
-			height: 400px;
-			/* only for demonstration, should be removed */
+			height: auto;
 			background: #ccc;
-			/* padding: 20px; */
+			padding: 5px;
 		}
 
-		/* Style the list inside the menu */
 		nav ul {
 			list-style-type: none;
 			margin: 0;
@@ -65,27 +67,32 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			float: left;
 			padding: 20px;
 			width: 85%;
-			background-color: #f1f1f1;
 			height: 400px;
-			/* only for demonstration, should be removed */
 		}
 
-		/* Clear floats after the columns */
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
 		section:after {
 			content: "";
 			display: table;
 			clear: both;
 		}
 
-		/* Style the footer */
 		footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
 			background-color: #777;
-			padding: 10px;
-			text-align: center;
 			color: white;
+			text-align: center;
 		}
 
-		/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
 		@media (max-width: 600px) {
 
 			nav,
@@ -99,19 +106,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body>
 	<header>
-		<h2>Dashboard</h2>
+		<h2>Billy Arloji</h2>
 	</header>
 
 	<section>
 		<nav>
 			<ul>
-				<li><a class="active" href="#dashboard">Dashboard</a></li>
-				<li><a href="#slider">Slider</a></li>
-				<li><a href="#product">Products</a></li>
-				<li><a href="#testimoni">Testimoni</a></li>
+				<li><a class="active" href="<?php echo site_url('content/c_dashboard') ?>">Dashboard</a></li>
+				<li><a href="<?php echo site_url('content/c_slider') ?>">Slider</a></li>
+				<li><a href="<?php echo site_url('content/c_product') ?>">Products</a></li>
+				<li><a href="<?php echo site_url('content/c_testimoni') ?>">Testimoni</a></li>
 				<?php
 				if ($this->session->userdata("id") == 1) { ?>
-					<li><a href="#admin">Admin</a></li>
+					<li><a href="<?php echo site_url('content/c_superadmin') ?>">Admin</a></li>
 				<?php
 				}
 				?>
