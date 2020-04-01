@@ -3,6 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class C_superadmin extends CI_Controller
 {
+    var $data = array();
+
     function __construct()
     {
         parent::__construct();
@@ -11,21 +13,25 @@ class C_superadmin extends CI_Controller
         } else if ($this->session->userdata('role') != 1) {
             redirect("content/c_login");
         }
-        $this->load->model('m_superadmin');
+        $this->load->model('m_superadmin', 'ref');
         $this->load->library('form_validation');
+        $this->data = array(
+            'titlepage' => 'Superadmin'
+        );
     }
+
 
     public function index()
     {
-        $data['title'] = "Superadmin";
+        $data = $this->data;
         $data['page'] = "superadmin";
-        $data['list'] = $this->m_superadmin->list();
+        $data['list'] = $this->ref->list();
         $this->load->view('content/template', $data);
     }
 
     public function add()
     {
-        $data['title'] = "Superadmin";
+        $data = $this->data;
         $data['page'] = "crud_superadmin";
         $data['content'] = "Add";
         $this->load->view('content/template', $data);
@@ -45,6 +51,7 @@ class C_superadmin extends CI_Controller
             $username = $this->input->post('username');
             $password = $this->input->post('password');
             $role = $this->input->post('role');
+            $last_login = $this->input->post('last_login');
 
             if ($content == "Edit") {
                 $data = array(
@@ -52,10 +59,10 @@ class C_superadmin extends CI_Controller
                     'username' => $username,
                     'password' => $password,
                     'role' => $role,
-                    'last_login' => ""
+                    'last_login' => $last_login
                 );
 
-                $this->m_superadmin->update($id, $data);
+                $this->ref->update($id, $data);
                 redirect('content/c_superadmin');
             } else {
                 $data = array(
@@ -66,28 +73,29 @@ class C_superadmin extends CI_Controller
                     'last_login' => ""
                 );
 
-                $this->m_superadmin->insert($data);
+                $this->ref->insert($data);
                 redirect('content/c_superadmin');
             }
         } else {
-            $data['title'] = "Superadmin";
+            $data = $this->data;
             $data['page'] = "crud_superadmin";
+            $data['content'] = "Add";
             $this->load->view('content/template', $data);
         }
     }
 
     public function edit($id)
     {
-        $data['title'] = "Superadmin";
+        $data = $this->data;
         $data['page'] = "crud_superadmin";
         $data['content'] = "Edit";
-        $data['sql'] = $this->m_superadmin->edit($id);
+        $data['sql'] = $this->ref->edit($id);
         $this->load->view('content/template', $data);
     }
 
     public function delete($id)
     {
-        $this->m_superadmin->delete($id);
+        $this->ref->delete($id);
         redirect('content/c_superadmin');
     }
 }

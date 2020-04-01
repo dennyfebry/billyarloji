@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $title; ?></title>
+    <title><?= $titlepage ?></title>
     <style>
         * {
             box-sizing: border-box;

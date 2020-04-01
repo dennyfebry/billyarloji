@@ -23,21 +23,22 @@
     <?php echo form_open('content/c_superadmin/validation'); ?>
     <input type="hidden" name="content" value="<?php echo $content; ?>">
     <input type="hidden" name="id" value="<?php echo $id; ?>">
+    <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
     <div>
         <label for="">name</label>
-        <input type="text" name="name" value="<?php echo $name; ?>">
+        <input type="text" name="name" value="<?php echo $name; ?>" required>
     </div>
     <div>
         <label for="">username</label>
-        <input type="text" name="username" value="<?php echo $username; ?>">
+        <input type="text" name="username" value="<?php echo $username; ?>" required>
     </div>
     <?php
     if ($content == "Edit") { ?>
-        <input type="hidden" name="password" value="<?php echo $password; ?>">
+        <input type="hidden" name="password" value="<?php echo $password; ?>" required>
     <?php } else { ?>
         <div>
             <label for="">password</label>
-            <input type="password" name="password" value="<?php echo $password; ?>">
+            <input type="password" name="password" value="<?php echo $password; ?>" required>
         </div>
     <?php  } ?>
     <div>

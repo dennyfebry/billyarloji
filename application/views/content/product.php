@@ -1,34 +1,30 @@
 <article>
     <h1>Product</h1>
+    <a href="<?php echo site_url('content/c_product/add') ?>">Add</a>
     <table style="width:100%;">
         <thead>
             <th>No</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Role</th>
-            <th>Last Login</th>
+            <th>Name (Images)</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Updated Date</th>
+            <th>Updated By</th>
+            <th>Status</th>
+            <th>Action</th>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Papaw</td>
-                <td>papaw.admin</td>
-                <td>super.admin</td>
-                <td>2020-03-22 23:13:18</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Bob</td>
-                <td>bob.admin</td>
-                <td>admin</td>
-                <td>2020-03-22 23:13:18</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Ucha</td>
-                <td>ucha.admin</td>
-                <td>admin</td>
-                <td>2020-03-22 23:13:18</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td><a href="<?php echo base_url(); ?>index.php/content/c_product/edit/">Edit</a> |
+                    <a href="<?php echo base_url(); ?>index.php/content/c_product/delete/">Delete</a></td>
             </tr>
         </tbody>
     </table>
