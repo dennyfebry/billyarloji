@@ -37,37 +37,37 @@ class C_testimoni extends CI_Controller
 
     function validation()
     {
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        // $this->form_validation->set_rules('description', 'description', 'required');
 
         if ($this->form_validation->run() != false) {
             $content = $this->input->post('content');
             $id = $this->input->post('id');
-            $name = $this->input->post('name');
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
-            $role = $this->input->post('role');
+            $created_date = $this->input->post('created_date');
+            $created_by = $this->input->post('created_by');
+            $updated_date = $this->input->post('updated_date');
+            $updated_by = $this->input->post('updated_by');
+            $title = $this->input->post('title');
+            $description = $this->input->post('description');
 
             if ($content == "Edit") {
                 $data = array(
-                    'name' => $name,
-                    'username' => $username,
-                    'password' => $password,
-                    'role' => $role,
-                    'last_login' => ""
+                    'updated_date' => $updated_date,
+                    'updated_by' => $updated_by,
+                    'title' => $title,
+                    'description' => $description
                 );
 
                 $this->ref->update($id, $data);
                 redirect('content/c_testimoni');
             } else {
                 $data = array(
-                    'name' => $name,
-                    'username' => $username,
-                    'password' => sha1($password),
-                    'role' => $role,
-                    'last_login' => ""
+                    'created_date' => $created_date,
+                    'created_by' => $created_by,
+                    'updated_date' => $updated_date,
+                    'updated_by' => $updated_by,
+                    'title' => $title,
+                    'description' => $description
                 );
 
                 $this->ref->insert($data);

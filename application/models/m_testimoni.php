@@ -3,11 +3,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_testimoni extends CI_Model
 {
-    var $table = "tb_testimoni";
+    private $table = "tb_testimoni";
 
     public function list()
     {
-        $data = $this->db->query("SELECT * FROM $this->table");
+        $data = $this->db->query("SELECT $this->table.id, $this->table.title, $this->table.description, $this->table.created_date, $this->table.updated_date, tb_admin.name FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id ");
         return $data->result_array();
     }
 

@@ -36,10 +36,33 @@
     </div>
     <div>
         <label for="">Description</label>
-        <input type="text" name="description" value="<?php echo $description; ?>" required>
+        <textarea id="summernote" name="description"><?php echo $description; ?></textarea>
     </div>
     <div>
         <input type="submit" value="Submit">
     </div>
     </form>
 </article>
+<!-- <script>
+    $('#summernote2').summernote2({
+        placeholder: 'Enter text...',
+        tabsize: 2,
+        height: 100
+    });
+</script> -->
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Enter text...',
+        tabsize: 2,
+        height: 100,
+        toolbar: [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontstyle', ['fontname', 'fontsize', 'color']],
+            ['para', ['ul', 'ol', 'paragraph', 'height']],
+            ['insert', ['link', 'table', 'hr']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+    });
+</script>
