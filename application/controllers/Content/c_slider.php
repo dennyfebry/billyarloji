@@ -23,77 +23,58 @@ class C_slider extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "slider";
-        $data['list'] = $this->ref->list();
+        $data['slider'] = $this->ref->getAll();
         $this->load->view('content/template', $data);
     }
 
     public function add()
     {
+        $slider = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($slider->rules());
+
+        if ($validation->run()) {
+            $slider->save();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_slider', 'refresh');
+        }
+
         $data = $this->data;
         $data['page'] = "crud_slider";
         $data['content'] = "Add";
         $this->load->view('content/template', $data);
     }
 
-    function validation()
-    {
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('description', 'Description', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
-
-        if ($this->form_validation->run() != false) {
-            $content = $this->input->post('content');
-            $id = $this->input->post('id');
-            $title = $this->input->post('title');
-            $description = $this->input->post('description');
-            $status = $this->input->post('status');
-            $updated_date = $this->input->post('updated_date');
-            $updated_by = $this->input->post('updated_by');
-
-            if ($content == "Edit") {
-                $data = array(
-                    'title' => $title,
-                    'description' => $description,
-                    'status' => $status,
-                    'updated_date' => $updated_date,
-                    'updated_by' => $updated_by
-                );
-
-                $this->ref->update($id, $data);
-                redirect('content/c_slider');
-            } else {
-                $data = array(
-                    'title' => $title,
-                    'description' => $description,
-                    'status' => $status,
-                    'updated_date' => $updated_date,
-                    'updated_by' => $updated_by
-                );
-
-                $this->ref->insert($data);
-                redirect('content/c_slider');
-            }
-        } else {
-            $data = $this->data;
-            $data['page'] = "crud_slider";
-            $data['content'] = "Add";
-            $this->load->view('content/template', $data);
-        }
-    }
-
     public function edit($id)
     {
+        if (!isset($id)) redirect('content/c_slider');
+
+        $slider = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($slider->rules());
+
+        if ($validation->run()) {
+            $slider->update();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_slider', 'refresh');
+        }
+
         $data = $this->data;
+
+        $data['slider'] = $slider->getById($id);
+        if (!$data['slider']) show_404();
+
         $data['page'] = "crud_slider";
         $data['content'] = "Edit";
-        $data['sql'] = $this->ref->edit($id);
         $this->load->view('content/template', $data);
     }
 
-    public function delete($id)
+    public function delete($id = null)
     {
-        $this->ref->delete($id);
-        redirect('content/c_slider');
+        if (!isset($id)) show_404();
+
+        if ($this->ref->delete($id)) {
+            redirect(site_url('content/c_slider'));
+        }
     }
 }

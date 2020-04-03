@@ -2,24 +2,32 @@
     <?php
     date_default_timezone_set("Asia/jakarta");
     $id = "";
-    $title = "";
+    $name_product = "";
     $description = "";
+    $price = "";
+    $discount = "";
     $images = "";
     $status = "";
+    $created_date = date("Y-m-d H:i:s");
+    $created_by = $this->session->userdata('id');
     $updated_date = date("Y-m-d H:i:s");
     $updated_by = $this->session->userdata('id');
     if ($content == "Edit") {
-        $id = $slider->id;
-        $title = $slider->title;
-        $description = $slider->description;
-        $images = $slider->images;
-        $status = $slider->status;
+        $id = $product->id;
+        $name_product = $product->name_product;
+        $description = $product->description;
+        $price = $product->price;
+        $discount = $product->discount;
+        $images = $product->images;
+        $status = $product->status;
+        $created_date = $product->created_date;
+        $created_by = $product->created_by;
         $updated_date = date("Y-m-d H:i:s");
         $updated_by = $this->session->userdata('id');
     }
     ?>
     <h1><?= $titlepage ?></h1>
-    <h5 style="color:#777;"><a style="color:#777;" href="<?php echo site_url('content/c_slider') ?>"><?= $titlepage ?></a> / <?php echo $content; ?></h5>
+    <h5 style="color:#777;"><a style="color:#777;" href="<?php echo site_url('content/c_product') ?>"><?= $titlepage ?></a> / <?php echo $content; ?></h5>
     <?php if ($this->session->flashdata('success')) : ?>
         <div role="alert">
             <?php echo $this->session->flashdata('success'); ?>
@@ -28,29 +36,41 @@
 
     <?php //echo validation_errors(); 
     ?>
-    <?php //echo form_open('content/c_slider/validation'); 
+    <?php //echo form_open('content/c_product/validation'); 
     ?>
 
     <?php if ($content == "Edit") {
     ?>
         <form action="" method="post" enctype="multipart/form-data">
         <?php } else { ?>
-            <form action="<?php echo site_url('content/c_slider/add') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo site_url('content/c_product/add') ?>" method="post" enctype="multipart/form-data">
             <?php } ?>
 
             <input type="hidden" name="content" value="<?php echo $content; ?>">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
             <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
             <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
             <div>
-                <label for="name">Title</label>
-                <input type="text" name="title" value="<?php echo $title; ?>">
-                <?php echo form_error('title') ?>
+                <label for="name">Name Product</label>
+                <input type="text" name="name_product" value="<?php echo $name_product; ?>">
+                <?php echo form_error('name_product') ?>
             </div>
             <div>
                 <label for="name">Description</label>
                 <textarea id="summernote" name="description"><?php echo $description; ?></textarea>
                 <?php echo form_error('description') ?>
+            </div>
+            <div>
+                <label for="name">Price</label>
+                <input type="number" name="price" value="<?php echo $price; ?>">
+                <?php echo form_error('price') ?>
+            </div>
+            <div>
+                <label for="name">Discount</label>
+                <input type="number" name="discount" value="<?php echo $discount; ?>">
+                <?php echo form_error('discount') ?>
             </div>
             <div>
                 <label for="name">Images Product</label>

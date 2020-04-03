@@ -13,21 +13,21 @@
         <tbody>
             <?php
             $no = 1;
-            foreach ($list as $row) {
+            foreach ($account as $row) {
             ?>
                 <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $row['name'] ?></td>
-                    <td><?php echo $row['username'] ?></td>
+                    <td><?php echo $row->name ?></td>
+                    <td><?php echo $row->username ?></td>
                     <td><?php
-                        if ($row['role'] == 1) {
+                        if ($row->role == 1) {
                             echo "Super Admin";
                         } else {
                             echo " Admin";
                         } ?></td>
-                    <td><?php echo $row['last_login'] ?></td>
-                    <td><a href="<?php echo base_url(); ?>index.php/content/c_superadmin/edit/<?php echo $row['id']; ?>">Edit</a> |
-                        <a href="<?php echo base_url(); ?>index.php/content/c_superadmin/delete/<?php echo $row['id']; ?>">Delete</a></td>
+                    <td><?php echo $row->last_login ?></td>
+                    <td><a href="<?php echo base_url(); ?>index.php/content/c_superadmin/edit/<?php echo $row->id; ?>">Edit</a> |
+                        <a href="<?php echo base_url(); ?>index.php/content/c_superadmin/delete/<?php echo $row->id; ?>">Delete</a></td>
                 </tr>
             <?php
                 $no++;

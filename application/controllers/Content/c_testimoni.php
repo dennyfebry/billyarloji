@@ -23,76 +23,58 @@ class C_testimoni extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "testimoni";
-        $data['list'] = $this->ref->list();
+        $data['testimoni'] = $this->ref->getAll();
         $this->load->view('content/template', $data);
     }
 
     public function add()
     {
+        $testimoni = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($testimoni->rules());
+
+        if ($validation->run()) {
+            $testimoni->save();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_testimoni', 'refresh');
+        }
+
         $data = $this->data;
         $data['page'] = "crud_testimoni";
         $data['content'] = "Add";
         $this->load->view('content/template', $data);
     }
 
-    function validation()
-    {
-        $this->form_validation->set_rules('title', 'Title', 'required');
-        // $this->form_validation->set_rules('description', 'description', 'required');
-
-        if ($this->form_validation->run() != false) {
-            $content = $this->input->post('content');
-            $id = $this->input->post('id');
-            $created_date = $this->input->post('created_date');
-            $created_by = $this->input->post('created_by');
-            $updated_date = $this->input->post('updated_date');
-            $updated_by = $this->input->post('updated_by');
-            $title = $this->input->post('title');
-            $description = $this->input->post('description');
-
-            if ($content == "Edit") {
-                $data = array(
-                    'updated_date' => $updated_date,
-                    'updated_by' => $updated_by,
-                    'title' => $title,
-                    'description' => $description
-                );
-
-                $this->ref->update($id, $data);
-                redirect('content/c_testimoni');
-            } else {
-                $data = array(
-                    'created_date' => $created_date,
-                    'created_by' => $created_by,
-                    'updated_date' => $updated_date,
-                    'updated_by' => $updated_by,
-                    'title' => $title,
-                    'description' => $description
-                );
-
-                $this->ref->insert($data);
-                redirect('content/c_testimoni');
-            }
-        } else {
-            $data = $this->data;
-            $data['page'] = "crud_testimoni";
-            $data['content'] = "Add";
-            $this->load->view('content/template', $data);
-        }
-    }
-
     public function edit($id)
     {
+        if (!isset($id)) redirect('content/c_testimoni');
+
+        $testimoni = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($testimoni->rules());
+
+        if ($validation->run()) {
+            $testimoni->update();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_testimoni', 'refresh');
+        }
+
         $data = $this->data;
+
+        $data['testimoni'] = $testimoni->getById($id);
+        if (!$data['testimoni']) show_404();
+
         $data['page'] = "crud_testimoni";
         $data['content'] = "Edit";
-        $data['sql'] = $this->ref->edit($id);
         $this->load->view('content/template', $data);
     }
 
-    public function delete($id)
+    public function delete($id = null)
     {
-        $this->ref->delete($id);
-        redirect('content/c_testimoni');
+        if (!isset($id)) show_404();
+
+        if ($this->ref->delete($id)) {
+            redirect(site_url('content/c_testimoni'));
+        }
     }
 }

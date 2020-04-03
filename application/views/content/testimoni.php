@@ -14,17 +14,17 @@
         <tbody>
             <?php
             $no = 1;
-            foreach ($list as $row) {
+            foreach ($testimoni as $row) {
             ?>
                 <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $row['title'] ?></td>
-                    <td><?php echo $row['description'] ?></td>
-                    <td><?php echo $row['created_date'] ?></td>
-                    <td><?php echo $row['updated_date'] ?></td>
-                    <td><?php echo $row['name'] ?></td>
-                    <td><a href="<?php echo base_url(); ?>index.php/content/c_testimoni/edit/<?php echo $row['id']; ?>">Edit</a> |
-                        <a href="<?php echo base_url(); ?>index.php/content/c_testimoni/delete/<?php echo $row['id']; ?>">Delete</a></td>
+                    <td><?php echo $row->title ?></td>
+                    <td><?php echo $row->description ?></td>
+                    <td><?php echo $row->created_date ?></td>
+                    <td><?php echo $row->updated_date ?></td>
+                    <td><?php echo $row->name ?></td>
+                    <td><a href="<?php echo base_url(); ?>index.php/content/c_testimoni/edit/<?php echo $row->id; ?>">Edit</a> |
+                        <a href="<?php echo base_url(); ?>index.php/content/c_testimoni/delete/<?php echo $row->id; ?>">Delete</a></td>
                 </tr>
             <?php
                 $no++;

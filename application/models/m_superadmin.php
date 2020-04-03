@@ -3,34 +3,79 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_superadmin extends CI_Model
 {
-    var $table = "tb_admin";
+    private $table = "tb_admin";
+    public $id;
+    public $name;
+    public $username;
+    public $password;
+    public $last_login;
+    public $role;
 
-    public function list()
+    public function rules()
     {
-        $data = $this->db->query("SELECT * FROM $this->table");
-        return $data->result_array();
+        return [
+            [
+                'field' => 'name',
+                'label' => 'Name',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'username',
+                'label' => 'Username',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'role',
+                'label' => 'Role',
+                'rules' => 'required'
+            ]
+        ];
     }
 
-    function insert($data)
+    public function getAll()
     {
-        $this->db->insert($this->table, $data);
+        return $this->db->query("SELECT * FROM $this->table")->result();
+        // return $this->db->get($this->table)->result();
     }
 
-    function edit($id)
+    public function save()
     {
-        $this->db->where("id", $id);
-        return $this->db->get($this->table);
+        $post = $this->input->post();
+        $this->name = $post["name"];
+        $this->username = $post["username"];
+        $this->password = sha1($post["password"]);
+        $this->role = $post["role"];
+        $this->last_login = "";
+        return $this->db->insert($this->table, $this);
     }
 
-    function update($id, $data)
+    public function getById($id)
     {
-        $this->db->where("id", $id);
-        $this->db->update($this->table, $data);
+        return $this->db->get_where($this->table, ["id" => $id])->row();
     }
 
-    function delete($id)
+    public function update()
     {
-        $this->db->where("id", $id);
-        $this->db->delete($this->table);
+        $post = $this->input->post();
+        $this->id = $post["id"];
+        $this->name = $post["name"];
+        $this->username = $post["username"];
+        $this->password = $post["password"];
+        $this->role = $post["role"];
+        $this->last_login = $post["last_login"];
+        return $this->db->update($this->table, $this, array('id' => $post['id']));
+    }
+
+    public function delete($id)
+    {
+        return $this->db->delete($this->table, array("id" => $id));
     }
 }

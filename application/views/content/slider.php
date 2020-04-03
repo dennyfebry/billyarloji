@@ -13,17 +13,29 @@
             <th>Action</th>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td><a href="<?php echo base_url(); ?>index.php/content/c_slider/edit/">Edit</a> |
-                    <a href="<?php echo base_url(); ?>index.php/content/c_slider/delete/">Delete</a></td>
-            </tr>
+            <?php
+            $no = 1;
+            foreach ($slider as $row) {
+            ?>
+                <tr>
+                    <td><?php echo $no ?></td>
+                    <td><?php echo $row->title ?></td>
+                    <td><?php echo $row->description ?></td>
+                    <td><?php echo $row->images ?></td>
+                    <td><?php echo $row->updated_date ?></td>
+                    <td><?php echo $row->name ?></td>
+                    <td><?php if ($row->status == '1') {
+                            echo 'Active';
+                        } else {
+                            echo 'Draft';
+                        } ?></td>
+                    <td><a href="<?php echo base_url(); ?>index.php/content/c_slider/edit/<?php echo $row->id; ?>">Edit</a> |
+                        <a href="<?php echo base_url(); ?>index.php/content/c_slider/delete/<?php echo $row->id; ?>">Delete</a></td>
+                </tr>
+            <?php
+                $no++;
+            }
+            ?>
         </tbody>
     </table>
 </article>

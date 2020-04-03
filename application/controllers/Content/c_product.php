@@ -23,76 +23,58 @@ class C_product extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "product";
-        $data['list'] = $this->ref->list();
+        $data['product'] = $this->ref->getAll();
         $this->load->view('content/template', $data);
     }
 
     public function add()
     {
+        $product = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($product->rules());
+
+        if ($validation->run()) {
+            $product->save();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_product', 'refresh');
+        }
+
         $data = $this->data;
         $data['page'] = "crud_product";
         $data['content'] = "Add";
         $this->load->view('content/template', $data);
     }
 
-    function validation()
-    {
-        $this->form_validation->set_rules('name', 'Name', 'required');
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('role', 'Role', 'required');
-
-        if ($this->form_validation->run() != false) {
-            $content = $this->input->post('content');
-            $id = $this->input->post('id');
-            $name = $this->input->post('name');
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
-            $role = $this->input->post('role');
-
-            if ($content == "Edit") {
-                $data = array(
-                    'name' => $name,
-                    'username' => $username,
-                    'password' => $password,
-                    'role' => $role,
-                    'last_login' => ""
-                );
-
-                $this->ref->update($id, $data);
-                redirect('content/c_product');
-            } else {
-                $data = array(
-                    'name' => $name,
-                    'username' => $username,
-                    'password' => sha1($password),
-                    'role' => $role,
-                    'last_login' => ""
-                );
-
-                $this->ref->insert($data);
-                redirect('content/c_product');
-            }
-        } else {
-            $data = $this->data;
-            $data['page'] = "crud_product";
-            $data['content'] = "Add";
-            $this->load->view('content/template', $data);
-        }
-    }
-
     public function edit($id)
     {
+        if (!isset($id)) redirect('content/c_product');
+
+        $product = $this->ref;
+        $validation = $this->form_validation;
+        $validation->set_rules($product->rules());
+
+        if ($validation->run()) {
+            $product->update();
+            $this->session->set_flashdata('success', 'Saved successfully');
+            // redirect('content/c_product', 'refresh');
+        }
+
         $data = $this->data;
+
+        $data['product'] = $product->getById($id);
+        if (!$data['product']) show_404();
+
         $data['page'] = "crud_product";
         $data['content'] = "Edit";
-        $data['sql'] = $this->ref->edit($id);
         $this->load->view('content/template', $data);
     }
 
-    public function delete($id)
+    public function delete($id = null)
     {
-        $this->ref->delete($id);
-        redirect('content/c_product');
+        if (!isset($id)) show_404();
+
+        if ($this->ref->delete($id)) {
+            redirect(site_url('content/c_product'));
+        }
     }
 }
