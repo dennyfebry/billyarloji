@@ -21,7 +21,7 @@
                     <td><?php echo $no ?></td>
                     <td><?php echo $row->title ?></td>
                     <td><?php echo $row->description ?></td>
-                    <td><?php echo $row->images ?></td>
+                    <td><img src="<?php echo base_url('upload/slider/' . $row->images . ''); ?>" alt="" height="200px"></td>
                     <td><?php echo $row->updated_date ?></td>
                     <td><?php echo $row->name ?></td>
                     <td><?php if ($row->status == '1') {

@@ -38,7 +38,11 @@ class M_slider extends CI_Model
 
     public function getAll()
     {
-        return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
+        // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
+        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->from($this->table);
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        return $this->db->get()->result();
     }
 
     public function save()
@@ -48,6 +52,7 @@ class M_slider extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->images = $this->_uploadImage();
         $this->status = $post["status"];
         return $this->db->insert($this->table, $this);
     }
@@ -65,31 +70,46 @@ class M_slider extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        if (!empty($_FILES["images"]["name"])) {
+            $this->images = $this->_uploadImage();
+        } else {
+            $this->images = $post["old_images"];
+        }
         $this->status = $post["status"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)
     {
+        $this->_deleteImage($id);
         return $this->db->delete($this->table, array("id" => $id));
     }
 
     private function _uploadImage()
     {
-        $config['upload_path']          = './upload/product/';
+        $config['upload_path']          = './upload/slider/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->id;
         $config['overwrite']            = true;
         $config['max_size']             = 1024; // 1MB
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
+        // $config['max_width']            = 200;
+        // $config['max_height']           = 200;
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('image')) {
+        if ($this->upload->do_upload('images')) {
             return $this->upload->data("file_name");
         }
-
+        // print_r($this->upload->display_errors());
         return "default.jpg";
+    }
+
+    private function _deleteImage($id)
+    {
+        $product = $this->getById($id);
+        if ($product->image != "default.jpg") {
+            $filename = explode(".", $product->image)[0];
+            return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
+        }
     }
 }

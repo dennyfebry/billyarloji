@@ -4,7 +4,7 @@
     <table style="width:100%;">
         <thead>
             <th>No</th>
-            <th>Name (Images)</th>
+            <th>Name</th>
             <th>Description</th>
             <th>Price</th>
             <th>Discount</th>
@@ -25,7 +25,7 @@
                     <td><?php echo $row->description ?></td>
                     <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
                     <td><?php echo $row->discount ?>%</td>
-                    <td><?php echo $row->images ?></td>
+                    <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"></td>
                     <td><?php echo $row->updated_date ?></td>
                     <td><?php echo $row->name ?></td>
                     <td><?php if ($row->status == '1') {

@@ -2,7 +2,7 @@
     <?php
     date_default_timezone_set("Asia/jakarta");
     $id = "";
-    $name_product = "";
+    $name = "";
     $description = "";
     $price = "";
     $discount = "";
@@ -14,7 +14,7 @@
     $updated_by = $this->session->userdata('id');
     if ($content == "Edit") {
         $id = $product->id;
-        $name_product = $product->name_product;
+        $name = $product->name;
         $description = $product->description;
         $price = $product->price;
         $discount = $product->discount;
@@ -52,10 +52,11 @@
             <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
             <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
             <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+            <input type="hidden" name="old_images" value="<?php echo $images; ?>">
             <div>
                 <label for="name">Name Product</label>
-                <input type="text" name="name_product" value="<?php echo $name_product; ?>">
-                <?php echo form_error('name_product') ?>
+                <input type="text" name="name" value="<?php echo $name; ?>">
+                <?php echo form_error('name') ?>
             </div>
             <div>
                 <label for="name">Description</label>

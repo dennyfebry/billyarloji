@@ -42,6 +42,7 @@
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
             <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+            <input type="hidden" name="old_images" value="<?php echo $images; ?>">
             <div>
                 <label for="name">Title</label>
                 <input type="text" name="title" value="<?php echo $title; ?>">
