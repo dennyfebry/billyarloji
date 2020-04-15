@@ -9,9 +9,9 @@ class C_superadmin extends CI_Controller
     {
         parent::__construct();
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         } else if ($this->session->userdata('role') != 1) {
-            redirect("content/c_login");
+            redirect("login");
         }
         $this->load->model('m_superadmin', 'ref');
         $this->load->library('form_validation');

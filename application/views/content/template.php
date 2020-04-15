@@ -6,143 +6,143 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="Admin Billy Arloji">
     <title><?= $titlepage ?></title>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 104px 0px;
-            background-color: #f1f1f1;
-        }
-
-        header {
-            position: fixed;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            background-color: #666;
-            padding: 10px;
-            text-align: center;
-            font-size: 20px;
-            color: white;
-        }
-
-        nav {
-            float: left;
-            width: 15%;
-            height: auto;
-            background: #ccc;
-            padding: 5px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width: auto;
-            background-color: #ccc;
-        }
-
-        nav li a {
-            display: block;
-            color: #000;
-            padding: 8px 16px;
-            text-decoration: none;
-        }
-
-        nav li a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        nav li a:hover:not(.active) {
-            background-color: #555;
-            color: white;
-        }
-
-        article {
-            float: left;
-            padding: 20px;
-            width: 85%;
-            height: 400px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        section:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #777;
-            color: white;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-
-            nav,
-            article {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+    <link href="<?php echo base_url(); ?>assets/content/css/main.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h2>Billy Arloji</h2>
-    </header>
+    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+        <div class="app-header header-shadow">
+            <div class="app-header__logo">
+                <div class="logo-src"></div>
+                <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="app-header__mobile-menu">
+                <div>
+                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="app-header__menu">
+                <span>
+                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+                        <span class="btn-icon-wrapper">
+                            <i class="fa fa-ellipsis-v fa-w-6"></i>
+                        </span>
+                    </button>
+                </span>
+            </div>
+            <div class="app-header__content">
+                <div class="app-header-left">
+                    <div class="search-wrapper">
+                        <div class="input-holder">
+                            <input type="text" class="search-input" placeholder="Type to search">
+                            <button class="search-icon"><span></span></button>
+                        </div>
+                        <button class="close"></button>
+                    </div>
+                    <ul class="header-menu nav">
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-database"> </i>
+                                Statistics
+                            </a>
+                        </li>
+                        <li class="btn-group nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-edit"></i>
+                                Projects
+                            </a>
+                        </li>
+                        <li class="dropdown nav-item">
+                            <a href="javascript:void(0);" class="nav-link">
+                                <i class="nav-link-icon fa fa-cog"></i>
+                                Settings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="app-header-right">
+                    <div class="header-btn-lg pr-0">
+                        <div class="widget-content p-0">
+                            <div class="widget-content-wrapper">
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                            <img width="42" class="rounded-circle" src="assets/images/avatars/1.jpg" alt="">
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <button type="button" tabindex="0" class="dropdown-item">User
+                                                Account</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
+                                            <h6 tabindex="-1" class="dropdown-header">Header</h6>
+                                            <button type="button" tabindex="0" class="dropdown-item">Actions</button>
+                                            <div tabindex="-1" class="dropdown-divider"></div>
+                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content-left  ml-3 header-user-info">
+                                    <div class="widget-heading">
+                                        Alina Mclourd
+                                    </div>
+                                    <div class="widget-subheading">
+                                        VP People Manager
+                                    </div>
+                                </div>
+                                <div class="widget-content-right header-user-info ml-3">
+                                    <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
+                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <section>
         <nav>
             <ul>
                 <?php
                 if ($page == "dashboard") {
                 ?><li><a class="active" <?php
-                                    } else {
-                                        ?> <li><a <?php
+                                        } else {
+                                            ?> <li><a <?php
                                                 } ?> href="<?php echo site_url('content/c_dashboard') ?>">Dashboard</a></li>
                     <?php
                     if ($page == "slider") {
                     ?>
                         <li><a class="active" <?php
                                             } else { ?> <li><a <?php
-                                                            } ?> href="<?php echo site_url('content/c_slider') ?>">Slider</a></li>
+                                                                } ?> href="<?php echo site_url('content/c_slider') ?>">Slider</a></li>
                         <?php
                         if ($page == "product") {
                         ?>
                             <li><a class="active" <?php
                                                 } else { ?> <li><a <?php
-                                                                } ?> href="<?php echo site_url('content/c_product') ?>">Products</a></li>
+                                                                    } ?> href="<?php echo site_url('content/c_product') ?>">Products</a></li>
                             <?php
                             if ($page == "testimoni") {
                             ?>
                                 <li><a class="active" <?php
                                                     } else { ?> <li><a <?php
-                                                                    } ?> href="<?php echo site_url('content/c_testimoni') ?>">Testimoni</a></li>
+                                                                        } ?> href="<?php echo site_url('content/c_testimoni') ?>">Testimoni</a></li>
                                 <?php
                                 if ($this->session->userdata("id") == 1) { ?>
                                     <?php
@@ -150,7 +150,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                     ?>
                                         <li><a class="active" <?php
                                                             } else { ?> <li><a <?php
-                                                                            } ?> href="<?php echo site_url('content/c_superadmin') ?>">Admin</a></li>
+                                                                                } ?> href="<?php echo site_url('content/c_superadmin') ?>">Admin</a></li>
                                     <?php
                                 }
                                     ?>
@@ -161,10 +161,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
         ?>
 
     </section>
+    <div class="app-wrapper-footer">
+        <div class="app-footer">
+            <div class="app-footer__inner">
+                <div class="app-footer-left">
+                </div>
+                <div class="app-footer-right">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <!-- <div class="badge badge-success mr-1 ml-0">
+                                    <small>NEW</small>
+                                </div> -->
+                                2020 &copy; Billy Arloji
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <footer>
-        <p>2020 &copy; Billy Arloji</p>
-    </footer>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/content/js/main.js"></script>
 </body>
 
 </html>

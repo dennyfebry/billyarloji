@@ -10,7 +10,7 @@ class C_testimoni extends CI_Controller
         parent::__construct();
 
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         }
         $this->load->model('m_testimoni', 'ref');
         $this->load->library('form_validation');

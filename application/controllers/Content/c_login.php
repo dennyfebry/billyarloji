@@ -11,7 +11,7 @@ class C_login extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-	public function index()
+	public function login()
 	{
 		$this->load->view('content/login');
 	}
@@ -55,7 +55,7 @@ class C_login extends CI_Controller
 
 				$this->session->set_userdata($data_session);
 
-				redirect(base_url("index.php/content/c_dashboard"));
+				redirect('admin');
 			} else {
 				$error = array(
 					'error_message' => 'Invalid Username or Password'
@@ -70,6 +70,6 @@ class C_login extends CI_Controller
 	function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('content/c_login');
+		redirect('login');
 	}
 }

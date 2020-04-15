@@ -8,7 +8,7 @@ class C_dashboard extends CI_Controller
         parent::__construct();
 
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         }
     }
 
