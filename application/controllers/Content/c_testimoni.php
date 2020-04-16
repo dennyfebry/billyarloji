@@ -22,9 +22,9 @@ class C_testimoni extends CI_Controller
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "testimoni";
+        $data['page'] = "testimoni/index";
         $data['testimoni'] = $this->ref->getAll();
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function add()
@@ -40,9 +40,9 @@ class C_testimoni extends CI_Controller
         }
 
         $data = $this->data;
-        $data['page'] = "crud_testimoni";
+        $data['page'] = "testimoni/form";
         $data['content'] = "Add";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
@@ -64,9 +64,9 @@ class C_testimoni extends CI_Controller
         $data['testimoni'] = $testimoni->getById($id);
         if (!$data['testimoni']) show_404();
 
-        $data['page'] = "crud_testimoni";
+        $data['page'] = "testimoni/form";
         $data['content'] = "Edit";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function delete($id = null)

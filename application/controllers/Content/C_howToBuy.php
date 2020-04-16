@@ -1,72 +1,70 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_superadmin extends CI_Controller
+class C_howToBuy extends CI_Controller
 {
     var $data = array();
 
     function __construct()
     {
         parent::__construct();
+
         if ($this->session->userdata('status') != "login") {
-            redirect("login");
-        } else if ($this->session->userdata('role') != 1) {
-            redirect("login");
+            redirect("content/c_login");
         }
-        $this->load->model('m_superadmin', 'ref');
+        $this->load->model('m_howToBuy', 'ref');
         $this->load->library('form_validation');
         $this->data = array(
-            'titlepage' => 'Superadmin'
+            'titlepage' => 'How To Buy'
         );
     }
-
 
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "superadmin/index";
-        $data['account'] = $this->ref->getAll();
+        $data['page'] = "howToBuy/index";
+        $data['howToBuy'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $account = $this->ref;
+        $slider = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($account->rules());
+        $validation->set_rules($slider->rules());
 
         if ($validation->run()) {
-            $account->save();
+            $slider->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_superadmin', 'refresh');
+            // redirect('slider');
         }
 
         $data = $this->data;
-        $data['page'] = "superadmin/form";
+        $data['page'] = "slider/form";
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_superadmin');
+        if (!isset($id)) redirect('content/c_slider');
 
-        $account = $this->ref;
+        $slider = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($account->rules());
+        $validation->set_rules($slider->rules());
 
         if ($validation->run()) {
-            $account->update();
+            $slider->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_superadmin', 'refresh');
+            // redirect('slider');
         }
 
         $data = $this->data;
 
-        $data['account'] = $account->getById($id);
-        if (!$data['account']) show_404();
+        $data['slider'] = $slider->getById($id);
+        if (!$data['slider']) show_404();
 
-        $data['page'] = "superadmin/form";
+        $data['page'] = "slider/form";
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -76,7 +74,7 @@ class C_superadmin extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('content/c_superadmin'));
+            redirect('slider');
         }
     }
 }
