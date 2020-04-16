@@ -9,9 +9,9 @@ class C_superadmin extends CI_Controller
     {
         parent::__construct();
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         } else if ($this->session->userdata('role') != 1) {
-            redirect("content/c_login");
+            redirect("login");
         }
         $this->load->model('m_superadmin', 'ref');
         $this->load->library('form_validation');
@@ -24,9 +24,9 @@ class C_superadmin extends CI_Controller
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "superadmin";
+        $data['page'] = "superadmin/index";
         $data['account'] = $this->ref->getAll();
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function add()
@@ -42,9 +42,9 @@ class C_superadmin extends CI_Controller
         }
 
         $data = $this->data;
-        $data['page'] = "crud_superadmin";
+        $data['page'] = "superadmin/form";
         $data['content'] = "Add";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
@@ -66,9 +66,9 @@ class C_superadmin extends CI_Controller
         $data['account'] = $account->getById($id);
         if (!$data['account']) show_404();
 
-        $data['page'] = "crud_superadmin";
+        $data['page'] = "superadmin/form";
         $data['content'] = "Edit";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function delete($id = null)

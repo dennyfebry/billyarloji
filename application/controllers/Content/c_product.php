@@ -10,7 +10,7 @@ class C_product extends CI_Controller
         parent::__construct();
 
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         }
         $this->load->model('m_product', 'ref');
         $this->load->library('form_validation');
@@ -22,9 +22,9 @@ class C_product extends CI_Controller
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "product";
+        $data['page'] = "product/index";
         $data['product'] = $this->ref->getAll();
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function add()
@@ -40,9 +40,9 @@ class C_product extends CI_Controller
         }
 
         $data = $this->data;
-        $data['page'] = "crud_product";
+        $data['page'] = "product/form";
         $data['content'] = "Add";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
@@ -64,9 +64,9 @@ class C_product extends CI_Controller
         $data['product'] = $product->getById($id);
         if (!$data['product']) show_404();
 
-        $data['page'] = "crud_product";
+        $data['page'] = "product/form";
         $data['content'] = "Edit";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function delete($id = null)
