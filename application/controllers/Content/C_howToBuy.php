@@ -23,7 +23,7 @@ class C_howToBuy extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "howToBuy/index";
-        $data['howToBuy'] = $this->ref->getAll();
+        // $data['howToBuy'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 

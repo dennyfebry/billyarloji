@@ -23,7 +23,7 @@ class C_ourStore extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "ourStore/index";
-        $data['ourStore'] = $this->ref->getAll();
+        // $data['ourStore'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 

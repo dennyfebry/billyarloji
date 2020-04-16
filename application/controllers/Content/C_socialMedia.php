@@ -23,7 +23,7 @@ class C_socialMedia extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "socialMedia/index";
-        $data['socialMedia'] = $this->ref->getAll();
+        // $data['socialMedia'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 

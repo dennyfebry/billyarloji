@@ -23,7 +23,7 @@ class C_about extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "about/index";
-        $data['about'] = $this->ref->getAll();
+        // $data['about'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
