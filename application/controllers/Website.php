@@ -20,6 +20,8 @@ class Website extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('user/template');
+		$data['titlepage'] = "Home";
+        $data['page'] = "home";
+		$this->load->view('user/template', $data);
 	}
 }

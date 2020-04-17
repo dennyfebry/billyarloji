@@ -1,6 +1,6 @@
 <!-- About us section start -->
 <div class="section primary-section" id="about">
-    <div class="triangle"></div>
+    <!-- <div class="triangle"></div> -->
     <div class="container">
         <div class="title">
             <h1>Billy Arloji</h1>

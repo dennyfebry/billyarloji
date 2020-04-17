@@ -47,33 +47,181 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <body>
         <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a href="#" class="brand">
-                        <img src="<?php echo base_url(); ?>assets/images/logo.png" width="120" height="40" alt="Logo" />
+            <!-- <div class="navbar-inner"> -->
+            <div class="row containerMenu">
+                <div class="col">
+                    <a href="<?php echo site_url('user/c_home') ?>" class="brand">
+                        <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" alt="Logo" />
                         <!-- This is website logo -->
                     </a>
-                    <!-- Navigation button, visible on small resolution -->
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <i class="icon-menu"></i>
-                    </button>
-                    <!-- Main navigation -->
-                    <div class="nav-collapse collapse pull-right">
-                        <ul class="nav" id="top-navigation">
-                            <li class="active"><a href="<?php echo site_url('user/c_product') ?>">Products</a></li>
-                            <li><a href="<?php echo site_url('user/c_about') ?>">About</a></li>
-                        </ul>
-                    </div>
-                    <!-- End main navigation -->
                 </div>
             </div>
+            <div class="row">
+                <!-- Navigation button, visible on small resolution -->
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <!-- <i class="icon-menu"></i> -->
+                    MENU
+                </button>
+            </div>
+            <div class="nav-collapse collapse row rowMenu">
+                <!-- Main navigation -->
+
+                <a class="colMenu active" href="<?php echo site_url('user/c_product') ?>">
+                    <div>MEN</div>
+                </a>
+
+                <a class="colMenu" href="#">
+                    <div>LADIES</div>
+                </a>
+                <a class="colMenu" href="#">
+                    <div>COUPLE WATCH</div>
+                </a>
+                <a class="colMenu" href="#">
+                    <div>JEWELRY</div>
+                </a>
+                <a class="colMenu" href="#">
+                    <div>ACCESSORIES</div>
+                </a>
+                <a class="colMenu" href="#">
+                    <div>STRAP</div>
+                </a>
+                <a class="colMenu" href="<?php echo site_url('user/c_about') ?>">
+                    <div>WATCH BOX</div>
+                </a>
+                <!-- End main navigation -->
+            </div>
+            <!-- </div> -->
         </div>
 
         <!-- Content Start -->
-        <?php
+        <div class="content">
+            <?php
         include $page.'.php';
         ?>
+        </div>
         <!-- Content End -->
+
+        <style>
+        body,
+        .container {
+            background-color: #131313;
+        }
+
+        .containerMenu {
+            padding: 0.5em;
+        }
+
+        .secondary-section,
+        .primary-section,
+        .containerMenu {
+            background: #131313;
+        }
+
+        .section .container {
+            padding-top: 30px
+        }
+
+        .navbar {
+            background: #131313;
+        }
+
+        .navbar .brand img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .navbar .brand {
+            padding: 0;
+        }
+
+        .navbar .btn-navbar,
+        .navbar .btn-navbar:hover,
+        .navbar .btn:focus {
+            width: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 17px;
+            line-height: 20px;
+            background: #e7bd70;
+            border: none;
+            color: #000000;
+            outline: none;
+        }
+
+        /* .content {
+            padding-top: 13.5vh;
+        } */
+
+        .row.rowMenu {
+            margin-left: 0
+        }
+
+        .rowMenu {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            background-color: #e7bd70;
+            text-align: center;
+            opacity: 0.9;
+        }
+
+        .rowMenu>.colMenu {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            padding: 0.5em 0;
+            font-weight: bold
+        }
+
+        .colMenu:focus {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .colMenu {
+            border-bottom: none;
+        }
+
+        .colMenu:hover,
+        .colMenu.active {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        @media screen and (min-width: 768px) {
+            .rowMenu>.colMenu {
+                flex: 1;
+                padding: 1em 0 0.5em;
+            }
+
+            .rowMenu {
+                background-color: #e7bd70;
+                opacity: 1
+            }
+
+            .colMenu {
+                border-bottom: 10px solid #e7bd70;
+            }
+
+            .colMenu:hover,
+            .colMenu.active {
+                background-color: #e7bd70;
+                border-bottom: 10px solid #ffffff;
+                color: #ffffff;
+            }
+
+            .containerMenu {
+                padding: 1em;
+                margin-left: 0;
+            }
+        }
+        </style>
+
+        <script>
+        $('.colMenu').on('click', function() {
+            $('.nav-collapse').collapse('hide');
+        });
+        </script>
     </body>
 
 </html>
