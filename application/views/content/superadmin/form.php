@@ -63,13 +63,16 @@ if ($content == "Edit") {
                                         Looks good!
                                     </div>
                                     <div class="invalid-feedback">
-                                        Please choose a username.
+                                        Please fill in the Name.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
                                     <?php echo form_error('username') ?>
+                                    <div class="invalid-feedback">
+                                        Please fill in the Username.
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <?php
@@ -79,6 +82,9 @@ if ($content == "Edit") {
                                         <label for="password">Password</label>
                                         <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo $password; ?>" required>
                                         <?php echo form_error('password') ?>
+                                        <div class="invalid-feedback">
+                                            Please fill in the Password.
+                                        </div>
                                     <?php  } ?>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -88,6 +94,9 @@ if ($content == "Edit") {
                                         <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
                                     </select>
                                     <?php echo form_error('role') ?>
+                                    <div class="invalid-feedback">
+                                        Please choose a role.
+                                    </div>
                                 </div>
                             </div>
                             <input class="btn btn-primary" type="submit" value="Submit form">

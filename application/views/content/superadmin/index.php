@@ -25,7 +25,7 @@
                 </div>
                 <div class="d-block card-footer">
                     <div class="table-responsive">
-                        <table class="mb-0 table table-bordered">
+                        <table class="mb-0 table table-bordered table-striped" id="datatable">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -52,8 +52,8 @@
                                                 echo " Admin";
                                             } ?></td>
                                         <td><?php echo $row->last_login ?></td>
-                                        <td><a href="<?php echo base_url(); ?>index.php/superadmin/edit/<?php echo $row->id; ?>">Edit</a> |
-                                            <a href="<?php echo base_url(); ?>index.php/superadmin/delete/<?php echo $row->id; ?>">Delete</a></td>
+                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/superadmin/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteAdmin<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php
                                     $no++;
