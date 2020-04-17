@@ -22,9 +22,9 @@ class C_slider extends CI_Controller
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "slider";
+        $data['page'] = "slider/index";
         $data['slider'] = $this->ref->getAll();
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function add()
@@ -40,9 +40,9 @@ class C_slider extends CI_Controller
         }
 
         $data = $this->data;
-        $data['page'] = "crud_slider";
+        $data['page'] = "slider/form";
         $data['content'] = "Add";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
@@ -64,9 +64,9 @@ class C_slider extends CI_Controller
         $data['slider'] = $slider->getById($id);
         if (!$data['slider']) show_404();
 
-        $data['page'] = "crud_slider";
+        $data['page'] = "slider/form";
         $data['content'] = "Edit";
-        $this->load->view('content/template', $data);
+        $this->load->view('content/layout', $data);
     }
 
     public function delete($id = null)

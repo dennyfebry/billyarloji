@@ -8,14 +8,14 @@ class C_dashboard extends CI_Controller
         parent::__construct();
 
         if ($this->session->userdata('status') != "login") {
-            redirect("content/c_login");
+            redirect("login");
         }
     }
 
     public function index()
     {
         $data['titlepage'] = "Dashboard";
-        $data['page'] = "dashboard";
-        $this->load->view('content/template', $data);
+        $data['page'] = "dashboard/index";
+        $this->load->view('content/layout', $data);
     }
 }
