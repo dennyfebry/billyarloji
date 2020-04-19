@@ -19,7 +19,7 @@
                 <div class="card-header"><?= $titlepage ?>
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('product/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('brand/add') ?>">Add +</a>
                         </div>
                     </div>
                 </div>
@@ -31,44 +31,26 @@
                                     <th>No</th>
                                     <th>Category</th>
                                     <th>Brand</th>
-                                    <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Discount</th>
-                                    <th>Images</th>
+                                    <th>Created Date</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($product as $row) {
+                                foreach ($brand as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->category ?></td>
                                         <td><?php echo $row->brand ?></td>
-                                        <td><?php echo $row->name_product ?></td>
-                                        <td><?php echo $row->description ?></td>
-                                        <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
-                                        <td><?php echo $row->discount ?>%</td>
-                                        <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"> <br><br>
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_front . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_side . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="" height="46px"></td>
+                                        <td><?php echo $row->created_date ?></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
-                                        <td><?php if ($row->status == '1') {
-                                                echo 'Active';
-                                            } else {
-                                                echo 'Draft';
-                                            } ?></td>
-                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/product/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteProduct<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
+                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/brand/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteBrand<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php
                                     $no++;

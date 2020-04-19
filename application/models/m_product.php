@@ -6,6 +6,8 @@ class M_product extends CI_Model
     private $table = "tb_product";
 
     public $id;
+    public $category_id;
+    public $brand_id;
     public $name;
     public $description;
     public $price;
@@ -55,9 +57,18 @@ class M_product extends CI_Model
     public function getAll()
     {
         // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
-        $this->db->select($this->table . '.id, ' . $this->table . '.name AS name_product, ' . $this->table . '.description, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.description, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        return $this->db->get()->result();
+    }
+
+    public function getCategory()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_category');
         return $this->db->get()->result();
     }
 
@@ -68,11 +79,17 @@ class M_product extends CI_Model
         $this->created_by = $post["created_by"];
         $this->updated_date = $post["updated_date"];
         $this->updated_by = $post["updated_by"];
+        $this->category_id = $post["category_id"];
+        $this->brand_id = $post["brand_id"];
         $this->name = $post["name"];
         $this->description = $post["description"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
         $this->images = $this->_uploadImage();
+        $this->images_front = $this->_uploadImage_front();
+        $this->images_side = $this->_uploadImage_side();
+        $this->images_top = $this->_uploadImage_top();
+        $this->images_detail = $this->_uploadImage_detail();
         $this->status = $post["status"];
         return $this->db->insert($this->table, $this);
     }
@@ -86,8 +103,12 @@ class M_product extends CI_Model
     {
         $post = $this->input->post();
         $this->id = $post["id"];
+        $this->created_date = $post["created_date"];
+        $this->created_by = $post["created_by"];
         $this->updated_date = $post["updated_date"];
         $this->updated_by = $post["updated_by"];
+        $this->category_id = $post["category_id"];
+        $this->brand_id = $post["brand_id"];
         $this->name = $post["name"];
         $this->description = $post["description"];
         $this->price = $post["price"];
@@ -96,6 +117,26 @@ class M_product extends CI_Model
             $this->images = $this->_uploadImage();
         } else {
             $this->images = $post["old_images"];
+        }
+        if (!empty($_FILES["images_front"]["name"])) {
+            $this->images_front = $this->_uploadImage_front();
+        } else {
+            $this->images_front = $post["old_images_front"];
+        }
+        if (!empty($_FILES["images_side"]["name"])) {
+            $this->images_side = $this->_uploadImage_side();
+        } else {
+            $this->images_side = $post["old_images_side"];
+        }
+        if (!empty($_FILES["images_top"]["name"])) {
+            $this->images_top = $this->_uploadImage_top();
+        } else {
+            $this->images_top = $post["old_images_top"];
+        }
+        if (!empty($_FILES["images_detail"]["name"])) {
+            $this->images_detail = $this->_uploadImage_detail();
+        } else {
+            $this->images_detail = $post["old_images_detail"];
         }
         $this->status = $post["status"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
@@ -113,7 +154,7 @@ class M_product extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->id;
         $config['overwrite']            = true;
-        $config['max_size']             = 1024; // 1MB
+        $config['max_size']             = 2048; // 2MB
         // $config['max_width']            = 200;
         // $config['max_height']           = 200;
 
@@ -123,6 +164,70 @@ class M_product extends CI_Model
             return $this->upload->data("file_name");
         }
         // print_r($this->upload->display_errors());
+        return "default.jpg";
+    }
+
+    private function _uploadImage_front()
+    {
+        $config['upload_path']          = './upload/product/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->id . '_front';
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 2MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('images_front')) {
+            return $this->upload->data("file_name");
+        }
+        return "default.jpg";
+    }
+
+    private function _uploadImage_side()
+    {
+        $config['upload_path']          = './upload/product/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->id . '_side';
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 2MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('images_side')) {
+            return $this->upload->data("file_name");
+        }
+        return "default.jpg";
+    }
+
+    private function _uploadImage_top()
+    {
+        $config['upload_path']          = './upload/product/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->id . '_top';
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 2MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('images_top')) {
+            return $this->upload->data("file_name");
+        }
+        return "default.jpg";
+    }
+
+    private function _uploadImage_detail()
+    {
+        $config['upload_path']          = './upload/product/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->id . '_detail';
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 2MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('images_detail')) {
+            return $this->upload->data("file_name");
+        }
         return "default.jpg";
     }
 

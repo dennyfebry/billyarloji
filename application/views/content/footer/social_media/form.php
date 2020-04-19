@@ -1,18 +1,16 @@
 <?php
 date_default_timezone_set("Asia/jakarta");
 $id = "";
+$mark = "social";
 $title = "";
 $description = "";
-$images = "";
-$status = "";
 $updated_date = date("Y-m-d H:i:s");
 $updated_by = $this->session->userdata('id');
 if ($content == "Edit") {
-    $id = $slider->id;
-    $title = $slider->title;
-    $description = $slider->description;
-    $images = $slider->images;
-    $status = $slider->status;
+    $id = $social->id;
+    $mark = $social->mark;
+    $title = $social->title;
+    $description = $social->description;
     $updated_date = date("Y-m-d H:i:s");
     $updated_by = $this->session->userdata('id');
 }
@@ -27,7 +25,7 @@ if ($content == "Edit") {
                 </div>
                 <div><?= $titlepage ?>
                     <div class="page-title-subheading">
-                        <a style="color:#777;" href="<?php echo site_url('slider') ?>"><?= $titlepage ?></a> / <?php echo $content; ?>
+                        <a style="color:#777;" href="<?php echo site_url('social') ?>"><?= $titlepage ?></a> / <?php echo $content; ?>
                     </div>
                 </div>
             </div>
@@ -44,9 +42,8 @@ if ($content == "Edit") {
                     <?php if ($content == "Edit") { ?>
                         <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
                         <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('slider/add') ?>" method="post" enctype="multipart/form-data" novalidate>
+                            <form class="needs-validation" action="<?php echo site_url('social/add') ?>" method="post" enctype="multipart/form-data" novalidate>
                             <?php } ?>
-
                             <div class="form-row">
                                 <?php if ($this->session->flashdata('success')) : ?>
                                     <div class="mb-2 mr-2 badge badge-success">
@@ -56,46 +53,27 @@ if ($content == "Edit") {
 
                                 <input type="hidden" name="content" value="<?php echo $content; ?>">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <input type="hidden" name="mark" value="<?php echo $mark; ?>">
                                 <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
                                 <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-                                <input type="hidden" name="old_images" value="<?php echo $images; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Title">Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>" required>
+                                    <label for="Title">Name Social</label>
+                                    <input type="text" class="form-control" name="title" placeholder="Name Social" value="<?php echo $title; ?>" required>
                                     <?php echo form_error('title') ?>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                     <div class="invalid-feedback">
-                                        Please fill in the title.
+                                        Please fill in the name social.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Description</label>
-                                    <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea>
+                                    <label for="Description">URL (Link)</label>
+                                    <input type="text" class="form-control" name="description" placeholder="URL (Link)" value="<?php echo $description; ?>" required>
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
-                                        Please fill in the description.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images">Images</label>
-                                    <input type="file" class="form-control" name="images" value="<?php echo $images; ?>" required>
-                                    <?php echo form_error('images') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Status">Status</label>
-                                    <select class="form-control" name="status">
-                                        <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
-                                        <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
-                                    </select>
-                                    <?php echo form_error('status') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a status.
+                                        Please fill in the url/link.
                                     </div>
                                 </div>
                             </div>

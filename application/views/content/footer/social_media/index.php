@@ -19,7 +19,7 @@
                 <div class="card-header"><?= $titlepage ?>
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('testimoni/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('social/add') ?>">Add +</a>
                         </div>
                     </div>
                 </div>
@@ -29,9 +29,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Created Date</th>
+                                    <th>Name Social</th>
+                                    <th>URL</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
                                     <th>Action</th>
@@ -40,17 +39,16 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($testimoni as $row) {
+                                foreach ($social as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->title ?></td>
                                         <td><?php echo $row->description ?></td>
-                                        <td><?php echo $row->created_date ?></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
-                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/testimoni/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteTestimoni<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
+                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/social/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteSocial<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php
                                     $no++;

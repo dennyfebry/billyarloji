@@ -1,70 +1,115 @@
-<article>
-    <?php
-    date_default_timezone_set("Asia/jakarta");
-    $id = "";
-    $title = "";
-    $description = "";
-    $created_date = date("Y-m-d H:i:s");
-    $created_by = $this->session->userdata('id');
+<?php
+date_default_timezone_set("Asia/jakarta");
+$id = "";
+$title = "";
+$description = "";
+$created_date = date("Y-m-d H:i:s");
+$created_by = $this->session->userdata('id');
+$updated_date = date("Y-m-d H:i:s");
+$updated_by = $this->session->userdata('id');
+if ($content == "Edit") {
+    $id = $testimoni->id;
+    $title = $testimoni->title;
+    $description = $testimoni->description;
+    $created_date = $testimoni->created_date;
+    $created_by = $testimoni->created_by;
     $updated_date = date("Y-m-d H:i:s");
     $updated_by = $this->session->userdata('id');
-    if ($content == "Edit") {
-        $id = $testimoni->id;
-        $title = $testimoni->title;
-        $description = $testimoni->description;
-        $created_date = $testimoni->created_date;
-        $created_by = $testimoni->created_by;
-        $updated_date = date("Y-m-d H:i:s");
-        $updated_by = $this->session->userdata('id');
-    }
-    ?>
-    <h1><?= $titlepage ?></h1>
-    <h5 style="color:#777;"><a style="color:#777;" href="<?php echo site_url('content/c_testimoni') ?>"><?= $titlepage ?></a> / <?php echo $content; ?></h5>
-    <?php if ($this->session->flashdata('success')) : ?>
-        <div role="alert">
-            <?php echo $this->session->flashdata('success'); ?>
+}
+?>
+<div class="app-main__inner">
+    <div class="app-page-title">
+        <div class="page-title-wrapper">
+            <div class="page-title-heading">
+                <div class="page-title-icon">
+                    <i class="pe-7s-display1 icon-gradient bg-mean-fruit">
+                    </i>
+                </div>
+                <div><?= $titlepage ?>
+                    <div class="page-title-subheading">
+                        <a style="color:#777;" href="<?php echo site_url('testimoni') ?>"><?= $titlepage ?></a> / <?php echo $content; ?>
+                    </div>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-card mb-3 card">
+                <div class="card-header"><?= $titlepage ?>
+                    <div class="btn-actions-pane-right">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <?php if ($content == "Edit") { ?>
+                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <?php } else { ?>
+                            <form class="needs-validation" action="<?php echo site_url('testimoni/add') ?>" method="post" enctype="multipart/form-data" novalidate>
+                            <?php } ?>
 
-    <?php //echo validation_errors(); 
-    ?>
-    <?php //echo form_open('content/c_testimoni/validation'); 
-    ?>
+                            <div class="form-row">
+                                <?php if ($this->session->flashdata('success')) : ?>
+                                    <div class="mb-2 mr-2 badge badge-success">
+                                        <?php echo $this->session->flashdata('success'); ?>
+                                    </div>
+                                <?php endif; ?>
 
-    <?php if ($content == "Edit") {
-    ?>
-        <form action="" method="post" enctype="multipart/form-data">
-        <?php } else { ?>
-            <form action="<?php echo site_url('content/c_testimoni/add') ?>" method="post" enctype="multipart/form-data">
-            <?php } ?>
-            <input type="hidden" name="content" value="<?php echo $content; ?>">
-            <input type="hidden" name="id" value="<?php echo $id; ?>">
-            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
-            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
-            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-            <div>
-                <label for="name">Title</label>
-                <input type="text" name="title" value="<?php echo $title; ?>">
-                <?php echo form_error('title') ?>
+                                <input type="hidden" name="content" value="<?php echo $content; ?>">
+                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+                                <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
+                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+
+                                <div class="col-md-12 mb-3">
+                                    <label for="Title">Title</label>
+                                    <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>" required>
+                                    <?php echo form_error('title') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the title.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Description">Description</label>
+                                    <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
+                                    <?php echo form_error('description') ?>
+                                    <div class="invalid-feedback">
+                                        Please fill in the description.
+                                    </div>
+                                </div>
+                            </div>
+                            <input class="btn btn-primary" type="submit" value="Submit form">
+                            </form>
+                </div>
             </div>
-            <div>
-                <label for="name">Description</label>
-                <textarea id="summernote" name="description"><?php echo $description; ?></textarea>
-                <?php echo form_error('description') ?>
-            </div>
-            <div>
-                <input type="submit" value="Submit">
-            </div>
-            </form>
-</article>
-<!-- <script>
-    $('#summernote2').summernote2({
-        placeholder: 'Enter text...',
-        tabsize: 2,
-        height: 100
-    });
-</script> -->
+        </div>
+    </div>
+</div>
+<?php
+foreach ($rows as $row) {
+}
+?>
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 
 <script>
     $('#summernote').summernote({

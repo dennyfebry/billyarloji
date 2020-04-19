@@ -59,6 +59,8 @@ class M_testimoni extends CI_Model
     {
         $post = $this->input->post();
         $this->id = $post["id"];
+        $this->created_date = $post["created_date"];
+        $this->created_by = $post["created_by"];
         $this->updated_date = $post["updated_date"];
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];

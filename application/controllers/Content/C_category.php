@@ -23,48 +23,50 @@ class C_category extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "category/index";
-        // $data['category'] = $this->ref->getAll();
+        $data['category'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $slider = $this->ref;
+        $category = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($slider->rules());
+        $validation->set_rules($category->rules());
 
         if ($validation->run()) {
-            $slider->save();
+            $category->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            // redirect('category');
         }
 
         $data = $this->data;
-        $data['page'] = "slider/form";
+        $data['page'] = "category/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_slider');
+        if (!isset($id)) redirect('category');
 
-        $slider = $this->ref;
+        $category = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($slider->rules());
+        $validation->set_rules($category->rules());
 
         if ($validation->run()) {
-            $slider->update();
+            $category->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            // redirect('category');
         }
 
         $data = $this->data;
 
-        $data['slider'] = $slider->getById($id);
-        if (!$data['slider']) show_404();
+        $data['name_category'] = $category->getById($id);
+        if (!$data['name_category']) show_404();
 
-        $data['page'] = "slider/form";
+        $data['page'] = "category/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -74,7 +76,7 @@ class C_category extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect('slider');
+            redirect(site_url('category'));
         }
     }
 }

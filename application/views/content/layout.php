@@ -146,6 +146,109 @@ defined('BASEPATH') or exit('No direct script access allowed');
         })();
     </script>
 
+    <?php
+    //  if (count($data['rows']) == 0) {
+    //     $init = new stdClass;
+    //     $data['rows'] = array($init);
+    //     $init->id = '';
+    // } 
+    ?>
+
+    <!-- Modal delete Category -->
+    <div id="deleteCategory<?php echo $row->id; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Category ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Yes" below if you want to delete the category data.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/category/delete/<?php echo $row->id; ?>">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete Brand -->
+    <div id="deleteBrand<?php echo $row->id; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Brand ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Yes" below if you want to delete the brand data.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/brand/delete/<?php echo $row->id; ?>">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete Product -->
+    <div id="deleteProduct<?php echo $row->id; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Product ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Yes" below if you want to delete the product data.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/product/delete/<?php echo $row->id; ?>">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete Slider -->
+    <div id="deleteSlider<?php echo $row->id; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Slider ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Yes" below if you want to delete the slider data.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/slider/delete/<?php echo $row->id; ?>">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete Testimoni -->
+    <div id="deleteTestimoni<?php echo $row->id; ?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Testimoni ?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Yes" below if you want to delete the testimoni data.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/testimoni/delete/<?php echo $row->id; ?>">Yes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal delete Admin -->
     <div id="deleteAdmin<?php echo $row->id; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">

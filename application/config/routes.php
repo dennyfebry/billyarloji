@@ -63,6 +63,10 @@ $route['category'] = 'content/c_category';
 $route['category/(:any)'] = "content/c_category/$1";
 $route['category/(:any)/(:any)'] = "content/c_category/$1/$2";
 
+$route['brand'] = 'content/c_brand';
+$route['brand/(:any)'] = "content/c_brand/$1";
+$route['brand/(:any)/(:any)'] = "content/c_brand/$1/$2";
+
 $route['product'] = 'content/c_product';
 $route['product/(:any)'] = "content/c_product/$1";
 $route['product/(:any)/(:any)'] = "content/c_product/$1/$2";
@@ -75,21 +79,12 @@ $route['testimoni'] = 'content/c_testimoni';
 $route['testimoni/(:any)'] = "content/c_testimoni/$1";
 $route['testimoni/(:any)/(:any)'] = "content/c_testimoni/$1/$2";
 
-$route['about'] = 'content/c_about';
-$route['about/(:any)'] = "content/c_about/$1";
-$route['about/(:any)/(:any)'] = "content/c_about/$1/$2";
-
-$route['store'] = 'content/c_ourStore';
-$route['store/(:any)'] = "content/c_ourStore/$1";
-$route['store/(:any)/(:any)'] = "content/c_ourStore/$1/$2";
-
-$route['buy'] = 'content/c_howToBuy';
-$route['buy/(:any)'] = "content/c_howToBuy/$1";
-$route['buy/(:any)/(:any)'] = "content/c_howToBuy/$1/$2";
-
-$route['social'] = 'content/c_socialMedia';
-$route['social/(:any)'] = "content/c_socialMedia/$1";
-$route['social/(:any)/(:any)'] = "content/c_socialMedia/$1/$2";
+$route['about'] = 'content/c_footer/about';
+$route['store'] = 'content/c_footer/store';
+$route['buy'] = 'content/c_footer/buy';
+$route['social'] = 'content/c_footer/social';
+$route['social/(:any)'] = "content/c_footer/$1";
+$route['social/(:any)/(:any)'] = "content/c_footer/$1/$2";
 
 $route['superadmin'] = 'content/c_superadmin';
 $route['superadmin/(:any)'] = "content/c_superadmin/$1";

@@ -42,13 +42,32 @@
                         Dashboard
                     </a>
                 </li>
-                <li>
-                    <a href="<?php echo site_url('category') ?>" <?php if ($titlepage == "Category") {
-                                                                        echo "class='mm-active'";
-                                                                    } ?>>
+                <li <?php if (($titlepage == "Category") || ($titlepage == "Brand")) {
+                        echo "class='mm-active'";
+                    } ?>>
+                    <a href="#">
                         <i class="metismenu-icon pe-7s-network"></i>
                         Category
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
+                    <ul>
+                        <li>
+                            <a href="<?php echo site_url('category') ?>" <?php if ($titlepage == "Category") {
+                                                                                echo "class='mm-active'";
+                                                                            } ?>>
+                                <i class="metismenu-icon"></i>
+                                Menu
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('brand') ?>" <?php if ($titlepage == "Brand") {
+                                                                            echo "class='mm-active'";
+                                                                        } ?>>
+                                <i class="metismenu-icon">
+                                </i>Brand
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="<?php echo site_url('product') ?>" <?php if ($titlepage == "Product") {
@@ -75,7 +94,9 @@
                     </a>
                 </li>
 
-                <li>
+                <li <?php if (($titlepage == "About") || ($titlepage == "Our Store") ||  ($titlepage == "How To Buy") || ($titlepage == "Social Media")) {
+                        echo "class='mm-active'";
+                    } ?>>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-way"></i>
                         Footer

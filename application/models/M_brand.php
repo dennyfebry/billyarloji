@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class M_category extends CI_Model
+class M_brand extends CI_Model
 {
-    private $table = "tb_category";
+    private $table = "tb_brand";
     public $id;
-    public $category;
+    public $category_id;
+    public $brand;
     public $created_date;
     public $created_by;
     public $updated_date;
@@ -15,8 +16,8 @@ class M_category extends CI_Model
     {
         return [
             [
-                'field' => 'category',
-                'label' => 'Category',
+                'field' => 'brand',
+                'label' => 'Brand',
                 'rules' => 'required'
             ]
         ];
@@ -24,10 +25,18 @@ class M_category extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.category, '  . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . $this->table . '.brand, '  . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
-        $this->db->order_by($this->table . '.category', 'ASC');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
+        $this->db->order_by('tb_category.category', 'ASC');
+        $this->db->order_by($this->table . '.brand', 'ASC');
+        return $this->db->get()->result();
+    }
+    public function getCategory()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_category');
         return $this->db->get()->result();
     }
 
@@ -38,7 +47,8 @@ class M_category extends CI_Model
         $this->created_by = $post["created_by"];
         $this->updated_date = $post["updated_date"];
         $this->updated_by = $post["updated_by"];
-        $this->category = $post["category"];
+        $this->category_id = $post["category_id"];
+        $this->brand = $post["brand"];
         return $this->db->insert($this->table, $this);
     }
 
@@ -55,7 +65,8 @@ class M_category extends CI_Model
         $this->created_by = $post["created_by"];
         $this->updated_date = $post["updated_date"];
         $this->updated_by = $post["updated_by"];
-        $this->category = $post["category"];
+        $this->category_id = $post["category_id"];
+        $this->brand = $post["brand"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 

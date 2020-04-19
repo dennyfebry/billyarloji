@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_ourStore extends CI_Controller
+class C_brand extends CI_Controller
 {
     var $data = array();
 
@@ -12,59 +12,68 @@ class C_ourStore extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             redirect("content/c_login");
         }
-        $this->load->model('m_ourStore', 'ref');
+        $this->load->model('m_brand', 'ref');
         $this->load->library('form_validation');
         $this->data = array(
-            'titlepage' => 'Our Store'
+            'titlepage' => 'Brand'
         );
     }
 
     public function index()
     {
         $data = $this->data;
-        $data['page'] = "ourStore/index";
-        // $data['ourStore'] = $this->ref->getAll();
+        $data['page'] = "brand/index";
+        $data['brand'] = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $slider = $this->ref;
+        $brand = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($slider->rules());
+        $validation->set_rules($brand->rules());
 
         if ($validation->run()) {
-            $slider->save();
+            $brand->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            // redirect('brand');
         }
 
         $data = $this->data;
-        $data['page'] = "slider/form";
+        $data['page'] = "brand/form";
+        $data['rows'] = $this->ref->getAll();
+        $data['name_category'] = $this->ref->getCategory();
+        // if (count($data['rows']) == 0) {
+        //     $init = new stdClass;
+        //     $data['rows'] = array($init);
+        //     $init->id = '';
+        // }
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_slider');
+        if (!isset($id)) redirect('brand');
 
-        $slider = $this->ref;
+        $brand = $this->ref;
         $validation = $this->form_validation;
-        $validation->set_rules($slider->rules());
+        $validation->set_rules($brand->rules());
 
         if ($validation->run()) {
-            $slider->update();
+            $brand->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            // redirect('brand');
         }
 
         $data = $this->data;
 
-        $data['slider'] = $slider->getById($id);
-        if (!$data['slider']) show_404();
+        $data['name_brand'] = $brand->getById($id);
+        if (!$data['name_brand']) show_404();
 
-        $data['page'] = "slider/form";
+        $data['page'] = "brand/form";
+        $data['rows'] = $this->ref->getAll();
+        $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -74,7 +83,7 @@ class C_ourStore extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect('slider');
+            redirect(site_url('brand'));
         }
     }
 }
