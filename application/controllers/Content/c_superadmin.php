@@ -38,18 +38,19 @@ class C_superadmin extends CI_Controller
         if ($validation->run()) {
             $account->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_superadmin', 'refresh');
+            // redirect('superadmin');
         }
 
         $data = $this->data;
         $data['page'] = "superadmin/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_superadmin');
+        if (!isset($id)) redirect('superadmin');
 
         $account = $this->ref;
         $validation = $this->form_validation;
@@ -58,7 +59,7 @@ class C_superadmin extends CI_Controller
         if ($validation->run()) {
             $account->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_superadmin', 'refresh');
+            // redirect('superadmin');
         }
 
         $data = $this->data;
@@ -67,6 +68,7 @@ class C_superadmin extends CI_Controller
         if (!$data['account']) show_404();
 
         $data['page'] = "superadmin/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -76,7 +78,7 @@ class C_superadmin extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('content/c_superadmin'));
+            redirect(site_url('superadmin'));
         }
     }
 }

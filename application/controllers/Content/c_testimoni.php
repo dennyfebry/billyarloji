@@ -36,18 +36,19 @@ class C_testimoni extends CI_Controller
         if ($validation->run()) {
             $testimoni->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_testimoni', 'refresh');
+            // redirect('testimoni');
         }
 
         $data = $this->data;
         $data['page'] = "testimoni/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_testimoni');
+        if (!isset($id)) redirect('testimoni');
 
         $testimoni = $this->ref;
         $validation = $this->form_validation;
@@ -56,7 +57,7 @@ class C_testimoni extends CI_Controller
         if ($validation->run()) {
             $testimoni->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_testimoni', 'refresh');
+            // redirect('testimoni');
         }
 
         $data = $this->data;
@@ -65,6 +66,7 @@ class C_testimoni extends CI_Controller
         if (!$data['testimoni']) show_404();
 
         $data['page'] = "testimoni/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -74,7 +76,7 @@ class C_testimoni extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('content/c_testimoni'));
+            redirect(site_url('testimoni'));
         }
     }
 }

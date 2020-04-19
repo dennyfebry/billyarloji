@@ -36,18 +36,20 @@ class C_product extends CI_Controller
         if ($validation->run()) {
             $product->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_product', 'refresh');
+            // redirect('product');
         }
 
         $data = $this->data;
         $data['page'] = "product/form";
+        $data['rows'] = $this->ref->getAll();
+        $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_product');
+        if (!isset($id)) redirect('product');
 
         $product = $this->ref;
         $validation = $this->form_validation;
@@ -56,7 +58,7 @@ class C_product extends CI_Controller
         if ($validation->run()) {
             $product->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_product', 'refresh');
+            // redirect('product');
         }
 
         $data = $this->data;
@@ -65,6 +67,8 @@ class C_product extends CI_Controller
         if (!$data['product']) show_404();
 
         $data['page'] = "product/form";
+        $data['rows'] = $this->ref->getAll();
+        $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -74,7 +78,7 @@ class C_product extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('content/c_product'));
+            redirect(site_url('product'));
         }
     }
 }

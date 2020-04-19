@@ -36,18 +36,19 @@ class C_slider extends CI_Controller
         if ($validation->run()) {
             $slider->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_slider', 'refresh');
+            // redirect('slider');
         }
 
         $data = $this->data;
         $data['page'] = "slider/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
         $this->load->view('content/layout', $data);
     }
 
     public function edit($id)
     {
-        if (!isset($id)) redirect('content/c_slider');
+        if (!isset($id)) redirect('slider');
 
         $slider = $this->ref;
         $validation = $this->form_validation;
@@ -56,7 +57,7 @@ class C_slider extends CI_Controller
         if ($validation->run()) {
             $slider->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('content/c_slider', 'refresh');
+            // redirect('slider');
         }
 
         $data = $this->data;
@@ -65,6 +66,7 @@ class C_slider extends CI_Controller
         if (!$data['slider']) show_404();
 
         $data['page'] = "slider/form";
+        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
         $this->load->view('content/layout', $data);
     }
@@ -74,7 +76,7 @@ class C_slider extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('content/c_slider'));
+            redirect(site_url('slider'));
         }
     }
 }

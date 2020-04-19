@@ -56,22 +56,22 @@ if ($content == "Edit") {
                                 <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="name">Name</label>
+                                    <label for="Name">Name</label>
                                     <input type="text" class="form-control" name="name" placeholder="Name" value="<?php echo $name; ?>" required>
                                     <?php echo form_error('name') ?>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                     <div class="invalid-feedback">
-                                        Please fill in the Name.
+                                        Please fill in the name.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="username">Username</label>
+                                    <label for="Username">Username</label>
                                     <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
                                     <?php echo form_error('username') ?>
                                     <div class="invalid-feedback">
-                                        Please fill in the Username.
+                                        Please fill in the username.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -79,16 +79,16 @@ if ($content == "Edit") {
                                     if ($content == "Edit") { ?>
                                         <input type="hidden" name="password" value="<?php echo $password; ?>">
                                     <?php } else { ?>
-                                        <label for="password">Password</label>
+                                        <label for="Password">Password</label>
                                         <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo $password; ?>" required>
                                         <?php echo form_error('password') ?>
                                         <div class="invalid-feedback">
-                                            Please fill in the Password.
+                                            Please fill in the password.
                                         </div>
                                     <?php  } ?>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="role">Role</label>
+                                    <label for="Role">Role</label>
                                     <select class="form-control" name="role">
                                         <option value="2" <?php if ($role == 2) echo 'selected'; ?>>Admin</option>
                                         <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
@@ -106,9 +106,12 @@ if ($content == "Edit") {
         </div>
     </div>
 </div>
+<?php
+foreach ($rows as $row) {
+}
+?>
 
 <script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
         'use strict';
         window.addEventListener('load', function() {
