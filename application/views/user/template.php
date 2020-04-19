@@ -24,11 +24,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.bxslider.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css" />
         <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/ico/apple-touch-icon-144.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ico/apple-touch-icon-114.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/apple-touch-icon-72.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/images/ico/apple-touch-icon-57.png">
-        <link rel="shortcut icon" href="assets/images/ico/favicon.ico">
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Include javascript -->
         <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
@@ -39,15 +37,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
-        <script async="" defer="" type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initializeMap">
-        </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
     </head>
 
     <body>
         <div class="navbar">
-            <!-- <div class="navbar-inner"> -->
             <div class="row containerMenu">
                 <div class="col">
                     <a href="<?php echo site_url('user/c_home') ?>" class="brand">
@@ -59,8 +53,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="row">
                 <!-- Navigation button, visible on small resolution -->
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <!-- <i class="icon-menu"></i> -->
                     MENU
+                    <i class="icon-menu pull-right"></i>
                 </button>
             </div>
             <div class="nav-collapse collapse row rowMenu">
@@ -82,7 +76,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <a class="colMenu" href="#">
                     <div>ACCESSORIES</div>
                 </a>
-                <a class="colMenu" href="#">
+                <a class="colMenu" href="<?php echo site_url('user/c_productdetail') ?>">
                     <div>STRAP</div>
                 </a>
                 <a class="colMenu" href="<?php echo site_url('user/c_about') ?>">
@@ -90,7 +84,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </a>
                 <!-- End main navigation -->
             </div>
-            <!-- </div> -->
         </div>
 
         <!-- Content Start -->
@@ -147,10 +140,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             color: #000000;
             outline: none;
         }
-
-        /* .content {
-            padding-top: 13.5vh;
-        } */
 
         .row.rowMenu {
             margin-left: 0
@@ -216,12 +205,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             }
         }
         </style>
-
-        <script>
-        $('.colMenu').on('click', function() {
-            $('.nav-collapse').collapse('hide');
-        });
-        </script>
     </body>
 
 </html>

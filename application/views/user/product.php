@@ -2,37 +2,30 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
-<div class="section secondary-section " id="portfolio">
-    <!-- <div class="triangle"></div> -->
+<div class="section secondary-section">
+    <!-- Product Title -->
     <div class="row watchTitle">
         <span style="color: #bf9d5f; padding-right: 0.3em">ALEXANDER</span>
         <span>WATCHES</span>
     </div>
+    <!-- Product List -->
     <div class="row container">
-        <!-- Start details for portfolio project 1 -->
-        <div id="single-project">
-
-            <!-- Product Detail -->
-            <?php
-            include 'product-detail.php';
-            ?>
-
-            <!-- Product Cards -->
-            <ul id="portfolio-grid" class="thumbnails row">
+        <div>
+            <ul class="thumbnails row">
                 <?php for ($i=0; $i < 16; $i++): ?>
                 <li class="mix web productColumn">
                     <div class="thumbnail">
                         <div class="productImage">
                             <img src="<?php echo base_url(); ?>assets/images/products/jam.jpg" alt="project 1">
-                            <a href="#single-project" class="more show_hide" rel="#slidingDiv<?php echo $i;?>">
+                            <a href="<?php echo site_url('user/c_productdetail') ?>" class="more show_hide">
                                 <i class="icon-plus"></i>
                             </a>
                         </div>
                         <div class="mask"></div>
                         <div class="productTitle">
-                            <h5>Alvin <?= $i?> label </h5>
-                            <h5>Rp. 2.000.000</h5>
-                            <h5>Rp. 3.500.000</h5>
+                            <h5 class='productName'>Alvin <?= $i?> label </h5>
+                            <h5 class='price'>Rp. 2.000.000</h5>
+                            <h5 class='discount'>Rp. 3.500.000</h5>
                         </div>
                     </div>
                 </li>
@@ -40,8 +33,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </ul>
         </div>
     </div>
+    <!-- Pagination -->
+    <div class="row pagination">
+        <span style="color: #bf9d5f; padding-right: 0.3em">ALEXANDER</span>
+        <span>WATCHES</span>
+    </div>
 </div>
-<!-- Portfolio section end -->
 
 <style>
 body {
@@ -80,6 +77,11 @@ ul.thumbnails {
 
 .watchTitle {
     border-bottom: 2px solid #8b7347;
+    padding: 1.5em 1em 1em;
+}
+
+.pagination {
+    border-top: 2px solid #8b7347;
     padding: 1.5em 1em 1em;
 }
 
@@ -129,11 +131,8 @@ ul.thumbnails {
 }
 
 .thumbnail h5 {
-    padding: 0px 0 5px;
     margin: 0;
 }
-
-
 
 .thumbnail .mask {
     background: #131313;
@@ -142,12 +141,31 @@ ul.thumbnails {
 .productTitle {
     background-color: #e7bd70;
     margin: 0 0.5em;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     opacity: 0.9;
 }
 
 .productImage {
     margin: 0 0.5em;
+}
+
+.productName {
+    color: #000000;
+    font-size: 17px;
+    padding: 0.1em;
+}
+
+.price {
+    background-color: #000000;
+    font-size: 17px;
+    padding: 0.1em;
+}
+
+.discount {
+    color: #000000;
+    font-size: 14px;
+    padding: 0.1em;
+    text-decoration: line-through;
 }
 
 @media screen and (min-width: 768px) {
@@ -160,17 +178,10 @@ ul.thumbnails {
         font-weight: bold;
     }
 
-    .productColumn {
-        flex: 0 25%;
-    }
-
     .productImage {
-        margin: 0 1em;
+        margin: 0 0.5em;
     }
 
-    .productTitle {
-        margin: 0 0.75em;
-    }
 
     .thumbnail>p {
         padding-bottom: 1em;
@@ -183,6 +194,33 @@ ul.thumbnails {
 
     .section .container {
         padding: 1em;
+    }
+
+    .productName {
+        font-size: 20px;
+        padding: 0.25em;
+    }
+
+    .price {
+        font-size: 20px;
+        padding: 0.25em;
+    }
+
+    .discount {
+        font-size: 17px;
+        padding: 0.25em;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .productColumn {
+        flex: 0 25%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .productColumn {
+        flex: 0 20%;
     }
 }
 </style>
