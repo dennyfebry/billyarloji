@@ -4,7 +4,13 @@ $id = "";
 $category_id = "";
 $brand_id = "";
 $name = "";
-$description = "";
+$model = "";
+$type = "";
+$diameter = "";
+$movement = "";
+$material = "";
+$condition_product = "";
+$completeness = "";
 $price = "";
 $discount = "";
 $images = "";
@@ -12,6 +18,7 @@ $images_front = "";
 $images_side = "";
 $images_top = "";
 $images_detail = "";
+$url = "";
 $status = "";
 $created_date = date("Y-m-d H:i:s");
 $created_by = $this->session->userdata('id');
@@ -22,7 +29,13 @@ if ($content == "Edit") {
     $category_id = $product->category_id;
     $brand_id = $product->brand_id;
     $name = $product->name;
-    $description = $product->description;
+    $model = $product->model;
+    $type = $product->type;
+    $diameter = $product->diameter;
+    $movement = $product->movement;
+    $material = $product->material;
+    $condition_product = $product->condition_product;
+    $completeness = $product->completeness;
     $price = $product->price;
     $discount = $product->discount;
     $images = $product->images;
@@ -30,6 +43,7 @@ if ($content == "Edit") {
     $images_side = $product->images_side;
     $images_top = $product->images_top;
     $images_detail = $product->images_detail;
+    $url = $product->url;
     $status = $product->status;
     $created_date = $product->created_date;
     $created_by = $product->created_by;
@@ -88,7 +102,8 @@ if ($content == "Edit") {
 
                                 <div class="col-md-12 mb-3">
                                     <label for="Category_id">Category</label>
-                                    <select class="form-control" name="category_id">
+                                    <select class="form-control" name="category_id" id="categoryselect">
+                                        <option value="" selected disabled>-- Select Category --</option>
                                         <?php foreach ($name_category as $row) { ?>
                                             <option value="<?php echo $row->id ?>" <?php if ($category_id == $row->id) echo 'selected'; ?>><?php echo $row->category ?></option>
                                         <?php } ?>
@@ -101,8 +116,8 @@ if ($content == "Edit") {
 
                                 <div class="col-md-12 mb-3">
                                     <label for="Brand_id">Brand</label>
-                                    <select class="form-control" name="brand_id">
-                                        <option value="1">-</option>
+                                    <select class="form-control" name="brand_id" id="brand">
+                                        <option value="" selected disabled>-- Select Brand --</option>
                                     </select>
                                     <?php echo form_error('brand_id') ?>
                                     <div class="invalid-feedback">
@@ -122,11 +137,80 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Description</label>
-                                    <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
-                                    <?php echo form_error('description') ?>
+                                    <label for="Model">Model</label>
+                                    <input type="text" class="form-control" name="model" placeholder="Model" value="<?php echo $model; ?>" required>
+                                    <?php echo form_error('model') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
                                     <div class="invalid-feedback">
-                                        Please fill in the description.
+                                        Please fill in the model product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Type">Type</label>
+                                    <input type="text" class="form-control" name="type" placeholder="Type" value="<?php echo $type; ?>" required>
+                                    <?php echo form_error('type') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the type product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Diameter">Diameter</label>
+                                    <input type="text" class="form-control" name="diameter" placeholder="Diameter" value="<?php echo $diameter; ?>" required>
+                                    <?php echo form_error('diameter') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the diameter product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Movement">Movement</label>
+                                    <input type="text" class="form-control" name="movement" placeholder="Movement" value="<?php echo $movement; ?>" required>
+                                    <?php echo form_error('movement') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the movement product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Material">Material</label>
+                                    <input type="text" class="form-control" name="material" placeholder="Material" value="<?php echo $material; ?>" required>
+                                    <?php echo form_error('material') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the material product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Condition">Condition</label>
+                                    <input type="text" class="form-control" name="condition_product" placeholder="Condition" value="<?php echo $condition_product; ?>" required>
+                                    <?php echo form_error('condition_product') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the condition product.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Completeness">Completeness</label>
+                                    <input type="text" class="form-control" name="completeness" placeholder="Completeness" value="<?php echo $completeness; ?>" required>
+                                    <?php echo form_error('completeness') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the completeness product.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -171,8 +255,8 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Top">Images Product Top</label>
-                                    <input type="file" class="form-control" name="images_detail" placeholder="Images Top" value="<?php echo $images_detail; ?>">
-                                    <?php echo form_error('images_detail') ?>
+                                    <input type="file" class="form-control" name="images_top" placeholder="Images Top" value="<?php echo $images_top; ?>">
+                                    <?php echo form_error('images_top') ?>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -183,6 +267,17 @@ if ($content == "Edit") {
                                     <?php echo form_error('images_detail') ?>
                                     <div class="invalid-feedback">
                                         Please choose a images.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="URL">URL/Link</label>
+                                    <input type="text" class="form-control" name="url" placeholder="URL/Link" value="<?php echo $url; ?>" required>
+                                    <?php echo form_error('url') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the url product.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -225,9 +320,7 @@ foreach ($rows as $row) {
             });
         }, false);
     })();
-</script>
 
-<script>
     $('#summernote').summernote({
         placeholder: 'Enter text...',
         tabsize: 2,
@@ -240,5 +333,71 @@ foreach ($rows as $row) {
             ['insert', ['link', 'table', 'hr']],
             ['view', ['fullscreen', 'codeview', 'help']]
         ]
+    });
+
+    $(document).ready(function() {
+        var selected_brand = '<?php echo $brand_id ?>';
+        var category = $("#categoryselect option:selected").text();
+        $('#brand')
+            .find('option')
+            .remove()
+            .end();
+        $.ajax({
+            url: "<?php echo base_url() . 'index.php/product/getBrand' ?>",
+            type: "POST",
+            data: {
+                "name_category": category
+            },
+            success: function(data) {
+                var obj = JSON.parse(data);
+                $.each(obj, function(i, item) {
+                    var id = item.id;
+                    var category_name = item.category;
+                    var brand_name = item.brand;
+                    if (id == selected_brand) {
+                        $('#brand').append('<option value="' + id + '" selected>' + brand_name + '</option>');
+                    } else {
+                        $('#brand').append('<option value="' + id + '">' + brand_name + '</option>');
+                    }
+                });
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+        $(function() {
+            $("#categoryselect").change(function() {
+                var category = $("#categoryselect option:selected").text();
+                $('#brand')
+                    .find('option')
+                    .remove()
+                    .end();
+
+                $.ajax({
+                    url: "<?php echo base_url() . 'index.php/product/getBrand' ?>",
+                    type: "POST",
+                    data: {
+                        "name_category": category
+                    },
+                    success: function(data) {
+                        var obj = JSON.parse(data);
+                        console.log(obj);
+                        $.each(obj, function(i, item) {
+                            var id = item.id;
+                            var category_name = item.category;
+                            var brand_name = item.brand;
+                            $('#brand').append($('<option>', {
+                                value: id,
+                                text: brand_name
+                            }));
+                            // $("brand select").val("val2");
+                        });
+                    },
+                    error: function() {
+                        console.log("error");
+                    }
+                });
+            })
+        })
     });
 </script>

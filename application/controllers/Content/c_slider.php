@@ -23,7 +23,8 @@ class C_slider extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "slider/index";
-        $data['slider'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -41,8 +42,8 @@ class C_slider extends CI_Controller
 
         $data = $this->data;
         $data['page'] = "slider/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -66,8 +67,8 @@ class C_slider extends CI_Controller
         if (!$data['slider']) show_404();
 
         $data['page'] = "slider/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

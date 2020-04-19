@@ -41,7 +41,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($slider as $row) {
+                                foreach ($atribute as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>

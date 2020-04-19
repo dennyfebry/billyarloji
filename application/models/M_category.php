@@ -31,6 +31,13 @@ class M_category extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function count()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get()->num_rows();
+    }
+
     public function save()
     {
         $post = $this->input->post();

@@ -33,6 +33,14 @@ class M_brand extends CI_Model
         $this->db->order_by($this->table . '.brand', 'ASC');
         return $this->db->get()->result();
     }
+
+    public function count()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get()->num_rows();
+    }
+
     public function getCategory()
     {
         $this->db->select('*');

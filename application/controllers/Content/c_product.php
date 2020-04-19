@@ -23,7 +23,8 @@ class C_product extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "product/index";
-        $data['product'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -41,9 +42,9 @@ class C_product extends CI_Controller
 
         $data = $this->data;
         $data['page'] = "product/form";
-        $data['rows'] = $this->ref->getAll();
         $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Add";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -67,9 +68,9 @@ class C_product extends CI_Controller
         if (!$data['product']) show_404();
 
         $data['page'] = "product/form";
-        $data['rows'] = $this->ref->getAll();
         $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Edit";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -80,5 +81,12 @@ class C_product extends CI_Controller
         if ($this->ref->delete($id)) {
             redirect(site_url('product'));
         }
+    }
+
+    function getBrand()
+    {
+        $name_category = $this->input->post('name_category');
+        $getBrand    = $this->ref->getBrand($name_category)->result();
+        echo json_encode($getBrand);
     }
 }

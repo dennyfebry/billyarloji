@@ -25,7 +25,8 @@ class C_superadmin extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "superadmin/index";
-        $data['account'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -43,8 +44,8 @@ class C_superadmin extends CI_Controller
 
         $data = $this->data;
         $data['page'] = "superadmin/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -68,8 +69,8 @@ class C_superadmin extends CI_Controller
         if (!$data['account']) show_404();
 
         $data['page'] = "superadmin/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

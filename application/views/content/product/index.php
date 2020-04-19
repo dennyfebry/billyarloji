@@ -32,10 +32,17 @@
                                     <th>Category</th>
                                     <th>Brand</th>
                                     <th>Name</th>
-                                    <th>Description</th>
+                                    <th>Model</th>
+                                    <th>Type</th>
+                                    <th>Diameter</th>
+                                    <th>Movement</th>
+                                    <th>Material</th>
+                                    <th>Condition</th>
+                                    <th>Completeness</th>
                                     <th>Price</th>
                                     <th>Discount</th>
                                     <th>Images</th>
+                                    <th>URL/Link</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
                                     <th>Status</th>
@@ -45,14 +52,20 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($product as $row) {
+                                foreach ($atribute as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->category ?></td>
                                         <td><?php echo $row->brand ?></td>
                                         <td><?php echo $row->name_product ?></td>
-                                        <td><?php echo $row->description ?></td>
+                                        <td><?php echo $row->model ?></td>
+                                        <td><?php echo $row->type ?></td>
+                                        <td><?php echo $row->diameter ?></td>
+                                        <td><?php echo $row->movement ?></td>
+                                        <td><?php echo $row->material ?></td>
+                                        <td><?php echo $row->condition_product ?></td>
+                                        <td><?php echo $row->completeness ?></td>
                                         <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
                                         <td><?php echo $row->discount ?>%</td>
                                         <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"> <br><br>
@@ -60,6 +73,7 @@
                                             <img src="<?php echo base_url('upload/product/' . $row->images_side . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="" height="46px"></td>
+                                        <td><a href="<?php echo $row->url ?>">Here</a></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
                                         <td><?php if ($row->status == '1') {

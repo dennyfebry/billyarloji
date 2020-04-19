@@ -9,10 +9,17 @@ class M_product extends CI_Model
     public $category_id;
     public $brand_id;
     public $name;
-    public $description;
+    public $model;
+    public $type;
+    public $diameter;
+    public $movement;
+    public $material;
+    public $condition_product;
+    public $completeness;
     public $price;
     public $discount;
     public $images = "default.jpg";
+    public $url;
     public $created_date;
     public $created_by;
     public $updated_date;
@@ -29,8 +36,44 @@ class M_product extends CI_Model
             ],
 
             [
-                'field' => 'description',
-                'label' => 'Description',
+                'field' => 'model',
+                'label' => 'Model',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'type',
+                'label' => 'Type',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'diameter',
+                'label' => 'Diameter',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'movement',
+                'label' => 'Movement',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'material',
+                'label' => 'Material',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'condition_product',
+                'label' => 'Condition',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'completeness',
+                'label' => 'Completeness',
                 'rules' => 'required'
             ],
 
@@ -47,6 +90,12 @@ class M_product extends CI_Model
             ],
 
             [
+                'field' => 'url',
+                'label' => 'URL',
+                'rules' => 'required'
+            ],
+
+            [
                 'field' => 'status',
                 'label' => 'Status',
                 'rules' => 'required'
@@ -57,12 +106,19 @@ class M_product extends CI_Model
     public function getAll()
     {
         // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.description, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
         $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
         return $this->db->get()->result();
+    }
+
+    public function count()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get()->num_rows();
     }
 
     public function getCategory()
@@ -82,7 +138,14 @@ class M_product extends CI_Model
         $this->category_id = $post["category_id"];
         $this->brand_id = $post["brand_id"];
         $this->name = $post["name"];
-        $this->description = $post["description"];
+        $this->model = $post["model"];
+        $this->type = $post["type"];
+        $this->diameter = $post["diameter"];
+        $this->movement = $post["movement"];
+        $this->material = $post["material"];
+        $this->condition_product = $post["condition_product"];
+        $this->completeness = $post["completeness"];
+        $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
         $this->images = $this->_uploadImage();
@@ -110,7 +173,14 @@ class M_product extends CI_Model
         $this->category_id = $post["category_id"];
         $this->brand_id = $post["brand_id"];
         $this->name = $post["name"];
-        $this->description = $post["description"];
+        $this->model = $post["model"];
+        $this->type = $post["type"];
+        $this->diameter = $post["diameter"];
+        $this->movement = $post["movement"];
+        $this->material = $post["material"];
+        $this->condition_product = $post["condition_product"];
+        $this->completeness = $post["completeness"];
+        $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
         if (!empty($_FILES["images"]["name"])) {
@@ -238,5 +308,12 @@ class M_product extends CI_Model
             $filename = explode(".", $product->image)[0];
             return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
         }
+    }
+
+    function getBrand($name_category)
+    {
+        $sql = "SELECT br.id, cg.category, br.brand FROM tb_brand AS br LEFT JOIN tb_category AS cg ON br.category_id = cg.id  WHERE category = '$name_category' ";
+        $query = $this->db->query($sql);
+        return $query;
     }
 }

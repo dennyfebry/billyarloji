@@ -15,13 +15,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
     <!-- Summernote -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script> -->
+    <style>
+        body {
+            background-color: #F0F3F5 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,8 +56,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
     </div>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/content/js/main.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/content/login/js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/content/login/js/jquery-3.2.1.min.js"></script> -->
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
@@ -56,228 +67,130 @@ defined('BASEPATH') or exit('No direct script access allowed');
         });
     </script>
 
-    <!-- Modal Change Password -->
-    <div class="modal fade change-password" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Change Password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form class="validationChangePassword" novalidate>
-                    <div class="modal-body">
-                        <div class="col-md-12 mb-3">
-                            <div class="mb-2 mr-2 badge badge-danger" id="message-error"></div>
-                            <div class="mb-2 mr-2 badge badge-success" id="message-success"></div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
-                                <label for="Old Password">Old Password</label>
-                                <input type="password" class="form-control" id="old_password" placeholder="Old Password" value="" required>
-                                <div class="invalid-tooltip">
-                                    Please provide a valid old password.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="New Password">New Password</label>
-                                <input type="password" class="form-control" id="new_password" placeholder="New Password" value="" required>
-                                <div class="invalid-tooltip">
-                                    Please provide a valid new password.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="Re-type Password">Re-type Password</label>
-                                <input type="password" class="form-control" id="retype_password" placeholder="Re-type Password" value="" required>
-                                <div class="invalid-tooltip">
-                                    Please provide a valid re-type password.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 
-    <script>
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-                var forms = document.getElementsByClassName('validationChangePassword');
-                var validation = Array.prototype.filter.call(forms, function(form) {
-                    form.addEventListener('submit', function(event) {
-                        if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
+    <?php if ($count == 0) {
+    } else {
+        foreach ($atribute as $row) {
 
-                        } else if (form.checkValidity() === true) {
-                            var old_password = $('#old_password').val();
-                            var new_password = $('#new_password').val();
-                            var retype_password = $('#retype_password').val();
-
-                            $.ajax({
-                                type: "POST",
-                                url: "<?= base_url('index.php/content/c_login/change_password') ?>",
-                                dataType: "JSON",
-                                data: {
-                                    old_password: old_password,
-                                    new_password: new_password,
-                                    retype_password: retype_password
-                                },
-                                success: function(data) {
-                                    console.log(data);
-                                    if (data == "New passwords are not the same") {
-                                        $('#message-error').html(data);
-                                    } else if (data == "The password you entered is incorrect") {
-                                        $('#message-error').html(data)
-                                    } else {
-                                        $('#message-success').html(data)
-                                        setTimeout(function() {
-                                            document.getElementById("myCheck").click();
-                                        }, 1500);
-                                    }
-                                }
-                            });
-                        }
-                        form.classList.add('was-validated');
-                        // return false;
-                    }, false);
-                });
-            }, false);
-        })();
-    </script>
-
-    <?php
-    //  if (count($data['rows']) == 0) {
-    //     $init = new stdClass;
-    //     $data['rows'] = array($init);
-    //     $init->id = '';
-    // } 
     ?>
-
-    <!-- Modal delete Category -->
-    <div id="deleteCategory<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Category ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the category data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/category/delete/<?php echo $row->id; ?>">Yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal delete Brand -->
-    <div id="deleteBrand<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Brand ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the brand data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/brand/delete/<?php echo $row->id; ?>">Yes</a>
+            <!-- Modal delete Category -->
+            <div id="deleteCategory<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Category ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the category data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/category/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal delete Product -->
-    <div id="deleteProduct<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Product ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the product data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/product/delete/<?php echo $row->id; ?>">Yes</a>
+            <!-- Modal delete Brand -->
+            <div id="deleteBrand<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Brand ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the brand data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/brand/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal delete Slider -->
-    <div id="deleteSlider<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Slider ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the slider data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/slider/delete/<?php echo $row->id; ?>">Yes</a>
+            <!-- Modal delete Product -->
+            <div id="deleteProduct<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Product ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the product data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/product/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal delete Testimoni -->
-    <div id="deleteTestimoni<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Testimoni ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the testimoni data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/testimoni/delete/<?php echo $row->id; ?>">Yes</a>
+            <!-- Modal delete Slider -->
+            <div id="deleteSlider<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Slider ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the slider data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/slider/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal delete Admin -->
-    <div id="deleteAdmin<?php echo $row->id; ?>" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Delete Account Admin ?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Yes" below if you want to delete the admin data.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/superadmin/delete/<?php echo $row->id; ?>">Yes</a>
+            <!-- Modal delete Testimoni -->
+            <div id="deleteTestimoni<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Testimoni ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the testimoni data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/testimoni/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
+            <!-- Modal delete Admin -->
+            <div id="deleteAdmin<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Account Admin ?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the admin data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/superadmin/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <?php
+        }
+    }
+    ?>
 </body>
 
 </html>
