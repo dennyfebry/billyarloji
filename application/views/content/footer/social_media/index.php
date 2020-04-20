@@ -39,7 +39,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($social as $row) {
+                                foreach ($atribute as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>

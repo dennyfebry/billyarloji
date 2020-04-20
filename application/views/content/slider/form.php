@@ -90,6 +90,7 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Status">Status</label>
                                     <select class="form-control" name="status">
+                                        <option value="" selected disabled>-- Select Status --</option>
                                         <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
                                         <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
                                     </select>
@@ -106,10 +107,6 @@ if ($content == "Edit") {
         </div>
     </div>
 </div>
-<?php
-foreach ($rows as $row) {
-}
-?>
 
 <script>
     (function() {

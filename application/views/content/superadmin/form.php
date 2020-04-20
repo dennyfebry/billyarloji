@@ -89,7 +89,8 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Role">Role</label>
-                                    <select class="form-control" name="role">
+                                    <select class="form-control" name="role">\
+                                        <option value="" selected disabled>-- Select Role --</option>
                                         <option value="2" <?php if ($role == 2) echo 'selected'; ?>>Admin</option>
                                         <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
                                     </select>
@@ -106,10 +107,6 @@ if ($content == "Edit") {
         </div>
     </div>
 </div>
-<?php
-foreach ($rows as $row) {
-}
-?>
 
 <script>
     (function() {

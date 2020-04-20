@@ -33,6 +33,13 @@ class M_footer extends CI_Model
         return $this->db->query("SELECT * FROM $this->table")->result();
     }
 
+    public function count()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get()->num_rows();
+    }
+
     public function getById($id)
     {
         return $this->db->get_where($this->table, ["id" => $id])->row();

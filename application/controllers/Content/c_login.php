@@ -87,7 +87,7 @@ class C_login extends CI_Controller
 				$this->ref->change_password("tb_admin", $where, $change);
 				$data = "The password has been successfully changed";
 			} else {
-				$data = "The password you entered is incorrect";
+				$data = "The old password you entered is incorrect";
 			}
 			echo json_encode($data);
 		} else {

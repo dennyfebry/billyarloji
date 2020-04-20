@@ -23,7 +23,8 @@ class C_category extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "category/index";
-        $data['category'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -41,8 +42,8 @@ class C_category extends CI_Controller
 
         $data = $this->data;
         $data['page'] = "category/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Add";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -66,8 +67,8 @@ class C_category extends CI_Controller
         if (!$data['name_category']) show_404();
 
         $data['page'] = "category/form";
-        $data['rows'] = $this->ref->getAll();
         $data['content'] = "Edit";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

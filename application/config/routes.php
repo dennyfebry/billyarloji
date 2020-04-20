@@ -54,6 +54,7 @@ $route['404_override'] = 'error404';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin'] = 'content/c_dashboard';
+$route['admin/(:any)'] = "content/c_dashboard/$1";
 
 $route['login'] = 'content/c_login/login';
 $route['logout'] = 'content/c_login/logout';

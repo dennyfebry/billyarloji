@@ -80,10 +80,6 @@ if ($content == "Edit") {
         </div>
     </div>
 </div>
-<?php
-foreach ($rows as $row) {
-}
-?>
 
 <script>
     (function() {

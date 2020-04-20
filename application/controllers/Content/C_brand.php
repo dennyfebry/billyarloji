@@ -23,7 +23,8 @@ class C_brand extends CI_Controller
     {
         $data = $this->data;
         $data['page'] = "brand/index";
-        $data['brand'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -41,14 +42,9 @@ class C_brand extends CI_Controller
 
         $data = $this->data;
         $data['page'] = "brand/form";
-        $data['rows'] = $this->ref->getAll();
         $data['name_category'] = $this->ref->getCategory();
-        // if (count($data['rows']) == 0) {
-        //     $init = new stdClass;
-        //     $data['rows'] = array($init);
-        //     $init->id = '';
-        // }
         $data['content'] = "Add";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -72,9 +68,9 @@ class C_brand extends CI_Controller
         if (!$data['name_brand']) show_404();
 
         $data['page'] = "brand/form";
-        $data['rows'] = $this->ref->getAll();
         $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Edit";
+        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

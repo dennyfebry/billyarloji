@@ -40,7 +40,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                foreach ($brand as $row) {
+                                foreach ($atribute as $row) {
                                 ?>
                                     <tr>
                                         <td><?php echo $no ?></td>

@@ -74,3 +74,106 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Change Password -->
+<div class="modal fade change-password" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form class="validationChangePassword" novalidate>
+                <div class="modal-body">
+                    <div class="col-md-12 mb-3">
+                        <div class="mb-2 mr-2 badge badge-danger" id="message-error"></div>
+                        <div class="mb-2 mr-2 badge badge-success" id="message-success"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="Old Password">Old Password</label>
+                            <input type="password" class="form-control" id="old_password" placeholder="Old Password" value="" required>
+                            <div class="invalid-tooltip">
+                                Please provide a valid old password.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="New Password">New Password</label>
+                            <input type="password" class="form-control" id="new_password" placeholder="New Password" value="" required>
+                            <div class="invalid-tooltip">
+                                Please provide a valid new password.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="Re-type Password">Re-type Password</label>
+                            <input type="password" class="form-control" id="retype_password" placeholder="Re-type Password" value="" required>
+                            <div class="invalid-tooltip">
+                                Please provide a valid re-type password.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('validationChangePassword');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                    } else if (form.checkValidity() === true) {
+                        var old_password = $('#old_password').val();
+                        var new_password = $('#new_password').val();
+                        var retype_password = $('#retype_password').val();
+
+                        $.ajax({
+                            type: "POST",
+                            url: "<?= base_url('index.php/content/c_login/change_password') ?>",
+                            dataType: "JSON",
+                            data: {
+                                old_password: old_password,
+                                new_password: new_password,
+                                retype_password: retype_password
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                if (data == "New passwords are not the same") {
+                                    $('#message-error').html(data);
+                                    alert(data);
+                                } else if (data == "The old password you entered is incorrect") {
+                                    $('#message-error').html(data);
+                                    alert(data);
+                                } else {
+                                    $('#message-success').html(data);
+                                    alert(data);
+                                    setTimeout(function() {
+                                        document.getElementById("myCheck").click();
+                                    }, 1500);
+                                }
+                            }
+                        });
+                    }
+                    form.classList.add('was-validated');
+                    // return false;
+                }, false);
+            });
+        }, false);
+    })();
+</script>

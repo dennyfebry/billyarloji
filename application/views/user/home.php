@@ -2,11 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
-<!-- Start Slider section -->
 <div id="home">
-    <!-- Start cSlider -->
+    <!-- Start Slider section -->
     <div id="da-slider" class="da-slider">
-        <!-- <div class="triangle"></div> -->
         <div class="mask"></div>
         <div class="container">
             <div class="da-slide">
@@ -42,13 +40,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
 
-            <!-- Start cSlide navigation arrows -->
             <div class="da-arrows">
                 <span class="da-arrows-prev"></span>
                 <span class="da-arrows-next"></span>
             </div>
-            <!-- End cSlide navigation arrows -->
         </div>
     </div>
+    <!-- End Slider Section -->
+
+    <!-- Start Footer Section -->
+    <div class="footer">
+
+    </div>
+    <!-- End Footer Section -->
 </div>
-<!-- End Slider section -->
