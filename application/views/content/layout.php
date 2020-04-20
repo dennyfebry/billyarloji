@@ -72,7 +72,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <?php if ($count == 0) {
     } else {
         foreach ($atribute as $row) {
-
     ?>
             <!-- Modal delete Category -->
             <div id="deleteCategory<?php echo $row->id; ?>" class="modal fade" role="dialog">

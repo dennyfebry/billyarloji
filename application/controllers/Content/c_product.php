@@ -22,9 +22,10 @@ class C_product extends CI_Controller
     public function index()
     {
         $data = $this->data;
+        $data['count'] = $this->ref->count();
+
         $data['page'] = "product/index";
         $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -41,10 +42,12 @@ class C_product extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
+
         $data['page'] = "product/form";
         $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Add";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -63,6 +66,8 @@ class C_product extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['product'] = $product->getById($id);
         if (!$data['product']) show_404();
@@ -70,7 +75,6 @@ class C_product extends CI_Controller
         $data['page'] = "product/form";
         $data['name_category'] = $this->ref->getCategory();
         $data['content'] = "Edit";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

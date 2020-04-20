@@ -19,6 +19,10 @@ class M_product extends CI_Model
     public $price;
     public $discount;
     public $images = "default.jpg";
+    public $images_front = "default.jpg";
+    public $images_side = "default.jpg";
+    public $images_top = "default.jpg";
+    public $images_detail = "default.jpg";
     public $url;
     public $created_date;
     public $created_by;
@@ -148,6 +152,34 @@ class M_product extends CI_Model
         $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
+
+        // $config['upload_path'] = './upload/product/'; //path folder
+        // $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        // $config['max_size']             = 2048; // 2MB
+
+        // $j = 1;
+        // for ($i = 1; $i <= 5; $i++) {
+        //     $config['file_name']            = $this->name . '_' . $this->type . '_';
+        //     // $config['overwrite']            = true;
+        //     $this->load->library('upload', $config);
+        //     if (!empty($_FILES['images' . $i]['name'])) {
+        //         if (!$this->upload->do_upload('images' . $i)) {
+        //             $this->upload->display_errors();
+        //         } else {
+        //             if ($i < 2) {
+        //                 $text = 'images' . $i;
+        //                 $this->$text = $config['file_name'];
+        //             } else {
+        //                 $text = 'images' . $i;
+        //                 $this->$text = $config['file_name'] . $j;
+        //                 $j++;
+        //             }
+        //         }
+        //     }
+        //     // print_r($this->upload->do_upload('images' . $i));
+        //     var_dump($config);
+        //     echo "<br><br><br>";
+        // }
         $this->images = $this->_uploadImage();
         $this->images_front = $this->_uploadImage_front();
         $this->images_side = $this->_uploadImage_side();
@@ -222,17 +254,16 @@ class M_product extends CI_Model
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id;
-        $config['overwrite']            = true;
+        $config['file_name']            = $this->name . ' ' . $this->type;
         $config['max_size']             = 2048; // 2MB
         // $config['max_width']            = 200;
         // $config['max_height']           = 200;
 
         $this->load->library('upload', $config);
-
         if ($this->upload->do_upload('images')) {
-            return $this->upload->data("file_name");
+            return $this->upload->data('file_name');
         }
+
         // print_r($this->upload->display_errors());
         return "default.jpg";
     }
@@ -241,8 +272,7 @@ class M_product extends CI_Model
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id . '_front';
-        $config['overwrite']            = true;
+        $config['file_name']            = $this->name . ' ' . $this->type . '_front';
         $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
@@ -257,8 +287,7 @@ class M_product extends CI_Model
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id . '_side';
-        $config['overwrite']            = true;
+        $config['file_name']            = $this->name . ' ' . $this->type . '_side';
         $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
@@ -273,8 +302,7 @@ class M_product extends CI_Model
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id . '_top';
-        $config['overwrite']            = true;
+        $config['file_name']            = $this->name . ' ' . $this->type . '_top';
         $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
@@ -289,8 +317,7 @@ class M_product extends CI_Model
     {
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id . '_detail';
-        $config['overwrite']            = true;
+        $config['file_name']            = $this->name . ' ' . $this->type . '_detail';
         $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
