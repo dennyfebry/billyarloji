@@ -98,10 +98,11 @@ class C_footer extends CI_Controller
     public function social()
     {
         $data = $this->data;
+        $data['count'] = $this->ref->count();
+
         $data['titlepage'] = "Social Media";
         $data['page'] = "footer/social_media/index";
         $data['atribute'] = $this->ref->getSocialMedia();
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -118,10 +119,12 @@ class C_footer extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
+
         $data['titlepage'] = "Social Media";
         $data['page'] = "footer/social_media/form";
         $data['content'] = "Add";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -140,6 +143,8 @@ class C_footer extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['social'] = $social->getById($id);
         if (!$data['social']) show_404();
@@ -147,7 +152,6 @@ class C_footer extends CI_Controller
 
         $data['page'] = "footer/social_media/form";
         $data['content'] = "Edit";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 

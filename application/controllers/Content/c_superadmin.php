@@ -24,9 +24,10 @@ class C_superadmin extends CI_Controller
     public function index()
     {
         $data = $this->data;
+        $data['count'] = $this->ref->count();
+
         $data['page'] = "superadmin/index";
         $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -43,9 +44,11 @@ class C_superadmin extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
+
         $data['page'] = "superadmin/form";
         $data['content'] = "Add";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
@@ -64,13 +67,14 @@ class C_superadmin extends CI_Controller
         }
 
         $data = $this->data;
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['account'] = $account->getById($id);
         if (!$data['account']) show_404();
 
         $data['page'] = "superadmin/form";
         $data['content'] = "Edit";
-        $data['count'] = $this->ref->count();
         $this->load->view('content/layout', $data);
     }
 
