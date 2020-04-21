@@ -1,0 +1,181 @@
+body,
+.container {
+	background-color: #131313;
+}
+
+.containerMenu {
+	padding: 1em;
+}
+
+.secondary-section,
+.primary-section,
+.containerMenu {
+	background: #131313;
+}
+
+.section .container {
+	padding-top: 30px;
+}
+
+.header {
+	height: auto;
+	max-height: 20vh;
+	display: table;
+}
+
+.navbar-fixed-top {
+	min-height: 1px;
+	height: auto;
+	padding-top: 0;
+}
+
+.navbar {
+	background: #131313;
+	min-height: 1px;
+}
+
+.navbar .brand img {
+	width: 100px;
+	height: 100px;
+}
+
+.navbar .brand {
+	padding: 0;
+}
+
+.navbar .btn-navbar,
+.navbar .btn-navbar:hover,
+.navbar .btn:focus {
+	width: 100%;
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	background: #e7bd70;
+	border: none;
+	color: #000000;
+	outline: none;
+}
+
+.row.container {
+	margin-left: 0;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: transparent;
+	text-align: center;
+}
+
+.row.rowMenu {
+	margin-left: 0;
+}
+
+.rowMenu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background-color: #e7bd70;
+	text-align: center;
+	opacity: 0.9;
+}
+
+.rowMenu > .colMenu {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	padding: 0.5em 0;
+	font-weight: bold;
+}
+
+.colMenu:focus {
+	color: #000000;
+	text-decoration: none;
+}
+
+.colMenu {
+	border-bottom: none;
+}
+
+.colMenu:hover,
+.colMenu.active {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+#toTop {
+	display: none;
+	position: fixed;
+	bottom: 0.5em;
+	right: 0.5em;
+	z-index: 99;
+	font-size: 20px;
+	border: none;
+	outline: none;
+	background-color: #e7bd70;
+	color: white;
+	cursor: pointer;
+	padding: 0.25em 0.5em;
+	border-radius: 4px;
+}
+
+#toTop:hover {
+	background-color: #555;
+}
+
+#billyTitle {
+	height: 100%;
+}
+
+#billyTitle > tbody > tr > th {
+	font-size: 2em;
+}
+
+#billyTitle > tbody > tr > td {
+	color: #bf9d5f;
+	line-height: 1.5em;
+}
+
+@media screen and (min-width: 768px) {
+	.rowMenu > .colMenu {
+		flex: 1;
+		padding: 1em 0 0.5em;
+	}
+
+	.rowMenu {
+		background-color: #e7bd70;
+		opacity: 1;
+	}
+
+	.colMenu {
+		border-bottom: 10px solid #e7bd70;
+	}
+
+	.colMenu:hover,
+	.colMenu.active {
+		background-color: #e7bd70;
+		border-bottom: 10px solid #ffffff;
+		color: #ffffff;
+	}
+
+	.containerMenu {
+		padding: 1em;
+		margin-left: 0;
+	}
+
+	#toTop {
+		bottom: 1em;
+		font-size: 30px;
+		padding: 0.5em 1em;
+	}
+
+	#billyTitle > tbody > tr > th {
+		font-size: 4em;
+	}
+
+	#billyTitle > tbody > tr > td {
+		font-size: 2em;
+	}
+}

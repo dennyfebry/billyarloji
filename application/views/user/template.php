@@ -23,33 +23,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.cslider.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.bxslider.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/product.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/template.css" />
         <!-- Fav and touch icons -->
         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-        <!-- Include javascript -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.bxslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
     </head>
 
     <body>
-        <div class="navbar">
+        <div class='header'>
             <div class="row containerMenu">
-                <div class="col">
+                <div class="productColumn-3 productColumn-2-lg">
                     <a href="<?php echo site_url('user/c_home') ?>" class="brand">
                         <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" alt="Logo" />
                         <!-- This is website logo -->
                     </a>
                 </div>
+                <div class="productColumn-7 productColumn-8-lg">
+                    <table id='billyTitle'>
+                        <tr>
+                            <th>BILLY ARLOJI</th>
+                        </tr>
+                        <tr>
+                            <td>All Original Luxury Goods With The Best Conditions</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
+        </div>
+        <div class="navbar">
             <div class="row">
                 <!-- Navigation button, visible on small resolution -->
                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -94,117 +97,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
         </div>
         <!-- Content End -->
 
-        <style>
-        body,
-        .container {
-            background-color: #131313;
-        }
+        <!-- To Top Button Start-->
+        <button onclick="topFunction()" id="toTop" title="To Top"><i class="fa fa-caret-up"></i></button>
+        <!-- To Top Button End -->
 
-        .containerMenu {
-            padding: 0.5em;
-        }
 
-        .secondary-section,
-        .primary-section,
-        .containerMenu {
-            background: #131313;
-        }
 
-        .section .container {
-            padding-top: 30px
-        }
-
-        .navbar {
-            background: #131313;
-        }
-
-        .navbar .brand img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .navbar .brand {
-            padding: 0;
-        }
-
-        .navbar .btn-navbar,
-        .navbar .btn-navbar:hover,
-        .navbar .btn:focus {
-            width: 100%;
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            font-size: 17px;
-            line-height: 20px;
-            background: #e7bd70;
-            border: none;
-            color: #000000;
-            outline: none;
-        }
-
-        .row.rowMenu {
-            margin-left: 0
-        }
-
-        .rowMenu {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            background-color: #e7bd70;
-            text-align: center;
-            opacity: 0.9;
-        }
-
-        .rowMenu>.colMenu {
-            display: flex;
-            flex-direction: column;
-            flex-basis: 100%;
-            padding: 0.5em 0;
-            font-weight: bold
-        }
-
-        .colMenu:focus {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        .colMenu {
-            border-bottom: none;
-        }
-
-        .colMenu:hover,
-        .colMenu.active {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        @media screen and (min-width: 768px) {
-            .rowMenu>.colMenu {
-                flex: 1;
-                padding: 1em 0 0.5em;
-            }
-
-            .rowMenu {
-                background-color: #e7bd70;
-                opacity: 1
-            }
-
-            .colMenu {
-                border-bottom: 10px solid #e7bd70;
-            }
-
-            .colMenu:hover,
-            .colMenu.active {
-                background-color: #e7bd70;
-                border-bottom: 10px solid #ffffff;
-                color: #ffffff;
-            }
-
-            .containerMenu {
-                padding: 1em;
-                margin-left: 0;
-            }
-        }
-        </style>
+        <!-- Include javascript -->
+        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/template.js"></script>
     </body>
 
 </html>
