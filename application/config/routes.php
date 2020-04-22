@@ -49,44 +49,44 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'website';
+$route['default_controller'] = 'Website';
 $route['404_override'] = 'error404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin'] = 'content/c_dashboard';
-$route['admin/(:any)'] = "content/c_dashboard/$1";
+$route['admin'] = 'Content/C_dashboard';
+$route['admin/(:any)'] = "Content/C_dashboard/$1";
 
-$route['login'] = 'content/c_login/login';
-$route['logout'] = 'content/c_login/logout';
-$route['validation'] = 'content/c_login/validation';
+$route['login'] = 'Content/C_login/login';
+$route['logout'] = 'Content/C_login/logout';
+$route['validation'] = 'Content/C_login/validation';
 
-$route['category'] = 'content/c_category';
-$route['category/(:any)'] = "content/c_category/$1";
-$route['category/(:any)/(:any)'] = "content/c_category/$1/$2";
+$route['category'] = 'Content/C_category';
+$route['category/(:any)'] = "Content/C_category/$1";
+$route['category/(:any)/(:any)'] = "Content/C_category/$1/$2";
 
-$route['brand'] = 'content/c_brand';
-$route['brand/(:any)'] = "content/c_brand/$1";
-$route['brand/(:any)/(:any)'] = "content/c_brand/$1/$2";
+$route['brand'] = 'Content/C_brand';
+$route['brand/(:any)'] = "Content/C_brand/$1";
+$route['brand/(:any)/(:any)'] = "Content/C_brand/$1/$2";
 
-$route['product'] = 'content/c_product';
-$route['product/(:any)'] = "content/c_product/$1";
-$route['product/(:any)/(:any)'] = "content/c_product/$1/$2";
+$route['product'] = 'Content/C_product';
+$route['product/(:any)'] = "Content/C_product/$1";
+$route['product/(:any)/(:any)'] = "Content/C_product/$1/$2";
 
-$route['slider'] = 'content/c_slider';
-$route['slider/(:any)'] = "content/c_slider/$1";
-$route['slider/(:any)/(:any)'] = "content/c_slider/$1/$2";
+$route['slider'] = 'Content/C_slider';
+$route['slider/(:any)'] = "Content/C_slider/$1";
+$route['slider/(:any)/(:any)'] = "Content/C_slider/$1/$2";
 
-$route['testimoni'] = 'content/c_testimoni';
-$route['testimoni/(:any)'] = "content/c_testimoni/$1";
-$route['testimoni/(:any)/(:any)'] = "content/c_testimoni/$1/$2";
+$route['testimoni'] = 'Content/C_testimoni';
+$route['testimoni/(:any)'] = "Content/C_testimoni/$1";
+$route['testimoni/(:any)/(:any)'] = "Content/C_testimoni/$1/$2";
 
-$route['about'] = 'content/c_footer/about';
-$route['store'] = 'content/c_footer/store';
-$route['buy'] = 'content/c_footer/buy';
-$route['social'] = 'content/c_footer/social';
-$route['social/(:any)'] = "content/c_footer/$1";
-$route['social/(:any)/(:any)'] = "content/c_footer/$1/$2";
+$route['about'] = 'Content/C_footer/about';
+$route['store'] = 'Content/C_footer/store';
+$route['buy'] = 'Content/C_footer/buy';
+$route['social'] = 'Content/C_footer/social';
+$route['social/(:any)'] = "Content/C_footer/$1";
+$route['social/(:any)/(:any)'] = "Content/C_footer/$1/$2";
 
-$route['superadmin'] = 'content/c_superadmin';
-$route['superadmin/(:any)'] = "content/c_superadmin/$1";
-$route['superadmin/(:any)/(:any)'] = "content/c_superadmin/$1/$2";
+$route['superadmin'] = 'Content/C_superadmin';
+$route['superadmin/(:any)'] = "Content/C_superadmin/$1";
+$route['superadmin/(:any)/(:any)'] = "Content/C_superadmin/$1/$2";
