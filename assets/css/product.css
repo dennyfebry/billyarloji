@@ -17,10 +17,28 @@ body {
 	margin-left: 0;
 }
 
+.productColumn-equal {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
 .productColumn {
 	display: flex;
 	flex-direction: column;
 	flex: 0 50%;
+}
+
+.productColumn-1 {
+	display: flex;
+	flex-direction: column;
+	flex: 0 10%;
+}
+
+.productColumn-2 {
+	display: flex;
+	flex-direction: column;
+	flex: 0 20%;
 }
 
 .productColumn-3 {
@@ -35,10 +53,28 @@ body {
 	flex: 0 50%;
 }
 
+.productColumn-6 {
+	display: flex;
+	flex-direction: column;
+	flex: 0 60%;
+}
+
 .productColumn-7 {
 	display: flex;
 	flex-direction: column;
 	flex: 0 70%;
+}
+
+.productColumn-8 {
+	display: flex;
+	flex-direction: column;
+	flex: 0 80%;
+}
+
+.productColumn-9 {
+	display: flex;
+	flex-direction: column;
+	flex: 0 90%;
 }
 
 .productColumn-10 {

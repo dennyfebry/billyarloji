@@ -33,7 +33,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
     <body>
         <div class='header'>
-            <div class="row containerMenu">
+            <div class="row containerMenu" style="width: 100%">
                 <div class="productColumn-3 productColumn-2-lg">
                     <a href="<?php echo site_url('user/c_home') ?>" class="brand">
                         <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" alt="Logo" />
@@ -62,29 +62,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
             </div>
             <div class="nav-collapse collapse row rowMenu">
                 <!-- Main navigation -->
+                <div class="colTemplate"></div>
 
-                <a class="colMenu active" href="<?php echo site_url('user/c_product') ?>">
+                <a class="colTemplate navMenu active" href="<?php echo site_url('user/c_product') ?>">
                     <div>MEN</div>
                 </a>
-
-                <a class="colMenu" href="#">
+                <a class="colTemplate navMenu" href="#">
                     <div>LADIES</div>
                 </a>
-                <a class="colMenu" href="#">
+                <a class="colTemplate navMenu" href="#">
                     <div>COUPLE WATCH</div>
                 </a>
-                <a class="colMenu" href="#">
+                <a class="colTemplate navMenu" href="#">
                     <div>JEWELRY</div>
                 </a>
-                <a class="colMenu" href="#">
+                <a class="colTemplate navMenu" href="#">
                     <div>ACCESSORIES</div>
                 </a>
-                <a class="colMenu" href="<?php echo site_url('user/c_productdetail') ?>">
+                <a class="colTemplate navMenu" href="<?php echo site_url('user/c_productdetail') ?>">
                     <div>STRAP</div>
                 </a>
-                <a class="colMenu" href="<?php echo site_url('user/c_about') ?>">
+                <a class="colTemplate navMenu" href="<?php echo site_url('user/c_about') ?>">
                     <div>WATCH BOX</div>
                 </a>
+                <div class="colTemplate"></div>
                 <!-- End main navigation -->
             </div>
         </div>
