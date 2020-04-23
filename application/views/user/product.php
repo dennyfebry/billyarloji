@@ -5,7 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <div class="section secondary-section">
     <!-- Product Title -->
     <div class="row watchTitle">
-        <span style="color: #bf9d5f; padding-right: 0.3em">ALEXANDER</span>
+        <span class="brown-text pr-03">ALEXANDER</span>
         <span>WATCHES</span>
     </div>
     <!-- Product List -->

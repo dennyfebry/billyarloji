@@ -72,6 +72,7 @@ body,
 	flex-wrap: wrap;
 	background-color: transparent;
 	text-align: center;
+	margin-left: 0;
 }
 
 .row.rowMenu {
@@ -156,9 +157,54 @@ body,
 	left: 0;
 }
 
-.sliderImg {
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.brown-text {
+	color: #bf9d5f;
+}
+
+.pr-03 {
+	padding-right: 0.3em;
+}
+
+.mtb-15 {
+	margin: 1.5em 0;
+}
+
+.mt-15 {
+	margin: 1.5em 0 0;
+}
+
+.footer {
+	padding: 1em 1em 2em;
+	background-color: #222121;
+}
+.footer-title {
+	padding: 0 1em 1em;
+}
+
+.testimoni {
+	background-color: #222121;
+}
+
+.feeds {
+	background-color: #222121;
+}
+
+.feeds-title {
+	padding: 0 0 1em;
+	font-weight: bold;
+}
+
+.feeds-image {
 	width: 100%;
-	max-height: 550px;
+	height: 100%;
 }
 
 @media screen and (min-width: 768px) {

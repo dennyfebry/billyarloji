@@ -10,32 +10,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Billy Arloji</title>
         <!-- Load Roboto font -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700&amp;subset=latin,latin-ext'
-            rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/fonts/font-googleapis.css'>
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- Load css styles -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap-responsive.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/pluton.css" />
-        <!--[if IE 7]>
-            <link rel="stylesheet" type="text/css" href="css/pluton-ie7.css" />
-        <![endif]-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.cslider.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/jquery.bxslider.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/product.css" />
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/template.css" />
-        <!-- Fav and touch icons -->
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/ico/favicon.ico">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/slider.css" />
+
     </head>
 
     <body>
         <div class='header'>
             <div class="row containerMenu" style="width: 100%">
                 <div class="productColumn-3 productColumn-2-lg">
-                    <a href="<?php echo site_url('user/c_home') ?>" class="brand">
+                    <a href="<?php echo site_url('user/C_home') ?>" class="brand">
                         <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" alt="Logo" />
                         <!-- This is website logo -->
                     </a>
@@ -64,7 +62,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <!-- Main navigation -->
                 <div class="colTemplate"></div>
 
-                <a class="colTemplate navMenu active" href="<?php echo site_url('user/c_product') ?>">
+                <a class="colTemplate navMenu active" href="<?php echo site_url('user/C_product') ?>">
                     <div>MEN</div>
                 </a>
                 <a class="colTemplate navMenu" href="#">
@@ -79,10 +77,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <a class="colTemplate navMenu" href="#">
                     <div>ACCESSORIES</div>
                 </a>
-                <a class="colTemplate navMenu" href="<?php echo site_url('user/c_productdetail') ?>">
+                <a class="colTemplate navMenu" href="<?php echo site_url('user/C_productdetail') ?>">
                     <div>STRAP</div>
                 </a>
-                <a class="colTemplate navMenu" href="<?php echo site_url('user/c_about') ?>">
+                <a class="colTemplate navMenu" href="<?php echo site_url('user/C_about') ?>">
                     <div>WATCH BOX</div>
                 </a>
                 <div class="colTemplate"></div>

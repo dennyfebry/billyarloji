@@ -1,3 +1,5 @@
+/* Product Detail Slider */
+
 .slider-wrapper {
 	position: relative;
 }
@@ -84,4 +86,145 @@
 .demo:hover {
 	opacity: 1;
 	border: 2px solid #8b7347;
+}
+
+/* Vertical Slider */
+.swiper-container.vertical-container {
+	width: 100%;
+	height: 250px;
+}
+
+.swiper-wrapper.vertical-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: flex;
+	transition-property: transform;
+	box-sizing: content-box;
+}
+
+.swiper-slide.vertical-wrapper {
+	text-align: center;
+	font-size: 18px;
+	background: transparent;
+	height: 200px;
+	width: auto;
+
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+/* Instagram Feeds Slider */
+.swiper-container.feeds-container {
+	width: calc(100vw - 3em);
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	overflow: hidden;
+	list-style: none;
+	padding: 0;
+	z-index: 1;
+}
+
+.swiper-wrapper.feeds-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: flex;
+	transition-property: transform;
+	box-sizing: content-box;
+}
+
+.swiper-slide.feeds-slide {
+	text-align: center;
+	font-size: 18px;
+	background: transparent;
+	height: 100px;
+	width: auto;
+
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+@media screen and (min-width: 769px) {
+	/* Ipad */
+
+	/* Vertical Slider */
+	.swiper-container.vertical-container {
+		width: 100%;
+		height: 500px;
+	}
+
+	.vertical-image {
+		width: auto;
+		height: 500px;
+	}
+
+	/* Instagram Feeds Slider */
+	.swiper-slide.feeds-slide {
+		height: 200px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	/* Ipad Pro */
+
+	/* Vertical Slider */
+	.swiper-container.vertical-container {
+		width: 100%;
+		height: 375px;
+	}
+
+	.vertical-image {
+		width: 100%;
+		height: 375px;
+	}
+
+	/* Instagram Feeds Slider */
+	.swiper-slide.feeds-slide {
+		height: 200px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	/* Laptop or PC */
+
+	/* Vertical Slider */
+	.swiper-container.vertical-container {
+		width: 100%;
+		height: 500px;
+	}
+
+	.vertical-image {
+		width: 100%;
+		height: 500px;
+	}
+
+	/* Instagram Feeds Slider */
+	.swiper-slide.feeds-slide {
+		height: 200px;
+	}
 }
