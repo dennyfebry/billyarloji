@@ -1,7 +1,8 @@
 /* Product Detail Slider */
-
 .slider-wrapper {
 	position: relative;
+	width: 100%;
+	height: 500px;
 }
 
 .mySlides {
@@ -14,6 +15,8 @@
 
 .slider-border {
 	margin-bottom: 1em;
+	width: 100%;
+	height: auto;
 }
 
 .prev,
@@ -125,9 +128,90 @@
 	align-items: center;
 }
 
+/* Testimoni Slider */
+.swiper-container.testimoni-container {
+	width: calc(100vw - 2em);
+	height: 100%;
+	background: inherit;
+}
+
+.swiper-wrapper.testimoni-wrapper {
+	position: relative;
+	width: 100%;
+	height: 150px;
+	z-index: 1;
+	display: flex;
+	transition-property: transform;
+	box-sizing: content-box;
+}
+
+.swiper-slide.testimoni-slide {
+	font-size: 12px;
+	color: #fff;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 1em 2em;
+}
+
+.swiper-slide.testimoni-slide .title {
+	font-size: 1.5em;
+	font-weight: bold;
+	width: 100%;
+	height: auto;
+}
+
+.swiper-slide.testimoni-slide .subtitle {
+	font-size: 1.5em;
+}
+
+.swiper-slide.testimoni-slide .text {
+	font-size: 12px;
+	max-width: 100%;
+	line-height: 1.75em;
+}
+
+.swiper-button-next.testimoni-next:after,
+.swiper-button-prev.testimoni-prev:after {
+	font-family: swiper-icons;
+	font-size: 2em;
+	text-transform: none !important;
+	letter-spacing: 0;
+	text-transform: none;
+	font-variant: initial;
+}
+
+.testimoni-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.swiper-button-next.testimoni-next,
+.swiper-button-prev.testimoni-prev {
+	position: absolute;
+	top: 50%;
+	height: var(--swiper-navigation-size);
+	width: auto;
+	margin-top: calc(-1 * var(--swiper-navigation-size) / 2);
+	z-index: 10;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--swiper-navigation-color, var(--swiper-theme-color));
+}
+
+.swiper-button-next.testimoni-next {
+	right: 0;
+}
+
+.swiper-button-prev.testimoni-prev {
+	left: 0;
+}
+
 /* Instagram Feeds Slider */
 .swiper-container.feeds-container {
-	width: calc(100vw - 3em);
+	width: calc(100vw - 2em);
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
@@ -183,13 +267,24 @@
 		height: 500px;
 	}
 
+	/* Testimoni Slider */
+	.swiper-container.testimoni-container {
+		width: calc(100vw - 3em);
+		height: 100%;
+		background: inherit;
+	}
+
 	/* Instagram Feeds Slider */
+	.swiper-container.feeds-container {
+		width: calc(100vw - 3em);
+	}
+
 	.swiper-slide.feeds-slide {
 		height: 200px;
 	}
 }
 
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 	/* Ipad Pro */
 
 	/* Vertical Slider */
@@ -203,13 +298,24 @@
 		height: 375px;
 	}
 
+	/* Testimoni Slider */
+	.swiper-container.testimoni-container {
+		width: calc(100vw - 2em);
+		height: 100%;
+		background: inherit;
+	}
+
 	/* Instagram Feeds Slider */
+	.swiper-container.feeds-container {
+		width: calc(100vw - 2em);
+	}
+
 	.swiper-slide.feeds-slide {
 		height: 200px;
 	}
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
 	/* Laptop or PC */
 
 	/* Vertical Slider */
@@ -223,7 +329,18 @@
 		height: 500px;
 	}
 
+	/* Testimoni Slider */
+	.swiper-container.testimoni-container {
+		width: calc(100vw - 3em);
+		height: 100%;
+		background: inherit;
+	}
+
 	/* Instagram Feeds Slider */
+	.swiper-container.feeds-container {
+		width: calc(100vw - 3em);
+	}
+
 	.swiper-slide.feeds-slide {
 		height: 200px;
 	}
