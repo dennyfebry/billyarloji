@@ -12,24 +12,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <div class="row container mb-5">
         <div>
             <ul class="thumbnails row">
-                <?php for ($i=0; $i < 16; $i++): ?>
-                <li class="mix web productColumn">
-                    <div class="thumbnail">
-                        <div class="productImage">
-                            <img src="<?php echo base_url(); ?>assets/images/products/jam.jpg" alt="project 1">
-                            <a href="<?php echo site_url('user/c_productdetail') ?>" class="more show_hide">
-                                <i class="icon-plus"></i>
-                            </a>
+                <?php foreach ($product as $row) { ?>
+                    <li class="mix web productColumn">
+                        <div class="thumbnail">
+                            <div class="productImage">
+                                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" alt="<?php echo $row->name ?>">
+                                <a href="<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->category_id; ?>/<?php echo $row->brand_id; ?>" class="more show_hide">
+                                    <i class="icon-plus"></i>
+                                </a>
+                            </div>
+                            <div class="mask"></div>
+                            <div class="productTitle">
+                                <h5 class='productName'><?php echo $row->name ?></h5>
+                                <?php if ($row->discount == 0) { ?>
+                                    <h5 class='price'>Rp.<?php echo number_format($row->price, 2, ',', '.') ?></h5>
+                                <?php } else {
+                                    $total = $row->price - (($row->price * $row->discount) / 100); ?>
+                                    <h5 class='price'>Rp.<?php echo number_format($total, 2, ',', '.') ?></h5>
+                                    <h5 class='discount'>Rp.<?php echo number_format($row->price, 2, ',', '.') ?></h5>
+                                <?php } ?>
+                            </div>
                         </div>
-                        <div class="mask"></div>
-                        <div class="productTitle">
-                            <h5 class='productName'>Alvin <?= $i?> label </h5>
-                            <h5 class='price'>Rp. 2.000.000</h5>
-                            <h5 class='discount'>Rp. 3.500.000</h5>
-                        </div>
-                    </div>
-                </li>
-                <?php endfor; ?>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

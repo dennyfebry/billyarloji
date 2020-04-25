@@ -1,30 +1,49 @@
-<?php
-defined('BASEPATH') or exit('No direct script access allowed');
-?>
-
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/slider.css" />
 
 <div>
     <div class="slider-wrapper">
         <div class="slider-border">
-            <?php for ($i=1; $i <= 5; $i++): ?>
             <div class="mySlides">
-                <div class="numbertext"><?php echo $i; ?> / 5</div>
-                <img src="<?php echo base_url(); ?>upload/product/<?php echo $i ?>.jpg" style="width:100%">
+                <div class="numbertext">1 / 5</div>
+                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images; ?>" style="width:100%">
             </div>
-            <?php endfor; ?>
+            <div class="mySlides">
+                <div class="numbertext">2 / 5</div>
+                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_front; ?>" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">3 / 5</div>
+                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_side; ?>" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">4 / 5</div>
+                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_top; ?>" style="width:100%">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">5 / 5</div>
+                <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_detail; ?>" style="width:100%">
+            </div>
         </div>
 
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
 
         <div class="slider-row">
-            <?php for ($i=1; $i <= 5; $i++): ?>
             <div class="slider-column">
-                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $i ?>.jpg"
-                    style="width:100%" onclick="currentSlide(<?php echo $i ?>);" alt="Product">
+                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $row->images; ?>" style="width:100%" onclick="currentSlide(1);" alt="Product">
             </div>
-            <?php endfor; ?>
+            <div class="slider-column">
+                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_front; ?>" style="width:100%" onclick="currentSlide(2);" alt="Product">
+            </div>
+            <div class="slider-column">
+                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_side; ?>" style="width:100%" onclick="currentSlide(3);" alt="Product">
+            </div>
+            <div class="slider-column">
+                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_top; ?>" style="width:100%" onclick="currentSlide(4);" alt="Product">
+            </div>
+            <div class="slider-column">
+                <img class="demo cursor" src="<?php echo base_url(); ?>upload/product/<?php echo $row->images_detail; ?>" style="width:100%" onclick="currentSlide(5);" alt="Product">
+            </div>
         </div>
     </div>
 </div>

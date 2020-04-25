@@ -70,4 +70,11 @@ class M_category extends CI_Model
     {
         return $this->db->delete($this->table, array("id" => $id));
     }
+
+    public function getMenu()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        return $this->db->get()->result();
+    }
 }

@@ -82,4 +82,12 @@ class M_brand extends CI_Model
     {
         return $this->db->delete($this->table, array("id" => $id));
     }
+
+    public function getBrand($category_id)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('category_id', $category_id);
+        return $this->db->get()->result();
+    }
 }

@@ -314,4 +314,13 @@ class M_product extends CI_Model
         $query = $this->db->query($sql);
         return $query;
     }
+
+    public function getProduct($category_id, $brand_id)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('category_id', $category_id);
+        $this->db->where('brand_id', $brand_id);
+        return $this->db->get()->result();
+    }
 }
