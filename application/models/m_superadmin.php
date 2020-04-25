@@ -43,7 +43,6 @@ class M_superadmin extends CI_Model
     public function getAll()
     {
         return $this->db->query("SELECT * FROM $this->table")->result();
-        // return $this->db->get($this->table)->result();
     }
 
     public function count()

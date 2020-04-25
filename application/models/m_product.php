@@ -18,11 +18,11 @@ class M_product extends CI_Model
     public $completeness;
     public $price;
     public $discount;
-    public $images = "default.jpg";
-    public $images_front = "default.jpg";
-    public $images_side = "default.jpg";
-    public $images_top = "default.jpg";
-    public $images_detail = "default.jpg";
+    public $images;
+    public $images_front;
+    public $images_side;
+    public $images_top;
+    public $images_detail;
     public $url;
     public $created_date;
     public $created_by;
@@ -109,7 +109,6 @@ class M_product extends CI_Model
 
     public function getAll()
     {
-        // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
         $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
@@ -152,34 +151,6 @@ class M_product extends CI_Model
         $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
-
-        // $config['upload_path'] = './upload/product/'; //path folder
-        // $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        // $config['max_size']             = 2048; // 2MB
-
-        // $j = 1;
-        // for ($i = 1; $i <= 5; $i++) {
-        //     $config['file_name']            = $this->name . '_' . $this->type . '_';
-        //     // $config['overwrite']            = true;
-        //     $this->load->library('upload', $config);
-        //     if (!empty($_FILES['images' . $i]['name'])) {
-        //         if (!$this->upload->do_upload('images' . $i)) {
-        //             $this->upload->display_errors();
-        //         } else {
-        //             if ($i < 2) {
-        //                 $text = 'images' . $i;
-        //                 $this->$text = $config['file_name'];
-        //             } else {
-        //                 $text = 'images' . $i;
-        //                 $this->$text = $config['file_name'] . $j;
-        //                 $j++;
-        //             }
-        //         }
-        //     }
-        //     // print_r($this->upload->do_upload('images' . $i));
-        //     var_dump($config);
-        //     echo "<br><br><br>";
-        // }
         $this->images = $this->_uploadImage();
         $this->images_front = $this->_uploadImage_front();
         $this->images_side = $this->_uploadImage_side();

@@ -53,40 +53,40 @@ $route['default_controller'] = 'Website';
 $route['404_override'] = 'error404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin'] = 'Content/C_dashboard';
-$route['admin/(:any)'] = "Content/C_dashboard/$1";
+$route['admin'] = 'content/C_dashboard';
+$route['admin/(:any)'] = 'content/C_dashboard/$1';
 
-$route['login'] = 'Content/C_login/login';
-$route['logout'] = 'Content/C_login/logout';
-$route['validation'] = 'Content/C_login/validation';
+$route['login'] = 'content/C_login/login';
+$route['logout'] = 'content/C_login/logout';
+$route['validation'] = 'content/C_login/validation';
 
-$route['category'] = 'Content/C_category';
-$route['category/(:any)'] = "Content/C_category/$1";
-$route['category/(:any)/(:any)'] = "Content/C_category/$1/$2";
+$route['category'] = 'content/C_category';
+$route['category/(:any)'] = 'content/C_category/$1';
+$route['category/(:any)/(:any)'] = 'content/C_category/$1/$2';
 
-$route['brand'] = 'Content/C_brand';
-$route['brand/(:any)'] = "Content/C_brand/$1";
-$route['brand/(:any)/(:any)'] = "Content/C_brand/$1/$2";
+$route['brand'] = 'content/C_brand';
+$route['brand/(:any)'] = 'content/C_brand/$1';
+$route['brand/(:any)/(:any)'] = 'content/C_brand/$1/$2';
 
-$route['product'] = 'Content/C_product';
-$route['product/(:any)'] = "Content/C_product/$1";
-$route['product/(:any)/(:any)'] = "Content/C_product/$1/$2";
+$route['product'] = 'content/C_product';
+$route['product/(:any)'] = 'content/C_product/$1';
+$route['product/(:any)/(:any)'] = 'content/C_product/$1/$2';
 
-$route['slider'] = 'Content/C_slider';
-$route['slider/(:any)'] = "Content/C_slider/$1";
-$route['slider/(:any)/(:any)'] = "Content/C_slider/$1/$2";
+$route['slider'] = 'content/C_slider';
+$route['slider/(:any)'] = 'content/C_slider/$1';
+$route['slider/(:any)/(:any)'] = 'content/C_slider/$1/$2';
 
-$route['testimoni'] = 'Content/C_testimoni';
-$route['testimoni/(:any)'] = "Content/C_testimoni/$1";
-$route['testimoni/(:any)/(:any)'] = "Content/C_testimoni/$1/$2";
+$route['testimoni'] = 'content/C_testimoni';
+$route['testimoni/(:any)'] = 'content/C_testimoni/$1';
+$route['testimoni/(:any)/(:any)'] = 'content/C_testimoni/$1/$2';
 
-$route['about'] = 'Content/C_footer/about';
-$route['store'] = 'Content/C_footer/store';
-$route['buy'] = 'Content/C_footer/buy';
-$route['social'] = 'Content/C_footer/social';
-$route['social/(:any)'] = "Content/C_footer/$1";
-$route['social/(:any)/(:any)'] = "Content/C_footer/$1/$2";
+$route['about'] = 'content/C_footer/about';
+$route['store'] = 'content/C_footer/store';
+$route['buy'] = 'content/C_footer/buy';
+$route['social'] = 'content/C_footer/social';
+$route['social/(:any)'] = 'content/C_footer/$1';
+$route['social/(:any)/(:any)'] = 'content/C_footer/$1/$2';
 
-$route['superadmin'] = 'Content/C_superadmin';
-$route['superadmin/(:any)'] = "Content/C_superadmin/$1";
-$route['superadmin/(:any)/(:any)'] = "Content/C_superadmin/$1/$2";
+$route['superadmin'] = 'content/C_superadmin';
+$route['superadmin/(:any)'] = 'content/C_superadmin/$1';
+$route['superadmin/(:any)/(:any)'] = 'content/C_superadmin/$1/$2';

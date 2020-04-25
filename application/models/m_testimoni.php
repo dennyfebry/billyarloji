@@ -31,7 +31,6 @@ class M_testimoni extends CI_Model
 
     public function getAll()
     {
-        // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id ")->result();
         $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');

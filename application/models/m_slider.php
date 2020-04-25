@@ -107,7 +107,6 @@ class M_slider extends CI_Model
         if ($this->upload->do_upload('images')) {
             return $this->upload->data("file_name");
         }
-        // print_r($this->upload->display_errors());
         return "default.jpg";
     }
 
