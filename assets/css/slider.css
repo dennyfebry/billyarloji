@@ -2,7 +2,7 @@
 .slider-wrapper {
 	position: relative;
 	width: 100%;
-	height: 500px;
+	max-height: 500px;
 }
 
 .mySlides {
@@ -138,7 +138,7 @@
 .swiper-wrapper.testimoni-wrapper {
 	position: relative;
 	width: 100%;
-	height: 150px;
+	max-height: 150px;
 	z-index: 1;
 	display: flex;
 	transition-property: transform;
@@ -259,12 +259,12 @@
 	/* Vertical Slider */
 	.swiper-container.vertical-container {
 		width: 100%;
-		height: 500px;
+		max-height: 500px;
 	}
 
 	.vertical-image {
 		width: auto;
-		height: 500px;
+		max-height: 500px;
 	}
 
 	/* Testimoni Slider */
@@ -280,7 +280,7 @@
 	}
 
 	.swiper-slide.feeds-slide {
-		height: 200px;
+		max-height: 200px;
 	}
 }
 
@@ -290,12 +290,12 @@
 	/* Vertical Slider */
 	.swiper-container.vertical-container {
 		width: 100%;
-		height: 375px;
+		max-height: 375px;
 	}
 
 	.vertical-image {
 		width: 100%;
-		height: 375px;
+		max-height: 375px;
 	}
 
 	/* Testimoni Slider */
@@ -311,7 +311,7 @@
 	}
 
 	.swiper-slide.feeds-slide {
-		height: 200px;
+		max-height: 200px;
 	}
 }
 

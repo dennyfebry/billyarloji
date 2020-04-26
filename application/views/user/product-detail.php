@@ -1,8 +1,7 @@
-<?php foreach ($product as $row) { ?>
     <div>
         <!-- Product Title -->
         <div class="productRow watchTitle">
-            <span> <?php echo $row->name . " " . $row->movement . " " . $row->material; ?></span>
+            <span> <?php echo $product->name . " " . $product->movement . " " . $product->material; ?></span>
         </div>
         <div class='productRow container'>
             <div class="productRow">
@@ -32,15 +31,15 @@
                                 </tr>
                                 <tr>
                                     <th>Model</th>
-                                    <td><?php echo $row->model; ?></td>
+                                    <td><?php echo $product->model; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Type</th>
-                                    <td><?php echo $row->type; ?></td>
+                                    <td><?php echo $product->type; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Diameter</th>
-                                    <td><?php echo $row->diameter; ?></td>
+                                    <td><?php echo $product->diameter; ?></td>
                                 </tr>
                             </table>
                         </div>
@@ -48,26 +47,26 @@
                             <table class='tableProduct'>
                                 <tr>
                                     <th>Movement</th>
-                                    <td><?php echo $row->movement; ?></td>
+                                    <td><?php echo $product->movement; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Material</th>
-                                    <td><?php echo $row->material; ?></td>
+                                    <td><?php echo $product->material; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Condition</th>
-                                    <td><?php echo $row->condition_product; ?></td>
+                                    <td><?php echo $product->condition_product; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Completeness</th>
-                                    <td><?php echo $row->completeness; ?></td>
+                                    <td><?php echo $product->completeness; ?></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <div class='productRow p-1 priceBuy'>
                         <button type="button" class='btn btn-buy btn-block'>
-                            Rp.<?php echo number_format($row->price, 2, ',', '.') ?>
+                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
                             <i class="fa fa-shopping-cart"></i>
                         </button>
                     </div>
@@ -100,4 +99,3 @@
             </div>
         </div>
     </div>
-<?php } ?>

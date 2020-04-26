@@ -1,0 +1,36 @@
+.simple-pagination ul {
+	margin: 0 0 20px;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.simple-pagination li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.simple-pagination li a,
+.simple-pagination li span {
+    color: #8b7347;
+	padding: 5px 10px;
+	text-decoration: none;
+	border: 1px solid transparent;
+}
+
+.simple-pagination {
+	color: #8b7347;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.simple-pagination .active .current {
+	color: #fff;
+	background-color: transparent;
+	border-color: #8b7347;
+}
+
+.simple-pagination .prev.current,
+.simple-pagination .next.current {
+	background: transparent;
+}
