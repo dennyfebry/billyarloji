@@ -8,10 +8,19 @@ class Website extends CI_Controller
 		parent::__construct();
 		$this->load->model('m_category', 'ctg');
 		$this->load->model('m_brand', 'brn');
+		$this->load->model('m_testimoni', 'tes');
+		$this->load->model('m_slider', 'sli');
+		$this->load->model('m_footer', 'foo');
 	}
 
 	public function index()
 	{
+		$data['testimoni'] = $this->tes->getAll();
+		$data['slider'] = $this->sli->getSlider();
+		$data['about'] = $this->foo->getById(1);
+		$data['store'] = $this->foo->getById(2);
+		$data['buy'] = $this->foo->getById(3);
+		$data['social'] = $this->foo->getAll();
 		$data['category'] = "";
 		$data['titlepage'] = "Home";
 		$data['page'] = "home";

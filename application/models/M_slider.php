@@ -38,7 +38,6 @@ class M_slider extends CI_Model
 
     public function getAll()
     {
-        // return $this->db->query("SELECT * FROM $this->table LEFT JOIN tb_admin ON $this->table.updated_by = tb_admin.id")->result();
         $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
@@ -117,5 +116,13 @@ class M_slider extends CI_Model
             $filename = explode(".", $product->image)[0];
             return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
         }
+    }
+
+    public function getSlider()
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('status', 1);
+        return $this->db->get()->result();
     }
 }

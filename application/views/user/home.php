@@ -13,10 +13,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <div class="productColumn-10 productColumn-9-md productColumn-9-lg">
             <div class="swiper-container vertical-container">
                 <div class="swiper-wrapper vertical-wrapper">
-                    <?php for ($i=0; $i <10 ; $i++) { ?>
-                    <div class="swiper-slide vertical-slide">
-                        <img class='vertical-image' src="<?php echo base_url(); ?>upload/product/1.jpg">
-                    </div>
+                    <?php foreach ($slider as $row) { ?>
+                        <div class="swiper-slide vertical-slide">
+                            <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>">
+                        </div>
                     <?php } ?>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -36,15 +36,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="swiper-container testimoni-container">
                 <div data-swiper-parallax="-23%"></div>
                 <div class="swiper-wrapper testimoni-wrapper">
-                    <?php for ($i=0; $i <10 ; $i++) { ?>
-                    <div class="swiper-slide testimoni-slide row">
-                        <div class="title brown-text" data-swiper-parallax="-300">Testimoni <?php echo $i+1 ?></div>
-                        <div class="text" data-swiper-parallax="-100">
-                            <p> &#65282;Barang mantab, pengiriman oke, tokcer deh! Barang mantab, pengiriman oke,
-                                tokcer deh! Barang mantab, pengiriman oke, tokcer deh!
-                                &#65282;</p>
+                    <?php foreach ($testimoni as $row) { ?>
+                        <div class="swiper-slide testimoni-slide row">
+                            <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
+                            <div class="text" data-swiper-parallax="-100">
+                                <?php echo $row->description ?>
+                            </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
                 <div class="swiper-button-prev swiper-button-white testimoni-prev"></div>
@@ -64,10 +62,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- <div class="row"> -->
             <div class="swiper-container feeds-container">
                 <div class="swiper-wrapper feeds-wrapper">
-                    <?php for ($i=0; $i <10 ; $i++) { ?>
-                    <div class="swiper-slide feeds-slide">
-                        <img class='feeds-image' src="<?php echo base_url(); ?>upload/product/2.jpg">
-                    </div>
+                    <?php for ($i = 0; $i < 10; $i++) { ?>
+                        <div class="swiper-slide feeds-slide">
+                            <img class='feeds-image' src="<?php echo base_url(); ?>upload/product/2.jpg">
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -83,28 +81,42 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <span class="brown-text pr-03 float-right">ABOUT</span>
                 <span class="float-right">US</span>
             </div>
-            <div class='row p-1' style='height: 100px'></div>
+            <div class='row p-1' style='height: 100px'><?php echo $about->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-right">OUR</span>
                 <span class="float-right">STORE</span>
             </div>
-            <div class='row p-1' style='height: 100px'></div>
+            <div class='row p-1' style='height: 100px'><?php echo $store->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-left">HOW</span>
                 <span class="float-left">TO BUY</span>
             </div>
-            <div class='row p-1' style='height: 100px'></div>
+            <div class='row p-1' style='height: 100px'><?php echo $buy->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-left">SOCIAL</span>
                 <span class="float-left">MEDIA</span>
             </div>
-            <div class='row p-1' style='height: 100px'></div>
+            <div class='p-1' style='height: 100px;text-align: left;'>
+                <?php foreach ($social as $row) {
+                    if ($row->id > 3) {
+                        $soc = strtolower($row->title);
+                        if ($soc == 'instagram') {
+                            echo "<a style='color:white;' href='" . $row->description . "'><i class='fa fa-instagram' aria-hidden='true'></i> " . $row->title . "</a>";
+                        } else if ($soc == 'facebook') {
+                            echo "<a style='color:white;' href='" . $row->description . "'><i class='fa fa-facebook' aria-hidden='true'></i> " . $row->title . "</a>";
+                        } else if ($soc == 'twitter') {
+                            echo  "<a style='color:white;' href='" . $row->description . "'><i class='fa fa-twitter' aria-hidden='true'></i> " . $row->title . "</a>";
+                        }
+                        echo "<br>";
+                    }
+                } ?>
+            </div>
         </div>
     </div>
     <!-- End Footer Section -->
@@ -114,47 +126,47 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/swiper.min.js"></script>
 
 <script>
-// Vertical Swiper JS
-var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
-    direction: 'vertical',
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Vertical Swiper JS
+    var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
+        direction: 'vertical',
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 
-// Testimoni Swiper JS
-var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
-    speed: 600,
-    parallax: true,
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Testimoni Swiper JS
+    var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
+        speed: 600,
+        parallax: true,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 
-// Instagram Feeds Swiper JS
-var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
-    slidesPerView: 4,
-    spaceBetween: 10,
-    loop: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Instagram Feeds Swiper JS
+    var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 </script>

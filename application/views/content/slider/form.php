@@ -81,7 +81,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images">Images</label>
-                                    <input type="file" class="form-control" name="images" value="<?php echo $images; ?>" required>
+                                    <input type="file" class="form-control" name="images" value="<?php echo $images; ?>">
                                     <?php echo form_error('images') ?>
                                     <div class="invalid-feedback">
                                         Please choose a images.

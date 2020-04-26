@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
+$testimoni = $this->tes->getAll();
 ?>
 
 <!DOCTYPE html>
@@ -106,15 +107,12 @@ $menu = $this->ctg->getMenu();
                     <div class="modal-body row">
                         <div class="productColumn-3">
                             <div class="tab br-white">
-                                <button class="tablinks" onclick="openCity(event, '1')" id="defaultOpen">MEN</button>
-                                <button class="tablinks" onclick="openCity(event, '2')" id="defaultOpen">LADIES</button>
-                                <button class="tablinks" onclick="openCity(event, '3')" id="defaultOpen">COUPLE
-                                    WATCH</button>
-                                <button class="tablinks" onclick="openCity(event, '3')" id="defaultOpen">JEWELRY</button>
-                                <button class="tablinks" onclick="openCity(event, '5')" id="defaultOpen">ACCESSORIES</button>
-                                <button class="tablinks" onclick="openCity(event, '6')" id="defaultOpen">STRAP</button>
-                                <button class="tablinks" onclick="openCity(event, '7')" id="defaultOpen">WATCH
-                                    BOX</button>
+                                <?php
+                                $i = 1;
+                                foreach ($menu as $row) { ?>
+                                    <button class="tablinks" onclick="openCity(event, '<?= $i ?>')" id="defaultOpen"><?php echo $row->category; ?></button>
+                                <?php $i++;
+                                } ?>
                             </div>
                         </div>
                         <div class="productColumn-6">
