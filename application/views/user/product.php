@@ -39,14 +39,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="productImage">
                             <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>"
                                 alt="<?php echo $row->name ?>">
-                            <a href="<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->category_id; ?>/<?php echo $row->brand_id; ?>/<?php echo $row->id ?>"
+                            <a href="<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->id ?>"
                                 class="more show_hide">
                                 <i class="icon-plus"
-                                    onclick="location.href='<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->category_id; ?>/<?php echo $row->brand_id; ?>/<?php echo $row->id ?>'"></i>
+                                    onclick="location.href='<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->id ?>'"></i>
                             </a>
                         </div>
                         <div class="mask"
-                            onclick="location.href='<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->category_id; ?>/<?php echo $row->brand_id; ?>/<?php echo $row->id ?>'">
+                            onclick="location.href='<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->id ?>'">
                         </div>
                         <div class="productTitle">
                             <h5 class='productName'><?php echo $row->name ?></h5>

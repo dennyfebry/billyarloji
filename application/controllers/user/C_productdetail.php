@@ -18,12 +18,13 @@ class C_productdetail extends CI_Controller
         $this->load->view('user/template', $data);
     }
 
-    public function detail($category_id, $brand_id,$product_id)
+    public function detail($product_id)
     {
-        $category = $this->ctg->getById($category_id);
-        $brand = $this->brn->getById($brand_id);
-        $data['product'] = $this->prd->getById($product_id);
+        $product = $this->prd->getById($product_id);
+        $category = $this->ctg->getById($product->category_id);
+        $brand = $this->brn->getById($product->brand_id);
 
+        $data['product'] = $product;
         $data['category'] = $category->category;
         $data['brandname'] = $brand->brand;
         $data['titlepage'] = "Product Detail - " . $brand->brand;
