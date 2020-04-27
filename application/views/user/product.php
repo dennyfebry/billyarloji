@@ -51,14 +51,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </div>
                         <div class="productTitle">
                             <h5 class='productName'><?php echo $row->name ?></h5>
-                            <?php if ($row->discount == 0) { ?>
-                            <h5 class='price' style="border-radius: 0 0 10px 10px">
-                                Rp.<?php echo number_format($row->price, 2, ',', '.') ?></h5>
-                            <?php } else {
-                                        $total = $row->price - (($row->price * $row->discount) / 100); ?>
-                            <h5 class='price'>Rp.<?php echo number_format($total, 2, ',', '.') ?></h5>
-                            <h5 class='discount'>Rp.<?php echo number_format($row->price, 2, ',', '.') ?></h5>
-                            <?php } ?>
+                            <h5 class='price'>Rp.<?php if($row->discount != 0) {
+                                $total = $row->price - (($row->price * $row->discount) / 100);
+                                echo number_format($total, 2, ',', '.');
+                                } else {
+                                   echo number_format($row->price, 2, ',', '.'); 
+                                } ?></h5>
+                            <h5 class='discount'>
+                                <?php if ($row->discount != 0)  {echo "Rp.",number_format($row->price, 2, ',', '.');} ?>
+                            </h5>
                         </div>
                     </div>
                 </li>
