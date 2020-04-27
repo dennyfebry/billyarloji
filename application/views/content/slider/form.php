@@ -83,6 +83,7 @@ if ($content == "Edit") {
                                     <label for="Images">Images</label>
                                     <input type="file" class="form-control" name="images" value="<?php echo $images; ?>">
                                     <?php echo form_error('images') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>

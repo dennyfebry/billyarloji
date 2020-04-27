@@ -70,9 +70,9 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('product') ?>" <?php if ($titlepage == "Product") {
-                                                                    echo "class='mm-active'";
-                                                                } ?>>
+                    <a href="<?php echo site_url('list_product') ?>" <?php if ($titlepage == "Product") {
+                                                                            echo "class='mm-active'";
+                                                                        } ?>>
                         <i class="metismenu-icon pe-7s-cart"></i>
                         Product
                     </a>

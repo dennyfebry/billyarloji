@@ -8,6 +8,7 @@ class M_footer extends CI_Model
     public $mark;
     public $title;
     public $description;
+    public $link;
     public $updated_date;
     public $updated_by;
 
@@ -83,7 +84,7 @@ class M_footer extends CI_Model
 
     public function getSocialMedia()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.link, ' . $this->table . '.updated_date, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
         $this->db->where($this->table . '.mark =', 'social');
@@ -98,6 +99,7 @@ class M_footer extends CI_Model
         $this->mark = $post["mark"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->link = $post["link"];
         return $this->db->insert($this->table, $this);
     }
 
@@ -110,6 +112,7 @@ class M_footer extends CI_Model
         $this->mark = $post["mark"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->link = $post["link"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 

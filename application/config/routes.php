@@ -53,6 +53,22 @@ $route['default_controller'] = 'Website';
 $route['404_override'] = 'error404';
 $route['translate_uri_dashes'] = FALSE;
 
+//User
+$route['home'] = 'Website';
+
+$route['product'] = 'user/C_product/product';
+$route['product/(:any)'] = 'user/C_product/product/$1';
+$route['product/(:any)/(:any)'] = 'user/C_product/product/$1/$2';
+
+$route['product_detail'] = 'user/C_productdetail/detail';
+$route['product_detail/(:any)'] = 'user/C_productdetail/detail/$1';
+$route['product_detail/(:any)/(:any)'] = 'user/C_productdetail/detail/$1/$2';
+
+
+
+
+
+//Admin
 $route['admin'] = 'content/C_dashboard';
 $route['admin/(:any)'] = 'content/C_dashboard/$1';
 
@@ -68,9 +84,9 @@ $route['brand'] = 'content/C_brand';
 $route['brand/(:any)'] = 'content/C_brand/$1';
 $route['brand/(:any)/(:any)'] = 'content/C_brand/$1/$2';
 
-$route['product'] = 'content/C_product';
-$route['product/(:any)'] = 'content/C_product/$1';
-$route['product/(:any)/(:any)'] = 'content/C_product/$1/$2';
+$route['list_product'] = 'content/C_product';
+$route['list_product/(:any)'] = 'content/C_product/$1';
+$route['list_product/(:any)/(:any)'] = 'content/C_product/$1/$2';
 
 $route['slider'] = 'content/C_slider';
 $route['slider/(:any)'] = 'content/C_slider/$1';

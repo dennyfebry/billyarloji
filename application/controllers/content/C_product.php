@@ -38,7 +38,7 @@ class C_product extends CI_Controller
         if ($validation->run()) {
             $product->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('product');
+            // redirect('list_product');
         }
 
         $data = $this->data;
@@ -62,7 +62,7 @@ class C_product extends CI_Controller
         if ($validation->run()) {
             $product->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('product');
+            // redirect('list_product');
         }
 
         $data = $this->data;
@@ -83,7 +83,7 @@ class C_product extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->ref->delete($id)) {
-            redirect(site_url('product'));
+            redirect(site_url('list_product'));
         }
     }
 
