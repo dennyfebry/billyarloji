@@ -125,7 +125,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                                 <div id="<?= $row->id ?>" class="tabcontent">
                                     <?php $brand = $this->brn->getBrand($row->id);
                                     foreach ($brand as $brands) { ?>
-                                        <button onclick="location.href='<?php echo base_url(); ?>user/C_product/product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>'"><?php echo $brands->brand; ?></button>
+                                        <button onclick="location.href='<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>'"><?php echo $brands->brand; ?></button>
                                     <?php } ?>
                                 </div>
                             <?php } ?>
