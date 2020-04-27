@@ -340,7 +340,7 @@ class M_product extends CI_Model
         $this->db->select("*");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
-        $this->db->where("concat(UPPER(tb_brand.brand),' ', UPPER(" . $this->table . ".name),' ' UPPER(," . $this->table . ".type)) LIKE UPPER(".$searchValue.")");
+        $this->db->where("concat(LOWER(tb_brand.brand),' ',LOWER(". $this->table.".name),' ',LOWER(".$this->table.".type)) LIKE LOWER('%".$searchValue."%')");
         return $this->db->get()->result();
     }
 }

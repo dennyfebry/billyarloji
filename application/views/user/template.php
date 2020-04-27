@@ -48,7 +48,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                 </table>
             </div>
         </div>
-        <div class="row containerMenu" style="width: 100%">
+        <div class="row containerMenu search-sm">
             <form class="search" autocomplete="off">
                 <div class="autocomplete">
                     <input id="searchProduct" type="text" name="searchProduct" placeholder="Product Name ... ">
@@ -212,6 +212,9 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                         b.addEventListener("click", function(e) {
                             inp.value = search
                             closeAllLists();
+                            location.href = "<?php echo base_url(); ?>user/C_product/search/" + inp.value;
+                            console.log('Enter : ', inp.value);
+                            console.log('Enter No Space : ', inp.value.replace(/ +/g, ""));
                         });
                         a.appendChild(b);
                     })
@@ -230,6 +233,9 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                         if (currentFocus > -1) {
                             if (x) x[currentFocus].click();
                         }
+                        location.href = "<?php echo base_url(); ?>user/C_product/search/" + inp.value;
+                        console.log('Enter : ', inp.value);
+                        console.log('Enter No Space : ', inp.value.replace(/ +/g, ""));
                     }
                 });
 

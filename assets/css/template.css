@@ -69,6 +69,22 @@ input[type="text"]#searchProduct {
 	border: 1px solid #e7bd70;
 }
 
+input#searchProduct-lg {
+	width: 100%;
+}
+
+input#searchProduct-lg:focus,
+input#searchProduct-lg:hover {
+	outline: none;
+}
+
+input[type="text"]#searchProduct-lg {
+	margin-bottom: 0;
+	background-color: #131313;
+	color: #e7bd70;
+	border: 1px solid #e7bd70;
+}
+
 .autocomplete-items {
 	position: absolute;
 	border: 1px solid #d4d4d4;
@@ -403,6 +419,10 @@ input[type="text"]#searchProduct {
 	border-right: 1px solid #fff;
 }
 
+.search-sm {
+	width: 100%;
+}
+
 @media screen and (min-width: 768px) {
 	.rowMenu > .colTemplate {
 		flex: 1;
@@ -490,5 +510,17 @@ input[type="text"]#searchProduct {
 	.dropdown-menu > li:hover > a {
 		background: #ffffff;
 		color: #000000;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.search-sm {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	.search-sm {
+		width: 25%;
 	}
 }
