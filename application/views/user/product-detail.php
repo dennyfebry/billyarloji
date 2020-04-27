@@ -65,10 +65,15 @@
                         </div>
                     </div>
                     <div class='productRow p-1 priceBuy'>
-                        <button type="button" class='btn btn-buy btn-block'>
-                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                        <a href="<?php echo $product->url; ?>" target="_blank" type="button" class='btn btn-buy btn-block'>
+                            <?php if ($product->discount == 0) { ?>
+                                Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                            <?php } else {
+                                $total = $product->price - (($product->price * $product->discount) / 100); ?>
+                                Rp.<?php echo number_format($total, 2, ',', '.') ?>
+                            <?php } ?>
                             <i class="fa fa-shopping-cart"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -78,28 +83,7 @@
                         <span> Product Description</span>
                     </div>
                     <div class='p-1 pt-0 paragraph'>
-                        <span>Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup
-                            aktif Anda, koleksi ORIENT
-                            Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus
-                            membangun
-                            gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua
-                            kontrol
-                            QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara
-                            internal.
-                            Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam
-                            khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda
-                            baik
-                            di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup
-                            aktif
-                            anda. <br>
-                            Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa
-                            membuatnya
-                            menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph
-                            sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam
-                            9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan
-                            kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam
-                            dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran
-                            waktu split juga tersedia..</span>
+                        <span><?php echo $product->description; ?></span>
                     </div>
                 </div>
             </div>

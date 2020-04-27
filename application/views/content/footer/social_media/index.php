@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name Social</th>
+                                    <th>Username</th>
                                     <th>URL</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
@@ -45,9 +46,10 @@
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->title ?></td>
                                         <td><?php echo $row->description ?></td>
+                                        <td><?php echo $row->link ?></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
-                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/social/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>social/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                             <a class="mb-2 mr-2 btn btn-danger" href="#deleteSocial<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php

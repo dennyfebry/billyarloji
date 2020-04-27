@@ -95,7 +95,7 @@ class M_slider extends CI_Model
     {
         $config['upload_path']          = './upload/slider/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $this->id;
+        $config['file_name']            = $this->title;
         $config['overwrite']            = true;
         $config['max_size']             = 1024; // 1MB
         // $config['max_width']            = 200;

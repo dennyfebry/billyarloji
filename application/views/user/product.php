@@ -7,17 +7,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <div class="section secondary-section">
     <!-- Product Title -->
     <div class="row watchTitle">
-        <?php 
+        <?php
         if (count($arrBrand) > 1) {
-            for ($i=0; $i < count($arrBrand) ; $i++) { 
-                if($i == 0) { 
+            for ($i = 0; $i < count($arrBrand); $i++) {
+                if ($i == 0) {
                     echo "<span class='brown-text pr-03'>$arrBrand[$i]</span>";
                 } else {
                     echo "<span class='pr-03'>$arrBrand[$i]</span>";
                 }
-            } 
+            }
             if ($category == 'MEN' || $category == 'LADIES') {
-                    echo "<span class='pr-03'>WATCHES</span>";
+                echo "<span class='pr-03'>WATCHES</span>";
             }
         } else {
             echo "<span class='brown-text pr-03'>$arrBrand[0]</span>";
@@ -32,7 +32,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <ul class="thumbnails row">
                 <?php
                 if (count($product) > 0) {
-
                     foreach ($product as $row) { ?>
                 <li class="productColumn">
                     <div class="thumbnail">

@@ -4,6 +4,7 @@ $id = "";
 $mark = "social";
 $title = "";
 $description = "";
+$link = "";
 $updated_date = date("Y-m-d H:i:s");
 $updated_by = $this->session->userdata('id');
 if ($content == "Edit") {
@@ -11,6 +12,7 @@ if ($content == "Edit") {
     $mark = $social->mark;
     $title = $social->title;
     $description = $social->description;
+    $link = $social->link;
     $updated_date = date("Y-m-d H:i:s");
     $updated_by = $this->session->userdata('id');
 }
@@ -69,9 +71,17 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">URL (Link)</label>
+                                    <label for="Description">Username</label>
                                     <input type="text" class="form-control" name="description" placeholder="URL (Link)" value="<?php echo $description; ?>" required>
                                     <?php echo form_error('description') ?>
+                                    <div class="invalid-feedback">
+                                        Please fill in the url/link.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Link">URL (Link)</label>
+                                    <input type="text" class="form-control" name="link" placeholder="URL (Link)" value="<?php echo $link; ?>" required>
+                                    <?php echo form_error('link') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the url/link.
                                     </div>

@@ -16,6 +16,7 @@ class M_product extends CI_Model
     public $material;
     public $condition_product;
     public $completeness;
+    public $description;
     public $price;
     public $discount;
     public $images;
@@ -109,7 +110,7 @@ class M_product extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.description, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
         $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
@@ -148,6 +149,7 @@ class M_product extends CI_Model
         $this->material = $post["material"];
         $this->condition_product = $post["condition_product"];
         $this->completeness = $post["completeness"];
+        $this->description = $post["description"];
         $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
@@ -183,6 +185,7 @@ class M_product extends CI_Model
         $this->material = $post["material"];
         $this->condition_product = $post["condition_product"];
         $this->completeness = $post["completeness"];
+        $this->description = $post["description"];
         $this->url = $post["url"];
         $this->price = $post["price"];
         $this->discount = $post["discount"];
@@ -321,6 +324,23 @@ class M_product extends CI_Model
         $this->db->from($this->table);
         $this->db->where('category_id', $category_id);
         $this->db->where('brand_id', $brand_id);
+        return $this->db->get()->result();
+    }
+
+    public function getProductAutoComplete()
+    {
+        $this->db->select("concat(tb_brand.brand,' ', ". $this->table.".name,' ',".$this->table.".type) as searchProduct,");
+        $this->db->from($this->table);
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        return $this->db->get()->result();
+    }
+
+    public function searchProduct($searchValue)
+    {
+        $this->db->select("*");
+        $this->db->from($this->table);
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        $this->db->where("concat(UPPER(tb_brand.brand),' ', UPPER(" . $this->table . ".name),' ' UPPER(," . $this->table . ".type)) LIKE UPPER(".$searchValue.")");
         return $this->db->get()->result();
     }
 }

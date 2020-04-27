@@ -11,6 +11,7 @@ $movement = "";
 $material = "";
 $condition_product = "";
 $completeness = "";
+$description = "";
 $price = "";
 $discount = "";
 $images = "";
@@ -36,6 +37,7 @@ if ($content == "Edit") {
     $material = $product->material;
     $condition_product = $product->condition_product;
     $completeness = $product->completeness;
+    $description = $product->description;
     $price = $product->price;
     $discount = $product->discount;
     $images = $product->images;
@@ -214,6 +216,14 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
+                                    <label for="Description">Description</label>
+                                    <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
+                                    <?php echo form_error('description') ?>
+                                    <div class="invalid-feedback">
+                                        Please fill in the description.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
                                     <label for="Price">Price</label>
                                     <input type="number" class="form-control" name="price" placeholder="Price" value="<?php echo $price; ?>" required>
                                     <?php echo form_error('price') ?>
@@ -233,6 +243,7 @@ if ($content == "Edit") {
                                     <label for="Images">Images Product Main</label>
                                     <input type="file" class="form-control" name="images" placeholder="Images" value="<?php echo $images; ?>">
                                     <?php echo form_error('images') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -241,6 +252,7 @@ if ($content == "Edit") {
                                     <label for="Images_Front">Images Product Front</label>
                                     <input type="file" class="form-control" name="images_front" placeholder="Images Front" value="<?php echo $images_front; ?>">
                                     <?php echo form_error('images_front') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -249,6 +261,7 @@ if ($content == "Edit") {
                                     <label for="Images_Side">Images Product Side</label>
                                     <input type="file" class="form-control" name="images_side" placeholder="Images Side" value="<?php echo $images_side; ?>">
                                     <?php echo form_error('images_side') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -257,6 +270,7 @@ if ($content == "Edit") {
                                     <label for="Images_Top">Images Product Top</label>
                                     <input type="file" class="form-control" name="images_top" placeholder="Images Top" value="<?php echo $images_top; ?>">
                                     <?php echo form_error('images_top') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -265,6 +279,7 @@ if ($content == "Edit") {
                                     <label for="Images_Detail">Images Product Detail</label>
                                     <input type="file" class="form-control" name="images_detail" placeholder="Images Detail" value="<?php echo $images_detail; ?>">
                                     <?php echo form_error('images_detail') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -273,6 +288,7 @@ if ($content == "Edit") {
                                     <label for="URL">URL/Link</label>
                                     <input type="text" class="form-control" name="url" placeholder="URL/Link" value="<?php echo $url; ?>" required>
                                     <?php echo form_error('url') ?>
+                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>

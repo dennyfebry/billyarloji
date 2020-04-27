@@ -19,7 +19,7 @@
                 <div class="card-header"><?= $titlepage ?>
                     <div class="btn-actions-pane-right">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('product/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('list_product/add') ?>">Add +</a>
                         </div>
                     </div>
                 </div>
@@ -39,6 +39,7 @@
                                     <th>Material</th>
                                     <th>Condition</th>
                                     <th>Completeness</th>
+                                    <th>Description</th>
                                     <th>Price</th>
                                     <th>Discount</th>
                                     <th>Images</th>
@@ -66,6 +67,10 @@
                                         <td><?php echo $row->material ?></td>
                                         <td><?php echo $row->condition_product ?></td>
                                         <td><?php echo $row->completeness ?></td>
+                                        <td>
+                                            <div class="content"><?php echo $row->description ?></div>
+                                            <a href="#" class="show_hide" data-content="toggle-text">Read More</a>
+                                        </td>
                                         <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
                                         <td><?php echo $row->discount ?>%</td>
                                         <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"> <br><br>
@@ -81,7 +86,7 @@
                                             } else {
                                                 echo 'Draft';
                                             } ?></td>
-                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>index.php/product/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                                        <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>list_product/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
                                             <a class="mb-2 mr-2 btn btn-danger" href="#deleteProduct<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
                                     </tr>
                                 <?php
@@ -96,3 +101,32 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var defaultHeight = 220;
+        var text = $(".content");
+        var textHeight = text[0].scrollHeight;
+        var show_hide = $(".show_hide");
+        text.css({
+            "max-height": defaultHeight,
+            "overflow": "hidden"
+        });
+        $(".show_hide").on("click", function() {
+            var newHeight = 0;
+            if (text.hasClass("active")) {
+                newHeight = defaultHeight;
+                text.removeClass("active");
+                $(".show_hide").html("Read More");
+            } else {
+                newHeight = textHeight;
+                text.addClass("active");
+                $(".show_hide").html("Read Less");
+            }
+            text.animate({
+                "max-height": newHeight
+            }, 500);
+            console.log(newHeight);
+        });
+    });
+</script>

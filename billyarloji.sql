@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 19, 2020 at 06:20 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Host: localhost:3306
+-- Waktu pembuatan: 27 Apr 2020 pada 17.21
+-- Versi server: 10.1.43-MariaDB
+-- Versi PHP: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `billyarloji`
+-- Database: `bilk5464_billyarloji`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_admin`
+-- Struktur dari tabel `tb_admin`
 --
 
 CREATE TABLE `tb_admin` (
@@ -38,20 +38,18 @@ CREATE TABLE `tb_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_admin`
+-- Dumping data untuk tabel `tb_admin`
 --
 
 INSERT INTO `tb_admin` (`id`, `name`, `username`, `password`, `last_login`, `role`) VALUES
 (1, 'Super Admin', 'super.admin', 'cf18e01abec026e46d848b53d6084a6944c206ce', '2020-04-17 11:17:30', 1),
 (2, 'Admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', '2020-04-16 00:04:05', 2),
-(3, 'Denny', '1', '356a192b7913b04c54574d18c28d46e6395428ab', '2020-04-19 21:07:51', 1),
-(4, '2', '2', 'da4b9237bacccdf19c0760cab7aec4a8359010b0', '0000-00-00 00:00:00', 2),
-(5, '3', '3', '77de68daecd823babbb58edb1c8e14d7106e83bb', '0000-00-00 00:00:00', 2);
+(3, 'Denny', '1', '356a192b7913b04c54574d18c28d46e6395428ab', '2020-04-27 11:43:07', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_brand`
+-- Struktur dari tabel `tb_brand`
 --
 
 CREATE TABLE `tb_brand` (
@@ -65,7 +63,7 @@ CREATE TABLE `tb_brand` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_brand`
+-- Dumping data untuk tabel `tb_brand`
 --
 
 INSERT INTO `tb_brand` (`id`, `category_id`, `brand`, `created_date`, `created_by`, `updated_date`, `updated_by`) VALUES
@@ -77,12 +75,13 @@ INSERT INTO `tb_brand` (`id`, `category_id`, `brand`, `created_date`, `created_b
 (6, 2, 'ALEXANDER', '2020-04-19 11:25:44', 3, '2020-04-19 11:25:44', 3),
 (7, 1, 'GLASHUTTES MUHLE', '2020-04-19 23:01:22', 3, '2020-04-19 23:01:22', 3),
 (8, 1, 'CASIO', '2020-04-19 23:03:15', 3, '2020-04-19 23:03:15', 3),
-(9, 2, 'ROBERGE', '2020-04-19 23:16:10', 3, '2020-04-19 23:16:10', 3);
+(9, 2, 'ROBERGE', '2020-04-19 23:16:10', 3, '2020-04-19 23:16:10', 3),
+(10, 1, 'GUESS', '2020-04-20 10:04:15', 3, '2020-04-20 10:04:15', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_category`
+-- Struktur dari tabel `tb_category`
 --
 
 CREATE TABLE `tb_category` (
@@ -95,7 +94,7 @@ CREATE TABLE `tb_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_category`
+-- Dumping data untuk tabel `tb_category`
 --
 
 INSERT INTO `tb_category` (`id`, `category`, `created_date`, `created_by`, `updated_date`, `updated_by`) VALUES
@@ -110,33 +109,34 @@ INSERT INTO `tb_category` (`id`, `category`, `created_date`, `created_by`, `upda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_footer`
+-- Struktur dari tabel `tb_footer`
 --
 
 CREATE TABLE `tb_footer` (
   `id` int(11) NOT NULL,
   `mark` varchar(50) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(1500) NOT NULL,
+  `link` varchar(150) NOT NULL,
   `updated_date` datetime NOT NULL,
   `updated_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_footer`
+-- Dumping data untuk tabel `tb_footer`
 --
 
-INSERT INTO `tb_footer` (`id`, `mark`, `title`, `description`, `updated_date`, `updated_by`) VALUES
-(1, 'about', 'About Us', 'about1', '2020-04-19 12:29:44', 3),
-(2, 'store', 'Our Store', 'store1', '2020-04-19 12:37:35', 3),
-(3, 'buy', 'How To Buy', 'buy1', '2020-04-19 12:37:43', 3),
-(4, 'social', 'Instagram', 'https://www.instagram.com/', '2020-04-19 12:54:01', 3),
-(5, 'social', 'Twitter', 'https://twitter.com/', '2020-04-19 12:54:22', 3);
+INSERT INTO `tb_footer` (`id`, `mark`, `title`, `description`, `link`, `updated_date`, `updated_by`) VALUES
+(1, 'about', 'About Us', '<p style=\"text-align: left;\">All Original , Branded , 2nd Hand Good Condition</p><ul><li style=\"text-align: left;\">Women\'s Watches @arlojiperempuan<br></li><li style=\"text-align: left;\">Lelang Arloji Original @lelangarlojikita (Coming Soon)</li></ul><p style=\"text-align: left;\"><a class=\"yLUwa\" href=\"https://l.instagram.com/?u=http%3A%2F%2Flinktr.ee%2Farlojilakilaki&e=ATOacX1UB91UmWFWkY6GJwQcP9BOqXROhFjFf59LvE_eDfkyB93kb0N-ziiTFfA4O9agwJXmrKNfxI2K&s=1\" page_id=\"profilePage\" rel=\"me nofollow noopener noreferrer\" target=\"_blank\" style=\"font-size: 1rem; margin: 0px; padding: 0px; border: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-weight: 600; font-stretch: inherit; line-height: inherit; font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif; vertical-align: baseline; color: rgba(var(--fe0,0,55,107),1); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background-color: rgb(250, 250, 250); display: inline !important;\">linktr.ee/arlojilakilaki</a></p>', '', '2020-04-27 14:36:15', 3),
+(2, 'store', 'Our Store', 'Jakarta', '', '2020-04-27 13:49:14', 3),
+(3, 'buy', 'How To Buy', '<ul><li style=\"text-align: left;\">Pilih jam yang kalian suka</li><li style=\"text-align: left;\">Klik linktree yang ada pada bio kita</li><li style=\"text-align: left;\">Pilih salah satu marketplace yang kalian mau</li><li style=\"text-align: left;\">Whatsapp (Chat lalu transfer langsung)</li><li style=\"text-align: left;\">Tokopedia (Melalui proses)</li></ul>', '', '2020-04-27 14:32:41', 3),
+(4, 'social', 'Instagram', '@arlojilakilaki', 'https://www.instagram.com/', '2020-04-19 12:54:01', 3),
+(5, 'social', 'Twitter', '@arlojilakilaki', 'https://twitter.com/', '2020-04-19 12:54:22', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_product`
+-- Struktur dari tabel `tb_product`
 --
 
 CREATE TABLE `tb_product` (
@@ -151,6 +151,7 @@ CREATE TABLE `tb_product` (
   `material` varchar(100) NOT NULL,
   `condition_product` varchar(100) NOT NULL,
   `completeness` varchar(100) NOT NULL,
+  `description` varchar(1500) NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `discount` decimal(10,0) NOT NULL,
   `images` varchar(100) NOT NULL,
@@ -167,18 +168,40 @@ CREATE TABLE `tb_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_product`
+-- Dumping data untuk tabel `tb_product`
 --
 
-INSERT INTO `tb_product` (`id`, `category_id`, `brand_id`, `name`, `model`, `type`, `diameter`, `movement`, `material`, `condition_product`, `completeness`, `price`, `discount`, `images`, `images_front`, `images_side`, `images_top`, `images_detail`, `url`, `created_date`, `created_by`, `updated_date`, `updated_by`, `status`) VALUES
-(1, 1, 7, 'Glashuttes Muhle', '-', '-', '-', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', '5500000', '0', '1.jpg', '1_front.jpg', '1_side.jpg', '1_top.jpg', '1_detail.jpg', 'https://www.instagram.com/p/B7lPoqNArdN/?utm_source=ig_web_button_share_sheet', '2020-04-04 13:28:16', 3, '2020-04-19 23:11:29', 3, 1),
-(2, 1, 8, 'G-Shock GULFMASTER', '-', 'GN - 1000B - 1BDR', '55mm', 'Quartz', 'Resin / Rubber / Karet', '95% (2nd)', 'Watches Only', '3000000', '0', '2.jpg', '2_front.jpg', '2_side.jpg', '2_top.jpg', '.jpg', 'https://www.instagram.com/p/B7lPcE5AMiD/?utm_source=ig_web_button_share_sheet', '2020-04-19 23:11:38', 3, '2020-04-19 23:14:30', 3, 1),
-(3, 2, 9, 'Geneve Automatic', '-', 'N°00424 - 10212100', '-', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', '10000000', '0', '.jpg', '3_front.jpg', '3_side.jpg', '3_top.jpg', '3_detail.jpg', 'https://www.instagram.com/p/B7lPFQ4g2j2/?utm_source=ig_web_button_share_sheet', '2020-04-19 23:16:22', 3, '2020-04-19 23:18:08', 3, 1);
+INSERT INTO `tb_product` (`id`, `category_id`, `brand_id`, `name`, `model`, `type`, `diameter`, `movement`, `material`, `condition_product`, `completeness`, `description`, `price`, `discount`, `images`, `images_front`, `images_side`, `images_top`, `images_detail`, `url`, `created_date`, `created_by`, `updated_date`, `updated_by`, `status`) VALUES
+(1, 1, 7, 'Glashuttes Muhle', '-', '-', '-', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda.\r\nChronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5500000, 0, '1.jpg', '1_front.jpg', '1_side.jpg', '1_top.jpg', '1_detail.jpg', 'https://www.instagram.com/p/B7lPoqNArdN/?utm_source=ig_web_button_share_sheet', '2020-04-04 13:28:16', 3, '2020-04-19 23:11:29', 3, 1),
+(2, 1, 8, 'G-Shock GULFMASTER', '-', 'GN - 1000B - 1BDR', '55mm', 'Quartz', 'Resin / Rubber / Karet', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 3000000, 10, '2.jpg', '2_front.jpg', '2_side.jpg', '2_top.jpg', '2_detail.jpg', 'https://www.instagram.com/p/B7lPcE5AMiD/?utm_source=ig_web_button_share_sheet', '2020-04-19 23:11:38', 3, '2020-04-19 23:14:30', 3, 1),
+(3, 2, 9, 'Geneve Automatic', '-', 'N°00424 - 10212100', '-', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 10000000, 35, '3.jpg', '3_front.jpg', '3_side.jpg', '3_top.jpg', '3_detail.jpg', 'https://www.instagram.com/p/B7lPFQ4g2j2/?utm_source=ig_web_button_share_sheet', '2020-04-19 23:16:22', 3, '2020-04-19 23:18:08', 3, 1),
+(4, 1, 10, 'Collectionn Ceramic', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(10, 1, 10, 'Collection', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(11, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(12, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(13, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(14, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(15, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(16, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(17, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(18, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(19, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(20, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(21, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(22, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(23, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(24, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(25, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(26, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(27, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(28, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2),
+(29, 1, 10, 'Collectionn Ceramic (copy)', '-', '-', 'mm', 'Quartz', 'Ceramic', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 2500000, 5, '4.jpg', '4_front.jpg', '4_side.jpg', '4_top.jpg', '4_detail.jpg', 'https://www.instagram.com/p/B7kop7PAeym/?utm_source=ig_web_button_share_sheet', '2020-04-20 10:04:35', 3, '2020-04-20 11:42:12', 3, 2),
+(30, 1, 10, 'Collection (copy)', '-', '-', 'mm', 'Automatic', 'Stainless Steel', '95% (2nd)', 'Watches Only', 'Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup aktif Anda, koleksi ORIENT Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal. Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif anda. Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam 9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan kombinasi penghitung jam dan menit stopwatch. Fungsi stopwatch dapat mengukur hingga 12 jam dalam peningkatan 1/20 detik. Setelah 12 jam, itu akan berhenti secara otomatis. Pengukuran waktu split juga tersedia..', 5000000, 0, 'Collection_-7.jpg', 'Collection_-1.jpg', 'Collection_-2.jpg', 'Collection_-3.jpg', 'Collection_-8.jpg', 'https://www.instagram.com/p/B7kn9egAHMf/?utm_source=ig_web_button_share_sheet', '2020-04-20 13:29:23', 3, '2020-04-20 13:33:42', 3, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_slider`
+-- Struktur dari tabel `tb_slider`
 --
 
 CREATE TABLE `tb_slider` (
@@ -192,16 +215,19 @@ CREATE TABLE `tb_slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_slider`
+-- Dumping data untuk tabel `tb_slider`
 --
 
 INSERT INTO `tb_slider` (`id`, `title`, `description`, `images`, `updated_date`, `updated_by`, `status`) VALUES
-(1, 'Slider 1', '<p>Slider 1</p>', '1.jpg', '2020-04-04 13:09:03', 1, 2);
+(1, 'Slider 1', '<p>Slider 1</p>', '1.jpg', '2020-04-27 12:56:58', 3, 1),
+(2, 'Slider 2', '<p>Slider 2<br></p>', '2.jpg', '2020-04-27 12:59:13', 3, 1),
+(3, 'Slider 3', '<p>Slider 3<br></p>', '3.jpg', '2020-04-27 12:59:21', 3, 1),
+(4, 'Slider 4', '<p>Slider 4</p>', 'Slider_4.jpg', '2020-04-27 13:37:21', 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_testimoni`
+-- Struktur dari tabel `tb_testimoni`
 --
 
 CREATE TABLE `tb_testimoni` (
@@ -215,105 +241,104 @@ CREATE TABLE `tb_testimoni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_testimoni`
+-- Dumping data untuk tabel `tb_testimoni`
 --
 
 INSERT INTO `tb_testimoni` (`id`, `title`, `description`, `created_date`, `created_by`, `updated_date`, `updated_by`) VALUES
-(1, 'test', '<p>Cobain <b>dulu </b><u style=\"\">deh</u>&nbsp;<i>pokoknya </i><span style=\"font-family: \" arial=\"\" black\";\"=\"\">okay<font color=\"#ffff00\"> </font></span><span style=\"font-family: \" comic=\"\" sans=\"\" ms\";=\"\" background-color:=\"\" rgb(255,=\"\" 255,=\"\" 0);\"=\"\"><font color=\"#ffff00\">deh</font></span></p><hr><p><span style=\"font-family: \" comic=\"\" sans=\"\" ms\";=\"\" background-color:=\"\" rgb(255,=\"\" 255,=\"\" 0);\"=\"\"><br></span></p>', '2020-04-03 09:58:46', 1, '2020-04-03 10:21:13', 1),
-(2, 'test 2', '<p><u>coba</u> <b>aja</b> <i>deh</i></p>', '0000-00-00 00:00:00', 0, '2020-04-03 23:19:02', 1),
-(3, 'Coba', '<p>lagi deh<span style=\"background-color: rgb(255, 255, 0);\"><font color=\"#0000ff\"> pokoknya</font></span></p>', '0000-00-00 00:00:00', 0, '2020-04-03 23:23:27', 1);
+(15, 'Prasetyoadi', '<p><span style=\"font-size: 18px;\">Pengiriman cepat, packing rapi dan aman, kuliatas product oke original, mudah2an aweettt.</span><br></p>', '2020-04-20 00:57:21', 3, '2020-04-27 12:48:47', 3),
+(16, 'Jimy', '<p><span style=\"font-size: 18px;\">Ini baru Pertama blanja di situs ini. Barang sampai sesuai deskripsi. Soal qualitas sesuai merk dan harga tentunya. Pilihan bank pembayarannya juga lengkap.</span><br></p>', '2020-04-20 00:57:43', 3, '2020-04-27 12:50:04', 3);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_admin`
+-- Indeks untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_brand`
+-- Indeks untuk tabel `tb_brand`
 --
 ALTER TABLE `tb_brand`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_category`
+-- Indeks untuk tabel `tb_category`
 --
 ALTER TABLE `tb_category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_footer`
+-- Indeks untuk tabel `tb_footer`
 --
 ALTER TABLE `tb_footer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_product`
+-- Indeks untuk tabel `tb_product`
 --
 ALTER TABLE `tb_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_slider`
+-- Indeks untuk tabel `tb_slider`
 --
 ALTER TABLE `tb_slider`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_testimoni`
+-- Indeks untuk tabel `tb_testimoni`
 --
 ALTER TABLE `tb_testimoni`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_admin`
+-- AUTO_INCREMENT untuk tabel `tb_admin`
 --
 ALTER TABLE `tb_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_brand`
+-- AUTO_INCREMENT untuk tabel `tb_brand`
 --
 ALTER TABLE `tb_brand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tb_category`
+-- AUTO_INCREMENT untuk tabel `tb_category`
 --
 ALTER TABLE `tb_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tb_footer`
+-- AUTO_INCREMENT untuk tabel `tb_footer`
 --
 ALTER TABLE `tb_footer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `tb_product`
+-- AUTO_INCREMENT untuk tabel `tb_product`
 --
 ALTER TABLE `tb_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `tb_slider`
+-- AUTO_INCREMENT untuk tabel `tb_slider`
 --
 ALTER TABLE `tb_slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tb_testimoni`
+-- AUTO_INCREMENT untuk tabel `tb_testimoni`
 --
 ALTER TABLE `tb_testimoni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
