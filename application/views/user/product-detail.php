@@ -80,14 +80,20 @@
                     <div class='p-1 pt-0 paragraph'>
                         <span>Koleksi jam tangan Orient yang dibuat untuk mengikuti gaya hidup
                             aktif Anda, koleksi ORIENT
-                            Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus membangun
-                            gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua kontrol
-                            QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara internal.
+                            Sports membawa bentuk dan fungsi bersama dengan desainnya yang menarik. Orient terus
+                            membangun
+                            gerakan mereka sendiri. Fabrikasi in-house adalah tanda kualitas yang baik karena semua
+                            kontrol
+                            QC yang diperlukan tetap dengan produsen dan setiap aspek konstruksi dilakukan secara
+                            internal.
                             Orient Sport adalah perpaduan dari desain sporty yang elegan yang dipadu dengan movement jam
-                            khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda baik
-                            di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup aktif
+                            khas orient yang presisi dan berkualitas tinggi. Cocok dipakai untuk segala kegiataan anda
+                            baik
+                            di dalam maupun diluar ruangan, membuat anda selalu tampil sempurna menemani gaya hidup
+                            aktif
                             anda. <br>
-                            Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa membuatnya
+                            Chronograph adalah alat hebat yang bisa bertahan sepanjang musim, dan gaya luar biasa
+                            membuatnya
                             menjadi jam tangan yang akan anda banggakan. Ini adalah jam yang sangat tampan. Chronograph
                             sub-dial berada di bagian atas dan bawah, dengan sub-dial detik kecil yang berjalan pada jam
                             9:00. Sub-dial atas mengukur detik ke akurasi 1/20 detik. Sub-dial pada jam 6:00 menampilkan

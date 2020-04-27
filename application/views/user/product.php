@@ -38,6 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <div class="thumbnail">
                         <div class="productImage">
                             <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>"
+                                onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';"
                                 alt="<?php echo $row->name ?>">
                             <a href="<?php echo base_url(); ?>user/C_productdetail/detail/<?php echo $row->id ?>"
                                 class="more show_hide">

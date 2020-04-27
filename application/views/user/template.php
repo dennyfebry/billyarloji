@@ -33,7 +33,9 @@ $menu = $this->ctg->getMenu();
             <div class="row containerMenu" style="width: 100%">
                 <div class="productColumn-3 productColumn-2-lg">
                     <a href="<?php echo site_url('Website') ?>" class="brand">
-                        <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" alt="Logo" />
+                        <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png"
+                            onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';"
+                            alt="Logo" />
                         <!-- This is website logo -->
                     </a>
                 </div>
