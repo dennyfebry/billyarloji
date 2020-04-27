@@ -115,13 +115,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     if ($row->id > 3) {
                         $soc = strtolower($row->title);
                         if ($soc == 'instagram') {
-                            echo "<a style='color:white;' href='" . $row->link . "'><i class='fa fa-instagram' aria-hidden='true'></i> " . $row->description . "</a>";
+                            echo "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-instagram' aria-hidden='true'></i> " . $row->description . "</a>";
                         } else if ($soc == 'facebook') {
-                            echo "<a style='color:white;' href='" . $row->link . "'><i class='fa fa-facebook' aria-hidden='true'></i> " . $row->description . "</a>";
+                            echo "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-facebook' aria-hidden='true'></i> " . $row->description . "</a>";
                         } else if ($soc == 'twitter') {
-                            echo  "<a style='color:white;' href='" . $row->link . "'><i class='fa fa-twitter' aria-hidden='true'></i> " . $row->description . "</a>";
+                            echo  "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-twitter' aria-hidden='true'></i> " . $row->description . "</a>";
                         } else {
-                            echo  "<a style='color:white;' href='" . $row->link . "'>" . $row->description . "</a>";
+                            echo  "<a style='color:white;' href='" . $row->link . "' target='_blank'>" . $row->description . "</a>";
                         }
                         echo "<br>";
                     }
