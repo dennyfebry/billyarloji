@@ -11,6 +11,7 @@ class Website extends CI_Controller
 		$this->load->model('m_testimoni', 'tes');
 		$this->load->model('m_slider', 'sli');
 		$this->load->model('m_footer', 'foo');
+		$this->load->model('m_product', 'prd');
 	}
 
 	public function index()

@@ -326,4 +326,21 @@ class M_product extends CI_Model
         $this->db->where('brand_id', $brand_id);
         return $this->db->get()->result();
     }
+
+    public function getProductAutoComplete()
+    {
+        $this->db->select("concat(tb_brand.brand,' ', ". $this->table.".name,' ',".$this->table.".type) as searchProduct,");
+        $this->db->from($this->table);
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        return $this->db->get()->result();
+    }
+
+    public function searchProduct($searchValue)
+    {
+        $this->db->select("*");
+        $this->db->from($this->table);
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        $this->db->where("concat(UPPER(tb_brand.brand),' ', UPPER(" . $this->table . ".name),' ' UPPER(," . $this->table . ".type)) LIKE UPPER(".$searchValue.")");
+        return $this->db->get()->result();
+    }
 }

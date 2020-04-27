@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
+$productAutoComplete = $this->prd->getProductAutoComplete();
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ $menu = $this->ctg->getMenu();
 </head>
 
 <body>
-    <div class='header'>
+    <div class='header row'>
         <div class="row containerMenu" style="width: 100%">
             <div class="productColumn-3 productColumn-2-lg">
                 <a href="<?php echo site_url('home') ?>" class="brand">
@@ -46,6 +47,13 @@ $menu = $this->ctg->getMenu();
                     </tr>
                 </table>
             </div>
+        </div>
+        <div class="row containerMenu" style="width: 100%">
+            <form class="search" autocomplete="off">
+                <div class="autocomplete">
+                    <input id="searchProduct" type="text" name="searchProduct" placeholder="Product Name ... ">
+                </div>
+            </form>
         </div>
     </div>
     <div class="navbar">
@@ -139,9 +147,10 @@ $menu = $this->ctg->getMenu();
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/template.js"></script>
+        <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/search-autocomplete.js"></script> -->
 
         <script>
-            // Add active class to the current button (highlight it)
+            // Active Menu CSS
             var header = document.getElementById("rowMenu");
             var menu = header.getElementsByClassName("navMenu");
             for (var i = 0; i < menu.length; i++) {
@@ -154,6 +163,7 @@ $menu = $this->ctg->getMenu();
         </script>
 
         <script>
+            // Mobile Menu Tabs
             function openCity(evt, cityName) {
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
@@ -168,10 +178,89 @@ $menu = $this->ctg->getMenu();
                 evt.currentTarget.className += " active";
             }
 
-            // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
         </script>
 
+        <script type="text/javascript">
+            // Search Autocomplete
+            var data = <?php echo json_encode($productAutoComplete); ?>;
+            var productList = [];
+            data.forEach(product => {
+                productList.push(product.searchProduct);
+            });
+
+            function autocomplete(inp, arr) {
+                var currentFocus;
+                inp.addEventListener("input", function(e) {
+                    var a, b, i, val = this.value;
+                    closeAllLists();
+                    if (!val) {
+                        return false;
+                    }
+                    currentFocus = -1;
+                    a = document.createElement("DIV");
+                    a.setAttribute("id", this.id + "autocomplete-list");
+                    a.setAttribute("class", "autocomplete-items");
+                    this.parentNode.appendChild(a);
+
+                    arr.filter(function(search) {
+                        return ~search.toLowerCase().indexOf(inp.value.toLowerCase());
+                    }).map(function(search) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = search;
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        b.addEventListener("click", function(e) {
+                            inp.value = search
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    })
+                });
+                inp.addEventListener("keydown", function(e) {
+                    var x = document.getElementById(this.id + "autocomplete-list");
+                    if (x) x = x.getElementsByTagName("div");
+                    if (e.keyCode == 40) {
+                        currentFocus++;
+                        addActive(x);
+                    } else if (e.keyCode == 38) {
+                        currentFocus--;
+                        addActive(x);
+                    } else if (e.keyCode == 13) {
+                        e.preventDefault();
+                        if (currentFocus > -1) {
+                            if (x) x[currentFocus].click();
+                        }
+                    }
+                });
+
+                function addActive(x) {
+                    if (!x) return false;
+                    removeActive(x);
+                    if (currentFocus >= x.length) currentFocus = 0;
+                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                    x[currentFocus].classList.add("autocomplete-active");
+                }
+
+                function removeActive(x) {
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].classList.remove("autocomplete-active");
+                    }
+                }
+
+                function closeAllLists(elmnt) {
+                    var x = document.getElementsByClassName("autocomplete-items");
+                    for (var i = 0; i < x.length; i++) {
+                        if (elmnt != x[i] && elmnt != inp) {
+                            x[i].parentNode.removeChild(x[i]);
+                        }
+                    }
+                }
+                document.addEventListener("click", function(e) {
+                    closeAllLists(e.target);
+                });
+            }
+            autocomplete(document.getElementById("searchProduct"), productList);
+        </script>
 </body>
 
 </html>

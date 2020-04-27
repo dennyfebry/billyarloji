@@ -89,28 +89,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <span class="brown-text pr-03 float-right">ABOUT</span>
                 <span class="float-right">US</span>
             </div>
-            <div class='row p-1' style='height: 100px'><?php echo $about->description ?></div>
+            <div class='row p-1'><?php echo $about->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-right">OUR</span>
                 <span class="float-right">STORE</span>
             </div>
-            <div class='row p-1' style='height: 100px'><?php echo $store->description ?></div>
+            <div class='row p-1'><?php echo $store->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-left">HOW</span>
                 <span class="float-left">TO BUY</span>
             </div>
-            <div class='row p-1' style='height: 100px'><?php echo $buy->description ?></div>
+            <div class='row p-1'><?php echo $buy->description ?></div>
         </div>
         <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
             <div class="row footer-title">
                 <span class="brown-text pr-03 float-left">SOCIAL</span>
                 <span class="float-left">MEDIA</span>
             </div>
-            <div class='p-1' style='height: 100px;text-align: left;'>
+            <div class='p-1' style='text-align: left;'>
                 <?php foreach ($social as $row) {
                     if ($row->id > 3) {
                         $soc = strtolower($row->title);
