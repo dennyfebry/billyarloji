@@ -13,7 +13,12 @@
                     </div>
                     <div class='productRow p-1 priceBuy-sm'>
                         <button type="button" class='btn btn-buy btn-block'>
-                            Rp. 3.500.000,-
+                            <?php if ($product->discount == 0) { ?>
+                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                            <?php } else {
+                                $total = $product->price - (($product->price * $product->discount) / 100); ?>
+                            Rp.<?php echo number_format($total, 2, ',', '.') ?>
+                            <?php } ?>
                             <i class="fa fa-shopping-cart"></i>
                         </button>
                     </div>
@@ -65,12 +70,13 @@
                         </div>
                     </div>
                     <div class='productRow p-1 priceBuy'>
-                        <a href="<?php echo $product->url; ?>" target="_blank" type="button" class='btn btn-buy btn-block'>
+                        <a href="<?php echo $product->url; ?>" target="_blank" type="button"
+                            class='btn btn-buy btn-block'>
                             <?php if ($product->discount == 0) { ?>
-                                Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
                             <?php } else {
                                 $total = $product->price - (($product->price * $product->discount) / 100); ?>
-                                Rp.<?php echo number_format($total, 2, ',', '.') ?>
+                            Rp.<?php echo number_format($total, 2, ',', '.') ?>
                             <?php } ?>
                             <i class="fa fa-shopping-cart"></i>
                         </a>

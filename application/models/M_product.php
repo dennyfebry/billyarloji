@@ -329,7 +329,7 @@ class M_product extends CI_Model
 
     public function getProductAutoComplete()
     {
-        $this->db->select("concat(tb_brand.brand,' ', ". $this->table.".name,' ',".$this->table.".type) as searchProduct,");
+        $this->db->select("concat(tb_brand.brand,' ', " . $this->table . ".name,' '," . $this->table . ".type) as searchProduct,");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
         return $this->db->get()->result();
@@ -340,7 +340,7 @@ class M_product extends CI_Model
         $this->db->select("*");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
-        $this->db->where("concat(LOWER(tb_brand.brand),' ',LOWER(". $this->table.".name),' ',LOWER(".$this->table.".type)) LIKE LOWER('%".$searchValue."%')");
+        $this->db->where("concat(LOWER(tb_brand.brand),' ',LOWER(" . $this->table . ".name),' ',LOWER(" . $this->table . ".type)) LIKE LOWER('%" . $searchValue . "%')");
         return $this->db->get()->result();
     }
 }
