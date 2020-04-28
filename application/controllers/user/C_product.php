@@ -31,13 +31,16 @@ class C_product extends CI_Controller
 
     public function search($searchValue)
     {
-        $data['product'] = $this->prd->searchProduct($searchValue);
+        $data['product'] = $this->prd->searchProduct(urldecode($searchValue));
 
         $data['category'] = 'All Category';
         $data['brand'] = 'All Brand';
         $data['searchValue'] = urldecode($searchValue);
         $data['titlepage'] = "Search for product";
         $data['page'] = "product";
+
+        // var_dump($this->prd->searchProduct(urldecode($searchValue)));
+
         $this->load->view('user/template', $data);
     }
 }

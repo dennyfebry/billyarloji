@@ -329,7 +329,7 @@ class M_product extends CI_Model
 
     public function getProductAutoComplete()
     {
-        $this->db->select("concat(tb_brand.brand,' ', " . $this->table . ".name,' '," . $this->table . ".type) as searchProduct,");
+        $this->db->select("DISTINCT CONCAT(tb_brand.brand,' ', " . $this->table . ".name, CASE WHEN " . $this->table . ".type = '-' THEN '' ELSE CONCAT(' '," . $this->table . ".type) END) as searchProduct");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
         return $this->db->get()->result();
@@ -340,7 +340,7 @@ class M_product extends CI_Model
         $this->db->select("*");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
-        $this->db->where("concat(LOWER(tb_brand.brand),' ',LOWER(" . $this->table . ".name),' ',LOWER(" . $this->table . ".type)) LIKE LOWER('%" . $searchValue . "%')");
+        $this->db->where("CONCAT(LOWER(tb_brand.brand),' ',LOWER(" . $this->table . ".name), CASE WHEN " . $this->table . ".type = '-' THEN '' ELSE CONCAT(' ',LOWER(" . $this->table . ".type)) END) LIKE LOWER('%" . $searchValue . "%')");
         return $this->db->get()->result();
     }
 }
