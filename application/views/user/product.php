@@ -34,7 +34,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </div>
     <!-- Product List -->
     <div class="row container mb-5">
-        <div>
             <ul class="thumbnails row">
                 <?php
                 if (count($product) > 0) {
@@ -56,16 +55,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </div>
                         <div class="productTitle">
                             <h5 class='productName'><?php echo $row->name ?></h5>
-                            <h5 class='price'>Rp.<?php if ($row->discount != 0) {
-                                                                $total = $row->price - (($row->price * $row->discount) / 100);
-                                                                echo number_format($total, 2, ',', '.');
-                                                            } else {
-                                                                echo number_format($row->price, 2, ',', '.');
-                                                            } ?></h5>
+                            <h5 class='price'>Rp.
+                            <?php if ($row->discount != 0) {
+                                $total = $row->price - (($row->price * $row->discount) / 100);
+                                echo number_format($total, 2, ',', '.');
+                            } else {
+                                echo number_format($row->price, 2, ',', '.');
+                            } ?></h5>
                             <h5 class='discount'>
                                 <?php if ($row->discount != 0) {
-                                            echo "Rp.", number_format($row->price, 2, ',', '.');
-                                        } ?>
+                                    echo "Rp.", number_format($row->price, 2, ',', '.');
+                                } ?>
                             </h5>
                         </div>
                     </div>
@@ -76,7 +76,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <h3 style="color: white;">This product is not available</h3>
                 <?php } ?>
             </ul>
-        </div>
     </div>
     <!-- Pagination -->
     <div id="pagination-container"></div>
