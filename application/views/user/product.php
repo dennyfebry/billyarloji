@@ -8,20 +8,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Product Title -->
     <div class="row watchTitle">
         <?php
-        if (isset($arrBrand)) {
-            if (count($arrBrand) > 1) {
-                for ($i = 0; $i < count($arrBrand); $i++) {
+        if (isset($brandName) && isset($category)) {
+            if (count($brandName) > 1) {
+                for ($i = 0; $i < count($brandName); $i++) {
                     if ($i == 0) {
-                        echo "<span class='brown-text pr-03'>$arrBrand[$i]</span>";
+                        echo "<span class='brown-text pr-03'>$brandName[$i]</span>";
                     } else {
-                        echo "<span class='pr-03'>$arrBrand[$i]</span>";
+                        echo "<span class='pr-03'>$brandName[$i]</span>";
                     }
                 }
                 if ($category == 'MEN' || $category == 'LADIES') {
                     echo "<span class='pr-03'>WATCHES</span>";
                 }
             } else {
-                echo "<span class='brown-text pr-03'>$arrBrand[0]</span>";
+                echo "<span class='brown-text pr-03'>$brandName[0]</span>";
                 if ($category == 'MEN' || $category == 'LADIES') {
                     echo "<span class='pr-03'>WATCHES</span>";
                 }

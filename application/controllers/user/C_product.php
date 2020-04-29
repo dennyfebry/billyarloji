@@ -22,8 +22,7 @@ class C_product extends CI_Controller
         $data['product'] = $this->prd->getProduct($category_id, $brand_id);
 
         $data['category'] = $category->category;
-        $data['brand'] = $brand->brand;
-        $data['arrBrand'] = explode(" ", $brand->brand);
+        $data['brandName'] = explode(" ", $brand->brand);
         $data['titlepage'] = "Product - " . $brand->brand;
         $data['page'] = "product";
         $this->load->view('user/template', $data);
@@ -33,8 +32,6 @@ class C_product extends CI_Controller
     {
         $data['product'] = $this->prd->searchProduct(urldecode($searchValue));
 
-        $data['category'] = 'All Category';
-        $data['brand'] = 'All Brand';
         $data['searchValue'] = urldecode($searchValue);
         $data['titlepage'] = "Search for product";
         $data['page'] = "product";

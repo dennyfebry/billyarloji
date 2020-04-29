@@ -337,7 +337,7 @@ class M_product extends CI_Model
 
     public function searchProduct($searchValue)
     {
-        $this->db->select("*");
+        $this->db->select($this->table . ".*");
         $this->db->from($this->table);
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
         $this->db->where("CONCAT(LOWER(tb_brand.brand),' ',LOWER(" . $this->table . ".name), CASE WHEN " . $this->table . ".type = '-' THEN '' ELSE CONCAT(' ',LOWER(" . $this->table . ".type)) END) LIKE LOWER('%" . $searchValue . "%')");
