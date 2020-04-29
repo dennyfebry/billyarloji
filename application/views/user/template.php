@@ -81,7 +81,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                                 <ul class="dropdown-menu">
                                     <?php $brand = $this->brn->getBrand($row->id);
                                     foreach ($brand as $brands) { ?>
-                                        <li><a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>"><?php echo $brands->brand; ?></a>
+                                        <li><a href="<?php echo base_url(); ?>product/<?php echo encrypt_url($row->id); ?>/<?php echo  encrypt_url($brands->id); ?>"><?php echo $brands->brand; ?></a>
                                         </li>
                                     <?php } ?>
                                 </ul>

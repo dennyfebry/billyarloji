@@ -17,10 +17,11 @@ class C_product extends CI_Controller
 
     public function product($category_id, $brand_id)
     {
-        $category = $this->ctg->getById($category_id);
-        $brand = $this->brn->getById($brand_id);
-
-        $data['product'] = $this->prd->getProduct($category_id, $brand_id);
+        $categoryID = decrypt_url($category_id);
+        $brandID = decrypt_url($brand_id);
+        $category = $this->ctg->getById($categoryID);
+        $brand = $this->brn->getById($brandID);
+        $data['product'] = $this->prd->getProduct($categoryID, $brandID);
         $data['category'] = $category->category;
         $data['brandName'] = explode(" ", $brand->brand);
         $data['titlepage'] = "Product - " . $brand->brand;
