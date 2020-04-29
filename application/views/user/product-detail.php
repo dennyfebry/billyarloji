@@ -12,7 +12,10 @@
                         ?>
                     </div>
                     <div class='productRow p-1 priceBuy-sm'>
-                        <button type="button" class='btn btn-buy btn-block'>
+                    <?php 
+                    $buyFormat = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    $shareWA = 'https://api.whatsapp.com/send?text='.$buyFormat; ?>
+                        <button type="button" class='btn btn-buy btn-block' onclick="location.href='<?php echo $shareWA; ?>'">
                             <?php if ($product->discount == 0) { ?>
                             Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
                             <?php } else {
