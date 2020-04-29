@@ -39,8 +39,6 @@ class C_product extends CI_Controller
         $data['titlepage'] = "Search for product";
         $data['page'] = "product";
 
-        // var_dump($this->prd->searchProduct(urldecode($searchValue)));
-
         $this->load->view('user/template', $data);
     }
 }

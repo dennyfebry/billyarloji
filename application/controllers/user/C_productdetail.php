@@ -29,6 +29,7 @@ class C_productdetail extends CI_Controller
         $data['brandname'] = $brand->brand;
         $data['titlepage'] = "Product Detail - " . $brand->brand;
         $data['page'] = "product-detail";
+        $data['phoneNumber'] = "85691388200";
         $this->load->view('user/template', $data);
     }
 }
