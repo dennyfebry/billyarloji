@@ -235,6 +235,7 @@ a.page-link.active {
 	font-size: 14px;
 	padding: 0.1em;
 	text-decoration: line-through;
+	min-height: 0.5em;
 }
 
 .productImg {
@@ -286,11 +287,17 @@ a.page-link.active {
 	text-indent: 1em;
 }
 
-.btn-buy {
+.btn-buy,
+.btn-buy:focus {
 	color: #ffffff;
 	background: #f60;
 	border: 0;
 	padding: 0.5em;
+}
+
+.btn-buy:hover {
+	color: #f60;
+	background: #ffffff;
 }
 
 .vertical-image {
@@ -344,6 +351,7 @@ a.page-link.active {
 	.discount {
 		font-size: 17px;
 		padding: 0.25em;
+		min-height: 0.5em;
 	}
 
 	.productColumn-equal-md {

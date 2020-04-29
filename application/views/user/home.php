@@ -16,9 +16,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="swiper-wrapper vertical-wrapper">
                     <?php if (count($slider) > 0) {
                         foreach ($slider as $row) { ?>
-                            <div class="swiper-slide vertical-slide">
-                                <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
-                            </div>
+                    <div class="swiper-slide vertical-slide">
+                        <img class='vertical-image'
+                            src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>"
+                            onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
+                    </div>
                     <?php }
                     } else {
                         echo ("<div class='swiper-slide vertical-slide'>
@@ -46,12 +48,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div data-swiper-parallax="-23%"></div>
                 <div class="swiper-wrapper testimoni-wrapper">
                     <?php foreach ($testimoni as $row) { ?>
-                        <div class="swiper-slide testimoni-slide row">
-                            <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
-                            <div class="text" data-swiper-parallax="-100">
-                                <?php echo $row->description ?>
-                            </div>
+                    <div class="swiper-slide testimoni-slide row">
+                        <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
+                        <div class="text" data-swiper-parallax="-100">
+                            <?php echo $row->description ?>
                         </div>
+                    </div>
                     <?php } ?>
                 </div>
                 <div class="swiper-button-prev swiper-button-white testimoni-prev"></div>
@@ -138,43 +140,43 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/swiper.min.js"></script>
 
 <script>
-    // Vertical Swiper JS
-    var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
-        direction: 'vertical',
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-    });
+// Vertical Swiper JS
+var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
+    direction: 'vertical',
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+});
 
-    // Testimoni Swiper JS
-    var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
-        speed: 600,
-        parallax: true,
-        loop: true,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-    });
+// Testimoni Swiper JS
+var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
+    speed: 600,
+    parallax: true,
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+});
 
-    // Instagram Feeds Swiper JS
-    var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
-        slidesPerView: 4,
-        spaceBetween: 10,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-    });
+// Instagram Feeds Swiper JS
+var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+});
 </script>

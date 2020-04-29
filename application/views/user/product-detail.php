@@ -15,18 +15,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     ?>
                 </div>
                 <div class='productRow p-1 priceBuy-sm'>
-                    <?php
-                    $buyFormat = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    $shareWA = 'https://wa.me/' . $phoneNumber . '?text=' . $buyFormat; ?>
-                    <button type="button" class='btn btn-buy btn-block' onclick="location.href='<?php echo $shareWA; ?>'">
+                    <a href="<?php echo $product->url; ?>" target="_blank" type="button" class='btn btn-buy btn-block'>
                         <?php if ($product->discount == 0) { ?>
-                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                        Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
                         <?php } else {
                             $total = $product->price - (($product->price * $product->discount) / 100); ?>
-                            Rp.<?php echo number_format($total, 2, ',', '.') ?>
+                        Rp.<?php echo number_format($total, 2, ',', '.') ?>
                         <?php } ?>
                         <i class="fa fa-shopping-cart"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class='productColumn-10 productColumn-6-md productColumn-7-lg'>
@@ -78,10 +75,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class='productRow p-1 priceBuy'>
                     <a href="<?php echo $product->url; ?>" target="_blank" type="button" class='btn btn-buy btn-block'>
                         <?php if ($product->discount == 0) { ?>
-                            Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
+                        Rp.<?php echo number_format($product->price, 2, ',', '.') ?>
                         <?php } else {
                             $total = $product->price - (($product->price * $product->discount) / 100); ?>
-                            Rp.<?php echo number_format($total, 2, ',', '.') ?>
+                        Rp.<?php echo number_format($total, 2, ',', '.') ?>
                         <?php } ?>
                         <i class="fa fa-shopping-cart"></i>
                     </a>
