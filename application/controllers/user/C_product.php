@@ -31,7 +31,6 @@ class C_product extends CI_Controller
     public function search($searchValue)
     {
         $data['product'] = $this->prd->searchProduct(urldecode($searchValue));
-        $data['category'] = '';
         $data['searchValue'] = urldecode($searchValue);
         $data['titlepage'] = "Search for product";
         $data['page'] = "product";

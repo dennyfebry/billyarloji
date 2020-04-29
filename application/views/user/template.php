@@ -67,203 +67,207 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
             <!-- Main navigation -->
             <div class="colTemplate"></div>
             <?php foreach ($menu as $row) {
-                if ($category == $row->category) { ?>
-                    <div class='dropdown colTemplate navMenu active'>
-                    <?php } else { ?>
-                        <div class='dropdown colTemplate navMenu'>
-                        <?php } ?>
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                            <div><?php echo $row->category; ?></div>
-                            <ul class="dropdown-menu">
-                                <?php $brand = $this->brn->getBrand($row->id);
-                                foreach ($brand as $brands) { ?>
-                                    <li><a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>"><?php echo $brands->brand; ?></a>
-                                    </li>
-                                <?php } ?>
-                            </ul>
-                        </a>
-                        </div>
-                    <?php } ?>
-                    <div class="colTemplate"></div>
-                    <!-- End main navigation -->
-                    </div>
-        </div>
-
-        <!-- Content Start -->
-        <div class="content">
-            <?php
-            include $page . '.php';
-            ?>
-        </div>
-        <!-- Content End -->
-
-        <!-- To Top Button Start-->
-        <button onclick="topFunction()" id="toTop" title="To Top"><i class="fa fa-caret-up"></i></button>
-        <!-- To Top Button End -->
-
-        <!-- Modal Fullscreen Start -->
-        <div class="modal fade modal-fullscreen" id="nav-collapse-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" data-dismiss="modal" aria-hidden="true">
-                        <h4 class="modal-title" id="myModalLabel">
-                            MENU
-                        </h4>
-                    </div>
-                    <div class="modal-body row">
-                        <div class="productColumn-3">
-                            <div class="tab br-white">
-                                <?php
-                                foreach ($menu as $row) { ?>
-                                    <button class="tablinks" onclick="openCity(event, '<?= $row->id ?>')" id="defaultOpen"><?php echo $row->category; ?></button>
-                                <?php
-                                } ?>
-                            </div>
-                        </div>
-                        <div class="productColumn-6">
-                            <?php foreach ($menu as $row) { ?>
-                                <div id="<?= $row->id ?>" class="tabcontent">
+                if (isset($category)) {
+                    if ($category == $row->category) { ?>
+                        <div class='dropdown colTemplate navMenu active'>
+                        <?php } else { ?>
+                            <div class='dropdown colTemplate navMenu'>
+                            <?php }
+                    } else { ?>
+                            <div class='dropdown colTemplate navMenu'>
+                            <?php } ?>
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                <div><?php echo $row->category; ?></div>
+                                <ul class="dropdown-menu">
                                     <?php $brand = $this->brn->getBrand($row->id);
                                     foreach ($brand as $brands) { ?>
-                                        <button onclick="location.href='<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>'"><?php echo $brands->brand; ?></button>
+                                        <li><a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>"><?php echo $brands->brand; ?></a>
+                                        </li>
                                     <?php } ?>
-                                </div>
-                            <?php } ?>
+                                </ul>
+                            </a>
+                            </div>
+                        <?php } ?>
+                        <div class="colTemplate"></div>
+                        <!-- End main navigation -->
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Fullscreen End -->
 
-        <!-- Include javascript -->
-        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.bxslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/template.js"></script>
-        <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/search-autocomplete.js"></script> -->
+                        <!-- Content Start -->
+                        <div class="content">
+                            <?php
+                            include $page . '.php';
+                            ?>
+                        </div>
+                        <!-- Content End -->
 
-        <script>
-            // Active Menu CSS
-            var header = document.getElementById("rowMenu");
-            var menu = header.getElementsByClassName("navMenu");
-            for (var i = 0; i < menu.length; i++) {
-                menu[i].addEventListener("click", function() {
-                    var current = document.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-                });
-            }
-        </script>
+                        <!-- To Top Button Start-->
+                        <button onclick="topFunction()" id="toTop" title="To Top"><i class="fa fa-caret-up"></i></button>
+                        <!-- To Top Button End -->
 
-        <script>
-            // Mobile Menu Tabs
-            function openCity(evt, cityName) {
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
-                tablinks = document.getElementsByClassName("tablinks");
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
-                document.getElementById(cityName).style.display = "block";
-                evt.currentTarget.className += " active";
-            }
+                        <!-- Modal Fullscreen Start -->
+                        <div class="modal fade modal-fullscreen" id="nav-collapse-sm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" data-dismiss="modal" aria-hidden="true">
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            MENU
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="productColumn-3">
+                                            <div class="tab br-white">
+                                                <?php
+                                                foreach ($menu as $row) { ?>
+                                                    <button class="tablinks" onclick="openCity(event, '<?= $row->id ?>')" id="defaultOpen"><?php echo $row->category; ?></button>
+                                                <?php
+                                                } ?>
+                                            </div>
+                                        </div>
+                                        <div class="productColumn-6">
+                                            <?php foreach ($menu as $row) { ?>
+                                                <div id="<?= $row->id ?>" class="tabcontent">
+                                                    <?php $brand = $this->brn->getBrand($row->id);
+                                                    foreach ($brand as $brands) { ?>
+                                                        <button onclick="location.href='<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>'"><?php echo $brands->brand; ?></button>
+                                                    <?php } ?>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal Fullscreen End -->
 
-            document.getElementById("defaultOpen").click();
-        </script>
+                        <!-- Include javascript -->
+                        <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mixitup.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/modernizr.custom.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.bxslider.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.cslider.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.placeholder.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.inview.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/app.js"></script>
+                        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/template.js"></script>
+                        <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/search-autocomplete.js"></script> -->
 
-        <script type="text/javascript">
-            // Search Autocomplete
-            var data = <?php echo json_encode($productAutoComplete); ?>;
-            var productList = [];
-            data.forEach(product => {
-                productList.push(product.searchProduct);
-            });
+                        <script>
+                            // Active Menu CSS
+                            var header = document.getElementById("rowMenu");
+                            var menu = header.getElementsByClassName("navMenu");
+                            for (var i = 0; i < menu.length; i++) {
+                                menu[i].addEventListener("click", function() {
+                                    var current = document.getElementsByClassName("active");
+                                    current[0].className = current[0].className.replace(" active", "");
+                                    this.className += " active";
+                                });
+                            }
+                        </script>
 
-            function autocomplete(inp, arr) {
-                var currentFocus;
-                inp.addEventListener("input", function(e) {
-                    var a, b, i, val = this.value;
-                    closeAllLists();
-                    if (!val) {
-                        return false;
-                    }
-                    currentFocus = -1;
-                    a = document.createElement("DIV");
-                    a.setAttribute("id", this.id + "autocomplete-list");
-                    a.setAttribute("class", "autocomplete-items");
-                    this.parentNode.appendChild(a);
+                        <script>
+                            // Mobile Menu Tabs
+                            function openCity(evt, cityName) {
+                                var i, tabcontent, tablinks;
+                                tabcontent = document.getElementsByClassName("tabcontent");
+                                for (i = 0; i < tabcontent.length; i++) {
+                                    tabcontent[i].style.display = "none";
+                                }
+                                tablinks = document.getElementsByClassName("tablinks");
+                                for (i = 0; i < tablinks.length; i++) {
+                                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                                }
+                                document.getElementById(cityName).style.display = "block";
+                                evt.currentTarget.className += " active";
+                            }
 
-                    arr.filter(function(search) {
-                        return ~search.toLowerCase().indexOf(inp.value.toLowerCase());
-                    }).map(function(search) {
-                        b = document.createElement("DIV");
-                        b.innerHTML = search;
-                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-                        b.addEventListener("click", function(e) {
-                            inp.value = search
-                            closeAllLists();
-                            location.href = "<?php echo base_url(); ?>user/C_product/search/" +
-                                inp.value;
-                        });
-                        a.appendChild(b);
-                    })
-                });
-                inp.addEventListener("keydown", function(e) {
-                    var x = document.getElementById(this.id + "autocomplete-list");
-                    if (x) x = x.getElementsByTagName("div");
-                    if (e.keyCode == 40) {
-                        currentFocus++;
-                        addActive(x);
-                    } else if (e.keyCode == 38) {
-                        currentFocus--;
-                        addActive(x);
-                    } else if (e.keyCode == 13) {
-                        e.preventDefault();
-                        if (currentFocus > -1) {
-                            if (x) x[currentFocus].click();
-                        }
-                        location.href = "<?php echo base_url(); ?>user/C_product/search/" + inp.value;
-                    }
-                });
+                            document.getElementById("defaultOpen").click();
+                        </script>
 
-                function addActive(x) {
-                    if (!x) return false;
-                    removeActive(x);
-                    if (currentFocus >= x.length) currentFocus = 0;
-                    if (currentFocus < 0) currentFocus = (x.length - 1);
-                    x[currentFocus].classList.add("autocomplete-active");
-                }
+                        <script type="text/javascript">
+                            // Search Autocomplete
+                            var data = <?php echo json_encode($productAutoComplete); ?>;
+                            var productList = [];
+                            data.forEach(product => {
+                                productList.push(product.searchProduct);
+                            });
 
-                function removeActive(x) {
-                    for (var i = 0; i < x.length; i++) {
-                        x[i].classList.remove("autocomplete-active");
-                    }
-                }
+                            function autocomplete(inp, arr) {
+                                var currentFocus;
+                                inp.addEventListener("input", function(e) {
+                                    var a, b, i, val = this.value;
+                                    closeAllLists();
+                                    if (!val) {
+                                        return false;
+                                    }
+                                    currentFocus = -1;
+                                    a = document.createElement("DIV");
+                                    a.setAttribute("id", this.id + "autocomplete-list");
+                                    a.setAttribute("class", "autocomplete-items");
+                                    this.parentNode.appendChild(a);
 
-                function closeAllLists(elmnt) {
-                    var x = document.getElementsByClassName("autocomplete-items");
-                    for (var i = 0; i < x.length; i++) {
-                        if (elmnt != x[i] && elmnt != inp) {
-                            x[i].parentNode.removeChild(x[i]);
-                        }
-                    }
-                }
-                document.addEventListener("click", function(e) {
-                    closeAllLists(e.target);
-                });
-            }
-            autocomplete(document.getElementById("searchProduct"), productList);
-        </script>
+                                    arr.filter(function(search) {
+                                        return ~search.toLowerCase().indexOf(inp.value.toLowerCase());
+                                    }).map(function(search) {
+                                        b = document.createElement("DIV");
+                                        b.innerHTML = search;
+                                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                                        b.addEventListener("click", function(e) {
+                                            inp.value = search
+                                            closeAllLists();
+                                            location.href = "<?php echo base_url(); ?>user/C_product/search/" +
+                                                inp.value;
+                                        });
+                                        a.appendChild(b);
+                                    })
+                                });
+                                inp.addEventListener("keydown", function(e) {
+                                    var x = document.getElementById(this.id + "autocomplete-list");
+                                    if (x) x = x.getElementsByTagName("div");
+                                    if (e.keyCode == 40) {
+                                        currentFocus++;
+                                        addActive(x);
+                                    } else if (e.keyCode == 38) {
+                                        currentFocus--;
+                                        addActive(x);
+                                    } else if (e.keyCode == 13) {
+                                        e.preventDefault();
+                                        if (currentFocus > -1) {
+                                            if (x) x[currentFocus].click();
+                                        }
+                                        location.href = "<?php echo base_url(); ?>user/C_product/search/" + inp.value;
+                                    }
+                                });
+
+                                function addActive(x) {
+                                    if (!x) return false;
+                                    removeActive(x);
+                                    if (currentFocus >= x.length) currentFocus = 0;
+                                    if (currentFocus < 0) currentFocus = (x.length - 1);
+                                    x[currentFocus].classList.add("autocomplete-active");
+                                }
+
+                                function removeActive(x) {
+                                    for (var i = 0; i < x.length; i++) {
+                                        x[i].classList.remove("autocomplete-active");
+                                    }
+                                }
+
+                                function closeAllLists(elmnt) {
+                                    var x = document.getElementsByClassName("autocomplete-items");
+                                    for (var i = 0; i < x.length; i++) {
+                                        if (elmnt != x[i] && elmnt != inp) {
+                                            x[i].parentNode.removeChild(x[i]);
+                                        }
+                                    }
+                                }
+                                document.addEventListener("click", function(e) {
+                                    closeAllLists(e.target);
+                                });
+                            }
+                            autocomplete(document.getElementById("searchProduct"), productList);
+                        </script>
 </body>
 
 </html>

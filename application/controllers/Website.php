@@ -22,7 +22,6 @@ class Website extends CI_Controller
 		$data['store'] = $this->foo->getById(2);
 		$data['buy'] = $this->foo->getById(3);
 		$data['social'] = $this->foo->getAll();
-		$data['category'] = "";
 		$data['titlepage'] = "Home";
 		$data['page'] = "home";
 		$this->load->view('user/template', $data);
