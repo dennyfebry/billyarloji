@@ -5,6 +5,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/swiper.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/slider.css" />
+<script src="https://apps.elfsight.com/p/platform.js" defer></script>
 
 <div id="home">
     <!-- Start Slider section -->
@@ -15,11 +16,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="swiper-wrapper vertical-wrapper">
                     <?php if (count($slider) > 0) {
                         foreach ($slider as $row) { ?>
-                    <div class="swiper-slide vertical-slide">
-                        <img class='vertical-image'
-                            src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>"
-                            onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
-                    </div>
+                            <div class="swiper-slide vertical-slide">
+                                <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
+                            </div>
                     <?php }
                     } else {
                         echo ("<div class='swiper-slide vertical-slide'>
@@ -47,12 +46,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div data-swiper-parallax="-23%"></div>
                 <div class="swiper-wrapper testimoni-wrapper">
                     <?php foreach ($testimoni as $row) { ?>
-                    <div class="swiper-slide testimoni-slide row">
-                        <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
-                        <div class="text" data-swiper-parallax="-100">
-                            <?php echo $row->description ?>
+                        <div class="swiper-slide testimoni-slide row">
+                            <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
+                            <div class="text" data-swiper-parallax="-100">
+                                <?php echo $row->description ?>
+                            </div>
                         </div>
-                    </div>
                     <?php } ?>
                 </div>
                 <div class="swiper-button-prev swiper-button-white testimoni-prev"></div>
@@ -68,20 +67,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <span class="brown-text pr-03 float-right">INSTAGRAM</span>
             <span class="float-right">FEEDS</span>
         </div>
-        <div class='row feeds-item'>
-            <!-- <div class="row"> -->
-            <div class="swiper-container feeds-container">
+        <!-- <div class='row feeds-item'> -->
+        <!-- <div class="row"> -->
+        <!-- <div class="swiper-container feeds-container">
                 <div class="swiper-wrapper feeds-wrapper">
                     <?php for ($i = 0; $i < 10; $i++) { ?>
-                    <div class="swiper-slide feeds-slide">
-                        <img class='feeds-image' src="<?php echo base_url(); ?>upload/product/2.jpg"
-                            onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
-                    </div>
+                        <div class="swiper-slide feeds-slide">
+                            <img class='feeds-image' src="<?php echo base_url(); ?>upload/product/2.jpg" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
+                        </div>
                     <?php } ?>
                 </div>
-            </div>
-            <!-- </div> -->
-        </div>
+            </div> -->
+        <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405"></div>
+        <!-- </div> -->
+        <!-- </div> -->
     </div>
     <!-- End Feeds Section -->
 
@@ -139,43 +138,43 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/swiper.min.js"></script>
 
 <script>
-// Vertical Swiper JS
-var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
-    direction: 'vertical',
-    loop: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Vertical Swiper JS
+    var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
+        direction: 'vertical',
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 
-// Testimoni Swiper JS
-var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
-    speed: 600,
-    parallax: true,
-    loop: true,
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Testimoni Swiper JS
+    var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
+        speed: 600,
+        parallax: true,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 
-// Instagram Feeds Swiper JS
-var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
-    slidesPerView: 4,
-    spaceBetween: 10,
-    loop: true,
-    autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-    },
-});
+    // Instagram Feeds Swiper JS
+    var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
+        slidesPerView: 4,
+        spaceBetween: 10,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+    });
 </script>
