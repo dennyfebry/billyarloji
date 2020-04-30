@@ -1,8 +1,8 @@
 .simple-pagination ul {
-	margin: 0 0 20px;
-	padding: 0;
-	list-style: none;
-	text-align: center;
+    margin: 0;
+    padding: 0 0 20px;
+    list-style: none;
+    text-align: center;
 }
 
 .simple-pagination li {

@@ -69,20 +69,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <span class="brown-text pr-03 float-right">INSTAGRAM</span>
             <span class="float-right">FEEDS</span>
         </div>
-        <!-- <div class='row feeds-item'> -->
-        <!-- <div class="row"> -->
-        <!-- <div class="swiper-container feeds-container">
-                <div class="swiper-wrapper feeds-wrapper">
-                    <?php for ($i = 0; $i < 10; $i++) { ?>
-                        <div class="swiper-slide feeds-slide">
-                            <img class='feeds-image' src="<?php echo base_url(); ?>upload/product/2.jpg" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
-                        </div>
-                    <?php } ?>
-                </div>
-            </div> -->
         <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405"></div>
-        <!-- </div> -->
-        <!-- </div> -->
     </div>
     <!-- End Feeds Section -->
 
