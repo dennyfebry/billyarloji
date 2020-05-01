@@ -26,6 +26,7 @@ class C_product extends CI_Controller
         $data['brandName'] = explode(" ", $brand->brand);
         $data['titlepage'] = "Product - " . $brand->brand;
         $data['page'] = "product";
+
         $this->load->view('user/template', $data);
     }
 

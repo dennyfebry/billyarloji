@@ -34,7 +34,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </div>
     <!-- Product List -->
     <div class="row container">
-        <ul class="thumbnails row mb-5">
+        <ul class="thumbnails row mb-3">
             <?php
             if (count($product) > 0) {
                 foreach ($product as $row) { ?>

@@ -9,9 +9,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <div id="home">
     <!-- Start Slider section -->
-    <div class='row p-1'>
-        <div class='productColumn-0 productColumn-05-md productColumn-05-lg'></div>
-        <div class="productColumn-10 productColumn-9-md productColumn-9-lg">
+    <div class='row ptb-1'>
+        <div class="productColumn-10">
             <div class="swiper-container vertical-container">
                 <div class="swiper-wrapper vertical-wrapper">
                     <?php if (count($slider) > 0) {
@@ -33,7 +32,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class='productColumn-0 productColumn-05-md productColumn-05-lg'></div>
     </div>
     <!-- End Slider Section -->
 
