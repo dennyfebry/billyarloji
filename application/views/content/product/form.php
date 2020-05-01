@@ -63,7 +63,7 @@ if ($content == "Edit") {
                 </div>
                 <div><?= $titlepage ?>
                     <div class="page-title-subheading">
-                        <a style="color:#777;" href="<?php echo site_url('product') ?>"><?= $titlepage ?></a> / <?php echo $content; ?>
+                        <a style="color:#777;" href="<?php echo site_url('list_product') ?>"><?= $titlepage ?></a> / <?php echo $content; ?>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@ if ($content == "Edit") {
                     <?php if ($content == "Edit") { ?>
                         <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
                         <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('product/add') ?>" method="post" enctype="multipart/form-data" novalidate>
+                            <form class="needs-validation" action="<?php echo site_url('list_product/add') ?>" method="post" enctype="multipart/form-data" novalidate>
                             <?php } ?>
 
                             <div class="form-row">
@@ -356,7 +356,7 @@ if ($content == "Edit") {
             .remove()
             .end();
         $.ajax({
-            url: "<?php echo base_url() . 'index.php/product/getBrand' ?>",
+            url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
             type: "POST",
             data: {
                 "name_category": category
@@ -387,7 +387,7 @@ if ($content == "Edit") {
                     .end();
 
                 $.ajax({
-                    url: "<?php echo base_url() . 'index.php/product/getBrand' ?>",
+                    url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
                     type: "POST",
                     data: {
                         "name_category": category
