@@ -137,14 +137,16 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="<?php echo site_url('superadmin') ?>" <?php if ($titlepage == "Superadmin") {
-                                                                        echo "class='mm-active'";
-                                                                    } ?>>
-                        <i class="metismenu-icon pe-7s-users"></i>
-                        Admin
-                    </a>
-                </li>
+                <?php if ($this->session->userdata('role') == 1) { ?>
+                    <li>
+                        <a href="<?php echo site_url('superadmin') ?>" <?php if ($titlepage == "Superadmin") {
+                                                                            echo "class='mm-active'";
+                                                                        } ?>>
+                            <i class="metismenu-icon pe-7s-users"></i>
+                            Admin
+                        </a>
+                    </li>
+                <?php } ?>
             </ul>
         </div>
     </div>

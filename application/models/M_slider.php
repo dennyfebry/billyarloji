@@ -98,8 +98,8 @@ class M_slider extends CI_Model
         $config['file_name']            = $this->title;
         $config['overwrite']            = true;
         $config['max_size']             = 1024; // 1MB
-        // $config['max_width']            = 200;
-        // $config['max_height']           = 200;
+        $config['max_width']            = 1700;
+        $config['max_height']           = 500;
 
         $this->load->library('upload', $config);
 

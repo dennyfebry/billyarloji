@@ -56,8 +56,8 @@ if ($content == "Edit") {
                                 <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Name">Name</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Name" value="<?php echo $name; ?>" required>
+                                    <label for="Name">Nama</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Nama" value="<?php echo $name; ?>" required>
                                     <?php echo form_error('name') ?>
                                     <div class="valid-feedback">
                                         Looks good!

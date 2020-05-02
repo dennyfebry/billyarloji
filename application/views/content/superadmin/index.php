@@ -17,9 +17,11 @@
         <div class="col-md-12">
             <div class="main-card mb-3 card">
                 <div class="card-header"><?= $titlepage ?>
-                    <div class="btn-actions-pane-right">
+                </div>
+                <div class="card-header">
+                    <div class="btn-actions-pane-left">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('superadmin/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('superadmin/add') ?>"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
                 </div>
@@ -29,7 +31,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Username</th>
                                     <th>Role</th>
                                     <th>Last Login</th>
@@ -53,7 +55,11 @@
                                             } ?></td>
                                         <td><?php echo $row->last_login ?></td>
                                         <td><a class="mb-2 mr-2 btn btn-warning" href="<?php echo base_url(); ?>superadmin/edit/<?php echo $row->id; ?>"><i class="fa fa-pencil-square-o"></i> Edit</a>
-                                            <a class="mb-2 mr-2 btn btn-danger" href="#deleteAdmin<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a></td>
+                                            <?php if ($row->id == 1) {
+                                            } else { ?>
+                                                <a class="mb-2 mr-2 btn btn-danger" href="#deleteAdmin<?php echo $row->id; ?>" data-toggle="modal"><i class=" fa fa-trash"></i> Delete</a>
+                                            <?php } ?>
+                                        </td>
                                     </tr>
                                 <?php
                                     $no++;

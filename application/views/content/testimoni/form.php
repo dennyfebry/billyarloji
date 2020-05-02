@@ -62,8 +62,8 @@ if ($content == "Edit") {
                                 <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Title">Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>" required>
+                                    <label for="Title">Nama</label>
+                                    <input type="text" class="form-control" name="title" placeholder="Nama" value="<?php echo $title; ?>" required>
                                     <?php echo form_error('title') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -73,7 +73,7 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Description</label>
+                                    <label for="Description">Deskripsi Testimoni</label>
                                     <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
@@ -109,7 +109,7 @@ if ($content == "Edit") {
 
 <script>
     $('#summernote').summernote({
-        placeholder: 'Enter text...',
+        placeholder: 'Masukkan Testimoni...',
         tabsize: 2,
         height: 100,
         toolbar: [

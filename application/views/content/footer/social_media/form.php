@@ -60,8 +60,8 @@ if ($content == "Edit") {
                                 <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Title">Name Social</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Name Social" value="<?php echo $title; ?>" required>
+                                    <label for="Title">Nama Media Social</label>
+                                    <input type="text" class="form-control" name="title" placeholder="Nama Media Social" value="<?php echo $title; ?>" required>
                                     <?php echo form_error('title') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -72,7 +72,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Description">Username</label>
-                                    <input type="text" class="form-control" name="description" placeholder="URL (Link)" value="<?php echo $description; ?>" required>
+                                    <input type="text" class="form-control" name="description" placeholder="Username" value="<?php echo $description; ?>" required>
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the url/link.

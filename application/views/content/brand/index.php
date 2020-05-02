@@ -17,9 +17,11 @@
         <div class="col-md-12">
             <div class="main-card mb-3 card">
                 <div class="card-header"><?= $titlepage ?>
-                    <div class="btn-actions-pane-right">
+                </div>
+                <div class="card-header">
+                    <div class="btn-actions-pane-left">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('brand/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('brand/add') ?>"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
                 </div>

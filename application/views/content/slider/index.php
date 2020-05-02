@@ -16,10 +16,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="main-card mb-3 card">
-                <div class="card-header"><?= $titlepage ?>
-                    <div class="btn-actions-pane-right">
+                <div class="card-header"><?= $titlepage ?></div>
+                <div class="card-header">
+                    <div class="btn-actions-pane-left">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('slider/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('slider/add') ?>"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
                 </div>
@@ -29,9 +30,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Images</th>
+                                    <th>Judul</th>
+                                    <th>Deskripsi</th>
+                                    <th>Gambar</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
                                     <th>Status</th>

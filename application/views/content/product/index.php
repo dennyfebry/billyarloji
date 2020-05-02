@@ -17,9 +17,11 @@
         <div class="col-md-12">
             <div class="main-card mb-3 card">
                 <div class="card-header"><?= $titlepage ?>
-                    <div class="btn-actions-pane-right">
+                </div>
+                <div class="card-header">
+                    <div class="btn-actions-pane-left">
                         <div role="group" class="btn-group-sm btn-group">
-                            <a class="btn btn-primary" href="<?php echo site_url('list_product/add') ?>">Add +</a>
+                            <a class="btn btn-primary" href="<?php echo site_url('list_product/add') ?>"><i class="fa fa-plus"></i> Add</a>
                         </div>
                     </div>
                 </div>
@@ -31,19 +33,18 @@
                                     <th>No</th>
                                     <th>Category</th>
                                     <th>Brand</th>
-                                    <th>Name</th>
+                                    <th>Nama</th>
                                     <th>Model</th>
                                     <th>Type</th>
                                     <th>Diameter</th>
                                     <th>Movement</th>
                                     <th>Material</th>
-                                    <th>Condition</th>
-                                    <th>Completeness</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Discount</th>
-                                    <th>Images</th>
-                                    <th>URL/Link</th>
+                                    <th>Kondisi</th>
+                                    <th>Kelengkapan</th>
+                                    <th>Deskripsi</th>
+                                    <th>Harga</th>
+                                    <th>Harga Diskon</th>
+                                    <th>Gambar</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
                                     <th>Status</th>
@@ -72,13 +73,12 @@
                                             <a href="#" class="show_hide" data-content="toggle-text">Read More</a>
                                         </td>
                                         <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
-                                        <td><?php echo $row->discount ?>%</td>
+                                        <td>Rp <?php echo number_format($row->discount, 2, ',', '.') ?></td>
                                         <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"> <br><br>
                                             <img src="<?php echo base_url('upload/product/' . $row->images_front . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_side . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="" height="46px"></td>
-                                        <td><a href="<?php echo $row->url ?>">Here</a></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
                                         <td><?php if ($row->status == '1') {

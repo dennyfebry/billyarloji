@@ -61,7 +61,7 @@ if ($content == "Edit") {
                                 <input type="hidden" name="old_images" value="<?php echo $images; ?>">
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Title">Title</label>
+                                    <label for="Title">Judul</label>
                                     <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>" required>
                                     <?php echo form_error('title') ?>
                                     <div class="valid-feedback">
@@ -72,7 +72,7 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Description</label>
+                                    <label for="Description">Deskripsi</label>
                                     <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea>
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
@@ -80,7 +80,7 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images">Images</label>
+                                    <label for="Images">Gambar</label>
                                     <input type="file" class="form-control" name="images" value="<?php echo $images; ?>">
                                     <?php echo form_error('images') ?>
                                     <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
@@ -129,7 +129,7 @@ if ($content == "Edit") {
 
 <script>
     $('#summernote').summernote({
-        placeholder: 'Enter text...',
+        placeholder: 'Masukkan Deskripsi...',
         tabsize: 2,
         height: 100,
         toolbar: [

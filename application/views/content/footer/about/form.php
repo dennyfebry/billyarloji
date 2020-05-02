@@ -54,7 +54,7 @@ if ($content == "Edit") {
                             <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
 
                             <div class="col-md-12 mb-3">
-                                <label for="Title">Title</label>
+                                <label for="Title">Judul</label>
                                 <input type="text" class="form-control" name="title" placeholder="Title" value="<?php echo $title; ?>" required>
                                 <?php echo form_error('title') ?>
                                 <div class="valid-feedback">
@@ -65,7 +65,7 @@ if ($content == "Edit") {
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="Description">Description</label>
+                                <label for="Description">Deskripsi</label>
                                 <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
                                 <?php echo form_error('description') ?>
                                 <div class="invalid-feedback">

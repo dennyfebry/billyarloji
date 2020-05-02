@@ -19,7 +19,7 @@ $images_front = "";
 $images_side = "";
 $images_top = "";
 $images_detail = "";
-$url = "";
+$url = "https://linktr.ee/arlojilakilaki";
 $status = "";
 $created_date = date("Y-m-d H:i:s");
 $created_by = $this->session->userdata('id');
@@ -101,6 +101,7 @@ if ($content == "Edit") {
                                 <input type="hidden" name="old_images_side" value="<?php echo $images_side; ?>">
                                 <input type="hidden" name="old_images_top" value="<?php echo $images_top; ?>">
                                 <input type="hidden" name="old_images_detail" value="<?php echo $images_detail; ?>">
+                                <input type="hidden" name="url" value="<?php echo $url; ?>">
 
                                 <div class="col-md-12 mb-3">
                                     <label for="Category_id">Category</label>
@@ -128,8 +129,8 @@ if ($content == "Edit") {
                                 </div>
 
                                 <div class="col-md-12 mb-3">
-                                    <label for="Name">Name Product</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Name" value="<?php echo $name; ?>" required>
+                                    <label for="Name">Nama Produk</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Nama Produk" value="<?php echo $name; ?>" required>
                                     <?php echo form_error('name') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -140,7 +141,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Model">Model</label>
-                                    <input type="text" class="form-control" name="model" placeholder="Model" value="<?php echo $model; ?>" required>
+                                    <input type="text" class="form-control" name="model" placeholder="Model" value="<?php echo $model; ?>">
                                     <?php echo form_error('model') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -151,7 +152,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Type">Type</label>
-                                    <input type="text" class="form-control" name="type" placeholder="Type" value="<?php echo $type; ?>" required>
+                                    <input type="text" class="form-control" name="type" placeholder="Type" value="<?php echo $type; ?>">
                                     <?php echo form_error('type') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -194,8 +195,8 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Condition">Condition</label>
-                                    <input type="text" class="form-control" name="condition_product" placeholder="Condition" value="<?php echo $condition_product; ?>" required>
+                                    <label for="Condition">Kondisi</label>
+                                    <input type="text" class="form-control" name="condition_product" placeholder="Kondisi" value="<?php echo $condition_product; ?>" required>
                                     <?php echo form_error('condition_product') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -205,8 +206,8 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Completeness">Completeness</label>
-                                    <input type="text" class="form-control" name="completeness" placeholder="Completeness" value="<?php echo $completeness; ?>" required>
+                                    <label for="Completeness">Kelengkapan</label>
+                                    <input type="text" class="form-control" name="completeness" placeholder="Kelengkapan" value="<?php echo $completeness; ?>" required>
                                     <?php echo form_error('completeness') ?>
                                     <div class="valid-feedback">
                                         Looks good!
@@ -216,7 +217,7 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Description</label>
+                                    <label for="Description">Deskripsi</label>
                                     <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
@@ -224,76 +225,69 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Price">Price</label>
-                                    <input type="number" class="form-control" name="price" placeholder="Price" value="<?php echo $price; ?>" required>
+                                    <label for="Price">Harga</label>
+                                    <input type="number" class="form-control" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
                                     <?php echo form_error('price') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the price.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Discount">Discount</label>
-                                    <input type="number" class="form-control" name="discount" placeholder="Discount" value="<?php echo $discount; ?>" required>
+                                    <label for="Discount">Diskon</label>
+                                    <input type="number" class="form-control" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
                                     <?php echo form_error('discount') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the discount.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images">Images Product Main</label>
-                                    <input type="file" class="form-control" name="images" placeholder="Images" value="<?php echo $images; ?>">
+                                    <label for="Images">Gambar Utama</label>
+                                    <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
+                                    <img id="view_images" src="#" alt="Gambar Utama" />
                                     <?php echo form_error('images') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                    <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images_Front">Images Product Front</label>
-                                    <input type="file" class="form-control" name="images_front" placeholder="Images Front" value="<?php echo $images_front; ?>">
+                                    <label for="Images_Front">Gambar Depan</label>
+                                    <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
+                                    <img id="view_images_front" src="#" alt="Gambar Depan" />
                                     <?php echo form_error('images_front') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                    <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images_Side">Images Product Side</label>
-                                    <input type="file" class="form-control" name="images_side" placeholder="Images Side" value="<?php echo $images_side; ?>">
+                                    <label for="Images_Side">Gambar Samping</label>
+                                    <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
+                                    <img id="view_images_side" src="#" alt="Gambar Samping" />
                                     <?php echo form_error('images_side') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                    <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images_Top">Images Product Top</label>
-                                    <input type="file" class="form-control" name="images_top" placeholder="Images Top" value="<?php echo $images_top; ?>">
+                                    <label for="Images_Top">Gambar Atas</label>
+                                    <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
+                                    <img id="view_images_top" src="#" alt="Gambar Atas" />
                                     <?php echo form_error('images_top') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                    <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Images_Detail">Images Product Detail</label>
-                                    <input type="file" class="form-control" name="images_detail" placeholder="Images Detail" value="<?php echo $images_detail; ?>">
+                                    <label for="Images_Detail">Gambar Detail</label>
+                                    <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
+                                    <img id="view_images_detail" src="#" alt="Gambar Detail" />
                                     <?php echo form_error('images_detail') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                    <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="URL">URL/Link</label>
-                                    <input type="text" class="form-control" name="url" placeholder="URL/Link" value="<?php echo $url; ?>" required>
-                                    <?php echo form_error('url') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the url product.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -348,7 +342,101 @@ if ($content == "Edit") {
         ]
     });
 
+    function readURL(input, img) {
+        console.log(img);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            if (img == 1) {
+                var images = $("#view_images");
+                images.css({
+                    "width": 300,
+                    "height": 300
+                });
+                reader.onload = function(e) {
+                    images.show();
+                    images.attr('src', e.target.result);
+                    $('#hidenote' + img).hide();
+                }
+            } else if (img == 2) {
+                console.log("kedua");
+                var images_front = $("#view_images_front");
+                images_front.css({
+                    "width": 300,
+                    "height": 300
+                });
+                reader.onload = function(e) {
+                    images_front.show();
+                    images_front.attr('src', e.target.result);
+                    $('#hidenote' + img).hide();
+                }
+            } else if (img == 3) {
+                var images_side = $("#view_images_side");
+                images_side.css({
+                    "width": 300,
+                    "height": 300
+                });
+                reader.onload = function(e) {
+                    images_side.show();
+                    images_side.attr('src', e.target.result);
+                    $('#hidenote' + img).hide();
+                }
+            } else if (img == 4) {
+                var images_top = $("#view_images_top");
+                images_top.css({
+                    "width": 300,
+                    "height": 300
+                });
+                reader.onload = function(e) {
+                    images_top.show();
+                    images_top.attr('src', e.target.result);
+                    $('#hidenote' + img).hide();
+                }
+            } else if (img == 5) {
+                var images_detail = $("#view_images_detail");
+                images_detail.css({
+                    "width": 300,
+                    "height": 300
+                });
+                reader.onload = function(e) {
+                    images_detail.show();
+                    images_detail.attr('src', e.target.result);
+                    $('#hidenote' + img).hide();
+                }
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#images").change(function() {
+        var img = 1;
+        readURL(this, img);
+    });
+    $("#images_front").change(function() {
+        var img = 2;
+        readURL(this, img);
+    });
+    $("#images_side").change(function() {
+        var img = 3;
+        readURL(this, img);
+    });
+    $("#images_top").change(function() {
+        var img = 4;
+        readURL(this, img);
+    });
+    $("#images_detail").change(function() {
+        var img = 5;
+        readURL(this, img);
+    });
+
     $(document).ready(function() {
+        $("#view_images").hide();
+        $("#view_images_front").hide();
+        $("#view_images_side").hide();
+        $("#view_images_top").hide();
+        $("#view_images_detail").hide();
+
         var selected_brand = '<?php echo $brand_id ?>';
         var category = $("#categoryselect option:selected").text();
         $('#brand')

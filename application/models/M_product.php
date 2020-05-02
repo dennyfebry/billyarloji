@@ -40,17 +40,6 @@ class M_product extends CI_Model
                 'rules' => 'required'
             ],
 
-            [
-                'field' => 'model',
-                'label' => 'Model',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'type',
-                'label' => 'Type',
-                'rules' => 'required'
-            ],
 
             [
                 'field' => 'diameter',
@@ -83,6 +72,12 @@ class M_product extends CI_Model
             ],
 
             [
+                'field' => 'images',
+                'label' => 'Images',
+                'rules' => 'required'
+            ],
+
+            [
                 'field' => 'price',
                 'label' => 'Price',
                 'rules' => 'required'
@@ -91,12 +86,6 @@ class M_product extends CI_Model
             [
                 'field' => 'discount',
                 'label' => 'Discount',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'url',
-                'label' => 'URL',
                 'rules' => 'required'
             ],
 
