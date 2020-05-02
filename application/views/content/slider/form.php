@@ -81,9 +81,10 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images">Gambar</label>
-                                    <input type="file" class="form-control" name="images" value="<?php echo $images; ?>">
+                                    <input type="file" id="slider" class="form-control" name="images" value="<?php echo $images; ?>">
+                                    <img id="view_slider" src="#" alt="Gambar Depan" />
                                     <?php echo form_error('images') ?>
-                                    <span style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
+                                    <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
@@ -125,9 +126,7 @@ if ($content == "Edit") {
             });
         }, false);
     })();
-</script>
 
-<script>
     $('#summernote').summernote({
         placeholder: 'Masukkan Deskripsi...',
         tabsize: 2,
@@ -140,5 +139,29 @@ if ($content == "Edit") {
             ['insert', ['link', 'table', 'hr']],
             ['view', ['fullscreen', 'codeview', 'help']]
         ]
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            var slider = $("#view_slider");
+            slider.css({
+                "width": 1020,
+                "height": 300
+            });
+            reader.onload = function(e) {
+                slider.show();
+                slider.attr('src', e.target.result);
+                $('#hidenote').hide();
+            }
+
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#slider").change(function() {
+        readURL(this);
     });
 </script>
