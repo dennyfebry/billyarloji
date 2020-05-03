@@ -16,6 +16,7 @@ class C_dashboard extends CI_Controller
     {
         $data['titlepage'] = "Dashboard";
         $data['page'] = "dashboard/index";
+        $data['count'] = '0';
         $this->load->view('content/layout', $data);
     }
 }
