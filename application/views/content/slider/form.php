@@ -82,7 +82,7 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images">Gambar</label>
                                     <input type="file" id="slider" class="form-control" name="images" value="<?php echo $images; ?>">
-                                    <img id="view_slider" src="#" alt="Gambar Depan" />
+                                    <img id="view_slider" src="#" alt="Gambar Slider" />
                                     <?php echo form_error('images') ?>
                                     <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
                                     <div class="invalid-feedback">
@@ -155,13 +155,15 @@ if ($content == "Edit") {
                 slider.attr('src', e.target.result);
                 $('#hidenote').hide();
             }
-
-
             reader.readAsDataURL(input.files[0]); // convert to base64 string
         }
     }
 
     $("#slider").change(function() {
         readURL(this);
+    });
+
+    $(document).ready(function() {
+        $("#view_slider").hide();
     });
 </script>
