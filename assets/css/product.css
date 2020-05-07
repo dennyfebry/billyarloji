@@ -97,11 +97,14 @@ body {
 
 ul.thumbnails {
 	width: 100%;
+	height: fit-content;
 }
 
 .thumbnail {
 	width: auto;
 	background: transparent;
+	display: flex;
+	flex-direction: column;
 }
 
 .watchTitle {
@@ -211,22 +214,40 @@ a.page-link.active {
 	margin: 0 0.5em;
 	border-radius: 0 0 10px 10px;
 	opacity: 0.9;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .productImage {
 	margin: 0 0.5em;
 }
 
+.productImage:hover {
+	border: 3px solid #e7bd70;
+}
+
 .productName {
 	color: #000000;
 	font-size: 17px;
 	padding: 0.1em;
+	flex: 1;
+	flex-grow: 3;
+	display: flex;
+}
+
+.productName h5,
+.price h5,
+.discount h5 {
+	width: 100%;
+	align-self: center;
 }
 
 .price {
 	background-color: #000000;
 	font-size: 17px;
 	padding: 0.1em;
+	flex: 1;
 }
 
 .discount {
@@ -234,7 +255,7 @@ a.page-link.active {
 	font-size: 14px;
 	padding: 0.1em;
 	text-decoration: line-through;
-	min-height: 0.5em;
+	flex: 1;
 }
 
 .productImg {
@@ -252,13 +273,18 @@ a.page-link.active {
 }
 
 .tableProduct > tbody > tr > th {
-	color: #fece1a;
 	font-size: 15px;
 	width: 50%;
+	background-color: #1c1c1c;
+	border: 2px solid #131313;
+	padding: 0.5em 0.5em 0.5em 1em;
 }
 
 .tableProduct > tbody > tr > td {
 	font-size: 12px;
+	background-color: #1a1919;
+	border: 2px solid #131313;
+	padding: 0.5em 0.5em 0.5em 1em;
 }
 
 .priceBuy {
@@ -266,11 +292,27 @@ a.page-link.active {
 }
 
 .priceBuy-sm {
-	display: flex;
+	display: table;
+}
+
+.priceBuy .btn-buy,
+.priceBuy-sm .btn-buy {
+	height: 50px;
+	font-size: 2em;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.p-0 {
+	padding: 0;
 }
 
 .p-1 {
 	padding: 1em;
+}
+
+.m-1 {
+	margin: 1em;
 }
 
 .pt-0 {
@@ -308,6 +350,10 @@ a.page-link.active {
 	height: 250px;
 }
 
+.priceDiscount {
+	display: none;
+}
+
 @media screen and (min-width: 768px) {
 	body {
 		font-size: 15px;
@@ -318,7 +364,8 @@ a.page-link.active {
 		font-weight: bold;
 	}
 
-	.watchTitle1 > span {
+	.watchTitle1 > span,
+	.priceTitle {
 		color: #e7bd70;
 		font-size: 20px;
 		font-weight: bold;
@@ -354,7 +401,6 @@ a.page-link.active {
 	.discount {
 		font-size: 17px;
 		padding: 0.25em;
-		min-height: 0.5em;
 	}
 
 	.productColumn-equal-md {
@@ -436,13 +482,35 @@ a.page-link.active {
 	}
 
 	.tableProduct > tbody > tr > th {
-		color: #fece1a;
 		font-size: 17px;
 		width: 40%;
 	}
 
 	.tableProduct > tbody > tr > td {
 		font-size: 14px;
+	}
+
+	.priceDiscount {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.price-detail {
+		font-size: 2em;
+		flex: 1;
+		padding: 0.5em 0 0 0;
+	}
+
+	.discount-detail {
+		font-size: 1.25em;
+		text-decoration: line-through;
+		flex: 1;
+		padding: 1em 0 0 0;
+		color: #f60;
+	}
+
+	.priceDiscount-sm {
+		display: none;
 	}
 }
 
@@ -531,7 +599,8 @@ a.page-link.active {
 	}
 
 	.priceBuy {
-		display: flex;
+		display: table;
+		width: 50%;
 	}
 
 	.priceBuy > button {
@@ -552,6 +621,10 @@ a.page-link.active {
 		width: 100%;
 		height: 375px;
 	}
+
+	.priceDiscount-sm {
+		display: none;
+	}
 }
 
 @media screen and (min-width: 1024px) {
@@ -562,5 +635,36 @@ a.page-link.active {
 	.vertical-image {
 		width: 100%;
 		height: 500px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.priceDiscount-sm {
+		display: flex;
+	}
+
+	td.discount-detail {
+		text-align: center !important;
+		text-decoration: line-through;
+		font-size: 1.25em !important;
+		color: #f60;
+		text-align: right !important;
+		padding: 0.5em 0.5em 0.5em 0 !important;
+	}
+
+	td.price-detail {
+		text-align: center !important;
+		font-size: 2em !important;
+		text-align: right !important;
+		padding: 0.25em 0.25em 0.25em 0 !important;
+	}
+
+	th.priceTitle {
+		color: #e7bd70 !important;
+		font-size: 17px !important;
+		font-weight: bold !important;
+		width: 30% !important;
+		padding: 0 !important;
+		text-align: center !important;
 	}
 }

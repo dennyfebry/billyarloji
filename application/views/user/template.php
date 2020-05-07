@@ -14,6 +14,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
     <title><?= $titlepage ?></title>
     <!-- Load Roboto font -->
     <link rel='stylesheet' type='text/css' href='<?php echo base_url(); ?>assets/fonts/font-googleapis.css'>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
     <!-- Fav and touch icons -->
     <link rel="shortcut icon" href="<?php echo base_url() ?>assets/content/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,29 +34,17 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
     <div class="background-mask"></div>
     <div class='header row'>
         <div class="row containerMenu" style="width: 100%">
-            <div class="productColumn-3 productColumn-2-lg">
+            <div class="productColumn-10 productColumn-7-lg">
                 <a href="<?php echo site_url('home') ?>" class="brand">
-                    <img src="<?php echo base_url(); ?>assets/images/Logo-BillyArloji.png" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="Logo" />
-                    <!-- This is website logo -->
+                    <img src="<?php echo base_url(); ?>assets/images/Logo.png" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="Logo" />
                 </a>
             </div>
-            <div class="productColumn-7 productColumn-8-lg">
-                <table id='billyTitle'>
-                    <tr>
-                        <th>BILLY ARLOJI</th>
-                    </tr>
-                    <tr>
-                        <td>All Original Luxury Goods With The Best Conditions</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="row search-sm p-1">
-            <form class="search" autocomplete="off">
-                <div class="autocomplete">
-                    <input id="searchProduct" type="text" name="searchProduct" placeholder="Product Name ... ">
+            <div class="productColumn-10 productColumn-3-lg search-sm">
+                <div class="form-group has-search autocomplete">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control" id="searchProduct" name="searchProduct" placeholder="Product Name ...">
                 </div>
-            </form>
+            </div>
         </div>
     </div>
     <div class="navbar">
