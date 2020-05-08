@@ -30,6 +30,18 @@ class C_product extends CI_Controller
         $this->load->view('user/template', $data);
     }
 
+    public function productMenu($category_id)
+    {
+        $categoryID = decrypt_url($category_id);
+        $category = $this->ctg->getById($categoryID);
+        $data['product'] = $this->prd->getProductMenu($categoryID);
+        $data['category'] = $category->category;
+        $data['titlepage'] = "Product - " . $category->category;
+        $data['page'] = "product";
+
+        $this->load->view('user/template', $data);
+    }
+
     public function search($searchValue)
     {
         $data['product'] = $this->prd->searchProduct(urldecode($searchValue));

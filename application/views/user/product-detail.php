@@ -54,7 +54,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             } ?>
                             <td class="price-detail">
                                 <?php if ($product->discount != 0) {
-                                    $total = $product->price - (($product->price * $product->discount) / 100);
+                                    $total = $product->price -  $product->discount;
                                     echo ("Rp. " . number_format($total, 2, ',', '.'));
                                 } else {
                                     echo ("Rp. " . number_format($product->price, 2, ',', '.'));
@@ -126,7 +126,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     <?php } ?>
                     <span class="price-detail">
                         <?php if ($product->discount != 0) {
-                            $total = $product->price - (($product->price * $product->discount) / 100);
+                            $total = $product->price - $product->discount;
                             echo ("Rp. " . number_format($total, 2, ',', '.'));
                         } else {
                             echo ("Rp. " . number_format($product->price, 2, ',', '.'));

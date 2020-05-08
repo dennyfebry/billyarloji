@@ -56,6 +56,11 @@ $route['translate_uri_dashes'] = FALSE;
 //User
 $route['home'] = 'Website';
 
+$route['menu'] = 'user/C_product/productMenu';
+$route['menu/(:any)'] = 'user/C_product/productMenu/$1';
+$route['menu/(:any)/(:any)'] = 'user/C_product/productMenu/$1/$2';
+
+
 $route['product'] = 'user/C_product/product';
 $route['product/(:any)'] = 'user/C_product/product/$1';
 $route['product/(:any)/(:any)'] = 'user/C_product/product/$1/$2';

@@ -23,7 +23,7 @@ class Website extends CI_Controller
 		$data['store'] = $this->foo->getById(2);
 		$data['buy'] = $this->foo->getById(3);
 		$data['social'] = $this->foo->getAll();
-		$data['product'] = $this->prd->getAll();
+		$data['product'] = $this->prd->getAllactive();
 		$data['titlepage'] = "Home";
 		$data['page'] = "home";
 

@@ -107,6 +107,17 @@ class M_product extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getAllactive()
+    {
+        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.description, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->from($this->table);
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        $this->db->where('status', 1);
+        return $this->db->get()->result();
+    }
+
     public function count()
     {
         $this->db->select('*');
@@ -313,6 +324,16 @@ class M_product extends CI_Model
         $this->db->from($this->table);
         $this->db->where('category_id', $category_id);
         $this->db->where('brand_id', $brand_id);
+        $this->db->where('status', 1);
+        return $this->db->get()->result();
+    }
+
+    public function getProductMenu($category_id)
+    {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('category_id', $category_id);
+        $this->db->where('status', 1);
         return $this->db->get()->result();
     }
 

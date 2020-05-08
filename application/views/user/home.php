@@ -20,7 +20,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="swiper-slide vertical-slide">
                                 <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
                                 <div class="button-slider">
-                                    <button class="btn">See Detail</button>
+                                    <a href="<?php echo $row->description ?>" class="btn">See Detail</a>
                                 </div>
                             </div>
                     <?php }
@@ -63,7 +63,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                                 <div class="price">
                                     <h5>Rp.
                                         <?php if ($row->discount != 0) {
-                                            $total = $row->price - (($row->price * $row->discount) / 100);
+                                            $total = $row->price - $row->discount;
                                             echo number_format($total, 2, ',', '.');
                                         } else {
                                             echo number_format($row->price, 2, ',', '.');
@@ -127,7 +127,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
         <span class="brown-text pr-03 float-right">INSTAGRAM</span>
         <span class="float-right">FEEDS</span>
     </div>
-    <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405"></div>
+    <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405">
+
+    </div>
 </div>
 <!-- End Feeds Section -->
 
