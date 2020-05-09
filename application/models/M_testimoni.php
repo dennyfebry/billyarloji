@@ -7,6 +7,7 @@ class M_testimoni extends CI_Model
     public $id;
     public $title;
     public $description;
+    public $images;
     public $created_date;
     public $created_by;
     public $updated_date;
@@ -31,7 +32,7 @@ class M_testimoni extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
         return $this->db->get()->result();

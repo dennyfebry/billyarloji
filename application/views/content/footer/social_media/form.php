@@ -113,19 +113,3 @@ if ($content == "Edit") {
         }, false);
     })();
 </script>
-
-<script>
-    $('#summernote').summernote({
-        placeholder: 'Enter text...',
-        tabsize: 2,
-        height: 100,
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontstyle', ['fontname', 'fontsize', 'color']],
-            ['para', ['ul', 'ol', 'paragraph', 'height']],
-            ['insert', ['link', 'table', 'hr']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
-</script>

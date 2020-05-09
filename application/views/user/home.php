@@ -20,7 +20,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="swiper-slide vertical-slide">
                                 <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
                                 <div class="button-slider">
-                                    <a href="<?php echo $row->description ?>" class="btn">See Detail</a>
+                                    <a href="<?php echo $row->link ?>" class="btn"><?php echo $row->description ?></a>
                                 </div>
                             </div>
                     <?php }
@@ -41,8 +41,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <!-- Start Product Section -->
     <div class='row home-product mtb-15 p-1'>
         <div class='row home-product-title'>
-            <span class="brown-text">PROD</span>
-            <span>UCTS</span>
+            <span class="brown-text">ALL</span>
+            <span>PRODUCTS</span>
         </div>
         <div class="row">
             <ul class="thumbnails row mb-3">
@@ -106,7 +106,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <div class="swiper-wrapper testimoni-wrapper">
                 <?php foreach ($testimoni as $row) { ?>
                     <div class="swiper-slide testimoni-slide row">
-                        <div class="icon"><i class="fa fa-user"></i></div>
+                        <div class="icon"> <img src="<?php echo base_url(); ?>upload/testimoni/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/testimoni/default.jpg';" width="100px" height="100px" alt="Testimoni" />
+                        </div>
                         <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
                         <div class="text" data-swiper-parallax="-100">
                             <?php echo $row->description ?>

@@ -37,7 +37,8 @@ class C_footer extends CI_Controller
 
         $data['about'] = $about->getById($id);
         if (!$data['about']) show_404();
-        $data['rows'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['titlepage'] = "About";
         $data['page'] = "footer/about/form";
@@ -62,7 +63,8 @@ class C_footer extends CI_Controller
 
         $data['store'] = $store->getById($id);
         if (!$data['store']) show_404();
-        $data['rows'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['titlepage'] = "Our Store";
         $data['page'] = "footer/our_store/form";
@@ -87,7 +89,8 @@ class C_footer extends CI_Controller
 
         $data['buy'] = $buy->getById($id);
         if (!$data['buy']) show_404();
-        $data['rows'] = $this->ref->getAll();
+        $data['atribute'] = $this->ref->getAll();
+        $data['count'] = $this->ref->count();
 
         $data['titlepage'] = "How To Buy";
         $data['page'] = "footer/how_to_buy/form";

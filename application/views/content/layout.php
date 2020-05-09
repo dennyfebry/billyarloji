@@ -63,7 +63,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
     <script>
         $(document).ready(function() {
             $('#datatable').DataTable();
-            // $('#summernote').summernote();
+
+            $('#summernote').summernote({
+                placeholder: 'Enter text...',
+                tabsize: 2,
+                height: 100,
+                toolbar: [
+                    ['style', ['undo', 'redo', 'bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontstyle', ['fontname', 'fontsize', 'color']],
+                    ['para', ['ul', 'ol', 'paragraph', 'height']],
+                    ['insert', ['link', 'table', 'hr']],
+                    ['view', ['fullscreen', 'codeview', 'help', ]]
+                ]
+            });
         });
     </script>
 

@@ -47,7 +47,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                         </div>
                         <div class="productColumn-9 productColumn-9-md productColumn-10-lg form-group has-search autocomplete">
                             <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control" id="searchProduct" name="searchProduct" placeholder="Product Name ...">
+                            <input type="text" class="form-control" id="searchProduct" name="searchProduct" placeholder="Cari Produk ...">
                         </div>
                     </div>
                 </div>
