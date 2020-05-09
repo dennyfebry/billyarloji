@@ -202,9 +202,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
         perPage = 10;
     }
 
+    var totalPages = Math.ceil(numItems / perPage);
+
     items.slice(perPage).hide();
 
-    if (numItems > 1) {
+    if (totalPages > 1) {
         $('#pagination-container').pagination({
             items: numItems,
             itemsOnPage: perPage,
