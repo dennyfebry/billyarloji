@@ -36,7 +36,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
         <div class="row containerMenu" style="width: 100%">
             <div class="productColumn-10 productColumn-7-lg">
                 <a href="<?php echo site_url('home') ?>" class="brand">
-                    <img src="<?php echo base_url(); ?>assets/images/Logo.png" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="Logo" />
+                    <img src="<?php echo base_url(); ?>assets/images/logo.png" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="Logo" />
                 </a>
             </div>
             <div class="productColumn-10 productColumn-3-lg search-sm">
@@ -68,12 +68,12 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                     } else { ?>
                             <div class='dropdown colTemplate navMenu'>
                             <?php } ?>
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                                <div><?php echo $row->category; ?></div>
+                            <a class="dropdown-toggle" href="" data-toggle="dropdown">
+                                <a href="<?php echo base_url(); ?>menu/<?php echo  encrypt_url($row->id); ?>"><?php echo $row->category; ?></a>
                                 <ul class="dropdown-menu">
                                     <?php $brand = $this->brn->getBrand($row->id);
                                     foreach ($brand as $brands) { ?>
-                                        <li><a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo  $brands->id; ?>"><?php echo $brands->brand; ?></a>
+                                        <li><a href="<?php echo base_url(); ?>product/<?php echo encrypt_url($row->id); ?>/<?php echo  encrypt_url($brands->id); ?>"><?php echo $brands->brand; ?></a>
                                         </li>
                                     <?php } ?>
                                 </ul>
@@ -119,7 +119,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
                                                 <div id="<?= $row->id ?>" class="tabcontent">
                                                     <?php $brand = $this->brn->getBrand($row->id);
                                                     foreach ($brand as $brands) { ?>
-                                                        <button onclick="location.href='<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>'"><?php echo $brands->brand; ?></button>
+                                                        <button onclick="location.href='<?php echo base_url(); ?>product/<?php echo encrypt_url($row->id); ?>/<?php echo encrypt_url($brands->id); ?>'"><?php echo $brands->brand; ?></button>
                                                     <?php } ?>
                                                 </div>
                                             <?php } ?>

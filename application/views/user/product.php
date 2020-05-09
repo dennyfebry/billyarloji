@@ -26,6 +26,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     echo "<span class='pr-03'>WATCHES</span>";
                 }
             }
+        } else if (isset($category)) {
+            echo "<span class='brown-text pr-03' style='text-align: left'>$category</span>";
         } else {
             echo "<span class='brown-text pr-03' style='text-align: left'>Search Result for :</span>";
             echo "<span style='text-align: left'>$searchValue</span>";

@@ -72,8 +72,9 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Deskripsi</label>
-                                    <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea>
+                                    <label for="Description">Link/URL</label>
+                                    <input type="text" class="form-control" name="description" placeholder="Link/URL" value="<?php echo $description; ?>" required>
+                                    <!-- <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea> -->
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the description.
@@ -164,6 +165,6 @@ if ($content == "Edit") {
     });
 
     $(document).ready(function() {
-        $("#view_slider").hide();
+        $("#view_slider").hide(); <
     });
 </script>

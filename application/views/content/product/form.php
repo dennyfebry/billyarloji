@@ -226,7 +226,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Price">Harga</label>
-                                    <input type="number" class="form-control" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
+                                    <input type="text" class="form-control" id="price" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
                                     <?php echo form_error('price') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the price.
@@ -234,7 +234,7 @@ if ($content == "Edit") {
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Discount">Diskon</label>
-                                    <input type="number" class="form-control" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
+                                    <input type="text" class="form-control" id="discount" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
                                     <?php echo form_error('discount') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the discount.
@@ -436,6 +436,53 @@ if ($content == "Edit") {
         $("#view_images_side").hide();
         $("#view_images_top").hide();
         $("#view_images_detail").hide();
+
+        var price = document.getElementById("price");
+        price.addEventListener("keyup", function(e) {
+            price.value = convertRupiah(this.value, "Rp. ");
+        });
+        price.addEventListener('keydown', function(event) {
+            return isNumberKey(event);
+        });
+
+        var discount = document.getElementById("discount");
+        discount.addEventListener("keyup", function(e) {
+            discount.value = convertRupiah(this.value, "Rp. ");
+        });
+        discount.addEventListener('keydown', function(event) {
+            return isNumberKey(event);
+        });
+
+        function convertRupiah(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                split = number_string.split(","),
+                sisa = split[0].length % 3,
+                rupiah = split[0].substr(0, sisa),
+                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                separator = sisa ? "." : "";
+                rupiah += separator + ribuan.join(".");
+            }
+
+            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+        }
+
+        function isNumberKey(evt) {
+            key = evt.which || evt.keyCode;
+            if (key != 188 // Comma
+                &&
+                key != 8 // Backspace
+                &&
+                key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+                &&
+                (key < 48 || key > 57) // Non digit
+            ) {
+                evt.preventDefault();
+                return;
+            }
+        }
 
         var selected_brand = '<?php echo $brand_id ?>';
         var category = $("#categoryselect option:selected").text();
