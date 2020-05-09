@@ -2,8 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
 $productAutoComplete = $this->prd->getProductAutoComplete();
-$currentCategory;
-$currentBrand;
 ?>
 
 <!DOCTYPE html>
@@ -37,17 +35,17 @@ $currentBrand;
         <div class="background-mask" id="background-mask"></div>
         <div class='header row'>
             <div class="row containerMenu" style="width: 100%">
-                <div class="productColumn-10 productColumn-7-lg">
+                <div class="productColumn-10 productColumn-10-md productColumn-7-lg">
                     <a href="<?php echo site_url('home') ?>" class="brand">
                         <img src="<?php echo base_url(); ?>assets/images/logo.png" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="Logo" />
                     </a>
                 </div>
-                <div class="productColumn-10 productColumn-3-lg search-sm">
+                <div class="productColumn-10 productColumn-10-md productColumn-3-lg search-sm">
                     <div class="row">
-                        <div class="productColumn-1 sidemenu-sm">
+                        <div class="productColumn-1 productColumn-1-md sidemenu-sm">
                             <span class="fa fa-bars sidemenu-icon" onclick="openNav()"></span>
                         </div>
-                        <div class="productColumn-9 productColumn-10-md productColumn-10-lg form-group has-search autocomplete">
+                        <div class="productColumn-9 productColumn-9-md productColumn-10-lg form-group has-search autocomplete">
                             <span class="fa fa-search form-control-feedback"></span>
                             <input type="text" class="form-control" id="searchProduct" name="searchProduct" placeholder="Product Name ...">
                         </div>
@@ -55,7 +53,7 @@ $currentBrand;
                 </div>
             </div>
         </div>
-        <div class="navbar">
+        <div class="navbar" id="navbar">
             <div class="nav-collapse collapse row rowMenu" id="rowMenu">
                 <!-- Main navigation -->
                 <div class="colTemplate"></div>
@@ -276,6 +274,21 @@ $currentBrand;
 
                 function closeNavChild(childId) {
                     document.getElementById(childId).style.width = "0";
+                }
+            </script>
+
+            <script type="text/javascript">
+                function is_touch_enabled() {
+                    return ('ontouchstart' in window) ||
+                        (navigator.maxTouchPoints > 0) ||
+                        (navigator.msMaxTouchPoints > 0);
+                }
+
+                var src =
+                    "https://contribute.geeksforgeeks.org/wp-content/uploads/gfg-39.png";
+
+                if (is_touch_enabled()) {
+                    document.getElementById('navbar').style.display = "none"
                 }
             </script>
 </body>

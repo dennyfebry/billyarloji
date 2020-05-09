@@ -354,7 +354,7 @@ a.page-link.active {
 	display: none;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 	body {
 		font-size: 15px;
 	}
@@ -514,7 +514,7 @@ a.page-link.active {
 	}
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
 	.vertical-image {
 		width: auto;
 		height: 500px;
