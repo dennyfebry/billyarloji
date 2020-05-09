@@ -17,8 +17,8 @@ class C_product extends CI_Controller
 
     public function product($category_id, $brand_id)
     {
-        $categoryID = decrypt_url($category_id);
-        $brandID = decrypt_url($brand_id);
+        $categoryID = $category_id;
+        $brandID = $brand_id;
         $category = $this->ctg->getById($categoryID);
         $brand = $this->brn->getById($brandID);
         $data['product'] = $this->prd->getProduct($categoryID, $brandID);
