@@ -123,15 +123,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!-- End Testimoni Section -->
 
 <!-- Start Feeds Section -->
-<div class='row feeds mtb-15 p-1'>
-    <div class='row feeds-title'>
-        <span class="brown-text pr-03 float-right">INSTAGRAM</span>
-        <span class="float-right">FEEDS</span>
-    </div>
-    <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405">
+<?php
+if ($feedActive) { ?>
+    <div class='row feeds mtb-15 p-1'>
+        <div class='row feeds-title'>
+            <span class="brown-text pr-03 float-right">INSTAGRAM</span>
+            <span class="float-right">FEEDS</span>
+        </div>
+        <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405">
 
+        </div>
     </div>
-</div>
+<?php }
+?>
 <!-- End Feeds Section -->
 
 <!-- Start Footer Section -->

@@ -14,23 +14,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     include 'slider.php';
                     ?>
                 </div>
+                <div class="productRow watchTitle1">
+                    <span> Price</span>
+                </div>
                 <div class='productColumn-10 p-1 pt-0 priceDiscount-sm'>
                     <table class='tableProduct'>
                         <?php if ($product->discount != 0) { ?>
                             <tr>
-                                <th rowspan="2" class="priceTitle">Price</th>
                                 <td class='discount-detail'>
                                     <?php echo ("Rp. " . number_format($product->price, 2, ',', '.')); ?>
                                 </td>
                             </tr>
                         <?php } ?>
                         <tr>
-                            <?php if ($product->discount == 0) {
-                                echo ("<th class='priceTitle'>Price</th>");
-                            } ?>
                             <td class="price-detail">
                                 <?php if ($product->discount != 0) {
-                                    $total = $product->price -  $product->discount;
+                                    $total = $product->price - (($product->price * $product->discount) / 100);
                                     echo ("Rp. " . number_format($total, 2, ',', '.'));
                                 } else {
                                     echo ("Rp. " . number_format($product->price, 2, ',', '.'));

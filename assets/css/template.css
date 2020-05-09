@@ -6,7 +6,6 @@ html {
 body {
 	width: 100%;
 	min-height: 100vh;
-	background-image: url("../../upload/background-image.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -638,6 +637,10 @@ input[type="text"]#searchProduct-lg {
 
 	.colTemplate {
 		border-bottom: 5px solid transparent;
+	}
+
+	.navMenu a {
+		font-size: 1.25em;
 	}
 
 	.navMenu.active {

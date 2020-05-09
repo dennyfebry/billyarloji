@@ -2,6 +2,8 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
 $productAutoComplete = $this->prd->getProductAutoComplete();
+$backgroundImage = 'background-image.jpg';
+$backgroundImageUrl = base_url().'upload/'.$backgroundImage;
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ $productAutoComplete = $this->prd->getProductAutoComplete();
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/template.css" />
 </head>
 
-<body>
+<body style="background-image: url('<?php echo $backgroundImageUrl; ?>')">
     <div id="main">
         <div class="background-mask" id="background-mask"></div>
         <div class='header row'>

@@ -224,7 +224,7 @@ a.page-link.active {
 }
 
 .productImage:hover {
-	border: 3px solid #e7bd70;
+	border: 10px solid #e7bd70;
 }
 
 .productName {
@@ -646,18 +646,16 @@ a.page-link.active {
 	}
 
 	td.discount-detail {
-		text-align: center !important;
 		text-decoration: line-through;
 		font-size: 1.25em !important;
 		color: #f60;
-		text-align: right !important;
+		text-align: center !important;
 		padding: 0.5em 0.5em 0.5em 0 !important;
 	}
 
 	td.price-detail {
-		text-align: center !important;
 		font-size: 2em !important;
-		text-align: right !important;
+		text-align: center !important;
 		padding: 0.25em 0.25em 0.25em 0 !important;
 	}
 
