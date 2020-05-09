@@ -489,7 +489,9 @@ a.page-link.active {
 	.tableProduct > tbody > tr > td {
 		font-size: 14px;
 	}
+}
 
+@media screen and (min-width: 768px) {
 	.priceDiscount {
 		display: flex;
 		flex-direction: column;

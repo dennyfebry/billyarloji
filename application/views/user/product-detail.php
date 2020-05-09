@@ -14,30 +14,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     include 'slider.php';
                     ?>
                 </div>
-                <div class="productRow watchTitle1">
-                    <span> Price</span>
-                </div>
-                <div class='productColumn-10 p-1 pt-0 priceDiscount-sm'>
-                    <table class='tableProduct'>
-                        <?php if ($product->discount != 0) { ?>
-                            <tr>
-                                <td class='discount-detail'>
-                                    <?php echo ("Rp. " . number_format($product->price, 2, ',', '.')); ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                        <tr>
-                            <td class="price-detail">
-                                <?php if ($product->discount != 0) {
-                                    $total = $product->price - (($product->price * $product->discount) / 100);
-                                    echo ("Rp. " . number_format($total, 2, ',', '.'));
-                                } else {
-                                    echo ("Rp. " . number_format($product->price, 2, ',', '.'));
-                                } ?>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
                 <div class='productColumn-10 p-1 pt-0 priceDiscount-sm'>
                     <table class='tableProduct'>
                         <?php if ($product->discount != 0) { ?>
