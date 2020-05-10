@@ -643,6 +643,7 @@ a.page-link.active {
 @media screen and (max-width: 767px) {
 	.priceDiscount-sm {
 		display: flex;
+		padding: 0 1em;
 	}
 
 	td.discount-detail {
@@ -651,12 +652,14 @@ a.page-link.active {
 		color: #f60;
 		text-align: center !important;
 		padding: 0.5em 0.5em 0.5em 0 !important;
+		background-color: transparent !important;
 	}
 
 	td.price-detail {
 		font-size: 2em !important;
 		text-align: center !important;
 		padding: 0.25em 0.25em 0.25em 0 !important;
+		background-color: transparent !important;
 	}
 
 	th.priceTitle {

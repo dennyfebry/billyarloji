@@ -14,10 +14,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     include 'slider.php';
                     ?>
                 </div>
-                <div class="productRow watchTitle1">
-                    <span> Price</span>
-                </div>
-                <div class='productColumn-10 p-1 pt-0 priceDiscount-sm'>
+                <div class='productColumn-10 priceDiscount-sm'>
+                    <div class="productRow watchTitle1 p-0">
+                        <span> Price</span>
+                    </div>
                     <table class='tableProduct'>
                         <?php if ($product->discount != 0) { ?>
                             <tr>
@@ -38,7 +38,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         </tr>
                     </table>
                 </div>
-                <div class='productRow p-1 priceBuy-sm'>
+                <div class='productRow p-1 pt-0 priceBuy-sm'>
                     <a href="<?php echo $product->url; ?>" target="_blank" type="button" class='btn btn-buy btn-block'>
                         Buy Now
                     </a>
