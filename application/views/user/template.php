@@ -2,7 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
 $productAutoComplete = $this->prd->getProductAutoComplete();
-$backgroundImage = 'background-image.jpg';
 $backgroundImageUrl = base_url().'upload/'.$backgroundImage;
 ?>
 

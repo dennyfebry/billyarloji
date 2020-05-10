@@ -124,7 +124,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <!-- Start Feeds Section -->
 <?php
-if ($feedActive) { ?>
+if ($feed) { ?>
     <div class='row feeds mtb-15 p-1'>
         <div class='row feeds-title'>
             <span class="brown-text pr-03 float-right">INSTAGRAM</span>

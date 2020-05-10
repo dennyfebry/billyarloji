@@ -22,9 +22,10 @@ class Website extends CI_Controller
 		$data['about'] = $this->foo->getById(1);
 		$data['store'] = $this->foo->getById(2);
 		$data['buy'] = $this->foo->getById(3);
+		$data['feed'] = $this->foo->getById(6)->description == 1 ? true : false;
+		$data['backgroundImage'] = $this->foo->getById(6)->link;
 		$data['social'] = $this->foo->getAll();
 		$data['product'] = $this->prd->getAllactive();
-		$data['feedActive'] = true;
 		$data['titlepage'] = "Home";
 		$data['page'] = "home";
 
