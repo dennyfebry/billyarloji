@@ -1,7 +1,7 @@
 <div class="app-sidebar sidebar-shadow">
     <div class="app-header__logo">
-        <div class="">Billy Arloji</div>
-        <!-- <div class="logo-src"></div> -->
+        <div><a href="<?php echo site_url('admin') ?>"><img src="<?php echo base_url(); ?>assets/images/logo2.png" height="40px" /></a></div>
+        <!-- <div class=" logo-src"></div> -->
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -40,7 +40,18 @@
                                                                 } ?>>
                         <i class="metismenu-icon pe-7s-display1"></i>
                         Dashboard
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
+                    <ul>
+                        <li>
+                            <a href="<?php echo site_url('settinghome') ?>" <?php if ($titlepage == "Setting") {
+                                                                                echo "class='mm-active'";
+                                                                            } ?>>
+                                <i class="metismenu-icon">
+                                </i>Home
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li <?php if (($titlepage == "Category") || ($titlepage == "Brand")) {
                         echo "class='mm-active'";

@@ -4,11 +4,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_slider extends CI_Model
 {
     private  $table = "tb_slider";
-
     public $id;
     public $title;
     public $description;
-    public $images = "default.jpg";
+    public $link;
+    public $images;
     public $updated_date;
     public $updated_by;
     public $status;
@@ -29,6 +29,12 @@ class M_slider extends CI_Model
             ],
 
             [
+                'field' => 'link',
+                'label' => 'Link',
+                'rules' => 'required'
+            ],
+
+            [
                 'field' => 'status',
                 'label' => 'Status',
                 'rules' => 'required'
@@ -38,7 +44,7 @@ class M_slider extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.link, ' . $this->table . '.images, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
         $this->db->from($this->table);
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
         return $this->db->get()->result();
@@ -97,9 +103,7 @@ class M_slider extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->title;
         $config['overwrite']            = true;
-        $config['max_size']             = 1024; // 1MB
-        $config['max_width']            = 1700;
-        $config['max_height']           = 500;
+        $config['max_size']             = 2048; // 1MB
 
         $this->load->library('upload', $config);
 
@@ -114,7 +118,7 @@ class M_slider extends CI_Model
         $product = $this->getById($id);
         if ($product->image != "default.jpg") {
             $filename = explode(".", $product->image)[0];
-            return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
+            return array_map('unlink', glob(FCPATH . "upload/slider/$filename.*"));
         }
     }
 

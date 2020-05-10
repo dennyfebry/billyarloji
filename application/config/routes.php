@@ -60,7 +60,6 @@ $route['menu'] = 'user/C_product/productMenu';
 $route['menu/(:any)'] = 'user/C_product/productMenu/$1';
 $route['menu/(:any)/(:any)'] = 'user/C_product/productMenu/$1/$2';
 
-
 $route['product'] = 'user/C_product/product';
 $route['product/(:any)'] = 'user/C_product/product/$1';
 $route['product/(:any)/(:any)'] = 'user/C_product/product/$1/$2';
@@ -76,6 +75,9 @@ $route['product_detail/(:any)/(:any)'] = 'user/C_productdetail/detail/$1/$2';
 //Admin
 $route['admin'] = 'content/C_dashboard';
 $route['admin/(:any)'] = 'content/C_dashboard/$1';
+
+$route['settinghome'] = 'content/C_dashboard/settinghome';
+$route['settinghome/(:any)'] = 'content/C_dashboard/settinghome/$1';
 
 $route['login'] = 'content/C_login/login';
 $route['logout'] = 'content/C_login/logout';

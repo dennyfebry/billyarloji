@@ -1,7 +1,7 @@
 <div class="app-header header-shadow">
     <div class="app-header__logo">
-        <div class="">Billy Arloji</div>
-        <!-- <div class="logo-src"></div> -->
+        <div><a href="<?php echo site_url('admin') ?>"><img src="<?php echo base_url(); ?>assets/images/logo2.png" height="40px" /></a></div>
+        <!-- <div class=" logo-src"></div> -->
         <div class="header__pane ml-auto">
             <div>
                 <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -47,7 +47,7 @@
                         <div class="widget-content-left">
                             <div class="btn-group">
                                 <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                    <img width="42" class="rounded-circle" src="<?php echo base_url() ?>assets/content/images/Logo.png" alt="">
+                                    <img width="42" class="rounded-circle" src="<?php echo base_url() ?>assets/content/images/logo.png" alt="">
                                     <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                 </a>
                                 <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">

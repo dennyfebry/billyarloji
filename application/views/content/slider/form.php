@@ -3,6 +3,7 @@ date_default_timezone_set("Asia/jakarta");
 $id = "";
 $title = "";
 $description = "";
+$link = "";
 $images = "";
 $status = "";
 $updated_date = date("Y-m-d H:i:s");
@@ -11,6 +12,7 @@ if ($content == "Edit") {
     $id = $slider->id;
     $title = $slider->title;
     $description = $slider->description;
+    $link = $slider->link;
     $images = $slider->images;
     $status = $slider->status;
     $updated_date = date("Y-m-d H:i:s");
@@ -72,18 +74,33 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="Description">Link/URL</label>
-                                    <input type="text" class="form-control" name="description" placeholder="Link/URL" value="<?php echo $description; ?>" required>
+                                    <label for="Description">Text</label>
+                                    <input type="text" class="form-control" name="description" placeholder="Text" value="<?php echo $description; ?>" required>
                                     <!-- <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea> -->
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
-                                        Please fill in the description.
+                                        Please fill in the text.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Link">Link</label>
+                                    <input type="text" class="form-control" name="link" placeholder="URL/Link" value="<?php echo $link; ?>" required>
+                                    <?php echo form_error('link') ?>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please fill in the link.
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images">Gambar</label>
                                     <input type="file" id="slider" class="form-control" name="images" value="<?php echo $images; ?>">
-                                    <img id="view_slider" src="#" alt="Gambar Slider" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_slider" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_slider" src="<?php echo base_url(); ?>upload/slider/<?php echo $images; ?>" alt="Gambar Slider" />
+                                    <?php } ?>
                                     <?php echo form_error('images') ?>
                                     <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
                                     <div class="invalid-feedback">
@@ -128,20 +145,6 @@ if ($content == "Edit") {
         }, false);
     })();
 
-    $('#summernote').summernote({
-        placeholder: 'Masukkan Deskripsi...',
-        tabsize: 2,
-        height: 100,
-        toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
-            ['fontstyle', ['fontname', 'fontsize', 'color']],
-            ['para', ['ul', 'ol', 'paragraph', 'height']],
-            ['insert', ['link', 'table', 'hr']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
-
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -162,9 +165,5 @@ if ($content == "Edit") {
 
     $("#slider").change(function() {
         readURL(this);
-    });
-
-    $(document).ready(function() {
-        $("#view_slider").hide(); <
     });
 </script>

@@ -243,7 +243,12 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images">Gambar Utama</label>
                                     <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
-                                    <img id="view_images" src="#" alt="Gambar Utama" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_images" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
+                                        <br>
+                                    <?php } ?>
                                     <?php echo form_error('images') ?>
                                     <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
@@ -253,7 +258,12 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Front">Gambar Depan</label>
                                     <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
-                                    <img id="view_images_front" src="#" alt="Gambar Depan" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_images_front" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
+                                        <br>
+                                    <?php } ?>
                                     <?php echo form_error('images_front') ?>
                                     <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
@@ -263,7 +273,12 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Side">Gambar Samping</label>
                                     <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
-                                    <img id="view_images_side" src="#" alt="Gambar Samping" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_images_side" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
+                                        <br>
+                                    <?php } ?>
                                     <?php echo form_error('images_side') ?>
                                     <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
@@ -273,7 +288,12 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Top">Gambar Atas</label>
                                     <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
-                                    <img id="view_images_top" src="#" alt="Gambar Atas" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_images_top" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
+                                        <br>
+                                    <?php } ?>
                                     <?php echo form_error('images_top') ?>
                                     <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
@@ -283,7 +303,12 @@ if ($content == "Edit") {
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Detail">Gambar Detail</label>
                                     <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
-                                    <img id="view_images_detail" src="#" alt="Gambar Detail" />
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_images_detail" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
+                                        <br>
+                                    <?php } ?>
                                     <?php echo form_error('images_detail') ?>
                                     <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
@@ -414,124 +439,5 @@ if ($content == "Edit") {
     $("#images_detail").change(function() {
         var img = 5;
         readURL(this, img);
-    });
-
-    $(document).ready(function() {
-        $("#view_images").hide();
-        $("#view_images_front").hide();
-        $("#view_images_side").hide();
-        $("#view_images_top").hide();
-        $("#view_images_detail").hide();
-
-        var price = document.getElementById("price");
-        price.addEventListener("keyup", function(e) {
-            price.value = convertRupiah(this.value, "Rp. ");
-        });
-        price.addEventListener('keydown', function(event) {
-            return isNumberKey(event);
-        });
-
-        var discount = document.getElementById("discount");
-        discount.addEventListener("keyup", function(e) {
-            discount.value = convertRupiah(this.value, "Rp. ");
-        });
-        discount.addEventListener('keydown', function(event) {
-            return isNumberKey(event);
-        });
-
-        function convertRupiah(angka, prefix) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
-
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
-        }
-
-        function isNumberKey(evt) {
-            key = evt.which || evt.keyCode;
-            if (key != 188 // Comma
-                &&
-                key != 8 // Backspace
-                &&
-                key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
-                &&
-                (key < 48 || key > 57) // Non digit
-            ) {
-                evt.preventDefault();
-                return;
-            }
-        }
-
-        var selected_brand = '<?php echo $brand_id ?>';
-        var category = $("#categoryselect option:selected").text();
-        $('#brand')
-            .find('option')
-            .remove()
-            .end();
-        $.ajax({
-            url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
-            type: "POST",
-            data: {
-                "name_category": category
-            },
-            success: function(data) {
-                var obj = JSON.parse(data);
-                $.each(obj, function(i, item) {
-                    var id = item.id;
-                    var category_name = item.category;
-                    var brand_name = item.brand;
-                    if (id == selected_brand) {
-                        $('#brand').append('<option value="' + id + '" selected>' + brand_name + '</option>');
-                    } else {
-                        $('#brand').append('<option value="' + id + '">' + brand_name + '</option>');
-                    }
-                });
-            },
-            error: function() {
-                console.log("error");
-            }
-        });
-        $(function() {
-            $("#categoryselect").change(function() {
-                var category = $("#categoryselect option:selected").text();
-                $('#brand')
-                    .find('option')
-                    .remove()
-                    .end();
-
-                $.ajax({
-                    url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
-                    type: "POST",
-                    data: {
-                        "name_category": category
-                    },
-                    success: function(data) {
-                        var obj = JSON.parse(data);
-                        console.log(obj);
-                        $.each(obj, function(i, item) {
-                            var id = item.id;
-                            var category_name = item.category;
-                            var brand_name = item.brand;
-                            $('#brand').append($('<option>', {
-                                value: id,
-                                text: brand_name
-                            }));
-                            // $("brand select").val("val2");
-                        });
-                    },
-                    error: function() {
-                        console.log("error");
-                    }
-                });
-            })
-        })
     });
 </script>

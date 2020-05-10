@@ -33,6 +33,7 @@
                                     <th>No</th>
                                     <th>Nama</th>
                                     <th>Deskripsi Testimoni</th>
+                                    <th>Foto</th>
                                     <th>Created Date</th>
                                     <th>Updated Date</th>
                                     <th>Updated By</th>
@@ -47,7 +48,11 @@
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->title ?></td>
-                                        <td><?php echo $row->description ?></td>
+                                        <td>
+                                            <div class="content<?= $no ?>"><?php echo $row->description ?></div>
+                                            <a href="#" class="show_hide<?= $no ?>" data-content="toggle-text">Read More</a>
+                                        </td>
+                                        <td><img src="<?php echo base_url('upload/testimoni/' . $row->images . ''); ?>" alt="" height="100px" width="100px"></td>
                                         <td><?php echo $row->created_date ?></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>
@@ -66,3 +71,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        <?php
+        $no = 1;
+        foreach ($atribute as $row) {
+        ?>
+            var defaultHeight = 220;
+            var text<?= $no; ?> = $(".content<?= $no; ?>");
+            var textHeight = text<?= $no; ?>[0].scrollHeight;
+            var show_hide = $(".show_hide<?= $no; ?>");
+            text<?= $no; ?>.css({
+                "max-height": defaultHeight,
+                "overflow": "hidden"
+            });
+            $(".show_hide<?= $no; ?>").on("click", function() {
+                var newHeight = 0;
+                if (text<?= $no; ?>.hasClass("active")) {
+                    newHeight = defaultHeight;
+                    text<?= $no; ?>.removeClass("active");
+                    $(".show_hide<?= $no; ?>").html("Read More");
+                } else {
+                    newHeight = textHeight;
+                    text<?= $no; ?>.addClass("active");
+                    $(".show_hide<?= $no; ?>").html("Read Less");
+                }
+                text<?= $no; ?>.animate({
+                    "max-height": newHeight
+                }, 500);
+                console.log(newHeight);
+            });
+        <?php
+            $no++;
+        }
+        ?>
+    });
+</script>

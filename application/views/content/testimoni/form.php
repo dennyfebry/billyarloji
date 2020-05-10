@@ -3,6 +3,7 @@ date_default_timezone_set("Asia/jakarta");
 $id = "";
 $title = "";
 $description = "";
+$images = "";
 $created_date = date("Y-m-d H:i:s");
 $created_by = $this->session->userdata('id');
 $updated_date = date("Y-m-d H:i:s");
@@ -11,6 +12,7 @@ if ($content == "Edit") {
     $id = $testimoni->id;
     $title = $testimoni->title;
     $description = $testimoni->description;
+    $images = $testimoni->images;
     $created_date = $testimoni->created_date;
     $created_by = $testimoni->created_by;
     $updated_date = date("Y-m-d H:i:s");
@@ -60,6 +62,7 @@ if ($content == "Edit") {
                                 <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
                                 <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
                                 <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+                                <input type="hidden" name="old_images" value="<?php echo $images; ?>">
 
                                 <div class="col-md-12 mb-3">
                                     <label for="Title">Nama</label>
@@ -78,6 +81,21 @@ if ($content == "Edit") {
                                     <?php echo form_error('description') ?>
                                     <div class="invalid-feedback">
                                         Please fill in the description.
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="Images">Gambar</label>
+                                    <input type="file" id="testimoni" class="form-control" name="images" value="<?php echo $images; ?>">
+                                    <?php if ($images == "") { ?>
+                                        <img id="view_testimoni" src="" />
+                                    <?php } else { ?>
+                                        <img id="view_testimoni" src="<?php echo base_url(); ?>upload/testimoni/<?php echo $images; ?>" alt="Gambar Testimoni" />
+                                        <br>
+                                    <?php } ?>
+                                    <?php echo form_error('images') ?>
+                                    <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 100 x 100px (Untuk gambar optimal gunakan ukuran minimum 200 x 200px)</span>
+                                    <div class="invalid-feedback">
+                                        Please choose a images.
                                     </div>
                                 </div>
                             </div>
@@ -105,4 +123,26 @@ if ($content == "Edit") {
             });
         }, false);
     })();
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            var testimoni = $("#view_testimoni");
+            testimoni.css({
+                "width": 200,
+                "height": 200
+            });
+            reader.onload = function(e) {
+                testimoni.show();
+                testimoni.attr('src', e.target.result);
+                $('#hidenote').hide();
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#testimoni").change(function() {
+        readURL(this);
+    });
 </script>

@@ -54,6 +54,7 @@ class M_testimoni extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->images = $this->_uploadImage();
         return $this->db->insert($this->table, $this);
     }
 
@@ -72,7 +73,37 @@ class M_testimoni extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        if (!empty($_FILES["images"]["name"])) {
+            $this->images = $this->_uploadImage();
+        } else {
+            $this->images = $post["old_images"];
+        }
         return $this->db->update($this->table, $this, array('id' => $post['id']));
+    }
+
+    private function _uploadImage()
+    {
+        $config['upload_path']          = './upload/testimoni/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->title;
+        $config['overwrite']            = true;
+        $config['max_size']             = 2048; // 1MB
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('images')) {
+            return $this->upload->data("file_name");
+        }
+        return "default.jpg";
+    }
+
+    private function _deleteImage($id)
+    {
+        $product = $this->getById($id);
+        if ($product->image != "default.jpg") {
+            $filename = explode(".", $product->image)[0];
+            return array_map('unlink', glob(FCPATH . "upload/testimoni/$filename.*"));
+        }
     }
 
     public function delete($id)
