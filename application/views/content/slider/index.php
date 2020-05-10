@@ -31,6 +31,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Judul</th>
+                                    <th>Text</th>
                                     <th>Link</th>
                                     <th>Gambar</th>
                                     <th>Updated Date</th>
@@ -47,7 +48,8 @@
                                     <tr>
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->title ?></td>
-                                        <td><a href="<?php echo $row->description ?>"><?php echo $row->description ?></a></td>
+                                        <td><?php echo $row->description ?></td>
+                                        <td><a href="<?php echo $row->link ?>"><?php echo $row->link ?></a></td>
                                         <td><img src="<?php echo base_url('upload/slider/' . $row->images . ''); ?>" alt="" height="200px"></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name ?></td>

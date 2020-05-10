@@ -69,8 +69,8 @@
                                         <td><?php echo $row->condition_product ?></td>
                                         <td><?php echo $row->completeness ?></td>
                                         <td>
-                                            <div class="content"><?php echo $row->description ?></div>
-                                            <a href="#" class="show_hide" data-content="toggle-text">Read More</a>
+                                            <div class="content<?= $no; ?>"><?php echo $row->description ?></div>
+                                            <a href="#" class="show_hide<?= $no; ?>" data-content="toggle-text">Read More</a>
                                         </td>
                                         <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
                                         <td>Rp <?php echo number_format($row->discount, 2, ',', '.') ?></td>
@@ -104,29 +104,37 @@
 
 <script>
     $(document).ready(function() {
-        var defaultHeight = 220;
-        var text = $(".content");
-        var textHeight = text[0].scrollHeight;
-        var show_hide = $(".show_hide");
-        text.css({
-            "max-height": defaultHeight,
-            "overflow": "hidden"
-        });
-        $(".show_hide").on("click", function() {
-            var newHeight = 0;
-            if (text.hasClass("active")) {
-                newHeight = defaultHeight;
-                text.removeClass("active");
-                $(".show_hide").html("Read More");
-            } else {
-                newHeight = textHeight;
-                text.addClass("active");
-                $(".show_hide").html("Read Less");
-            }
-            text.animate({
-                "max-height": newHeight
-            }, 500);
-            console.log(newHeight);
-        });
+        <?php
+        $no = 1;
+        foreach ($atribute as $row) {
+        ?>
+            var defaultHeight = 220;
+            var text<?= $no; ?> = $(".content<?= $no; ?>");
+            var textHeight = text<?= $no; ?>[0].scrollHeight;
+            var show_hide = $(".show_hide<?= $no; ?>");
+            text<?= $no; ?>.css({
+                "max-height": defaultHeight,
+                "overflow": "hidden"
+            });
+            $(".show_hide<?= $no; ?>").on("click", function() {
+                var newHeight = 0;
+                if (text<?= $no; ?>.hasClass("active")) {
+                    newHeight = defaultHeight;
+                    text<?= $no; ?>.removeClass("active");
+                    $(".show_hide<?= $no; ?>").html("Read More");
+                } else {
+                    newHeight = textHeight;
+                    text<?= $no; ?>.addClass("active");
+                    $(".show_hide<?= $no; ?>").html("Read Less");
+                }
+                text<?= $no; ?>.animate({
+                    "max-height": newHeight
+                }, 500);
+                console.log(newHeight);
+            });
+        <?php
+            $no++;
+        }
+        ?>
     });
 </script>
