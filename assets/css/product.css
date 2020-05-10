@@ -658,7 +658,7 @@ a.page-link.active {
 	td.price-detail {
 		font-size: 2em !important;
 		text-align: center !important;
-		padding: 0.25em 0.25em 0.25em 0 !important;
+		padding: 0 !important;
 		background-color: transparent !important;
 	}
 
