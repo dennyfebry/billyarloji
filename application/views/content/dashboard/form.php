@@ -59,7 +59,7 @@ if ($content == "Edit") {
 
                             <div class="col-md-12 mb-3">
                                 <label for="Link">Background</label>
-                                <input type="file" id="background" class="form-control" name="Link" value="<?php echo $link; ?>">
+                                <input type="file" id="background" class="form-control" name="link" value="<?php echo $link; ?>">
                                 <?php if ($link == "") { ?>
                                     <img id="view_background" src="" />
                                 <?php } else { ?>

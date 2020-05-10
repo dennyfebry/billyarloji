@@ -55,7 +55,8 @@ class M_dashboard extends CI_Model
         $this->mark = $post["mark"];
         $this->title = $post["title"];
         $this->description = $post["description"];
-        if (!empty($_FILES["images"]["name"])) {
+        if (!empty($_FILES["link"]["name"])) {
+            var_dump('berhasil');
             $this->link = $this->_uploadImage();
         } else {
             $this->link = $post["old_images"];
@@ -67,13 +68,13 @@ class M_dashboard extends CI_Model
     {
         $config['upload_path']          = './upload/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = 'backgorund-image';
+        $config['file_name']            = 'background-image';
         $config['overwrite']            = true;
-        $config['max_size']             = 1024; // 1MB
+        $config['max_size']             = 2048; // 1MB
 
         $this->load->library('upload', $config);
 
-        if ($this->upload->do_upload('images')) {
+        if ($this->upload->do_upload('link')) {
             return $this->upload->data("file_name");
         }
         return "dafault.jpg";
