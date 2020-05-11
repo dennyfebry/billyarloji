@@ -9,6 +9,7 @@ class C_product extends CI_Controller
         $this->load->model('m_category', 'ctg');
         $this->load->model('m_brand', 'brn');
         $this->load->model('m_product', 'prd');
+        $this->load->model('m_footer', 'foo');
     }
 
     public function index()

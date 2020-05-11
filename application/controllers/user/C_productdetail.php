@@ -9,6 +9,7 @@ class C_productdetail extends CI_Controller
         $this->load->model('m_category', 'ctg');
         $this->load->model('m_brand', 'brn');
         $this->load->model('m_product', 'prd');
+        $this->load->model('m_footer', 'foo');
     }
 
     public function index()
@@ -30,7 +31,6 @@ class C_productdetail extends CI_Controller
         $data['brandname'] = $brand->brand;
         $data['titlepage'] = "Product Detail - " . $brand->brand;
         $data['page'] = "product-detail";
-        $data['phoneNumber'] = "85691388200";
         $this->load->view('user/template', $data);
     }
 }

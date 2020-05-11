@@ -1,8 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 $menu = $this->ctg->getMenu();
+$backgroundImage = $this->foo->getById(6)->link;
 $productAutoComplete = $this->prd->getProductAutoComplete();
-$backgroundImageUrl = base_url().'upload/'.$backgroundImage;
+$backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
 ?>
 
 <!DOCTYPE html>
