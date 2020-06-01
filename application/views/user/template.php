@@ -58,7 +58,6 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
         <div class="navbar" id="navbar">
             <div class="nav-collapse collapse row rowMenu" id="rowMenu">
                 <!-- Main navigation -->
-                <div class="colTemplate"></div>
                 <?php
                 foreach ($menu as $row) {
                     if (isset($category)) {
@@ -83,7 +82,6 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
                                 </a>
                                 </div>
                             <?php } ?>
-                            <div class="colTemplate"></div>
                             <!-- End main navigation -->
                                 </div>
                             </div>
