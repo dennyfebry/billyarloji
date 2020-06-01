@@ -71,6 +71,11 @@ body,
 	letter-spacing: 2px;
 }
 
+.nav-collapse {
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
 .navbar .brand img {
 	width: 100px;
 	height: 100px;
@@ -341,6 +346,7 @@ input[type="text"]#searchProduct-lg {
 	padding: 0 0 1em;
 	font-weight: bold;
 	letter-spacing: 4px;
+	width: 100%;
 }
 
 .testimoni {
@@ -845,3 +851,9 @@ input[type="text"]#searchProduct-lg {
 		font-size: 18px;
 	}
 }
+
+/* @media screen and (max-width: 1224px) {
+	.navMenu a {
+		font-size: 1em;
+	}
+} */
