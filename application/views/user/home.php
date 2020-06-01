@@ -51,9 +51,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     foreach ($product as $row) { ?>
                         <li class="productColumn">
                             <div class="thumbnail">
-                                <a href="<?php echo base_url(); ?>product_detail/<?php echo encrypt_url($row->id) ?>">
+                                <a href="<?php echo base_url(); ?>product_detail/<?php echo $row->id ?>">
                                     <div class="productImage">
-                                        <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name ?>">
+                                        <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name_product ?>">
                                 </a>
                             </div>
                             <div class="productTitle">
@@ -130,9 +130,9 @@ if ($feed) { ?>
             <span class="brown-text pr-03 float-right">INSTAGRAM</span>
             <span class="float-right">FEEDS</span>
         </div>
-        <div class="elfsight-app-12d83ce8-847d-4e3f-bdc6-a2521bb4c405">
+        <div class="elfsight-app-d477c9bc-9470-4d55-a8a7-f5f4b55134c0"></div>
 
-        </div>
+    </div>
     </div>
 <?php }
 ?>

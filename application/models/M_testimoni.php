@@ -38,6 +38,13 @@ class M_testimoni extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getAllHome()
+    {
+        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.created_date, ' . $this->table . '.updated_date');
+        $this->db->from($this->table);
+        return $this->db->get()->result();
+    }
+
     public function count()
     {
         $this->db->select('*');
