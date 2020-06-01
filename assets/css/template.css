@@ -341,6 +341,7 @@ input[type="text"]#searchProduct-lg {
 	padding: 0 0 1em;
 	font-weight: bold;
 	letter-spacing: 4px;
+	width: 100%
 }
 
 .testimoni {
