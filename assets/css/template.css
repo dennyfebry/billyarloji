@@ -650,7 +650,7 @@ input[type="text"]#searchProduct-lg {
 	}
 
 	.navMenu a {
-		font-size: 1.5em;
+		font-size: 1.25em;
 	}
 
 	.navMenu.active {
@@ -851,9 +851,3 @@ input[type="text"]#searchProduct-lg {
 		font-size: 18px;
 	}
 }
-
-/* @media screen and (max-width: 1224px) {
-	.navMenu a {
-		font-size: 1em;
-	}
-} */
