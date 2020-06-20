@@ -9,8 +9,8 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titlepage ?></title>
@@ -70,12 +70,12 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
                                 <div class='dropdown colTemplate navMenu'>
                                 <?php } ?>
                                 <a class="dropdown-toggle" href="" data-toggle="dropdown">
-                                    <a href="<?php echo base_url(); ?>menu/<?php echo  encrypt_url($row->id); ?>"><?php echo $row->category; ?>
+                                    <a href="<?php echo base_url(); ?>menu/<?php echo  $row->id; ?>"><?php echo $row->category; ?>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php $brand = $this->brn->getBrand($row->id);
                                         foreach ($brand as $brands) { ?>
-                                            <li><a href="<?php echo base_url(); ?>product/<?php echo encrypt_url($row->id); ?>/<?php echo  encrypt_url($brands->id); ?>"><?php echo $brands->brand; ?></a>
+                                            <li><a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo $brands->id; ?>"><?php echo $brands->brand; ?></a>
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -116,11 +116,11 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
                                                     <?php echo $row->category; ?>
                                                 </div>
                                                 <div>
-                                                    <a href="<?php echo base_url(); ?>menu/<?php echo  encrypt_url($row->id); ?>">
+                                                    <a href="<?php echo base_url(); ?>menu/<?php echo  $row->id; ?>">
                                                         ALL <?php echo $row->category; ?>
                                                     </a>
                                                     <?php foreach ($brand as $brandMenu) { ?>
-                                                        <a href="<?php echo base_url(); ?>product/<?php echo encrypt_url($row->id); ?>/<?php echo  encrypt_url($brandMenu->id); ?>">
+                                                        <a href="<?php echo base_url(); ?>product/<?php echo $row->id; ?>/<?php echo  $brandMenu->id; ?>">
                                                             <?php echo $brandMenu->brand; ?>
                                                         </a>
                                                     <?php }
@@ -129,7 +129,7 @@ $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
                                             </div>
                                             <!-- Sidemenu Child End -->
                                         <?php } else { ?>
-                                            <a class="tablinks" href="<?php echo base_url(); ?>menu/<?php echo  encrypt_url($row->id); ?>">
+                                            <a class="tablinks" href="<?php echo base_url(); ?>menu/<?php echo  $row->id; ?>">
                                                 <?php echo $row->category; ?>
                                             </a>
                                     <?php }

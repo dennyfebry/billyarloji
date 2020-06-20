@@ -38,93 +38,81 @@ class M_product extends CI_Model
                 'field' => 'name',
                 'label' => 'Name',
                 'rules' => 'required'
-            ],
-
-
-            [
-                'field' => 'diameter',
-                'label' => 'Diameter',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'movement',
-                'label' => 'Movement',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'material',
-                'label' => 'Material',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'condition_product',
-                'label' => 'Condition',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'completeness',
-                'label' => 'Completeness',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'images',
-                'label' => 'Images',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'price',
-                'label' => 'Price',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'discount',
-                'label' => 'Discount',
-                'rules' => 'required'
-            ],
-
-            [
-                'field' => 'status',
-                'label' => 'Status',
-                'rules' => 'required'
             ]
+
+            // [
+            //     'field' => 'diameter',
+            //     'label' => 'Diameter',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'movement',
+            //     'label' => 'Movement',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'material',
+            //     'label' => 'Material',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'condition_product',
+            //     'label' => 'Condition',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'completeness',
+            //     'label' => 'Completeness',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'images',
+            //     'label' => 'Images',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'price',
+            //     'label' => 'Price',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'discount',
+            //     'label' => 'Discount',
+            //     'rules' => 'required'
+            // ],
+
+            // [
+            //     'field' => 'status',
+            //     'label' => 'Status',
+            //     'rules' => 'required'
+            // ]
         ];
     }
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.description, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_category.category, tb_brand.brand, tb_admin.name AS name_admin');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
-        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
-        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id', 'left');
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id', 'left');
         return $this->db->get()->result();
     }
 
     public function getAllactive()
     {
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.description, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_category.category, tb_brand.brand');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
-        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
-        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
-        $this->db->where('status', 1);
-        return $this->db->get()->result();
-    }
-
-    public function getAllactiveHome()
-    {
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . 'tb_brand.brand, ' . $this->table . '.name AS name_product, ' . $this->table . '.model, ' . $this->table . '.type, ' . $this->table . '.diameter, ' . $this->table . '.movement, ' . $this->table . '.material, ' . $this->table . '.condition_product, ' . $this->table . '.completeness, ' . $this->table . '.description, ' . $this->table . '.url, ' . $this->table . '.price, ' . $this->table . '.discount, ' . $this->table . '.images, ' . $this->table . '.images_front, ' . $this->table . '.images_side, ' . $this->table . '.images_top, ' . $this->table . '.images_detail, ' . $this->table . '.created_date, ' . $this->table . '.created_by, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by');
-        $this->db->from($this->table);
-        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
-        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id');
-        $this->db->where('status', 1);
+        $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id', 'left');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id', 'left');
+        $this->db->where($this->table . '.status', 1);
         return $this->db->get()->result();
     }
 
@@ -164,6 +152,8 @@ class M_product extends CI_Model
         $this->price = $post["price"];
         $this->discount = $post["discount"];
         $this->images = $this->_uploadImage();
+        // var_dump($this->images);
+        // die();
         $this->images_front = $this->_uploadImage_front();
         $this->images_side = $this->_uploadImage_side();
         $this->images_top = $this->_uploadImage_top();
@@ -257,7 +247,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_front';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -272,7 +262,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_side';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -287,7 +277,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_top';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -302,7 +292,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_detail';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -315,8 +305,8 @@ class M_product extends CI_Model
     private function _deleteImage($id)
     {
         $product = $this->getById($id);
-        if ($product->image != "default.jpg") {
-            $filename = explode(".", $product->image)[0];
+        if ($product->images != "default.jpg") {
+            $filename = explode(".", $product->images)[0];
             return array_map('unlink', glob(FCPATH . "upload/product/$filename.*"));
         }
     }

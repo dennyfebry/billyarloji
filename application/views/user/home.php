@@ -53,12 +53,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <div class="thumbnail">
                                 <a href="<?php echo base_url(); ?>product_detail/<?php echo $row->id ?>">
                                     <div class="productImage">
-                                        <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name_product ?>">
+                                        <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name ?>">
                                 </a>
                             </div>
                             <div class="productTitle">
                                 <div class="productName">
-                                    <h5><?php echo $row->name_product ?></h5>
+                                    <h5><?php echo $row->name ?></h5>
                                 </div>
                                 <div class="price">
                                     <h5>Rp.

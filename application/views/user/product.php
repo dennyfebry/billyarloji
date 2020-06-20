@@ -42,7 +42,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 foreach ($product as $row) { ?>
                     <li class="productColumn">
                         <div class="thumbnail">
-                            <a href="<?php echo base_url(); ?>product_detail/<?php echo encrypt_url($row->id) ?>">
+                            <a href="<?php echo base_url(); ?>product_detail/<?php echo $row->id ?>">
                                 <div class="productImage">
                                     <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name ?>">
                             </a>

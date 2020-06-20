@@ -60,7 +60,7 @@
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->category ?></td>
                                         <td><?php echo $row->brand ?></td>
-                                        <td><?php echo $row->name_product ?></td>
+                                        <td><?php echo $row->name ?></td>
                                         <td><?php echo $row->model ?></td>
                                         <td><?php echo $row->type ?></td>
                                         <td><?php echo $row->diameter ?></td>
@@ -80,7 +80,7 @@
                                             <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="" height="46px">
                                             <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="" height="46px"></td>
                                         <td><?php echo $row->updated_date ?></td>
-                                        <td><?php echo $row->name ?></td>
+                                        <td><?php echo $row->name_admin ?></td>
                                         <td><?php if ($row->status == '1') {
                                                 echo 'Active';
                                             } else {

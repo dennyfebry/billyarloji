@@ -38,70 +38,65 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('superadmin/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
-
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Name">Nama</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Nama" value="<?php echo $name; ?>" required>
-                                    <?php echo form_error('name') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the name.
-                                    </div>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Username">Username</label>
-                                    <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
-                                    <?php echo form_error('username') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the username.
-                                    </div>
+                            <?php endif; ?>
+
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Name">Nama</label>
+                                <input type="text" class="form-control" name="name" placeholder="Nama" value="<?php echo $name; ?>" required>
+                                <?php echo form_error('name') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <?php
-                                    if ($content == "Edit") { ?>
-                                        <input type="hidden" name="password" value="<?php echo $password; ?>">
-                                    <?php } else { ?>
-                                        <label for="Password">Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo $password; ?>" required>
-                                        <?php echo form_error('password') ?>
-                                        <div class="invalid-feedback">
-                                            Please fill in the password.
-                                        </div>
-                                    <?php  } ?>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Role">Role</label>
-                                    <select class="form-control" name="role">\
-                                        <option value="" selected disabled>-- Select Role --</option>
-                                        <option value="2" <?php if ($role == 2) echo 'selected'; ?>>Admin</option>
-                                        <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
-                                    </select>
-                                    <?php echo form_error('role') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a role.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the name.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+                            <div class="col-md-12 mb-3">
+                                <label for="Username">Username</label>
+                                <input type="text" class="form-control" name="username" placeholder="Username" value="<?php echo $username; ?>" required>
+                                <?php echo form_error('username') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the username.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <?php
+                                if ($content == "Edit") { ?>
+                                    <input type="hidden" name="password" value="<?php echo $password; ?>">
+                                <?php } else { ?>
+                                    <label for="Password">Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Password" value="<?php echo $password; ?>" required>
+                                    <?php echo form_error('password') ?>
+                                    <div class="invalid-feedback">
+                                        Please fill in the password.
+                                    </div>
+                                <?php  } ?>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Role">Role</label>
+                                <select class="form-control" name="role">\
+                                    <option value="" selected disabled>-- Select Role --</option>
+                                    <option value="2" <?php if ($role == 2) echo 'selected'; ?>>Admin</option>
+                                    <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
+                                </select>
+                                <?php echo form_error('role') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a role.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>
