@@ -53,6 +53,8 @@ if ($content == "Edit") {
     $updated_by = $this->session->userdata('id');
 }
 ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/formValidation.css" />
+
 <div class="app-main__inner">
     <div class="app-page-title">
         <div class="page-title-wrapper">
@@ -254,6 +256,9 @@ if ($content == "Edit") {
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
+                                    <div id="invalid-images1">
+                                        Image size exceeds 2MB
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Front">Gambar Depan</label>
@@ -268,6 +273,9 @@ if ($content == "Edit") {
                                     <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
+                                    </div>
+                                    <div id="invalid-images2">
+                                        Image size exceeds 2MB
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -284,6 +292,9 @@ if ($content == "Edit") {
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
+                                    <div id="invalid-images3">
+                                        Image size exceeds 2MB
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Images_Top">Gambar Atas</label>
@@ -298,6 +309,9 @@ if ($content == "Edit") {
                                     <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
                                     <div class="invalid-feedback">
                                         Please choose a images.
+                                    </div>
+                                    <div id="invalid-images4">
+                                        Image size exceeds 2MB
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
@@ -314,6 +328,9 @@ if ($content == "Edit") {
                                     <div class="invalid-feedback">
                                         Please choose a images.
                                     </div>
+                                    <div id="invalid-images5">
+                                        Image size exceeds 2MB
+                                    </div>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="Status">Status</label>
@@ -327,7 +344,7 @@ if ($content == "Edit") {
                                     </div>
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
+                            <input class="btn btn-primary" type="submit" value="Submit form" id="clearValidation">
                             </form>
                 </div>
             </div>
@@ -354,7 +371,6 @@ if ($content == "Edit") {
     })();
 
     function readURL(input, img) {
-        console.log(img);
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
@@ -365,21 +381,38 @@ if ($content == "Edit") {
                     "height": 300
                 });
                 reader.onload = function(e) {
-                    images.show();
-                    images.attr('src', e.target.result);
-                    $('#hidenote' + img).hide();
+                    if (input.files[0].size <= 2000000) {
+                        images.show();
+                        images.attr('src', e.target.result);
+                        $('#hidenote' + img).hide();
+                        $('#invalid-images' + img).hide();
+                    } else {
+                        images.hide();
+                        images.attr('src', null);
+                        $('#hidenote' + img).show();
+                        $('#invalid-images' + img).show();
+                        $("#images").val('');
+                    }
                 }
             } else if (img == 2) {
-                console.log("kedua");
                 var images_front = $("#view_images_front");
                 images_front.css({
                     "width": 300,
                     "height": 300
                 });
                 reader.onload = function(e) {
-                    images_front.show();
-                    images_front.attr('src', e.target.result);
-                    $('#hidenote' + img).hide();
+                    if (input.files[0].size <= 2000000) {
+                        images_front.show();
+                        images_front.attr('src', e.target.result);
+                        $('#hidenote' + img).hide();
+                        $('#invalid-images' + img).hide();
+                    } else {
+                        images_front.hide();
+                        images_front.attr('src', null);
+                        $('#hidenote' + img).show();
+                        $('#invalid-images' + img).show();
+                        $("#images_front").val('');
+                    }
                 }
             } else if (img == 3) {
                 var images_side = $("#view_images_side");
@@ -388,9 +421,18 @@ if ($content == "Edit") {
                     "height": 300
                 });
                 reader.onload = function(e) {
-                    images_side.show();
-                    images_side.attr('src', e.target.result);
-                    $('#hidenote' + img).hide();
+                    if (input.files[0].size <= 2000000) {
+                        images_side.show();
+                        images_side.attr('src', e.target.result);
+                        $('#hidenote' + img).hide();
+                        $('#invalid-images' + img).hide();
+                    } else {
+                        images_side.hide();
+                        images_side.attr('src', null);
+                        $('#hidenote' + img).show();
+                        $('#invalid-images' + img).show();
+                        $("#images_side").val('');
+                    }
                 }
             } else if (img == 4) {
                 var images_top = $("#view_images_top");
@@ -399,9 +441,18 @@ if ($content == "Edit") {
                     "height": 300
                 });
                 reader.onload = function(e) {
-                    images_top.show();
-                    images_top.attr('src', e.target.result);
-                    $('#hidenote' + img).hide();
+                    if (input.files[0].size <= 2000000) {
+                        images_top.show();
+                        images_top.attr('src', e.target.result);
+                        $('#hidenote' + img).hide();
+                        $('#invalid-images' + img).hide();
+                    } else {
+                        images_top.hide();
+                        images_top.attr('src', null);
+                        $('#hidenote' + img).show();
+                        $('#invalid-images' + img).show();
+                        $("#images_top").val('');
+                    }
                 }
             } else if (img == 5) {
                 var images_detail = $("#view_images_detail");
@@ -410,9 +461,18 @@ if ($content == "Edit") {
                     "height": 300
                 });
                 reader.onload = function(e) {
-                    images_detail.show();
-                    images_detail.attr('src', e.target.result);
-                    $('#hidenote' + img).hide();
+                    if (input.files[0].size <= 2000000) {
+                        images_detail.show();
+                        images_detail.attr('src', e.target.result);
+                        $('#hidenote' + img).hide();
+                        $('#invalid-images' + img).hide();
+                    } else {
+                        images_detail.hide();
+                        images_detail.attr('src', null);
+                        $('#hidenote' + img).show();
+                        $('#invalid-images' + img).show();
+                        $("#images_detail").val('');
+                    }
                 }
             }
 
@@ -420,6 +480,13 @@ if ($content == "Edit") {
         }
     }
 
+    $("#clearValidation").click(function() {
+        $('#invalid-images1').hide();
+        $('#invalid-images2').hide();
+        $('#invalid-images3').hide();
+        $('#invalid-images4').hide();
+        $('#invalid-images5').hide();
+    });
     $("#images").change(function() {
         var img = 1;
         readURL(this, img);

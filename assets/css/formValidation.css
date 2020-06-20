@@ -1,0 +1,11 @@
+#invalid-images1,
+#invalid-images2,
+#invalid-images3,
+#invalid-images4,
+#invalid-images5 {
+	display: none;
+	width: 100%;
+	margin-top: 0.25rem;
+	font-size: 80%;
+	color: #dc3545;
+}
