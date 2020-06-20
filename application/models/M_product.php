@@ -229,7 +229,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type;
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
         // $config['max_width']            = 200;
         // $config['max_height']           = 200;
 
@@ -247,7 +247,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_front';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -262,7 +262,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_side';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -277,7 +277,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_top';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
@@ -292,7 +292,7 @@ class M_product extends CI_Model
         $config['upload_path']          = './upload/product/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->name . ' ' . $this->type . '_detail';
-        $config['max_size']             = 2048; // 2MB
+        // $config['max_size']             = 2048; // 2MB
 
         $this->load->library('upload', $config);
 
