@@ -104,83 +104,84 @@ defined('BASEPATH') or exit('No direct script access allowed');
             $('#view_images_detail[src=""]').hide();
             $('#view_images_detail:not([src=""])').show();
 
-            var price = document.getElementById("price");
-            price.addEventListener("keyup", function(e) {
-                price.value = convertRupiah(this.value, "Rp. ");
-            });
-            price.addEventListener('keydown', function(event) {
-                return isNumberKey(event);
-            });
+            // var price = document.getElementById("price");
+            // price.addEventListener("keyup", function(e) {
+            //     price.value = convertRupiah(this.value, "Rp. ");
+            // });
+            // price.addEventListener('keydown', function(event) {
+            //     return isNumberKey(event);
+            // });
 
-            var discount = document.getElementById("discount");
-            discount.addEventListener("keyup", function(e) {
-                discount.value = convertRupiah(this.value, "Rp. ");
-            });
-            discount.addEventListener('keydown', function(event) {
-                return isNumberKey(event);
-            });
+            // var discount = document.getElementById("discount");
+            // discount.addEventListener("keyup", function(e) {
+            //     discount.value = convertRupiah(this.value, "Rp. ");
+            // });
+            // discount.addEventListener('keydown', function(event) {
+            //     return isNumberKey(event);
+            // });
 
-            function convertRupiah(angka, prefix) {
-                var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                    split = number_string.split(","),
-                    sisa = split[0].length % 3,
-                    rupiah = split[0].substr(0, sisa),
-                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            // function convertRupiah(angka, prefix) {
+            //     var number_string = angka.replace(/[^,\d]/g, "").toString(),
+            //         split = number_string.split(","),
+            //         sisa = split[0].length % 3,
+            //         rupiah = split[0].substr(0, sisa),
+            //         ribuan = split[0].substr(sisa).match(/\d{3}/gi);
 
-                if (ribuan) {
-                    separator = sisa ? "." : "";
-                    rupiah += separator + ribuan.join(".");
-                }
+            //     if (ribuan) {
+            //         separator = sisa ? "." : "";
+            //         rupiah += separator + ribuan.join(".");
+            //     }
 
-                rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-                return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
-            }
+            //     rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+            //     return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
+            // }
 
-            function isNumberKey(evt) {
-                key = evt.which || evt.keyCode;
-                if (key != 188 // Comma
-                    &&
-                    key != 8 // Backspace
-                    &&
-                    key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
-                    &&
-                    (key < 48 || key > 57) // Non digit
-                ) {
-                    evt.preventDefault();
-                    return;
-                }
-            }
+            // function isNumberKey(evt) {
+            //     key = evt.which || evt.keyCode;
+            //     if (key != 188 // Comma
+            //         &&
+            //         key != 8 // Backspace
+            //         &&
+            //         key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+            //         &&
+            //         (key < 48 || key > 57) // Non digit
+            //     ) {
+            //         evt.preventDefault();
+            //         return;
+            //     }
+            // }
+
             <?php if (isset($brand_id)) { ?>
                 var selected_brand = '<?php echo $brand_id ?>';
             <?php } ?>
-            var category = $("#categoryselect option:selected").text();
-            $('#brand')
-                .find('option')
-                .remove()
-                .end();
-            $.ajax({
-                url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
-                type: "POST",
-                data: {
-                    "name_category": category
-                },
-                success: function(data) {
-                    var obj = JSON.parse(data);
-                    $.each(obj, function(i, item) {
-                        var id = item.id;
-                        var category_name = item.category;
-                        var brand_name = item.brand;
-                        if (id == selected_brand) {
-                            $('#brand').append('<option value="' + id + '" selected>' + brand_name + '</option>');
-                        } else {
-                            $('#brand').append('<option value="' + id + '">' + brand_name + '</option>');
-                        }
-                    });
-                },
-                error: function() {
-                    console.log("error");
-                }
-            });
+            // var category = $("#categoryselect option:selected").text();
+            // $('#brand')
+            //     .find('option')
+            //     .remove()
+            //     .end();
+            // $.ajax({
+            //     url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
+            //     type: "POST",
+            //     data: {
+            //         "name_category": category
+            //     },
+            //     success: function(data) {
+            //         var obj = JSON.parse(data);
+            //         $.each(obj, function(i, item) {
+            //             var id = item.id;
+            //             var category_name = item.category;
+            //             var brand_name = item.brand;
+            //             if (id == selected_brand) {
+            //                 $('#brand').append('<option value="' + id + '" selected>' + brand_name + '</option>');
+            //             } else {
+            //                 $('#brand').append('<option value="' + id + '">' + brand_name + '</option>');
+            //             }
+            //         });
+            //     },
+            //     error: function() {
+            //         console.log("error");
+            //     }
+            // });
             $(function() {
                 $("#categoryselect").change(function() {
                     var category = $("#categoryselect option:selected").text();
@@ -275,7 +276,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <div class="modal-body">Select "Yes" below if you want to delete the product data.</div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/product/delete/<?php echo $row->id; ?>">Yes</a>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/list_product/delete/<?php echo $row->id; ?>">Yes</a>
                         </div>
                     </div>
                 </div>

@@ -58,7 +58,6 @@ class C_product extends CI_Controller
         $product = $this->ref;
         $validation = $this->form_validation;
         $validation->set_rules($product->rules());
-
         if ($validation->run()) {
             $product->update();
             $this->session->set_flashdata('success', 'Saved successfully');

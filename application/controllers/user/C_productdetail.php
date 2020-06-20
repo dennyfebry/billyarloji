@@ -21,8 +21,8 @@ class C_productdetail extends CI_Controller
 
     public function detail($product_id)
     {
-        $productID = decrypt_url($product_id);
-        $product = $this->prd->getById($productID);
+        // $productID = decrypt_url($product_id);
+        $product = $this->prd->getById($product_id);
         $category = $this->ctg->getById($product->category_id);
         $brand = $this->brn->getById($product->brand_id);
 

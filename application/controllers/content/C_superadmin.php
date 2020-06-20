@@ -38,6 +38,7 @@ class C_superadmin extends CI_Controller
         $validation->set_rules($account->rules());
 
         if ($validation->run()) {
+            die();
             $account->save();
             $this->session->set_flashdata('success', 'Saved successfully');
             // redirect('superadmin');

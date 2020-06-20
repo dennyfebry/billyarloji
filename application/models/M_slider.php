@@ -64,6 +64,7 @@ class M_slider extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->link = $post["link"];
         $this->images = $this->_uploadImage();
         $this->status = $post["status"];
         return $this->db->insert($this->table, $this);
@@ -82,6 +83,7 @@ class M_slider extends CI_Model
         $this->updated_by = $post["updated_by"];
         $this->title = $post["title"];
         $this->description = $post["description"];
+        $this->link = $post["link"];
         if (!empty($_FILES["images"]["name"])) {
             $this->images = $this->_uploadImage();
         } else {

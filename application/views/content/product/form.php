@@ -77,264 +77,258 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('list_product/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
+                                </div>
+                            <?php endif; ?>
 
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+                            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
+                            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+                            <input type="hidden" name="old_images" value="<?php echo $images; ?>">
+                            <input type="hidden" name="old_images_front" value="<?php echo $images_front; ?>">
+                            <input type="hidden" name="old_images_side" value="<?php echo $images_side; ?>">
+                            <input type="hidden" name="old_images_top" value="<?php echo $images_top; ?>">
+                            <input type="hidden" name="old_images_detail" value="<?php echo $images_detail; ?>">
+                            <input type="hidden" name="url" value="<?php echo $url; ?>">
 
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
-                                <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
-                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-                                <input type="hidden" name="old_images" value="<?php echo $images; ?>">
-                                <input type="hidden" name="old_images_front" value="<?php echo $images_front; ?>">
-                                <input type="hidden" name="old_images_side" value="<?php echo $images_side; ?>">
-                                <input type="hidden" name="old_images_top" value="<?php echo $images_top; ?>">
-                                <input type="hidden" name="old_images_detail" value="<?php echo $images_detail; ?>">
-                                <input type="hidden" name="url" value="<?php echo $url; ?>">
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Category_id">Category</label>
-                                    <select class="form-control" name="category_id" id="categoryselect">
-                                        <option value="" selected disabled>-- Select Category --</option>
-                                        <?php foreach ($name_category as $row) { ?>
-                                            <option value="<?php echo $row->id ?>" <?php if ($category_id == $row->id) echo 'selected'; ?>><?php echo $row->category ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?php echo form_error('category_id') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a category.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Brand_id">Brand</label>
-                                    <select class="form-control" name="brand_id" id="brand">
-                                        <option value="" selected disabled>-- Select Brand --</option>
-                                    </select>
-                                    <?php echo form_error('brand_id') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a brand.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Name">Nama Produk</label>
-                                    <input type="text" class="form-control" name="name" placeholder="Nama Produk" value="<?php echo $name; ?>" required>
-                                    <?php echo form_error('name') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the name product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Model">Model</label>
-                                    <input type="text" class="form-control" name="model" placeholder="Model" value="<?php echo $model; ?>">
-                                    <?php echo form_error('model') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the model product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Type">Type</label>
-                                    <input type="text" class="form-control" name="type" placeholder="Type" value="<?php echo $type; ?>">
-                                    <?php echo form_error('type') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the type product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Diameter">Diameter</label>
-                                    <input type="text" class="form-control" name="diameter" placeholder="Diameter" value="<?php echo $diameter; ?>" required>
-                                    <?php echo form_error('diameter') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the diameter product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Movement">Movement</label>
-                                    <input type="text" class="form-control" name="movement" placeholder="Movement" value="<?php echo $movement; ?>" required>
-                                    <?php echo form_error('movement') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the movement product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Material">Material</label>
-                                    <input type="text" class="form-control" name="material" placeholder="Material" value="<?php echo $material; ?>" required>
-                                    <?php echo form_error('material') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the material product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Condition">Kondisi</label>
-                                    <input type="text" class="form-control" name="condition_product" placeholder="Kondisi" value="<?php echo $condition_product; ?>" required>
-                                    <?php echo form_error('condition_product') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the condition product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Completeness">Kelengkapan</label>
-                                    <input type="text" class="form-control" name="completeness" placeholder="Kelengkapan" value="<?php echo $completeness; ?>" required>
-                                    <?php echo form_error('completeness') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the completeness product.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Description">Deskripsi</label>
-                                    <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
-                                    <?php echo form_error('description') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the description.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Price">Harga</label>
-                                    <input type="text" class="form-control" id="price" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
-                                    <?php echo form_error('price') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the price.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Discount">Diskon</label>
-                                    <input type="text" class="form-control" id="discount" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
-                                    <?php echo form_error('discount') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the discount.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images">Gambar Utama</label>
-                                    <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
-                                        <br>
+                            <div class="col-md-12 mb-3">
+                                <label for="Category_id">Category</label>
+                                <select class="form-control" name="category_id" id="categoryselect">
+                                    <option value="" selected disabled>-- Select Category --</option>
+                                    <?php foreach ($name_category as $row) { ?>
+                                        <option value="<?php echo $row->id ?>" <?php if ($category_id == $row->id) echo 'selected'; ?>><?php echo $row->category ?></option>
                                     <?php } ?>
-                                    <?php echo form_error('images') ?>
-                                    <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Front">Gambar Depan</label>
-                                    <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_front" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_front') ?>
-                                    <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Side">Gambar Samping</label>
-                                    <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_side" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_side') ?>
-                                    <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Top">Gambar Atas</label>
-                                    <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_top" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_top') ?>
-                                    <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Detail">Gambar Detail</label>
-                                    <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_detail" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_detail') ?>
-                                    <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Status">Status</label>
-                                    <select class="form-control" name="status">
-                                        <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
-                                        <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
-                                    </select>
-                                    <?php echo form_error('status') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a status.
-                                    </div>
+                                </select>
+                                <?php echo form_error('category_id') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a category.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Brand_id">Brand</label>
+                                <select class="form-control" name="brand_id" id="brand">
+                                    <option value="" selected disabled>-- Select Brand --</option>
+                                </select>
+                                <?php echo form_error('brand_id') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a brand.
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Name">Nama Produk</label>
+                                <input type="text" class="form-control" name="name" placeholder="Nama Produk" value="<?php echo $name; ?>" required>
+                                <?php echo form_error('name') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the name product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Model">Model</label>
+                                <input type="text" class="form-control" name="model" placeholder="Model" value="<?php echo $model; ?>">
+                                <?php echo form_error('model') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the model product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Type">Type</label>
+                                <input type="text" class="form-control" name="type" placeholder="Type" value="<?php echo $type; ?>">
+                                <?php echo form_error('type') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the type product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Diameter">Diameter</label>
+                                <input type="text" class="form-control" name="diameter" placeholder="Diameter" value="<?php echo $diameter; ?>" required>
+                                <?php echo form_error('diameter') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the diameter product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Movement">Movement</label>
+                                <input type="text" class="form-control" name="movement" placeholder="Movement" value="<?php echo $movement; ?>" required>
+                                <?php echo form_error('movement') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the movement product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Material">Material</label>
+                                <input type="text" class="form-control" name="material" placeholder="Material" value="<?php echo $material; ?>" required>
+                                <?php echo form_error('material') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the material product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Condition">Kondisi</label>
+                                <input type="text" class="form-control" name="condition_product" placeholder="Kondisi" value="<?php echo $condition_product; ?>" required>
+                                <?php echo form_error('condition_product') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the condition product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Completeness">Kelengkapan</label>
+                                <input type="text" class="form-control" name="completeness" placeholder="Kelengkapan" value="<?php echo $completeness; ?>" required>
+                                <?php echo form_error('completeness') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the completeness product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Description">Deskripsi</label>
+                                <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
+                                <?php echo form_error('description') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the description.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Price">Harga</label>
+                                <input type="number" class="form-control" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
+                                <?php echo form_error('price') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the price.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Discount">Diskon</label>
+                                <input type="number" class="form-control" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
+                                <?php echo form_error('discount') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the discount.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images">Gambar Utama</label>
+                                <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images') ?>
+                                <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Front">Gambar Depan</label>
+                                <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_front" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_front') ?>
+                                <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Side">Gambar Samping</label>
+                                <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_side" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_side') ?>
+                                <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Top">Gambar Atas</label>
+                                <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_top" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_top') ?>
+                                <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Detail">Gambar Detail</label>
+                                <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_detail" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_detail') ?>
+                                <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Status">Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
+                                    <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
+                                </select>
+                                <?php echo form_error('status') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a status.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <script>
     (function() {
