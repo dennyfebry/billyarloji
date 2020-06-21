@@ -187,95 +187,136 @@ if ($content == "Edit") {
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images">Gambar Utama</label>
-                                    <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images') ?>
-                                    <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                    <div id="invalid-images1">
-                                        Image size exceeds 2MB
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the material product.
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Front">Gambar Depan</label>
-                                    <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_front" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_front') ?>
-                                    <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                    <div id="invalid-images2">
-                                        Image size exceeds 2MB
-                                    </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Condition">Kondisi</label>
+                                <input type="text" class="form-control" name="condition_product" placeholder="Kondisi" value="<?php echo $condition_product; ?>" required>
+                                <?php echo form_error('condition_product') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Side">Gambar Samping</label>
-                                    <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_side" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_side') ?>
-                                    <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                    <div id="invalid-images3">
-                                        Image size exceeds 2MB
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the condition product.
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Top">Gambar Atas</label>
-                                    <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_top" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_top') ?>
-                                    <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                    <div id="invalid-images4">
-                                        Image size exceeds 2MB
-                                    </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Completeness">Kelengkapan</label>
+                                <input type="text" class="form-control" name="completeness" placeholder="Kelengkapan" value="<?php echo $completeness; ?>" required>
+                                <?php echo form_error('completeness') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images_Detail">Gambar Detail</label>
-                                    <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_images_detail" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images_detail') ?>
-                                    <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
-                                    <div id="invalid-images5">
-                                        Image size exceeds 2MB
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the completeness product.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Price">Harga</label>
+                                <input type="text" class="form-control" id="price" name="price" placeholder="Harga" value="<?php echo $price; ?>" required>
+                                <?php echo form_error('price') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the price.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Discount">Diskon</label>
+                                <input type="text" class="form-control" id="discount" name="discount" placeholder="Diskon" value="<?php echo $discount; ?>" required>
+                                <?php echo form_error('discount') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the discount.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images">Gambar Utama</label>
+                                <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images') ?>
+                                <span id="hidenote1" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                                <div id="invalid-images1">
+                                    Image size exceeds 2MB
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Front">Gambar Depan</label>
+                                <input type="file" id="images_front" class="form-control" name="images_front" placeholder="Gambar Depan" value="<?php echo $images_front; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_front" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_front') ?>
+                                <span id="hidenote2" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                                <div id="invalid-images2">
+                                    Image size exceeds 2MB
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Side">Gambar Samping</label>
+                                <input type="file" id="images_side" class="form-control" name="images_side" placeholder="Gambar Samping" value="<?php echo $images_side; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_side" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_side') ?>
+                                <span id="hidenote3" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                                <div id="invalid-images3">
+                                    Image size exceeds 2MB
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Top">Gambar Atas</label>
+                                <input type="file" id="images_top" class="form-control" name="images_top" placeholder="Gambar Atas" value="<?php echo $images_top; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_top" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_top') ?>
+                                <span id="hidenote4" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                                <div id="invalid-images4">
+                                    Image size exceeds 2MB
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images_Detail">Gambar Detail</label>
+                                <input type="file" id="images_detail" class="form-control" name="images_detail" placeholder="Gambar Detail" value="<?php echo $images_detail; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_images_detail" src="" />
+                                <?php } else { ?>
+                                    <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images_detail') ?>
+                                <span id="hidenote5" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 300 x 300px (Untuk gambar optimal gunakan ukuran minimum 600 x 600 px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                                <div id="invalid-images5">
+                                    Image size exceeds 2MB
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -286,8 +327,19 @@ if ($content == "Edit") {
                                     Please fill in the description.
                                 </div>
                             </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Status">Status</label>
+                                <select class="form-control" name="status">
+                                    <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
+                                    <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
+                                </select>
+                                <?php echo form_error('status') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a status.
+                                </div>
+                            </div>
                             <input class="btn btn-primary" type="submit" value="Submit form" id="clearValidation">
-                            </form>
+                    </form>
                 </div>
             </div>
         </div>
