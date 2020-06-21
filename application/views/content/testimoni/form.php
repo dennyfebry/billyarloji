@@ -43,64 +43,59 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('testimoni/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
-
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
-                                <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
-                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-                                <input type="hidden" name="old_images" value="<?php echo $images; ?>">
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Title">Nama</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Nama" value="<?php echo $title; ?>" required>
-                                    <?php echo form_error('title') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the title.
-                                    </div>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Description">Deskripsi Testimoni</label>
-                                    <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
-                                    <?php echo form_error('description') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the description.
-                                    </div>
+                            <?php endif; ?>
+
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+                            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
+                            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+                            <input type="hidden" name="old_images" value="<?php echo $images; ?>">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Title">Nama</label>
+                                <input type="text" class="form-control" name="title" placeholder="Nama" value="<?php echo $title; ?>" required>
+                                <?php echo form_error('title') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Images">Gambar</label>
-                                    <input type="file" id="testimoni" class="form-control" name="images" value="<?php echo $images; ?>">
-                                    <?php if ($images == "") { ?>
-                                        <img id="view_testimoni" src="" />
-                                    <?php } else { ?>
-                                        <img id="view_testimoni" src="<?php echo base_url(); ?>upload/testimoni/<?php echo $images; ?>" alt="Gambar Testimoni" />
-                                        <br>
-                                    <?php } ?>
-                                    <?php echo form_error('images') ?>
-                                    <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 100 x 100px (Untuk gambar optimal gunakan ukuran minimum 200 x 200px)</span>
-                                    <div class="invalid-feedback">
-                                        Please choose a images.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the title.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+                            <div class="col-md-12 mb-3">
+                                <label for="Description">Deskripsi Testimoni</label>
+                                <textarea id="summernote" class="form-control" name="description" required><?php echo $description; ?></textarea>
+                                <?php echo form_error('description') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the description.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Images">Gambar</label>
+                                <input type="file" id="testimoni" class="form-control" name="images" value="<?php echo $images; ?>">
+                                <?php if ($images == "") { ?>
+                                    <img id="view_testimoni" src="" />
+                                <?php } else { ?>
+                                    <img id="view_testimoni" src="<?php echo base_url(); ?>upload/testimoni/<?php echo $images; ?>" alt="Gambar Testimoni" />
+                                    <br>
+                                <?php } ?>
+                                <?php echo form_error('images') ?>
+                                <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 100 x 100px (Untuk gambar optimal gunakan ukuran minimum 200 x 200px)</span>
+                                <div class="invalid-feedback">
+                                    Please choose a images.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>

@@ -118,7 +118,7 @@ class C_footer extends CI_Controller
         if ($validation->run()) {
             $social->saveSocial();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('social');
+            redirect('social');
         }
 
         $data = $this->data;
@@ -142,7 +142,7 @@ class C_footer extends CI_Controller
         if ($validation->run()) {
             $social->updateSocial();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('social');
+            redirect('social');
         }
 
         $data = $this->data;

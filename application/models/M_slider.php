@@ -44,9 +44,10 @@ class M_slider extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.link, ' . $this->table . '.images, ' . $this->table . '.updated_date, ' . $this->table . '.updated_by,' . $this->table . '.status, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_admin.name');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
+        $this->db->order_by("updated_date", "desc");
         return $this->db->get()->result();
     }
 
@@ -105,7 +106,7 @@ class M_slider extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->title;
         $config['overwrite']            = true;
-        $config['max_size']             = 2048; // 1MB
+        // $config['max_size']             = 2048; // 1MB
 
         $this->load->library('upload', $config);
 

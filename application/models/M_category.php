@@ -24,9 +24,9 @@ class M_category extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.category, '  . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_admin.name');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
         $this->db->order_by($this->table . '.category', 'ASC');
         return $this->db->get()->result();
     }

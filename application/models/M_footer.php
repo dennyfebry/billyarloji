@@ -84,9 +84,9 @@ class M_footer extends CI_Model
 
     public function getSocialMedia()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.link, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_admin.name');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
         $this->db->where($this->table . '.mark =', 'social');
         return $this->db->get()->result();
     }

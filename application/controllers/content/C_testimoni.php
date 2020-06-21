@@ -38,7 +38,7 @@ class C_testimoni extends CI_Controller
         if ($validation->run()) {
             $testimoni->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('testimoni');
+            redirect('testimoni');
         }
 
         $data = $this->data;
@@ -61,7 +61,7 @@ class C_testimoni extends CI_Controller
         if ($validation->run()) {
             $testimoni->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('testimoni');
+            redirect('testimoni');
         }
 
         $data = $this->data;

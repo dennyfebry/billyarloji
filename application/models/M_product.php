@@ -103,6 +103,8 @@ class M_product extends CI_Model
         $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
         $this->db->join('tb_category', $this->table . '.category_id = tb_category.id', 'left');
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id', 'left');
+        $this->db->order_by("created_date", "desc");
+        $this->db->order_by("updated_date", "desc");
         return $this->db->get()->result();
     }
 
@@ -113,6 +115,7 @@ class M_product extends CI_Model
         $this->db->join('tb_brand', $this->table . '.brand_id = tb_brand.id', 'left');
         $this->db->join('tb_category', $this->table . '.category_id = tb_category.id', 'left');
         $this->db->where($this->table . '.status', 1);
+        $this->db->order_by("name", "asc");
         return $this->db->get()->result();
     }
 
@@ -152,8 +155,6 @@ class M_product extends CI_Model
         $this->price = $post["price"];
         $this->discount = $post["discount"];
         $this->images = $this->_uploadImage();
-        // var_dump($this->images);
-        // die();
         $this->images_front = $this->_uploadImage_front();
         $this->images_side = $this->_uploadImage_side();
         $this->images_top = $this->_uploadImage_top();

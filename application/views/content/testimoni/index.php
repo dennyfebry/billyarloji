@@ -49,8 +49,10 @@
                                         <td><?php echo $no ?></td>
                                         <td><?php echo $row->title ?></td>
                                         <td>
-                                            <div class="content<?= $no ?>"><?php echo $row->description ?></div>
-                                            <a href="#" class="show_hide<?= $no ?>" data-content="toggle-text">Read More</a>
+                                            <!-- <div class="content<?= $no ?>"><?php echo $row->description ?></div>
+                                            <a href="#" class="show_hide<?= $no ?>" data-content="toggle-text">Read More</a> -->
+                                            <div class="content<?= $no; ?>"><?php echo $row->description ?></div>
+                                            <a href="#" class="show_hide<?= $no; ?>" data-content="toggle-text">Read More</a>
                                         </td>
                                         <td><img src="<?php echo base_url('upload/testimoni/' . $row->images . ''); ?>" alt="" height="100px" width="100px"></td>
                                         <td><?php echo $row->created_date ?></td>
@@ -78,9 +80,10 @@
         $no = 1;
         foreach ($atribute as $row) {
         ?>
-            var defaultHeight = 220;
+            var defaultHeight = 50;
             var text<?= $no; ?> = $(".content<?= $no; ?>");
-            var textHeight = text<?= $no; ?>[0].scrollHeight;
+            // var textHeight = text<?= $no; ?>[0].scrollHeight;
+            var textHeight = 500;
             var show_hide = $(".show_hide<?= $no; ?>");
             text<?= $no; ?>.css({
                 "max-height": defaultHeight,

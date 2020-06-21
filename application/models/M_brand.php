@@ -25,10 +25,10 @@ class M_brand extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . 'tb_category.category, ' . $this->table . '.brand, '  . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_category.category, tb_admin.name');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
-        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
+        $this->db->join('tb_category', $this->table . '.category_id = tb_category.id', 'left');
         $this->db->order_by('tb_category.category', 'ASC');
         $this->db->order_by($this->table . '.brand', 'ASC');
         return $this->db->get()->result();

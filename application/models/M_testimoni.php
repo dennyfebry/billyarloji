@@ -32,16 +32,18 @@ class M_testimoni extends CI_Model
 
     public function getAll()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.created_date, ' . $this->table . '.updated_date, tb_admin.name');
+        $this->db->select($this->table . '.*, tb_admin.name');
         $this->db->from($this->table);
-        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id');
+        $this->db->join('tb_admin', $this->table . '.updated_by = tb_admin.id', 'left');
+        $this->db->order_by("created_date", "desc");
         return $this->db->get()->result();
     }
 
     public function getAllHome()
     {
-        $this->db->select($this->table . '.id, ' . $this->table . '.title, ' . $this->table . '.description, ' . $this->table . '.images, ' . $this->table . '.created_date, ' . $this->table . '.updated_date');
+        $this->db->select($this->table . '.*');
         $this->db->from($this->table);
+        $this->db->order_by("created_date", "desc");
         return $this->db->get()->result();
     }
 
@@ -94,7 +96,7 @@ class M_testimoni extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $this->title;
         $config['overwrite']            = true;
-        $config['max_size']             = 2048; // 1MB
+        // $config['max_size']             = 2048; // 1MB
 
         $this->load->library('upload', $config);
 
@@ -115,6 +117,7 @@ class M_testimoni extends CI_Model
 
     public function delete($id)
     {
+        $this->_deleteImage($id);
         return $this->db->delete($this->table, array("id" => $id));
     }
 }

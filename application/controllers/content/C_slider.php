@@ -38,7 +38,7 @@ class C_slider extends CI_Controller
         if ($validation->run()) {
             $slider->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            redirect('slider');
         }
 
         $data = $this->data;
@@ -61,7 +61,7 @@ class C_slider extends CI_Controller
         if ($validation->run()) {
             $slider->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('slider');
+            redirect('slider');
         }
 
         $data = $this->data;
