@@ -30,12 +30,6 @@ class M_superadmin extends CI_Model
                 'field' => 'password',
                 'label' => 'Password',
                 'rules' => 'required'
-            ],
-
-            [
-                'field' => 'role',
-                'label' => 'Role',
-                'rules' => 'required'
             ]
         ];
     }
@@ -54,12 +48,12 @@ class M_superadmin extends CI_Model
 
     public function save()
     {
-        $post = $this->input->post();
-        $this->name = $post["name"];
-        $this->username = $post["username"];
-        $this->password = sha1($post["password"]);
-        $this->role = $post["role"];
-        $this->last_login = "";
+        $post               = $this->input->post();
+        $this->name         = $post["name"];
+        $this->username     = $post["username"];
+        $this->password     = sha1($post["password"]);
+        $this->role         = $post["role"];
+        $this->last_login   = "";
         return $this->db->insert($this->table, $this);
     }
 
@@ -70,13 +64,13 @@ class M_superadmin extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
-        $this->name = $post["name"];
-        $this->username = $post["username"];
-        $this->password = $post["password"];
-        $this->role = $post["role"];
-        $this->last_login = $post["last_login"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
+        $this->name         = $post["name"];
+        $this->username     = $post["username"];
+        $this->password     = $post["password"];
+        $this->role         = $post["role"];
+        $this->last_login   = $post["last_login"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 

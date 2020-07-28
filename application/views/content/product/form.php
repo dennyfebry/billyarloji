@@ -1,56 +1,56 @@
 <?php
 date_default_timezone_set("Asia/jakarta");
-$id = "";
-$category_id = "";
-$brand_id = "";
-$name = "";
-$model = "";
-$type = "";
-$diameter = "";
-$movement = "";
-$material = "";
-$condition_product = "";
-$completeness = "";
-$description = "";
-$price = "";
-$discount = "";
-$images = "";
-$images_front = "";
-$images_side = "";
-$images_top = "";
-$images_detail = "";
-$url = "https://linktr.ee/arlojilakilaki";
-$status = "";
-$created_date = date("Y-m-d H:i:s");
-$created_by = $this->session->userdata('id');
-$updated_date = date("Y-m-d H:i:s");
-$updated_by = $this->session->userdata('id');
+$id                 = "";
+$category_id        = "";
+$brand_id           = "";
+$name               = "";
+$model              = "";
+$type               = "";
+$diameter           = "";
+$movement           = "";
+$material           = "";
+$condition_product  = "";
+$completeness       = "";
+$description        = "";
+$price              = "";
+$discount           = "";
+$images             = "";
+$images_front       = "";
+$images_side        = "";
+$images_top         = "";
+$images_detail      = "";
+$url                = "https://linktr.ee/arlojilakilaki";
+$status             = "";
+$created_date       = date("Y-m-d H:i:s");
+$created_by         = $this->session->userdata('id');
+$updated_date       = date("Y-m-d H:i:s");
+$updated_by         = $this->session->userdata('id');
 if ($content == "Edit") {
-    $id = $product->id;
-    $category_id = $product->category_id;
-    $brand_id = $product->brand_id;
-    $name = $product->name;
-    $model = $product->model;
-    $type = $product->type;
-    $diameter = $product->diameter;
-    $movement = $product->movement;
-    $material = $product->material;
-    $condition_product = $product->condition_product;
-    $completeness = $product->completeness;
-    $description = $product->description;
-    $price = $product->price;
-    $discount = $product->discount;
-    $images = $product->images;
-    $images_front = $product->images_front;
-    $images_side = $product->images_side;
-    $images_top = $product->images_top;
-    $images_detail = $product->images_detail;
-    $url = $product->url;
-    $status = $product->status;
-    $created_date = $product->created_date;
-    $created_by = $product->created_by;
-    $updated_date = date("Y-m-d H:i:s");
-    $updated_by = $this->session->userdata('id');
+    $id                 = $product->id;
+    $category_id        = $product->category_id;
+    $brand_id           = $product->brand_id;
+    $name               = $product->name;
+    $model              = $product->model;
+    $type               = $product->type;
+    $diameter           = $product->diameter;
+    $movement           = $product->movement;
+    $material           = $product->material;
+    $condition_product  = $product->condition_product;
+    $completeness       = $product->completeness;
+    $description        = $product->description;
+    $price              = $product->price;
+    $discount           = $product->discount;
+    $images             = $product->images;
+    $images_front       = $product->images_front;
+    $images_side        = $product->images_side;
+    $images_top         = $product->images_top;
+    $images_detail      = $product->images_detail;
+    $url                = $product->url;
+    $status             = $product->status;
+    $created_date       = $product->created_date;
+    $created_by         = $product->created_by;
+    $updated_date       = date("Y-m-d H:i:s");
+    $updated_by         = $this->session->userdata('id');
 }
 ?>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/formValidation.css" />
@@ -116,9 +116,18 @@ if ($content == "Edit") {
 
                             <div class="col-md-12 mb-3">
                                 <label for="Brand_id">Brand</label>
-                                <select class="form-control" name="brand_id" id="brand">
-                                    <option value="" selected disabled>-- Select Brand --</option>
-                                </select>
+                                <?php if ($brand_id == '') { ?>
+                                    <select class="form-control" name="brand_id" id="brand">
+                                        <option value="" disabled>-- Select Brand --</option>
+                                    </select>
+                                <?php } else { ?>
+                                    <select class="form-control" name="brand_id" id="brand">
+                                        <option value="" disabled>-- Select Brand --</option>
+                                        <?php foreach ($name_brand as $row) : ?>
+                                            <option value="<?php echo $row->id; ?>" <?php if ($brand_id == $row->id) echo 'selected'; ?>><?php echo $row->brand; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                <?php } ?>
                                 <?php echo form_error('brand_id') ?>
                                 <div class="invalid-feedback">
                                     Please choose a brand.
@@ -231,11 +240,13 @@ if ($content == "Edit") {
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="Images">Gambar Utama</label>
-                                <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" required>
+                                <input type="file" id="images" class="form-control" name="images" placeholder="Gambar Utama" value="<?php echo $images; ?>" <?php if ($content == 'Add') {
+                                                                                                                                                                echo 'required';
+                                                                                                                                                            } ?>>
                                 <?php if ($images == "") { ?>
                                     <img id="view_images" src="" />
                                 <?php } else { ?>
-                                    <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" />
+                                    <img id="view_images" src="<?php echo base_url(); ?>upload/product/<?php echo $images; ?>" alt="Gambar Utama" height="300px" width="300px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images') ?>
@@ -253,7 +264,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_images_front" src="" />
                                 <?php } else { ?>
-                                    <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" />
+                                    <img id="view_images_front" src="<?php echo base_url(); ?>upload/product/<?php echo $images_front; ?>" alt="Gambar Depan" height="300px" width="300px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images_front') ?>
@@ -271,7 +282,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_images_side" src="" />
                                 <?php } else { ?>
-                                    <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" />
+                                    <img id="view_images_side" src="<?php echo base_url(); ?>upload/product/<?php echo $images_side; ?>" alt="Gambar Samping" height="300px" width="300px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images_side') ?>
@@ -289,7 +300,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_images_top" src="" />
                                 <?php } else { ?>
-                                    <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" />
+                                    <img id="view_images_top" src="<?php echo base_url(); ?>upload/product/<?php echo $images_top; ?>" alt="Gambar Atas" height="300px" width="300px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images_top') ?>
@@ -307,7 +318,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_images_detail" src="" />
                                 <?php } else { ?>
-                                    <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" />
+                                    <img id="view_images_detail" src="<?php echo base_url(); ?>upload/product/<?php echo $images_detail; ?>" alt="Gambar Detail" height="300px" width="300px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images_detail') ?>
@@ -500,4 +511,64 @@ if ($content == "Edit") {
         var img = 5;
         readURL(this, img);
     });
+
+    $("#categoryselect").change(function() {
+        var category = $("#categoryselect option:selected").text();
+
+        $('#brand')
+            .find('option')
+            .remove()
+            .end();
+
+        $.ajax({
+            url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
+            type: "POST",
+            data: {
+                "name_category": category
+            },
+            success: function(data) {
+                var obj = JSON.parse(data);
+                console.log(obj);
+                $.each(obj, function(i, item) {
+                    var id = item.id;
+                    var category_name = item.category;
+                    var brand_name = item.brand;
+                    $('#brand').append($('<option>', {
+                        value: id,
+                        text: brand_name
+                    }));
+                    // $("brand select").val("val2");
+                });
+            },
+            error: function() {
+                console.log("error");
+            }
+        });
+    })
+
+    var price = document.getElementById('price');
+    price.addEventListener('keyup', function(e) {
+        price.value = formatRupiah(this.value, 'Rp. ');
+    });
+
+    var discount = document.getElementById('discount');
+    discount.addEventListener('keyup', function(e) {
+        discount.value = formatRupiah(this.value, 'Rp. ');
+    });
+
+    function formatRupiah(angka, prefix) {
+        var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+        if (ribuan) {
+            separator = sisa ? '.' : '';
+            rupiah += separator + ribuan.join('.');
+        }
+
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+    }
 </script>

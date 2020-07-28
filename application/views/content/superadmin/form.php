@@ -45,11 +45,9 @@ if ($content == "Edit") {
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
-
                             <input type="hidden" name="content" value="<?php echo $content; ?>">
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="hidden" name="last_login" value="<?php echo $last_login; ?>">
-
                             <div class="col-md-12 mb-3">
                                 <label for="Name">Nama</label>
                                 <input type="text" class="form-control" name="name" placeholder="Nama" value="<?php echo $name; ?>" required>
@@ -85,7 +83,7 @@ if ($content == "Edit") {
                             <div class="col-md-12 mb-3">
                                 <label for="Role">Role</label>
                                 <select class="form-control" name="role">\
-                                    <option value="" selected disabled>-- Select Role --</option>
+                                    <!-- <option value="" selected disabled>-- Select Role --</option> -->
                                     <option value="2" <?php if ($role == 2) echo 'selected'; ?>>Admin</option>
                                     <option value="1" <?php if ($role == 1) echo 'selected'; ?>>Super Admin</option>
                                 </select>

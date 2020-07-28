@@ -21,18 +21,17 @@ class C_brand extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
-
-        $data['page'] = "brand/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data               = $this->data;
+        $data['count']      = $this->ref->count();
+        $data['page']       = "brand/index";
+        $data['atribute']   = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $brand = $this->ref;
-        $validation = $this->form_validation;
+        $brand              = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($brand->rules());
 
         if ($validation->run()) {
@@ -41,13 +40,13 @@ class C_brand extends CI_Controller
             // redirect('brand');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "brand/form";
-        $data['name_category'] = $this->ref->getCategory();
-        $data['content'] = "Add";
+        $data['page']           = "brand/form";
+        $data['name_category']  = $this->ref->getCategory();
+        $data['content']        = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -55,8 +54,8 @@ class C_brand extends CI_Controller
     {
         if (!isset($id)) redirect('brand');
 
-        $brand = $this->ref;
-        $validation = $this->form_validation;
+        $brand                  = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($brand->rules());
 
         if ($validation->run()) {
@@ -65,16 +64,16 @@ class C_brand extends CI_Controller
             // redirect('brand');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['name_brand'] = $brand->getById($id);
+        $data['name_brand']     = $brand->getById($id);
         if (!$data['name_brand']) show_404();
 
-        $data['page'] = "brand/form";
-        $data['name_category'] = $this->ref->getCategory();
-        $data['content'] = "Edit";
+        $data['page']           = "brand/form";
+        $data['name_category']  = $this->ref->getCategory();
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 

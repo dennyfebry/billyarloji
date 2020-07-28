@@ -84,7 +84,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_testimoni" src="" />
                                 <?php } else { ?>
-                                    <img id="view_testimoni" src="<?php echo base_url(); ?>upload/testimoni/<?php echo $images; ?>" alt="Gambar Testimoni" />
+                                    <img id="view_testimoni" src="<?php echo base_url(); ?>upload/testimoni/<?php echo $images; ?>" alt="Gambar Testimoni" height="100px" width="100px" />
                                     <br>
                                 <?php } ?>
                                 <?php echo form_error('images') ?>

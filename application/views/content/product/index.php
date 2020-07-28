@@ -74,11 +74,11 @@
                                         </td>
                                         <td>Rp <?php echo number_format($row->price, 2, ',', '.') ?></td>
                                         <td>Rp <?php echo number_format($row->discount, 2, ',', '.') ?></td>
-                                        <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="" height="200px"> <br><br>
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_front . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_side . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="" height="46px">
-                                            <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="" height="46px"></td>
+                                        <td><img src="<?php echo base_url('upload/product/' . $row->images . ''); ?>" alt="Gambar Utama" height="200px" width="200px"> <br><br>
+                                            <img src="<?php echo base_url('upload/product/' . $row->images_front . ''); ?>" alt="Gambar Depan" height="46px" width="46px">
+                                            <img src="<?php echo base_url('upload/product/' . $row->images_side . ''); ?>" alt="Gambar Samping" height="46px" width="46px">
+                                            <img src="<?php echo base_url('upload/product/' . $row->images_top . ''); ?>" alt="Gambar Atas" height="46px" width="46px">
+                                            <img src="<?php echo base_url('upload/product/' . $row->images_detail . ''); ?>" alt="Gambar Detail" height="46px" width="46px"></td>
                                         <td><?php echo $row->updated_date ?></td>
                                         <td><?php echo $row->name_admin ?></td>
                                         <td><?php if ($row->status == '1') {

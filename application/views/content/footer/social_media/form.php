@@ -41,54 +41,50 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('social/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="mark" value="<?php echo $mark; ?>">
-                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Title">Nama Media Social</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Nama Media Social" value="<?php echo $title; ?>" required>
-                                    <?php echo form_error('title') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the name social.
-                                    </div>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Description">Username</label>
-                                    <input type="text" class="form-control" name="description" placeholder="Username" value="<?php echo $description; ?>" required>
-                                    <?php echo form_error('description') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the url/link.
-                                    </div>
+                            <?php endif; ?>
+
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="mark" value="<?php echo $mark; ?>">
+                            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Title">Nama Media Social</label>
+                                <input type="text" class="form-control" name="title" placeholder="Nama Media Social" value="<?php echo $title; ?>" required>
+                                <?php echo form_error('title') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="Link">URL (Link)</label>
-                                    <input type="text" class="form-control" name="link" placeholder="URL (Link)" value="<?php echo $link; ?>" required>
-                                    <?php echo form_error('link') ?>
-                                    <div class="invalid-feedback">
-                                        Please fill in the url/link.
-                                    </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the name social.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+                            <div class="col-md-12 mb-3">
+                                <label for="Description">Username</label>
+                                <input type="text" class="form-control" name="description" placeholder="Username" value="<?php echo $description; ?>" required>
+                                <?php echo form_error('description') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the url/link.
+                                </div>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Link">URL (Link)</label>
+                                <input type="text" class="form-control" name="link" placeholder="URL (Link)" value="<?php echo $link; ?>" required>
+                                <?php echo form_error('link') ?>
+                                <div class="invalid-feedback">
+                                    Please fill in the url/link.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>

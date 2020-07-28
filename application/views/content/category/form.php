@@ -39,40 +39,35 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('category/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
+                                </div>
+                            <?php endif; ?>
 
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+                            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
+                            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
 
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
-                                <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
-                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-
-                                <div class="col-md-12 mb-3">
-                                    <label for="Category">Category</label>
-                                    <input type="text" class="form-control" name="category" placeholder="Category" value="<?php echo $category; ?>" required>
-                                    <?php echo form_error('category') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the category.
-                                    </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="Category">Category</label>
+                                <input type="text" class="form-control" name="category" placeholder="Category" value="<?php echo $category; ?>" required>
+                                <?php echo form_error('category') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the category.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>

@@ -18,16 +18,16 @@ class C_dashboard extends CI_Controller
 
     public function index()
     {
-        $data['titlepage'] = "Dashboard";
-        $data['page'] = "dashboard/index";
-        $data['count'] = '0';
+        $data['titlepage']  = "Dashboard";
+        $data['page']       = "dashboard/index";
+        $data['count']      = '0';
         $this->load->view('content/layout', $data);
     }
 
     public function settinghome()
     {
-        $setting = $this->ref;
-        $validation = $this->form_validation;
+        $setting            = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($setting->rules());
 
         if ($validation->run()) {
@@ -37,13 +37,13 @@ class C_dashboard extends CI_Controller
         }
 
         $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['setting'] = $this->ref->getSetting();
-        $data['count'] = $this->ref->count();
+        $data['atribute']   = $this->ref->getAll();
+        $data['setting']    = $this->ref->getSetting();
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "Setting";
-        $data['page'] = "dashboard/form";
-        $data['content'] = "Edit";
+        $data['titlepage']  = "Setting";
+        $data['page']       = "dashboard/form";
+        $data['content']    = "Edit";
         $this->load->view('content/layout', $data);
     }
 }

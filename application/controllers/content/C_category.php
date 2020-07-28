@@ -8,7 +8,6 @@ class C_category extends CI_Controller
     function __construct()
     {
         parent::__construct();
-
         if ($this->session->userdata('status') != "login") {
             redirect("content/c_login");
         }
@@ -21,18 +20,17 @@ class C_category extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
-
-        $data['page'] = "category/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data               = $this->data;
+        $data['count']      = $this->ref->count();
+        $data['page']       = "category/index";
+        $data['atribute']   = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $category = $this->ref;
-        $validation = $this->form_validation;
+        $category           = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($category->rules());
 
         if ($validation->run()) {
@@ -41,12 +39,12 @@ class C_category extends CI_Controller
             // redirect('category');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data               = $this->data;
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['page'] = "category/form";
-        $data['content'] = "Add";
+        $data['page']       = "category/form";
+        $data['content']    = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -64,15 +62,15 @@ class C_category extends CI_Controller
             // redirect('category');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['name_category'] = $category->getById($id);
+        $data['name_category']  = $category->getById($id);
         if (!$data['name_category']) show_404();
 
-        $data['page'] = "category/form";
-        $data['content'] = "Edit";
+        $data['page']           = "category/form";
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 

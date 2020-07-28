@@ -70,8 +70,8 @@ if ($content == "Edit") {
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="Description">Text</label>
-                                <input type="text" class="form-control" name="description" placeholder="Text" value="<?php echo $description; ?>" required>
-                                <!-- <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea> -->
+                                <!-- <input type="text" class="form-control" name="description" placeholder="Text" value="<?php echo $description; ?>" required> -->
+                                <textarea class="form-control" id="summernote" name="description" required><?php echo $description; ?></textarea>
                                 <?php echo form_error('description') ?>
                                 <div class="invalid-feedback">
                                     Please fill in the text.
@@ -94,7 +94,7 @@ if ($content == "Edit") {
                                 <?php if ($images == "") { ?>
                                     <img id="view_slider" src="" />
                                 <?php } else { ?>
-                                    <img id="view_slider" src="<?php echo base_url(); ?>upload/slider/<?php echo $images; ?>" alt="Gambar Slider" />
+                                    <img id="view_slider" src="<?php echo base_url(); ?>upload/slider/<?php echo $images; ?>" alt="Gambar Slider" height="300px" width="1020px" />
                                 <?php } ?>
                                 <?php echo form_error('images') ?>
                                 <span id="hidenote" style="font-size:10px;"> gambar .jpg .jpeg .png dan ukuran minimum 1020 x 300px (Untuk gambar optimal gunakan ukuran minimum 1700 x 500 px)</span>
@@ -105,7 +105,7 @@ if ($content == "Edit") {
                             <div class="col-md-12 mb-3">
                                 <label for="Status">Status</label>
                                 <select class="form-control" name="status">
-                                    <option value="" selected disabled>-- Select Status --</option>
+                                    <!-- <option value="" selected disabled>-- Select Status --</option> -->
                                     <option value="2" <?php if ($status == 2) echo 'selected'; ?>>Draft</option>
                                     <option value="1" <?php if ($status == 1) echo 'selected'; ?>>Active</option>
                                 </select>

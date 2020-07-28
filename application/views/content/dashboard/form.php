@@ -75,7 +75,7 @@ if ($content == "Edit") {
                             <div class="col-md-12 mb-3">
                                 <label for="Description">Instagram Feed</label>
                                 <select class="form-control" name="description">
-                                    <option value="" selected disabled>-- Select Active --</option>
+                                    <!-- <option value="" selected disabled>-- Select Active --</option> -->
                                     <option value="0" <?php if ($description == 0) echo 'selected'; ?>>Not Active</option>
                                     <option value="1" <?php if ($description == 1) echo 'selected'; ?>>Active</option>
                                 </select>
@@ -114,7 +114,6 @@ if ($content == "Edit") {
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             var background = $("#view_background");
             reader.onload = function(e) {
                 background.show();

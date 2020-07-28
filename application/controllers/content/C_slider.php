@@ -21,32 +21,32 @@ class C_slider extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "slider/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data['page']           = "slider/index";
+        $data['atribute']       = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $slider = $this->ref;
-        $validation = $this->form_validation;
+        $slider                 = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($slider->rules());
 
         if ($validation->run()) {
             $slider->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            redirect('slider');
+            // redirect('slider');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "slider/form";
-        $data['content'] = "Add";
+        $data['page']           = "slider/form";
+        $data['content']        = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -54,25 +54,25 @@ class C_slider extends CI_Controller
     {
         if (!isset($id)) redirect('slider');
 
-        $slider = $this->ref;
-        $validation = $this->form_validation;
+        $slider                 = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($slider->rules());
 
         if ($validation->run()) {
             $slider->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            redirect('slider');
+            // redirect('slider');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['slider'] = $slider->getById($id);
+        $data['slider']         = $slider->getById($id);
         if (!$data['slider']) show_404();
 
-        $data['page'] = "slider/form";
-        $data['content'] = "Edit";
+        $data['page']           = "slider/form";
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 

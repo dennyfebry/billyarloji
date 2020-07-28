@@ -22,8 +22,8 @@ class C_footer extends CI_Controller
 
     public function about()
     {
-        $id = '1';
-        $about = $this->ref;
+        $id                 = '1';
+        $about              = $this->ref;
         $validation = $this->form_validation;
         $validation->set_rules($about->rules());
 
@@ -33,24 +33,23 @@ class C_footer extends CI_Controller
             // redirect('about');
         }
 
-        $data = $this->data;
-
-        $data['about'] = $about->getById($id);
+        $data               = $this->data;
+        $data['about']      = $about->getById($id);
         if (!$data['about']) show_404();
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "About";
-        $data['page'] = "footer/about/form";
-        $data['content'] = "Edit";
+        $data['titlepage']  = "About";
+        $data['page']       = "footer/about/form";
+        $data['content']    = "Edit";
         $this->load->view('content/layout', $data);
     }
 
     public function store()
     {
-        $id = '2';
-        $store = $this->ref;
-        $validation = $this->form_validation;
+        $id                 = '2';
+        $store              = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($store->rules());
 
         if ($validation->run()) {
@@ -59,24 +58,23 @@ class C_footer extends CI_Controller
             // redirect('store');
         }
 
-        $data = $this->data;
-
-        $data['store'] = $store->getById($id);
+        $data               = $this->data;
+        $data['store']      = $store->getById($id);
         if (!$data['store']) show_404();
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "Our Store";
-        $data['page'] = "footer/our_store/form";
-        $data['content'] = "Edit";
+        $data['titlepage']  = "Our Store";
+        $data['page']       = "footer/our_store/form";
+        $data['content']    = "Edit";
         $this->load->view('content/layout', $data);
     }
 
     public function buy()
     {
-        $id = '3';
-        $buy = $this->ref;
-        $validation = $this->form_validation;
+        $id                 = '3';
+        $buy                = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($buy->rules());
 
         if ($validation->run()) {
@@ -87,47 +85,47 @@ class C_footer extends CI_Controller
 
         $data = $this->data;
 
-        $data['buy'] = $buy->getById($id);
+        $data['buy']        = $buy->getById($id);
         if (!$data['buy']) show_404();
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "How To Buy";
-        $data['page'] = "footer/how_to_buy/form";
-        $data['content'] = "Edit";
+        $data['titlepage']  = "How To Buy";
+        $data['page']       = "footer/how_to_buy/form";
+        $data['content']    = "Edit";
         $this->load->view('content/layout', $data);
     }
 
     public function social()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
+        $data               = $this->data;
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "Social Media";
-        $data['page'] = "footer/social_media/index";
-        $data['atribute'] = $this->ref->getSocialMedia();
+        $data['titlepage']  = "Social Media";
+        $data['page']       = "footer/social_media/index";
+        $data['atribute']   = $this->ref->getSocialMedia();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $social = $this->ref;
-        $validation = $this->form_validation;
+        $social             = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($social->rules());
 
         if ($validation->run()) {
             $social->saveSocial();
             $this->session->set_flashdata('success', 'Saved successfully');
-            redirect('social');
+            // redirect('social');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data               = $this->data;
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['titlepage'] = "Social Media";
-        $data['page'] = "footer/social_media/form";
-        $data['content'] = "Add";
+        $data['titlepage']  = "Social Media";
+        $data['page']       = "footer/social_media/form";
+        $data['content']    = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -135,26 +133,26 @@ class C_footer extends CI_Controller
     {
         if (!isset($id)) redirect('social');
 
-        $social = $this->ref;
-        $validation = $this->form_validation;
+        $social             = $this->ref;
+        $validation         = $this->form_validation;
         $validation->set_rules($social->rules());
 
         if ($validation->run()) {
             $social->updateSocial();
             $this->session->set_flashdata('success', 'Saved successfully');
-            redirect('social');
+            // redirect('social');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data               = $this->data;
+        $data['atribute']   = $this->ref->getAll();
+        $data['count']      = $this->ref->count();
 
-        $data['social'] = $social->getById($id);
+        $data['social']     = $social->getById($id);
         if (!$data['social']) show_404();
-        $data['titlepage'] = "Social Media";
+        $data['titlepage']  = "Social Media";
 
-        $data['page'] = "footer/social_media/form";
-        $data['content'] = "Edit";
+        $data['page']       = "footer/social_media/form";
+        $data['content']    = "Edit";
         $this->load->view('content/layout', $data);
     }
 

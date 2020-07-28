@@ -48,15 +48,14 @@ class M_dashboard extends CI_Model
 
     public function updateSetting()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->mark = $post["mark"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
+        $this->updated_by   = $post["updated_by"];
+        $this->mark         = $post["mark"];
+        $this->title        = $post["title"];
+        $this->description  = $post["description"];
         if (!empty($_FILES["link"]["name"])) {
-            var_dump('berhasil');
             $this->link = $this->_uploadImage();
         } else {
             $this->link = $post["old_images"];
@@ -70,7 +69,7 @@ class M_dashboard extends CI_Model
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = 'background-image';
         $config['overwrite']            = true;
-        $config['max_size']             = 2048; // 1MB
+        // $config['max_size']             = 2048; // 1MB
 
         $this->load->library('upload', $config);
 

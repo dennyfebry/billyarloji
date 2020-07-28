@@ -5,13 +5,11 @@ $backgroundImage = $this->foo->getById(6)->link;
 $productAutoComplete = $this->prd->getProductAutoComplete();
 $backgroundImageUrl = base_url() . 'upload/' . $backgroundImage;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titlepage ?></title>
     <!-- Load Roboto font -->

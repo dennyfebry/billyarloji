@@ -41,52 +41,47 @@ if ($content == "Edit") {
                     </div>
                 </div>
                 <div class="card-body">
-                    <?php if ($content == "Edit") { ?>
-                        <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
-                        <?php } else { ?>
-                            <form class="needs-validation" action="<?php echo site_url('brand/add') ?>" method="post" enctype="multipart/form-data" novalidate>
-                            <?php } ?>
-
-                            <div class="form-row">
-                                <?php if ($this->session->flashdata('success')) : ?>
-                                    <div class="mb-2 mr-2 badge badge-success">
-                                        <?php echo $this->session->flashdata('success'); ?>
-                                    </div>
-                                <?php endif; ?>
-
-                                <input type="hidden" name="content" value="<?php echo $content; ?>">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
-                                <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
-                                <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
-                                <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
-                                <div class="col-md-12 mb-3">
-                                    <label for="Category">Category</label>
-                                    <select class="form-control" name="category_id">
-                                        <?php foreach ($name_category as $row) { ?>
-                                            <option value="<?php echo $row->id ?>" <?php if ($category_id == $row->id) echo 'selected'; ?>><?php echo $row->category ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?php echo form_error('category_id') ?>
-                                    <div class="invalid-feedback">
-                                        Please choose a category.
-                                    </div>
+                    <form class="needs-validation" action="" method="post" enctype="multipart/form-data" novalidate>
+                        <div class="form-row">
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="mb-2 mr-2 badge badge-success">
+                                    <?php echo $this->session->flashdata('success'); ?>
                                 </div>
+                            <?php endif; ?>
 
-                                <div class="col-md-12 mb-3">
-                                    <label for="Brand">Brand</label>
-                                    <input type="text" class="form-control" name="brand" placeholder="Brand" value="<?php echo $brand; ?>" required>
-                                    <?php echo form_error('brand') ?>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        Please fill in the brand.
-                                    </div>
+                            <input type="hidden" name="content" value="<?php echo $content; ?>">
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
+                            <input type="hidden" name="created_date" value="<?php echo $created_date; ?>">
+                            <input type="hidden" name="created_by" value="<?php echo $created_by; ?>">
+                            <input type="hidden" name="updated_date" value="<?php echo $updated_date; ?>">
+                            <input type="hidden" name="updated_by" value="<?php echo $updated_by; ?>">
+                            <div class="col-md-12 mb-3">
+                                <label for="Category">Category</label>
+                                <select class="form-control" name="category_id">
+                                    <?php foreach ($name_category as $row) { ?>
+                                        <option value="<?php echo $row->id ?>" <?php if ($category_id == $row->id) echo 'selected'; ?>><?php echo $row->category ?></option>
+                                    <?php } ?>
+                                </select>
+                                <?php echo form_error('category_id') ?>
+                                <div class="invalid-feedback">
+                                    Please choose a category.
                                 </div>
                             </div>
-                            <input class="btn btn-primary" type="submit" value="Submit form">
-                            </form>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="Brand">Brand</label>
+                                <input type="text" class="form-control" name="brand" placeholder="Brand" value="<?php echo $brand; ?>" required>
+                                <?php echo form_error('brand') ?>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please fill in the brand.
+                                </div>
+                            </div>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit form">
+                    </form>
                 </div>
             </div>
         </div>

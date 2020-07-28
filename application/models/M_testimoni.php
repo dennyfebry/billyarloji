@@ -56,14 +56,14 @@ class M_testimoni extends CI_Model
 
     public function save()
     {
-        $post = $this->input->post();
-        $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
-        $this->images = $this->_uploadImage();
+        $post                   = $this->input->post();
+        $this->created_date     = $post["created_date"];
+        $this->created_by       = $post["created_by"];
+        $this->updated_date     = $post["updated_date"];
+        $this->updated_by       = $post["updated_by"];
+        $this->title            = $post["title"];
+        $this->description      = $post["description"];
+        $this->images           = $this->_uploadImage();
         return $this->db->insert($this->table, $this);
     }
 
@@ -74,18 +74,18 @@ class M_testimoni extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
-        $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
+        $post                   = $this->input->post();
+        $this->id               = $post["id"];
+        $this->created_date     = $post["created_date"];
+        $this->created_by       = $post["created_by"];
+        $this->updated_date     = $post["updated_date"];
+        $this->updated_by       = $post["updated_by"];
+        $this->title            = $post["title"];
+        $this->description      = $post["description"];
         if (!empty($_FILES["images"]["name"])) {
-            $this->images = $this->_uploadImage();
+            $this->images       = $this->_uploadImage();
         } else {
-            $this->images = $post["old_images"];
+            $this->images       = $post["old_images"];
         }
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }

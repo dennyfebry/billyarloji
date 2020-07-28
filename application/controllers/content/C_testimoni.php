@@ -21,18 +21,18 @@ class C_testimoni extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "testimoni/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data['page']           = "testimoni/index";
+        $data['atribute']       = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $testimoni = $this->ref;
-        $validation = $this->form_validation;
+        $testimoni              = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($testimoni->rules());
 
         if ($validation->run()) {
@@ -41,12 +41,12 @@ class C_testimoni extends CI_Controller
             redirect('testimoni');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "testimoni/form";
-        $data['content'] = "Add";
+        $data['page']           = "testimoni/form";
+        $data['content']        = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -54,8 +54,8 @@ class C_testimoni extends CI_Controller
     {
         if (!isset($id)) redirect('testimoni');
 
-        $testimoni = $this->ref;
-        $validation = $this->form_validation;
+        $testimoni              = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($testimoni->rules());
 
         if ($validation->run()) {
@@ -64,15 +64,15 @@ class C_testimoni extends CI_Controller
             redirect('testimoni');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['testimoni'] = $testimoni->getById($id);
+        $data['testimoni']      = $testimoni->getById($id);
         if (!$data['testimoni']) show_404();
 
-        $data['page'] = "testimoni/form";
-        $data['content'] = "Edit";
+        $data['page']           = "testimoni/form";
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 

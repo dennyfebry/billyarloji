@@ -97,119 +97,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             $('#view_images_top:not([src=""])').show();
             $('#view_images_detail[src=""]').hide();
             $('#view_images_detail:not([src=""])').show();
-
-            // var price = document.getElementById("price");
-            // price.addEventListener("keyup", function(e) {
-            //     price.value = convertRupiah(this.value, "Rp. ");
-            // });
-            // price.addEventListener('keydown', function(event) {
-            //     return isNumberKey(event);
-            // });
-
-            // var discount = document.getElementById("discount");
-            // discount.addEventListener("keyup", function(e) {
-            //     discount.value = convertRupiah(this.value, "Rp. ");
-            // });
-            // discount.addEventListener('keydown', function(event) {
-            //     return isNumberKey(event);
-            // });
-
-            // function convertRupiah(angka, prefix) {
-            //     var number_string = angka.replace(/[^,\d]/g, "").toString(),
-            //         split = number_string.split(","),
-            //         sisa = split[0].length % 3,
-            //         rupiah = split[0].substr(0, sisa),
-            //         ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-            //     if (ribuan) {
-            //         separator = sisa ? "." : "";
-            //         rupiah += separator + ribuan.join(".");
-            //     }
-
-            //     rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            //     return prefix == undefined ? rupiah : rupiah ? prefix + rupiah : "";
-            // }
-
-            // function isNumberKey(evt) {
-            //     key = evt.which || evt.keyCode;
-            //     if (key != 188 // Comma
-            //         &&
-            //         key != 8 // Backspace
-            //         &&
-            //         key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
-            //         &&
-            //         (key < 48 || key > 57) // Non digit
-            //     ) {
-            //         evt.preventDefault();
-            //         return;
-            //     }
-            // }
-
-            <?php if (isset($brand_id)) { ?>
-                var selected_brand = '<?php echo $brand_id ?>';
-            <?php } ?>
-            // var category = $("#categoryselect option:selected").text();
-            // $('#brand')
-            //     .find('option')
-            //     .remove()
-            //     .end();
-            // $.ajax({
-            //     url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
-            //     type: "POST",
-            //     data: {
-            //         "name_category": category
-            //     },
-            //     success: function(data) {
-            //         var obj = JSON.parse(data);
-            //         $.each(obj, function(i, item) {
-            //             var id = item.id;
-            //             var category_name = item.category;
-            //             var brand_name = item.brand;
-            //             if (id == selected_brand) {
-            //                 $('#brand').append('<option value="' + id + '" selected>' + brand_name + '</option>');
-            //             } else {
-            //                 $('#brand').append('<option value="' + id + '">' + brand_name + '</option>');
-            //             }
-            //         });
-            //     },
-            //     error: function() {
-            //         console.log("error");
-            //     }
-            // });
-            $(function() {
-                $("#categoryselect").change(function() {
-                    var category = $("#categoryselect option:selected").text();
-                    $('#brand')
-                        .find('option')
-                        .remove()
-                        .end();
-
-                    $.ajax({
-                        url: "<?php echo base_url() . 'index.php/list_product/getBrand' ?>",
-                        type: "POST",
-                        data: {
-                            "name_category": category
-                        },
-                        success: function(data) {
-                            var obj = JSON.parse(data);
-                            console.log(obj);
-                            $.each(obj, function(i, item) {
-                                var id = item.id;
-                                var category_name = item.category;
-                                var brand_name = item.brand;
-                                $('#brand').append($('<option>', {
-                                    value: id,
-                                    text: brand_name
-                                }));
-                                // $("brand select").val("val2");
-                            });
-                        },
-                        error: function() {
-                            console.log("error");
-                        }
-                    });
-                })
-            })
         });
     </script>
 
@@ -224,7 +111,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Category ?</h5>
+                            <h5 class="modal-title">Delete Category <?php echo $row->category; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -243,7 +130,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Brand ?</h5>
+                            <h5 class="modal-title">Delete Brand <?php echo $row->brand; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -262,7 +149,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Product ?</h5>
+                            <h5 class="modal-title">Delete Product <?php echo $row->brand; ?> - <?php echo $row->name; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -281,7 +168,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Slider ?</h5>
+                            <h5 class="modal-title">Delete Slider <?php echo $row->title; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -300,7 +187,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Testimoni ?</h5>
+                            <h5 class="modal-title">Delete Testimoni <?php echo $row->title; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -314,12 +201,31 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 </div>
             </div>
 
+            <!-- Modal delete Social -->
+            <div id="deleteSocial<?php echo $row->id; ?>" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Delete Social <?php echo $row->title; ?>?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Yes" below if you want to delete the social data.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                            <a class="btn btn-danger" href="<?php echo base_url(); ?>index.php/social/delete/<?php echo $row->id; ?>">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Modal delete Admin -->
             <div id="deleteAdmin<?php echo $row->id; ?>" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Delete Account Admin ?</h5>
+                            <h5 class="modal-title">Delete Account <?php echo $row->name; ?> ?</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>

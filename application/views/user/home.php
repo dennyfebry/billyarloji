@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined("BASEPATH") or exit("No direct script access allowed");
 ?>
 
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/swiper.css">
@@ -11,19 +11,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <div id="home">
     <!-- Start Slider section -->
-    <div class='row ptb-1'>
+    <div class="row ptb-1">
         <div class="productColumn-10">
             <div class="swiper-container vertical-container">
                 <div class="swiper-wrapper vertical-wrapper">
                     <?php if (count($slider) > 0) {
                         foreach ($slider as $row) { ?>
                             <div class="swiper-slide vertical-slide">
-                                <img class='vertical-image' src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';">
-                                <div class="button-slider">
-                                    <a href="<?php echo $row->link ?>" class="btn"><?php echo $row->description ?></a>
-                                </div>
+                                <img class="vertical-image" src="<?php echo base_url(); ?>upload/slider/<?php echo $row->images ?>" onerror="this.onerror=null;this.src=" <?php echo base_url(); ?>upload/product/default.jpg";"> <div class="button-slider">
+                                <a href="<?php echo $row->link ?>" class="btn"><?php echo $row->description ?></a>
                             </div>
-                    <?php }
+                </div>
+        <?php }
                     } else {
                         echo ("<div class='swiper-slide vertical-slide'>
                         <img class='vertical-image'
@@ -31,82 +30,82 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             onerror='this.onerror=null;this.src='upload/product/default.jpg';'>
                     </div>");
                     } ?>
-                </div>
-                <div class="swiper-pagination vertical-pagination"></div>
             </div>
+            <div class="swiper-pagination vertical-pagination"></div>
         </div>
     </div>
-    <!-- End Slider Section -->
+</div>
+<!-- End Slider Section -->
 
-    <!-- Start Product Section -->
-    <div class='row home-product mtb-15 p-1'>
-        <div class='row home-product-title'>
-            <span class="brown-text">ALL</span>
-            <span>PRODUCTS</span>
-        </div>
-        <div class="row">
-            <ul class="thumbnails row mb-3">
-                <?php
-                if (count($product) > 0) {
-                    foreach ($product as $row) { ?>
-                        <li class="productColumn">
-                            <div class="thumbnail">
-                                <a href="<?php echo base_url(); ?>product_detail/<?php echo $row->id ?>">
-                                    <div class="productImage">
-                                        <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/product/default.jpg';" alt="<?php echo $row->name ?>">
-                                </a>
+<!-- Start Product Section -->
+<div class="row home-product mtb-15 p-1">
+    <div class="row home-product-title">
+        <span class="brown-text">ALL</span>
+        <span>PRODUCTS</span>
+    </div>
+    <div class="row">
+        <ul class="thumbnails row mb-3">
+            <?php
+            if (count($product) > 0) {
+                foreach ($product as $row) { ?>
+                    <li class="productColumn">
+                        <div class="thumbnail">
+                            <a href="<?php echo base_url(); ?>product_detail/<?php echo $row->id ?>">
+                                <div class="productImage">
+                                    <img src="<?php echo base_url(); ?>upload/product/<?php echo $row->images ?>" onerror="this.onerror=null;this.src=" <?php echo base_url(); ?>upload/product/default.jpg";" alt="<?php echo $row->name ?>">
+                            </a>
+                        </div>
+                        <div class="productTitle">
+                            <div class="productName">
+                                <h5><?php echo $row->name ?></h5>
                             </div>
-                            <div class="productTitle">
-                                <div class="productName">
-                                    <h5><?php echo $row->name ?></h5>
-                                </div>
-                                <div class="price">
-                                    <h5>Rp.
-                                        <?php if ($row->discount != 0) {
-                                            $total = $row->price - $row->discount;
-                                            echo number_format($total, 2, ',', '.');
-                                        } else {
-                                            echo number_format($row->price, 2, ',', '.');
-                                        } ?></h5>
-                                </div>
-                                <?php if ($row->discount != 0) {
-                                    echo "<div class='discount'>
+                            <div class="price">
+                                <h5>Rp.
+                                    <?php if ($row->discount != 0) {
+                                        $total = $row->price - $row->discount;
+                                        echo number_format($total, 2, ",", ".");
+                                    } else {
+                                        echo number_format($row->price, 2, ",", ".");
+                                    } ?></h5>
+                            </div>
+                            <?php if ($row->discount != 0) {
+                                echo "<div class='discount'>
                                         <h5>
-                                        Rp. ", number_format($row->price, 2, ',', '.');
-                                    "</h5>
+                                        Rp. ", number_format($row->price, 2, ",", ".");
+                                "</h5>
                                     </div>";
-                                } else {
-                                    echo "<div class='discount' style='color: transparent'>
+                            } else {
+                                echo "<div class='discount' style='color: transparent'>
                                         <h5>-</h5>
                                     </div>";
-                                } ?>
-                            </div>
-        </div>
-        </li>
-    <?php }
-                } else { ?>
-    <h3 style="color: white;">This product is not available</h3>
+                            } ?>
+                        </div>
+    </div>
+    </li>
+<?php }
+            } else { ?>
+<h3 style="color: white;">This product is not available</h3>
 <?php } ?>
 </ul>
-    </div>
-    <!-- Pagination -->
-    <div id="pagination-container"></div>
+</div>
+<!-- Pagination -->
+<div id="pagination-container"></div>
 </div>
 <!-- End Product Section -->
 
 <!-- Start Testimoni Section -->
-<div class='row testimoni p-1'>
-    <div class='row testimoni-title'>
+<div class="row testimoni p-1">
+    <div class="row testimoni-title">
         <span class="brown-text">TESTI</span>
         <span>MONI</span>
     </div>
-    <div class='row testimoni-item'>
+    <div class="row testimoni-item">
         <div class="swiper-container testimoni-container">
             <div data-swiper-parallax="-23%"></div>
             <div class="swiper-wrapper testimoni-wrapper">
                 <?php foreach ($testimoni as $row) { ?>
                     <div class="swiper-slide testimoni-slide row">
-                        <div class="icon"> <img src="<?php echo base_url(); ?>upload/testimoni/<?php echo $row->images ?>" onerror="this.onerror=null;this.src='<?php echo base_url(); ?>upload/testimoni/default.jpg';" width="100px" height="100px" alt="Testimoni" />
+                        <div class="icon"> <img src="<?php echo base_url(); ?>upload/testimoni/<?php echo $row->images ?>" onerror="this.onerror=null;this.src=" <?php echo base_url(); ?>upload/testimoni/default.jpg";" width="100px" height="100px" alt="Testimoni" />
                         </div>
                         <div class="title brown-text" data-swiper-parallax="-300"><?php echo $row->title ?></div>
                         <div class="text" data-swiper-parallax="-100">
@@ -125,8 +124,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!-- Start Feeds Section -->
 <?php
 if ($feed) { ?>
-    <div class='row feeds mtb-15 p-1'>
-        <div class='row feeds-title'>
+    <div class="row feeds mtb-15 p-1">
+        <div class="row feeds-title">
             <span class="brown-text pr-03 float-right">INSTAGRAM</span>
             <span class="float-right">FEEDS</span>
         </div>
@@ -139,42 +138,42 @@ if ($feed) { ?>
 <!-- End Feeds Section -->
 
 <!-- Start Footer Section -->
-<div class='row footer mt-15'>
-    <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
+<div class="row footer mt-15">
+    <div class="productColumn-equal-lg productColumn-5-md productColumn-10">
         <div class="row footer-title">
             <span class="brown-text pr-03 float-right">ABOUT</span>
             <span class="float-right">US</span>
         </div>
-        <div class='row p-1 footer-content'><?php echo $about->description ?></div>
+        <div class="row p-1 footer-content"><?php echo $about->description ?></div>
     </div>
-    <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
+    <div class="productColumn-equal-lg productColumn-5-md productColumn-10">
         <div class="row footer-title">
             <span class="brown-text pr-03 float-right">OUR</span>
             <span class="float-right">STORE</span>
         </div>
-        <div class='row p-1 footer-content'><?php echo $store->description ?></div>
+        <div class="row p-1 footer-content"><?php echo $store->description ?></div>
     </div>
-    <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
+    <div class="productColumn-equal-lg productColumn-5-md productColumn-10">
         <div class="row footer-title">
             <span class="brown-text pr-03 float-left">HOW</span>
             <span class="float-left">TO BUY</span>
         </div>
-        <div class='row p-1 footer-content'><?php echo $buy->description ?></div>
+        <div class="row p-1 footer-content"><?php echo $buy->description ?></div>
     </div>
-    <div class='productColumn-equal-lg productColumn-5-md productColumn-10'>
+    <div class="productColumn-equal-lg productColumn-5-md productColumn-10">
         <div class="row footer-title">
             <span class="brown-text pr-03 float-left">SOCIAL</span>
             <span class="float-left">MEDIA</span>
         </div>
-        <div class='p-1 footer-content' style='text-align: left;'>
+        <div class="p-1 footer-content" style="text-align: left;">
             <?php foreach ($social as $row) {
-                if ($row->id > 3) {
+                if ($row->mark == "social") {
                     $soc = strtolower($row->title);
-                    if ($soc == 'instagram') {
+                    if ($soc == "instagram") {
                         echo "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-instagram' aria-hidden='true'></i> " . $row->description . "</a>";
-                    } else if ($soc == 'facebook') {
+                    } else if ($soc == "facebook") {
                         echo "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-facebook' aria-hidden='true'></i> " . $row->description . "</a>";
-                    } else if ($soc == 'twitter') {
+                    } else if ($soc == "twitter") {
                         echo  "<a style='color:white;' href='" . $row->link . "' target='_blank'><i class='fa fa-twitter' aria-hidden='true'></i> " . $row->description . "</a>";
                     } else {
                         echo  "<a style='color:white;' href='" . $row->link . "' target='_blank'>" . $row->description . "</a>";
@@ -212,7 +211,7 @@ if ($feed) { ?>
     items.slice(perPage).hide();
 
     if (totalPages > 1) {
-        $('#pagination-container').pagination({
+        $("#pagination-container").pagination({
             items: numItems,
             itemsOnPage: perPage,
             prevText: "&laquo;",
@@ -221,7 +220,7 @@ if ($feed) { ?>
                 var showFrom = perPage * (pageNumber - 1);
                 var showTo = showFrom + perPage;
                 items.hide().slice(showFrom, showTo).show();
-                $('html, body').animate({
+                $("html, body").animate({
                     scrollTop: $(".home-product").offset().top
                 }, 500);
             }
@@ -231,12 +230,12 @@ if ($feed) { ?>
 
 <script>
     // Vertical Swiper JS
-    var verticalSwiper = new Swiper('.swiper-container.vertical-container', {
-        direction: 'vertical',
+    var verticalSwiper = new Swiper(".swiper-container.vertical-container", {
+        direction: "vertical",
         loop: true,
         mousewheel: true,
         pagination: {
-            el: '.swiper-pagination.vertical-pagination',
+            el: ".swiper-pagination.vertical-pagination",
             clickable: true,
         },
         autoplay: {
@@ -246,13 +245,13 @@ if ($feed) { ?>
     });
 
     // Testimoni Swiper JS
-    var testimoniSwiper = new Swiper('.swiper-container.testimoni-container', {
+    var testimoniSwiper = new Swiper(".swiper-container.testimoni-container", {
         speed: 600,
         parallax: true,
         loop: true,
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
         },
         autoplay: {
             delay: 5000,
@@ -261,7 +260,7 @@ if ($feed) { ?>
     });
 
     // Instagram Feeds Swiper JS
-    var feedsSwiper = new Swiper('.swiper-container.feeds-container', {
+    var feedsSwiper = new Swiper(".swiper-container.feeds-container", {
         slidesPerView: 4,
         spaceBetween: 10,
         loop: true,

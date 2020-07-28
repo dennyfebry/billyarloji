@@ -133,32 +133,41 @@ class M_product extends CI_Model
         return $this->db->get()->result();
     }
 
+    public function getBrands()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_brand');
+        return $this->db->get()->result();
+    }
+
     public function save()
     {
-        $post = $this->input->post();
-        $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->category_id = $post["category_id"];
-        $this->brand_id = $post["brand_id"];
-        $this->name = $post["name"];
-        $this->model = $post["model"];
-        $this->type = $post["type"];
-        $this->diameter = $post["diameter"];
-        $this->movement = $post["movement"];
-        $this->material = $post["material"];
-        $this->condition_product = $post["condition_product"];
-        $this->completeness = $post["completeness"];
-        $this->description = $post["description"];
-        $this->url = $post["url"];
-        $this->price = $post["price"];
-        $this->discount = $post["discount"];
-        $this->images = $this->_uploadImage();
-        $this->images_front = $this->_uploadImage_front();
-        $this->images_side = $this->_uploadImage_side();
-        $this->images_top = $this->_uploadImage_top();
-        $this->images_detail = $this->_uploadImage_detail();
+        $post                       = $this->input->post();
+        $this->created_date         = $post["created_date"];
+        $this->created_by           = $post["created_by"];
+        $this->updated_date         = $post["updated_date"];
+        $this->updated_by           = $post["updated_by"];
+        $this->category_id          = $post["category_id"];
+        $this->brand_id             = $post["brand_id"];
+        $this->name                 = $post["name"];
+        $this->model                = $post["model"];
+        $this->type                 = $post["type"];
+        $this->diameter             = $post["diameter"];
+        $this->movement             = $post["movement"];
+        $this->material             = $post["material"];
+        $this->condition_product    = $post["condition_product"];
+        $this->completeness         = $post["completeness"];
+        $this->description          = $post["description"];
+        $this->url                  = $post["url"];
+        $price                      = $post["price"];
+        $this->price                = preg_replace("/[^0-9]/", "", $price);
+        $discount                   = $post["discount"];
+        $this->discount             = preg_replace("/[^0-9]/", "", $discount);
+        $this->images               = $this->_uploadImage();
+        $this->images_front         = $this->_uploadImage_front();
+        $this->images_side          = $this->_uploadImage_side();
+        $this->images_top           = $this->_uploadImage_top();
+        $this->images_detail        = $this->_uploadImage_detail();
         $this->status = $post["status"];
         return $this->db->insert($this->table, $this);
     }
@@ -170,50 +179,52 @@ class M_product extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
-        $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->category_id = $post["category_id"];
-        $this->brand_id = $post["brand_id"];
-        $this->name = $post["name"];
-        $this->model = $post["model"];
-        $this->type = $post["type"];
-        $this->diameter = $post["diameter"];
-        $this->movement = $post["movement"];
-        $this->material = $post["material"];
-        $this->condition_product = $post["condition_product"];
-        $this->completeness = $post["completeness"];
-        $this->description = $post["description"];
-        $this->url = $post["url"];
-        $this->price = $post["price"];
-        $this->discount = $post["discount"];
+        $post                       = $this->input->post();
+        $this->id                   = $post["id"];
+        $this->created_date         = $post["created_date"];
+        $this->created_by           = $post["created_by"];
+        $this->updated_date         = $post["updated_date"];
+        $this->updated_by           = $post["updated_by"];
+        $this->category_id          = $post["category_id"];
+        $this->brand_id             = $post["brand_id"];
+        $this->name                 = $post["name"];
+        $this->model                = $post["model"];
+        $this->type                 = $post["type"];
+        $this->diameter             = $post["diameter"];
+        $this->movement             = $post["movement"];
+        $this->material             = $post["material"];
+        $this->condition_product    = $post["condition_product"];
+        $this->completeness         = $post["completeness"];
+        $this->description          = $post["description"];
+        $this->url                  = $post["url"];
+        $price                      = $post["price"];
+        $this->price                = preg_replace("/[^0-9]/", "", $price);
+        $discount                   = $post["discount"];
+        $this->discount = preg_replace("/[^0-9]/", "", $discount);
         if (!empty($_FILES["images"]["name"])) {
-            $this->images = $this->_uploadImage();
+            $this->images           = $this->_uploadImage();
         } else {
-            $this->images = $post["old_images"];
+            $this->images           = $post["old_images"];
         }
         if (!empty($_FILES["images_front"]["name"])) {
-            $this->images_front = $this->_uploadImage_front();
+            $this->images_front     = $this->_uploadImage_front();
         } else {
-            $this->images_front = $post["old_images_front"];
+            $this->images_front     = $post["old_images_front"];
         }
         if (!empty($_FILES["images_side"]["name"])) {
-            $this->images_side = $this->_uploadImage_side();
+            $this->images_side      = $this->_uploadImage_side();
         } else {
-            $this->images_side = $post["old_images_side"];
+            $this->images_side      = $post["old_images_side"];
         }
         if (!empty($_FILES["images_top"]["name"])) {
-            $this->images_top = $this->_uploadImage_top();
+            $this->images_top       = $this->_uploadImage_top();
         } else {
-            $this->images_top = $post["old_images_top"];
+            $this->images_top       = $post["old_images_top"];
         }
         if (!empty($_FILES["images_detail"]["name"])) {
-            $this->images_detail = $this->_uploadImage_detail();
+            $this->images_detail    = $this->_uploadImage_detail();
         } else {
-            $this->images_detail = $post["old_images_detail"];
+            $this->images_detail    = $post["old_images_detail"];
         }
         $this->status = $post["status"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));

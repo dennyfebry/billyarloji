@@ -21,33 +21,34 @@ class C_product extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "product/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data['page']           = "product/index";
+        $data['atribute']       = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $product = $this->ref;
-        $validation = $this->form_validation;
+        $product                = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($product->rules());
 
         if ($validation->run()) {
             $product->save();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('list_product');
+            redirect('list_product');
         }
 
         $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "product/form";
-        $data['name_category'] = $this->ref->getCategory();
-        $data['content'] = "Add";
+        $data['page']           = "product/form";
+        $data['name_category']  = $this->ref->getCategory();
+        $data['name_brand']     = $this->ref->getBrands();
+        $data['content']        = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -55,25 +56,26 @@ class C_product extends CI_Controller
     {
         if (!isset($id)) redirect('product');
 
-        $product = $this->ref;
-        $validation = $this->form_validation;
+        $product                = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($product->rules());
         if ($validation->run()) {
             $product->update();
             $this->session->set_flashdata('success', 'Saved successfully');
-            // redirect('list_product');
+            redirect('list_product');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['product'] = $product->getById($id);
+        $data['product']        = $product->getById($id);
         if (!$data['product']) show_404();
 
-        $data['page'] = "product/form";
-        $data['name_category'] = $this->ref->getCategory();
-        $data['content'] = "Edit";
+        $data['page']           = "product/form";
+        $data['name_category']  = $this->ref->getCategory();
+        $data['name_brand']     = $this->ref->getBrands();
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 
@@ -88,8 +90,8 @@ class C_product extends CI_Controller
 
     function getBrand()
     {
-        $name_category = $this->input->post('name_category');
-        $getBrand    = $this->ref->getBrand($name_category)->result();
+        $name_category          = $this->input->post('name_category');
+        $getBrand               = $this->ref->getBrand($name_category)->result();
         echo json_encode($getBrand);
     }
 }

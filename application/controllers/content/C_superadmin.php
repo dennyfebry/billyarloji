@@ -23,18 +23,18 @@ class C_superadmin extends CI_Controller
 
     public function index()
     {
-        $data = $this->data;
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "superadmin/index";
-        $data['atribute'] = $this->ref->getAll();
+        $data['page']           = "superadmin/index";
+        $data['atribute']       = $this->ref->getAll();
         $this->load->view('content/layout', $data);
     }
 
     public function add()
     {
-        $account = $this->ref;
-        $validation = $this->form_validation;
+        $account                = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($account->rules());
 
         if ($validation->run()) {
@@ -43,12 +43,12 @@ class C_superadmin extends CI_Controller
             // redirect('superadmin');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['page'] = "superadmin/form";
-        $data['content'] = "Add";
+        $data['page']           = "superadmin/form";
+        $data['content']        = "Add";
         $this->load->view('content/layout', $data);
     }
 
@@ -56,8 +56,8 @@ class C_superadmin extends CI_Controller
     {
         if (!isset($id)) redirect('superadmin');
 
-        $account = $this->ref;
-        $validation = $this->form_validation;
+        $account                = $this->ref;
+        $validation             = $this->form_validation;
         $validation->set_rules($account->rules());
 
         if ($validation->run()) {
@@ -66,15 +66,15 @@ class C_superadmin extends CI_Controller
             // redirect('superadmin');
         }
 
-        $data = $this->data;
-        $data['atribute'] = $this->ref->getAll();
-        $data['count'] = $this->ref->count();
+        $data                   = $this->data;
+        $data['atribute']       = $this->ref->getAll();
+        $data['count']          = $this->ref->count();
 
-        $data['account'] = $account->getById($id);
+        $data['account']        = $account->getById($id);
         if (!$data['account']) show_404();
 
-        $data['page'] = "superadmin/form";
-        $data['content'] = "Edit";
+        $data['page']           = "superadmin/form";
+        $data['content']        = "Edit";
         $this->load->view('content/layout', $data);
     }
 

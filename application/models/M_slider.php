@@ -32,12 +32,6 @@ class M_slider extends CI_Model
                 'field' => 'link',
                 'label' => 'Link',
                 'rules' => 'required'
-            ],
-
-            [
-                'field' => 'status',
-                'label' => 'Status',
-                'rules' => 'required'
             ]
         ];
     }
@@ -60,14 +54,14 @@ class M_slider extends CI_Model
 
     public function save()
     {
-        $post = $this->input->post();
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
-        $this->link = $post["link"];
-        $this->images = $this->_uploadImage();
-        $this->status = $post["status"];
+        $post                   = $this->input->post();
+        $this->updated_date     = $post["updated_date"];
+        $this->updated_by       = $post["updated_by"];
+        $this->title            = $post["title"];
+        $this->description      = $post["description"];
+        $this->link             = $post["link"];
+        $this->images           = $this->_uploadImage();
+        $this->status           = $post["status"];
         return $this->db->insert($this->table, $this);
     }
 
@@ -78,17 +72,17 @@ class M_slider extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
-        $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
-        $this->link = $post["link"];
+        $post                   = $this->input->post();
+        $this->id               = $post["id"];
+        $this->updated_date     = $post["updated_date"];
+        $this->updated_by       = $post["updated_by"];
+        $this->title            = $post["title"];
+        $this->description      = $post["description"];
+        $this->link             = $post["link"];
         if (!empty($_FILES["images"]["name"])) {
-            $this->images = $this->_uploadImage();
+            $this->images       = $this->_uploadImage();
         } else {
-            $this->images = $post["old_images"];
+            $this->images       = $post["old_images"];
         }
         $this->status = $post["status"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));

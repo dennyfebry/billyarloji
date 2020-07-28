@@ -48,37 +48,37 @@ class M_footer extends CI_Model
 
     public function updateAbout()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->mark = $post["mark"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
+        $this->updated_by   = $post["updated_by"];
+        $this->mark         = $post["mark"];
+        $this->title        = $post["title"];
+        $this->description  = $post["description"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function updateStore()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->mark = $post["mark"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
+        $this->updated_by   = $post["updated_by"];
+        $this->mark         = $post["mark"];
+        $this->title        = $post["title"];
+        $this->description  = $post["description"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function updateBuy()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->mark = $post["mark"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
+        $this->updated_by   = $post["updated_by"];
+        $this->mark         = $post["mark"];
+        $this->title        = $post["title"];
+        $this->description  = $post["description"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
@@ -105,14 +105,14 @@ class M_footer extends CI_Model
 
     public function updateSocial()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->mark = $post["mark"];
-        $this->title = $post["title"];
-        $this->description = $post["description"];
-        $this->link = $post["link"];
+        $this->updated_by   = $post["updated_by"];
+        $this->mark         = $post["mark"];
+        $this->title        = $post["title"];
+        $this->description  = $post["description"];
+        $this->link         = $post["link"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 

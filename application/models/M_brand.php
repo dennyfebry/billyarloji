@@ -50,13 +50,13 @@ class M_brand extends CI_Model
 
     public function save()
     {
-        $post = $this->input->post();
+        $post               = $this->input->post();
         $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
+        $this->created_by   = $post["created_by"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->category_id = $post["category_id"];
-        $this->brand = $post["brand"];
+        $this->updated_by   = $post["updated_by"];
+        $this->category_id  = $post["category_id"];
+        $this->brand        = $post["brand"];
         return $this->db->insert($this->table, $this);
     }
 
@@ -67,14 +67,14 @@ class M_brand extends CI_Model
 
     public function update()
     {
-        $post = $this->input->post();
-        $this->id = $post["id"];
+        $post               = $this->input->post();
+        $this->id           = $post["id"];
         $this->created_date = $post["created_date"];
-        $this->created_by = $post["created_by"];
+        $this->created_by   = $post["created_by"];
         $this->updated_date = $post["updated_date"];
-        $this->updated_by = $post["updated_by"];
-        $this->category_id = $post["category_id"];
-        $this->brand = $post["brand"];
+        $this->updated_by   = $post["updated_by"];
+        $this->category_id  = $post["category_id"];
+        $this->brand        = $post["brand"];
         return $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
