@@ -156,16 +156,13 @@
                                 console.log(data);
                                 if (data == "New passwords are not the same") {
                                     $('#message-error').html(data);
-                                    alert(data);
+                                    // alert(data);
                                 } else if (data == "The old password you entered is incorrect") {
                                     $('#message-error').html(data);
-                                    alert(data);
+                                    // alert(data);
                                 } else {
                                     $('#message-success').html(data);
-                                    alert(data);
-                                    setTimeout(function() {
-                                        document.getElementById("myCheck").click();
-                                    }, 1500);
+                                    // alert(data);
                                 }
                             }
                         });
